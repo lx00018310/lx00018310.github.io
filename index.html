@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>董达｜工业边缘应用工程师作品集</title>
+    <meta
+      name="description"
+      content="董达的工业边缘应用工程师作品集：数字月台 12 台 HMI 协同系统、自动化餐饮产线与送餐机器人协同控制系统。"
+    />
+    <meta name="theme-color" content="#101827" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="主导航">
+      <a class="brand" href="#top">董达</a>
+      <nav>
+        <a href="#case-task013">数字月台</a>
+        <a href="#case-task010">机器人产线</a>
+        <a href="#posters">项目卡片</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">Industrial Edge Application Portfolio</p>
+          <h1 class="hero-title--single">董达｜工业边缘应用工程师</h1>
+          <p class="hero__lead">
+            机械与工业项目背景转向工业现场软件交付，聚焦公共工控机、HMI 多终端协同、PLC 与机器人设备接入、Windows 工控机部署、自愈运维和现场联调。
+          </p>
+          <div class="hero__facts" aria-label="核心信息">
+            <span>16 年工业及项目经验</span>
+            <span>12 台 HMI 协同</span>
+            <span>PLC / 人脸 / 机器人接入</span>
+            <span>离线发布与失败回滚</span>
+          </div>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#case-task013">查看核心案例</a>
+            <a class="button button--ghost" href="#posters">查看项目卡片</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro" aria-labelledby="intro-title">
+        <div class="section__header">
+          <p class="eyebrow">Positioning</p>
+          <h2 id="intro-title">工业现场系统集成与边缘应用交付</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="tile">
+            <h3>工业边缘中控</h3>
+            <p>公共工控机作为主控节点，聚合 HMI、PLC、调度、人脸、机器人等现场端状态，并向终端下发指令。</p>
+          </article>
+          <article class="tile">
+            <h3>多终端 HMI 协同</h3>
+            <p>针对触摸屏一体机、Android Kiosk、操作员屏、线体确认屏和场馆大屏设计角色分层与低认知负担交互。</p>
+          </article>
+          <article class="tile">
+            <h3>部署与自愈</h3>
+            <p>围绕 Windows 工控机、Nginx、PowerShell、NSSM、版本激活、失败回滚和健康检查建立可运维链路。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section case" id="case-task013" aria-labelledby="task013-title">
+        <div class="section__header">
+          <p class="eyebrow">Core Case 01</p>
+          <h2 id="task013-title">数字月台工业边缘中控与 12 台 HMI 协同系统</h2>
+          <p>
+            面向工厂自动装车与数字月台场景，系统由公共工控机、12 台触摸屏 HMI、PLC、调度系统、人脸识别终端和局域网发布系统组成。
+          </p>
+        </div>
+
+        <div class="case-layout">
+          <div class="diagram system-diagram" aria-label="数字月台系统架构示意">
+            <div class="diagram__column">
+              <span class="node node--blue">调度系统</span>
+              <span class="node node--green">SLMP PLC</span>
+              <span class="node node--amber">人脸设备</span>
+              <span class="node node--cyan">扫码与工位</span>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="node node--core">
+              <strong>公共工控机中控</strong>
+              <span>Node/Fastify</span>
+              <span>WebSocket 事件总线</span>
+              <span>PostgreSQL 状态持久化</span>
+              <span>部署控制器 / HMI Agent</span>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="hmi-grid" aria-label="12 台 HMI">
+              <span>01</span><span>02</span><span>03</span><span>04</span>
+              <span>05</span><span>06</span><span>07</span><span>08</span>
+              <span>09</span><span>10</span><span>11</span><span>12</span>
+            </div>
+          </div>
+
+          <div class="evidence-list">
+            <article>
+              <h3>承担角色</h3>
+              <p>核心开发 / 系统集成：覆盖 HMI 前端、Node 后端、PLC 网关、人脸 ISUP 服务、部署控制器、HMI Agent、脚本和联调文档。</p>
+            </article>
+            <article>
+              <h3>关键难点</h3>
+              <p>多终端状态一致性、PLC 安全联锁、人脸事件链路、发布回滚、Windows 工控机部署、生产链路与调试链路隔离。</p>
+            </article>
+            <article>
+              <h3>当前结果</h3>
+              <p>主要软件链路、本机集成验证、PLC 业务状态聚合、人脸真实链路 MVP、局域网版本控制和部署自愈机制已形成，进入现场联调与验收阶段。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="diagrams-title">
+        <div class="section__header">
+          <p class="eyebrow">Project War Room</p>
+          <h2 id="diagrams-title">五张核心图谱</h2>
+        </div>
+        <div class="grid grid--5">
+          <article class="diagram-card">
+            <h3>系统架构图</h3>
+            <p>调度、PLC、人脸、扫码等现场输入进入公共工控机，再推送到 12 台 HMI。</p>
+            <div class="mini-flow"><span>现场设备</span><i></i><span>边缘中控</span><i></i><span>HMI</span></div>
+          </article>
+          <article class="diagram-card">
+            <h3>现场部署拓扑</h3>
+            <p>公共工控机承载业务后端、部署控制和管理页；每台 HMI 本地运行代理与 Nginx。</p>
+            <div class="mini-stack"><span>公共工控机</span><span>HMI Agent</span><span>本地 Kiosk</span></div>
+          </article>
+          <article class="diagram-card">
+            <h3>业务状态流转</h3>
+            <p>登录识别、任务接收、作业确认、装车控制、暂停换人、结束装车和下一任务。</p>
+            <div class="mini-flow"><span>识别</span><i></i><span>作业</span><i></i><span>结束</span></div>
+          </article>
+          <article class="diagram-card">
+            <h3>版本发布与回滚</h3>
+            <p>.wrelease 校验、全部节点准备、统一激活、健康确认；任一节点失败触发全网回滚。</p>
+            <div class="mini-flow"><span>校验</span><i></i><span>激活</span><i></i><span>回滚</span></div>
+          </article>
+          <article class="diagram-card">
+            <h3>异常自愈链路</h3>
+            <p>针对服务崩溃、HMI 掉线、WebSocket 断开、发布包异常和配置缺失做显式失败处理。</p>
+            <div class="mini-stack"><span>检测</span><span>隔离</span><span>恢复</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section case case--compact" id="case-task010" aria-labelledby="task010-title">
+        <div class="section__header">
+          <p class="eyebrow">Supplement Case 02</p>
+          <h2 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h2>
+          <p>
+            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡、选味、PLC、喷码、生产状态、机器人取餐送餐和返程。
+          </p>
+        </div>
+        <div class="process-strip" aria-label="餐饮产线流程">
+          <span>刷卡器</span>
+          <span>选味屏</span>
+          <span>后端状态机</span>
+          <span>PLC / 喷码</span>
+          <span>机器人取餐</span>
+          <span>送餐 / 返程</span>
+        </div>
+        <div class="grid grid--4">
+          <article class="tile">
+            <h3>读卡服务独占</h3>
+            <p>避免页面或进程竞争串口 / HID 设备，提升刷卡归属稳定性。</p>
+          </article>
+          <article class="tile">
+            <h3>机器人 API 卡顿定位</h3>
+            <p>通过串行任务、异步导航轮询、状态缓存和 Kiosk 降级隔离提升控制稳定性。</p>
+          </article>
+          <article class="tile">
+            <h3>路线与地图恢复</h3>
+            <p>处理路线区域合并、路径点配置、地图自动恢复、环境预检和导航异常。</p>
+          </article>
+          <article class="tile">
+            <h3>生产配置收敛</h3>
+            <p>区分 dev / prod，关键 PLC、喷码器、机器人回调、数据库和 Redis 统一配置。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="delivery-title">
+        <div class="section__header">
+          <p class="eyebrow">Delivery Method</p>
+          <h2 id="delivery-title">工程化交付方式</h2>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <h3>生产优先的判断</h3>
+            <ul>
+              <li>真实设备状态优先，不用页面“看起来正常”代替链路验证。</li>
+              <li>生产链路与调试链路隔离，关键配置缺失时拒绝启动或发版。</li>
+              <li>先做可诊断、可回滚、可恢复，再谈更复杂的自动化。</li>
+            </ul>
+          </div>
+          <div class="panel panel--dark">
+            <h3>技术栈</h3>
+            <p>React、TypeScript、Vite、Node.js、Fastify、WebSocket、PostgreSQL、Java、Spring Boot、MySQL、Python、PowerShell、Nginx、NSSM、Android Kiosk、SLMP PLC、海康 ISUP 5.0。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section posters" id="posters" aria-labelledby="posters-title">
+        <div class="section__header">
+          <p class="eyebrow">Delivery Images</p>
+          <h2 id="posters-title">项目卡片</h2>
+          <p>三张卡片均为 1080 × 1920 竖屏 PNG，公开版已脱敏，可按需下载。</p>
+        </div>
+        <div class="poster-grid">
+          <figure>
+            <img src="./assets/posters/01_industrial_edge_profile.png" alt="工业边缘应用工程师个人能力总览项目卡片" />
+            <figcaption>
+              <strong>个人能力总览</strong>
+              <a href="./assets/posters/01_industrial_edge_profile.png" download>下载 PNG</a>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/posters/02_task013_digital_dock.png" alt="数字月台工业边缘中控与 12 台 HMI 协同系统项目卡片" />
+            <figcaption>
+              <strong>TASK-013 数字月台</strong>
+              <a href="./assets/posters/02_task013_digital_dock.png" download>下载 PNG</a>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/posters/03_task010_robot_line.png" alt="自动化餐饮产线与送餐机器人协同控制系统项目卡片" />
+            <figcaption>
+              <strong>TASK-010 机器人产线</strong>
+              <a href="./assets/posters/03_task010_robot_line.png" download>下载 PNG</a>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>董达｜工业边缘应用工程师</span>
+      <span>电话 / 微信：18761576008</span>
+    </footer>
+  </body>
+</html>

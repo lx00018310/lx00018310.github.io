@@ -146,6 +146,39 @@
         border-bottom: none;
       }
 
+      /* ── 淡色背景区域（全幅） ── */
+      #case-task013,
+      #diagrams,
+      #qa,
+      #case-task010 {
+        position: relative;
+        z-index: 0;
+      }
+      #case-task013::before,
+      #diagrams::before,
+      #qa::before,
+      #case-task010::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100vw;
+        height: 100%;
+        transform: translateX(-50%);
+        z-index: -1;
+        pointer-events: none;
+      }
+      /* Core Case 01 / 五张图谱 / 工程问答：淡紫色 */
+      #case-task013::before,
+      #diagrams::before,
+      #qa::before {
+        background: #eeebff;
+      }
+      /* Supplement Case 02：淡黄色 */
+      #case-task010::before {
+        background: #fdf6dc;
+      }
+
       /* 简历下载按钮特殊样式 */
       .button--resume {
         background: #fff;
@@ -206,8 +239,6 @@
       <a class="brand" href="#top">董达</a>
       <nav>
         <a href="#case-task013">数字月台</a>
-        <a href="#diagrams">五张图谱</a>
-        <a href="#qa">工程问答</a>
         <a href="#case-task010">机器人产线</a>
         <a href="#posters">项目卡片</a>
       </nav>
@@ -696,7 +727,7 @@
           <p class="eyebrow">Supplement Case 02</p>
           <h2 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h2>
           <p>
-            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程，前端 Vue + 后端 Node.js，在杭州母版基础上做天津差异化改造。
+            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程，前端 Vue + 后端 Node.js。
           </p>
         </div>
         <div class="process-strip" aria-label="餐饮产线流程">
@@ -755,7 +786,7 @@
         <div class="section__header">
           <p class="eyebrow">Delivery Images</p>
           <h2 id="posters-title">项目卡片</h2>
-          <p>三张卡片均为 1080 × 1920 竖屏 PNG，公开版已脱敏，可按需下载后发给 HR 或技术负责人。</p>
+          <p>三张卡片均为 1080 × 1920 竖屏 PNG，公开已脱敏，可按需下载。</p>
         </div>
         <div class="poster-grid">
           <figure>
@@ -786,7 +817,7 @@
 
     <footer class="site-footer">
       <span>董达｜工业边缘应用工程师</span>
-      <span>联系方式：<strong style="font-size:15px;letter-spacing:1px">18761576008</strong></span>
+      <span>联系方式：<strong style="font-size:15px;letter-spacing:1px">624290365@qq.com</strong></span>
     </footer>
 
     <script>

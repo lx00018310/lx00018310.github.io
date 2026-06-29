@@ -10,24 +10,218 @@
     />
     <meta name="theme-color" content="#101827" />
     <link rel="stylesheet" href="./assets/styles.css" />
+    <style>
+      /* ── 贡献占比模块 ── */
+      .contrib-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .contrib-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+        background: var(--soft);
+        border: 2px solid var(--black);
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .contrib-item::before {
+        content: "▸";
+        font-size: 18px;
+        line-height: 1.4;
+        flex: 0 0 auto;
+      }
+
+      /* ── 工程图谱：页内逐张展开 ── */
+      .diagram-page {
+        border: 3px solid var(--black);
+        background: var(--white);
+        padding: 36px 40px 40px;
+        margin-bottom: 0;
+      }
+      .diagram-page + .diagram-page {
+        border-top: none;
+      }
+      .diagram-page__header {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+      .diagram-page__num {
+        font-size: 13px;
+        font-weight: 900;
+        color: var(--mid);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
+      .diagram-page__title {
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 1.2;
+        margin: 0;
+      }
+      .diagram-page__sub {
+        color: var(--mid);
+        font-size: 14px;
+        margin: -14px 0 20px;
+      }
+      /* 工程架构图 SVG 容器 */
+      .eng-diagram {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .eng-diagram svg {
+        display: block;
+        min-width: 640px;
+      }
+      @media (max-width: 760px) {
+        .diagram-page { padding: 22px 16px 24px; }
+        .diagram-page__title { font-size: 20px; }
+      }
+      /* 流程步骤条 */
+      .step-strip {
+        display: grid;
+        gap: 0;
+        margin: 18px 0;
+      }
+      .step-row {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        border: 2px solid var(--black);
+        margin-top: -2px;
+      }
+      .step-row .step-label {
+        padding: 12px 16px;
+        background: var(--black);
+        color: var(--white);
+        font-weight: 900;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+      }
+      .step-row .step-body {
+        padding: 12px 16px;
+        font-size: 15px;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+      }
+      /* QA 问题模块 */
+      .qa-list {
+        display: grid;
+        gap: 16px;
+      }
+      .qa-item {
+        background: var(--white);
+        border: 3px solid var(--black);
+        padding: 22px;
+      }
+      .qa-item .qa-q {
+        font-weight: 900;
+        font-size: 19px;
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
+      .qa-item .qa-row {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 8px 14px;
+        font-size: 16px;
+      }
+      .qa-item .qa-key {
+        font-weight: 900;
+        padding: 6px 0;
+      }
+      .qa-item .qa-val {
+        color: var(--dark);
+        padding: 6px 0;
+        border-bottom: 1px solid var(--line);
+        line-height: 1.55;
+      }
+      .qa-item .qa-val:last-child {
+        border-bottom: none;
+      }
+
+      /* 简历下载按钮特殊样式 */
+      .button--resume {
+        background: #fff;
+        color: #000;
+        border: 3px solid #000;
+        position: relative;
+      }
+      .button--resume::before {
+        content: "↓";
+        margin-right: 8px;
+        font-size: 20px;
+      }
+
+      /* topo 拓扑图 */
+      .topo-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+        margin-top: 14px;
+      }
+      .topo-table th {
+        background: var(--black);
+        color: var(--white);
+        padding: 10px 14px;
+        text-align: left;
+        font-weight: 900;
+      }
+      .topo-table td {
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        color: var(--dark);
+        vertical-align: top;
+      }
+      .topo-table tr:nth-child(odd) td {
+        background: var(--soft);
+      }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        background: var(--black);
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 900;
+        margin-right: 4px;
+        margin-bottom: 2px;
+      }
+
+      @media (max-width: 760px) {
+        .contrib-grid { grid-template-columns: 1fr; }
+        .step-row { grid-template-columns: 1fr; }
+        .step-row .step-label { font-size: 13px; }
+        .modal-box { padding: 24px 16px; }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header" aria-label="主导航">
       <a class="brand" href="#top">董达</a>
       <nav>
         <a href="#case-task013">数字月台</a>
+        <a href="#diagrams">五张图谱</a>
+        <a href="#qa">工程问答</a>
         <a href="#case-task010">机器人产线</a>
         <a href="#posters">项目卡片</a>
       </nav>
     </header>
 
     <main id="top">
+      <!-- ══ HERO ══ -->
       <section class="hero">
         <div class="hero__content">
           <p class="eyebrow">Industrial Edge Application Portfolio</p>
           <h1 class="hero-title--single">董达｜工业边缘应用工程师</h1>
           <p class="hero__lead">
-            机械与工业项目背景转向工业现场软件交付，聚焦公共工控机、HMI 多终端协同、PLC 与机器人设备接入、Windows 工控机部署、自愈运维和现场联调。
+            我擅长把工控机、HMI、PLC、机器人、人脸设备、部署脚本和异常恢复机制，<br>
+            收口成<strong>可联调、可部署、可交付</strong>的工业边缘系统。
           </p>
           <div class="hero__facts" aria-label="核心信息">
             <span>16 年工业及项目经验</span>
@@ -37,11 +231,13 @@
           </div>
           <div class="hero__actions">
             <a class="button button--primary" href="#case-task013">查看核心案例</a>
-            <a class="button button--ghost" href="#posters">查看项目卡片</a>
+            <a class="button button--ghost button--resume" href="./assets/resume.pdf" download>下载简历 PDF</a>
+            <a class="button button--ghost" href="#posters">下载项目卡片</a>
           </div>
         </div>
       </section>
 
+      <!-- ══ POSITIONING ══ -->
       <section class="section intro" aria-labelledby="intro-title">
         <div class="section__header">
           <p class="eyebrow">Positioning</p>
@@ -50,43 +246,49 @@
         <div class="grid grid--3">
           <article class="tile">
             <h3>工业边缘中控</h3>
-            <p>公共工控机作为主控节点，聚合 HMI、PLC、调度、人脸、机器人等现场端状态，并向终端下发指令。</p>
+            <p>公共工控机作为主控节点，聚合 HMI、PLC、调度、人脸、机器人等现场端状态，通过 WebSocket 事件总线与 PostgreSQL 状态持久化向终端下发指令。</p>
           </article>
           <article class="tile">
             <h3>多终端 HMI 协同</h3>
-            <p>针对触摸屏一体机、Android Kiosk、操作员屏、线体确认屏和场馆大屏设计角色分层与低认知负担交互。</p>
+            <p>针对触摸屏一体机、Android Kiosk、操作员屏、线体确认屏和场馆大屏设计角色分层与低认知负担交互；A/B 机型差异显隐、操作工/主管/管理员权限分离。</p>
           </article>
           <article class="tile">
             <h3>部署与自愈</h3>
-            <p>围绕 Windows 工控机、Nginx、PowerShell、NSSM、版本激活、失败回滚和健康检查建立可运维链路。</p>
+            <p>围绕 Windows 工控机、Nginx、NSSM、版本激活、失败回滚和健康检查建立可运维链路；NSSM 5 秒崩溃拉起 + 控制器双保险主动守护，形成两级自愈机制。</p>
           </article>
         </div>
       </section>
 
+      <!-- ══ CORE CASE 013 ══ -->
       <section class="section case" id="case-task013" aria-labelledby="task013-title">
         <div class="section__header">
           <p class="eyebrow">Core Case 01</p>
           <h2 id="task013-title">数字月台工业边缘中控与 12 台 HMI 协同系统</h2>
           <p>
-            面向工厂自动装车与数字月台场景，系统由公共工控机、12 台触摸屏 HMI、PLC、调度系统、人脸识别终端和局域网发布系统组成。
+            面向工厂自动装车与数字月台场景，系统由 1 台公共工控机、12 台触摸屏 HMI（192.168.37.51–.62）、12 台月台 PLC（FX5U，SLMP协议）、AGV 调度系统、12 台海康人脸识别终端（ISUP 5.0）和局域网版本控制系统组成，现场 40 台联网设备，子网 192.168.37.0/24。
           </p>
         </div>
 
+        <!-- 系统架构图 -->
         <div class="case-layout">
           <div class="diagram system-diagram" aria-label="数字月台系统架构示意">
             <div class="diagram__column">
-              <span class="node node--blue">调度系统</span>
-              <span class="node node--green">SLMP PLC</span>
-              <span class="node node--amber">人脸设备</span>
-              <span class="node node--cyan">扫码与工位</span>
+              <span class="node node--blue">AGV 调度系统<br><small style="font-weight:400;font-size:13px">HTTP / 轮询</small></span>
+              <span class="node node--green">SLMP PLC ×12<br><small style="font-weight:400;font-size:13px">192.168.37.21–32</small></span>
+              <span class="node node--amber">海康 ISUP 5.0<br>人脸识别 ×12<br><small style="font-weight:400;font-size:13px">独立进程隔离</small></span>
+              <span class="node node--cyan">扫码枪 / 工位<br><small style="font-weight:400;font-size:13px">TCP 独立进程</small></span>
             </div>
             <div class="flow-arrow"></div>
             <div class="node node--core">
               <strong>公共工控机中控</strong>
-              <span>Node/Fastify</span>
+              <span>192.168.37.10</span>
+              <span>Node.js / Fastify 后端</span>
               <span>WebSocket 事件总线</span>
               <span>PostgreSQL 状态持久化</span>
-              <span>部署控制器 / HMI Agent</span>
+              <span>PLC 独占排队锁</span>
+              <span>部署控制器</span>
+              <span>HMI Agent 下发</span>
+              <span>NSSM 服务守护</span>
             </div>
             <div class="flow-arrow"></div>
             <div class="hmi-grid" aria-label="12 台 HMI">
@@ -97,62 +299,404 @@
           </div>
 
           <div class="evidence-list">
+            <!-- 角色贡献 -->
             <article>
-              <h3>承担角色</h3>
-              <p>核心开发 / 系统集成：覆盖 HMI 前端、Node 后端、PLC 网关、人脸 ISUP 服务、部署控制器、HMI Agent、脚本和联调文档。</p>
+              <h3>我主要负责</h3>
+              <div class="contrib-grid">
+                <div class="contrib-item">HMI 前端（React / TS / Vite）角色分层 + 5 页骨架</div>
+                <div class="contrib-item">Node.js / Fastify / WebSocket 后端架构</div>
+                <div class="contrib-item">PLC 网关（SLMP）+ 独占排队锁设计</div>
+                <div class="contrib-item">海康 ISUP 5.0 人脸服务独立进程联调</div>
+                <div class="contrib-item">HMI Agent + 部署控制器 + 版本回滚</div>
+                <div class="contrib-item">NSSM Windows 服务化 + 自愈脚本</div>
+                <div class="contrib-item">生产 / 调试链路隔离（mock adapter 切换）</div>
+                <div class="contrib-item">联调文档、SOP、异常排查手册</div>
+              </div>
             </article>
             <article>
               <h3>关键难点</h3>
-              <p>多终端状态一致性、PLC 安全联锁、人脸事件链路、发布回滚、Windows 工控机部署、生产链路与调试链路隔离。</p>
+              <p>多终端状态一致性（WebSocket 断线恢复 + PostgreSQL 状态会话）、PLC 安全联锁（独占排队锁防止并发写冲突）、人脸 ISUP 进程隔离（防 C++ SDK 株连崩溃）、发布回滚（.wrelease 全网激活，任一节点失败全局回退）、Windows 工控机原生服务部署与自愈。</p>
             </article>
             <article>
               <h3>当前结果</h3>
-              <p>主要软件链路、本机集成验证、PLC 业务状态聚合、人脸真实链路 MVP、局域网版本控制和部署自愈机制已形成，进入现场联调与验收阶段。</p>
+              <p>主要软件链路、本机集成验证、PLC 业务状态聚合、人脸真实链路 MVP、局域网全网版本控制和 NSSM 双级自愈机制已形成，进入现场联调与验收阶段。</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="diagrams-title">
+      <!-- ══ 五张核心图谱 ══ -->
+      <section class="section" id="diagrams" aria-labelledby="diagrams-title">
         <div class="section__header">
           <p class="eyebrow">Project War Room</p>
           <h2 id="diagrams-title">五张核心图谱</h2>
         </div>
-        <div class="grid grid--5">
-          <article class="diagram-card">
-            <h3>系统架构图</h3>
-            <p>调度、PLC、人脸、扫码等现场输入进入公共工控机，再推送到 12 台 HMI。</p>
-            <div class="mini-flow"><span>现场设备</span><i></i><span>边缘中控</span><i></i><span>HMI</span></div>
+
+        <!-- 图谱 1：系统架构图 -->
+        <div class="diagram-page" id="diagram-arch">
+          <div class="diagram-page__header">
+            <span class="diagram-page__num">图谱 01 / 05</span>
+            <h3 class="diagram-page__title">系统架构图</h3>
+          </div>
+          <p class="diagram-page__sub">TASK-013 数字月台 — 完整节点关系，子网 192.168.37.0/24</p>
+          <div class="eng-diagram">
+            <svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="font-family:'Microsoft YaHei UI',Arial,sans-serif;width:100%;height:auto">
+              <rect x="0" y="0" width="780" height="520" fill="#f4f4f1"/>
+              <!-- 左侧：现场输入层 -->
+              <rect x="10" y="60" width="148" height="400" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="84" y="48" text-anchor="middle" font-size="12" font-weight="900" fill="#000">现场输入层</text>
+              <rect x="18" y="72" width="132" height="54" fill="#000"/>
+              <text x="84" y="97" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">AGV 调度系统</text>
+              <text x="84" y="114" text-anchor="middle" font-size="11" fill="#ccc">HTTP / 轮询</text>
+              <rect x="18" y="138" width="132" height="54" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="84" y="163" text-anchor="middle" font-size="13" font-weight="900" fill="#000">SLMP PLC ×12</text>
+              <text x="84" y="180" text-anchor="middle" font-size="11" fill="#666">三菱 FX5U</text>
+              <rect x="18" y="204" width="132" height="66" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="84" y="230" text-anchor="middle" font-size="13" font-weight="900" fill="#000">海康 ISUP 5.0</text>
+              <text x="84" y="248" text-anchor="middle" font-size="11" fill="#666">人脸识别 ×12</text>
+              <text x="84" y="263" text-anchor="middle" font-size="10" fill="#888">独立进程隔离</text>
+              <rect x="18" y="282" width="132" height="54" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="84" y="307" text-anchor="middle" font-size="13" font-weight="900" fill="#000">扫码枪 / 工位</text>
+              <text x="84" y="324" text-anchor="middle" font-size="11" fill="#666">TCP 独立进程</text>
+              <rect x="18" y="348" width="132" height="54" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="84" y="373" text-anchor="middle" font-size="13" font-weight="900" fill="#000">零库 PLC ×1</text>
+              <text x="84" y="390" text-anchor="middle" font-size="11" fill="#666">FX5U / 37.40</text>
+              <!-- 箭头 -->
+              <line x1="158" y1="260" x2="214" y2="260" stroke="#000" stroke-width="3"/>
+              <polygon points="214,254 226,260 214,266" fill="#000"/>
+              <!-- 中央：公共工控机 -->
+              <rect x="226" y="30" width="200" height="460" fill="#000"/>
+              <text x="326" y="58" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">公共工控机中控</text>
+              <text x="326" y="75" text-anchor="middle" font-size="11" fill="#aaa">192.168.37.10</text>
+              <rect x="236" y="85" width="180" height="36" fill="#333"/>
+              <text x="326" y="108" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">Node.js / Fastify 后端</text>
+              <rect x="236" y="129" width="180" height="36" fill="#333"/>
+              <text x="326" y="152" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">WebSocket 事件总线</text>
+              <rect x="236" y="173" width="180" height="36" fill="#333"/>
+              <text x="326" y="196" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">PostgreSQL 状态持久化</text>
+              <rect x="236" y="217" width="180" height="36" fill="#333"/>
+              <text x="326" y="240" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">PLC 独占排队锁</text>
+              <rect x="236" y="261" width="180" height="36" fill="#333"/>
+              <text x="326" y="284" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">部署控制器</text>
+              <rect x="236" y="305" width="180" height="36" fill="#333"/>
+              <text x="326" y="328" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">HMI Agent 下发</text>
+              <rect x="236" y="349" width="180" height="36" fill="#333"/>
+              <text x="326" y="372" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">NSSM 服务守护</text>
+              <rect x="236" y="393" width="180" height="36" fill="#333"/>
+              <text x="326" y="416" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">Nginx 管理页（本机）</text>
+              <rect x="236" y="437" width="180" height="36" fill="#333"/>
+              <text x="326" y="460" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">mock / real adapter 切换</text>
+              <!-- 右箭头 -->
+              <line x1="426" y1="260" x2="484" y2="260" stroke="#111" stroke-width="3"/>
+              <polygon points="484,254 496,260 484,266" fill="#111"/>
+              <!-- 右侧：HMI 终端 -->
+              <text x="559" y="48" text-anchor="middle" font-size="12" font-weight="900" fill="#000">12 台 HMI 终端</text>
+              <rect x="496" y="60" width="126" height="400" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="559" y="88" text-anchor="middle" font-size="11" fill="#666">37.51–37.62</text>
+              <g fill="#fff" stroke="#000" stroke-width="1">
+                <rect x="506" y="100" width="46" height="38"/><text x="529" y="124" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">01</text>
+                <rect x="560" y="100" width="46" height="38"/><text x="583" y="124" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">02</text>
+                <rect x="506" y="146" width="46" height="38"/><text x="529" y="170" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">03</text>
+                <rect x="560" y="146" width="46" height="38"/><text x="583" y="170" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">04</text>
+                <rect x="506" y="192" width="46" height="38"/><text x="529" y="216" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">05</text>
+                <rect x="560" y="192" width="46" height="38"/><text x="583" y="216" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">06</text>
+                <rect x="506" y="238" width="46" height="38"/><text x="529" y="262" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">07</text>
+                <rect x="560" y="238" width="46" height="38"/><text x="583" y="262" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">08</text>
+                <rect x="506" y="284" width="46" height="38"/><text x="529" y="308" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">09</text>
+                <rect x="560" y="284" width="46" height="38"/><text x="583" y="308" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">10</text>
+                <rect x="506" y="330" width="46" height="38"/><text x="529" y="354" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">11</text>
+                <rect x="560" y="330" width="46" height="38"/><text x="583" y="354" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">12</text>
+              </g>
+              <rect x="506" y="378" width="100" height="32" fill="#f4f4f1" stroke="#000" stroke-width="1"/>
+              <text x="556" y="399" text-anchor="middle" font-size="10" fill="#666">HMI Agent + Nginx</text>
+              <rect x="506" y="418" width="100" height="32" fill="#f4f4f1" stroke="#000" stroke-width="1"/>
+              <text x="556" y="439" text-anchor="middle" font-size="10" fill="#666">Edge Kiosk 模式</text>
+              <!-- 图例 -->
+              <rect x="636" y="60" width="134" height="120" fill="#fff" stroke="#000" stroke-width="2"/>
+              <text x="703" y="80" text-anchor="middle" font-size="11" font-weight="900" fill="#000">图例</text>
+              <rect x="646" y="90" width="16" height="16" fill="#000"/><text x="668" y="103" font-size="10" fill="#000">中控核心节点</text>
+              <rect x="646" y="114" width="16" height="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="668" y="127" font-size="10" fill="#000">外围设备节点</text>
+              <line x1="646" y1="146" x2="662" y2="146" stroke="#000" stroke-width="2"/><polygon points="662,142 670,146 662,150" fill="#000"/><text x="676" y="150" font-size="10" fill="#000">数据流向</text>
+              <text x="646" y="175" font-size="9" fill="#888">子网：192.168.37.0/24</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 图谱 2：现场部署拓扑 -->
+        <div class="diagram-page" id="diagram-topo">
+          <div class="diagram-page__header">
+            <span class="diagram-page__num">图谱 02 / 05</span>
+            <h3 class="diagram-page__title">现场部署拓扑</h3>
+          </div>
+          <p class="diagram-page__sub">TASK-013 — 40 台联网设备 IP 规划与软件部署分层</p>
+          <table class="topo-table">
+            <thead>
+              <tr><th>层级</th><th>设备</th><th>数量</th><th>IP 范围</th><th>运行软件</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge">中控层</span></td>
+                <td>公共工控机</td>
+                <td>1</td>
+                <td>192.168.37.10</td>
+                <td>Node.js 后端（4067）、部署控制器、PostgreSQL、Nginx 管理页、NSSM 服务守护</td>
+              </tr>
+              <tr>
+                <td><span class="badge">PLC 层</span></td>
+                <td>月台 PLC（FX5U）</td>
+                <td>12</td>
+                <td>192.168.37.21–32</td>
+                <td>SLMP 协议通讯，PLC 独占排队锁由后端管理</td>
+              </tr>
+              <tr>
+                <td><span class="badge">PLC 层</span></td>
+                <td>零库 PLC（FX5U）</td>
+                <td>1</td>
+                <td>192.168.37.40</td>
+                <td>SLMP 协议通讯</td>
+              </tr>
+              <tr>
+                <td><span class="badge">HMI 层</span></td>
+                <td>十寸触控一体机</td>
+                <td>12</td>
+                <td>192.168.37.51–62</td>
+                <td>HMI Agent（PowerShell）、Nginx（反代 37.10:4067）、Edge Kiosk 模式、HMI Bootstrap（SYSTEM 自启）</td>
+              </tr>
+              <tr>
+                <td><span class="badge">识别层</span></td>
+                <td>海康人脸识别终端</td>
+                <td>12</td>
+                <td>192.168.37.71–82</td>
+                <td>ISUP 5.0 协议，后端独立进程接入（防 SDK 株连）</td>
+              </tr>
+              <tr>
+                <td><span class="badge">电控层</span></td>
+                <td>电气控制触摸屏</td>
+                <td>2</td>
+                <td>192.168.37.91–92</td>
+                <td>电气控制面板（独立硬件）</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top:22px;padding:16px;background:var(--soft);border:2px solid var(--black)">
+            <strong style="font-size:15px">HMI 零配置部署原理</strong>
+            <p style="font-size:14px;color:var(--dark);margin:10px 0 0">HMI 前端使用同源路径（/api、/ws），由本地 Nginx 代理到公共机 192.168.37.10:4067。HMI 不存储后端地址，宿主 IP 变更时只需更新 Nginx 配置，前端无需重新构建或修改。</p>
+          </div>
+        </div>
+
+        <!-- 图谱 3：业务状态流转 -->
+        <div class="diagram-page" id="diagram-state">
+          <div class="diagram-page__header">
+            <span class="diagram-page__num">图谱 03 / 05</span>
+            <h3 class="diagram-page__title">业务状态流转</h3>
+          </div>
+          <p class="diagram-page__sub">TASK-013 — 月台作业完整状态机（含 PLC 安全联锁节点）</p>
+          <div class="step-strip">
+            <div class="step-row">
+              <span class="step-label">① 等待识别</span>
+              <span class="step-body">HMI 显示等待人脸刷卡界面；人脸 ISUP 独立进程持续监听，事件经 HTTP → 后端 → WebSocket 推送到对应月台 HMI。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">② 身份确认</span>
+              <span class="step-body">后端校验人脸事件与当前任务操作工绑定关系；操作工权限验证通过，页面切换到作业信息页。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">③ 任务接收</span>
+              <span class="step-body">后端向 AGV 调度系统请求任务；调度响应后写入 PostgreSQL，推送任务信息到 HMI；操作工确认接单。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">④ 装车控制</span>
+              <span class="step-body">HMI 进入设备控制页；操作工触发装车指令，后端通过 PLC 排队锁写入 SLMP 指令；PLC 物理联锁检查到位信号后开始放料。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">⑤ 暂停 / 换人</span>
+              <span class="step-body">主管可触发暂停，当前任务挂起，PLC 联锁保持；换人需重新人脸验证后方可恢复；状态持久化到 PostgreSQL 防止断线丢失。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">⑥ 结束装车</span>
+              <span class="step-body">操作工确认结束；后端向调度回报完成，写入完工记录；PLC 联锁解除，月台状态归零；HMI 返回等待识别页。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">⑦ 异常处理</span>
+              <span class="step-body">任一环节异常（PLC 超时、调度失联、WebSocket 断线）→ 后端记录报警 → HMI 报警页显示 → 主管介入处理 → 恢复或终止任务。</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:14px;background:var(--soft);border:2px solid var(--black);font-size:14px;color:var(--dark)">
+            <strong>A / B 机型差异：</strong>A 类（1#、12# 月台）为端点机位，具备额外的 LED 大屏控制权限；B 类（2#–11#）为标准机位。角色分层：操作工极简界面 / 主管工业界面 / 管理员调试界面，三层权限由后端 token 验证控制。
+          </div>
+        </div>
+
+        <!-- 图谱 4：版本发布与回滚 -->
+        <div class="diagram-page" id="diagram-deploy">
+          <div class="diagram-page__header">
+            <span class="diagram-page__num">图谱 04 / 05</span>
+            <h3 class="diagram-page__title">版本发布与回滚</h3>
+          </div>
+          <p class="diagram-page__sub">TASK-013 — .wrelease 全网协同部署流程</p>
+          <div class="step-strip">
+            <div class="step-row">
+              <span class="step-label">① 构建 .wrelease</span>
+              <span class="step-body">CI 流程打包前端静态文件为 .wrelease 格式包，包含版本号、构建时间戳和完整性哈希。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">② 包完整性校验</span>
+              <span class="step-body">部署控制器导入 .wrelease，校验哈希与包结构；任一校验失败，拒绝继续，不下发任何指令。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">③ 业务就绪检查</span>
+              <span class="step-body">控制器调用 /api/system/deployment-readiness，逐一检查 01–12 号月台：当前任务为空、状态为 idle、无阻断报警。任一不满足则拒绝发布。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">④ 全节点准备下发</span>
+              <span class="step-body">控制器向 12 台 HMI Agent 下发"准备"指令；每台 Agent 拉取包、解压、校验、预加载到待激活目录；完成后回报 ready。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">⑤ 统一激活（60s 时限）</span>
+              <span class="step-body">全部 12 台回报 ready 后，控制器下发统一激活指令；每台 Agent 执行 Nginx 配置切换 + 重启 Kiosk；60 秒内需全部完成健康确认。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">⑥ 健康检查</span>
+              <span class="step-body">控制器轮询各节点 /health 接口，确认新版本正在服务；全部通过则部署完成，新版本写入 current-version.json。</span>
+            </div>
+            <div class="step-row" style="background:rgba(200,0,0,0.06)">
+              <span class="step-label" style="background:#c00">⑦ 失败全网回滚</span>
+              <span class="step-body">任一节点在 60s 内未回报成功 → 控制器立即下发全网回滚指令 → 所有 Agent 切回前一版本目录（物理保留，永久禁止删除）→ 重启 Nginx → 状态上报。最坏情况中断时间 &lt; 90 秒。</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:14px;background:var(--soft);border:2px solid var(--black);font-size:14px;color:var(--dark)">
+            <strong>HMI Bootstrap 兜底：</strong>以 SYSTEM 身份随系统启动，每 30 秒检查 Agent 文件、配置、进程和计划任务；Agent 损坏或缺失时从 C:\WeiliHmi\bootstrap\payload 本地可信副本自动恢复，不依赖网络或控制器。
+          </div>
+        </div>
+
+        <!-- 图谱 5：异常自愈链路 -->
+        <div class="diagram-page" id="diagram-heal">
+          <div class="diagram-page__header">
+            <span class="diagram-page__num">图谱 05 / 05</span>
+            <h3 class="diagram-page__title">异常自愈链路</h3>
+          </div>
+          <p class="diagram-page__sub">TASK-013 — 两级守护 + 三类隔离机制</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+            <div style="padding:18px;background:var(--soft);border:3px solid var(--black)">
+              <strong style="font-size:16px;display:block;margin-bottom:10px">第一级：NSSM 服务守护</strong>
+              <ul style="font-size:14px;color:var(--dark);padding-left:18px;margin:0">
+                <li>AppExit Default Restart：进程退出即重启</li>
+                <li>AppRestartDelay=5000：崩溃后 5 秒拉起</li>
+                <li>AppThrottle=1500：秒崩检测，触发节流惩罚</li>
+                <li>三项服务：业务后端 / 人脸服务 / 部署控制器</li>
+              </ul>
+            </div>
+            <div style="padding:18px;background:var(--soft);border:3px solid var(--black)">
+              <strong style="font-size:16px;display:block;margin-bottom:10px">第二级：控制器主动守护</strong>
+              <ul style="font-size:14px;color:var(--dark);padding-left:18px;margin:0">
+                <li>每 10–30s 执行 sc.exe query 查询服务状态</li>
+                <li>非发版窗口内检测到 STOPPED 立即 sc.exe start</li>
+                <li>弥补 NSSM Throttle 失效导致的守护断链</li>
+                <li>形成双保险：NSSM 失效 → 控制器兜底</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-strip">
+            <div class="step-row">
+              <span class="step-label">服务崩溃</span>
+              <span class="step-body">Node.js / Python 进程异常退出 → NSSM 检测到退出 → 5 秒后重启 → 若秒崩则 Throttle 倍增延迟 → 控制器守护定时器在 10–30s 内主动拉起。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">HMI 掉线</span>
+              <span class="step-body">工业现场电磁干扰导致网络瞬时抖动 → HMI WebSocket 断线 → 指数退避重连（避免 12 台同时重连雪崩）→ 重连后强制拉取 PostgreSQL 最新状态快照。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">WebSocket 断开</span>
+              <span class="step-body">后端 WebSocket 连接丢失 → 前端触发指数退避重连机制 → 重连成功后后端推送全量状态恢复包 → 前端状态完全恢复，不依赖本地缓存。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">发布包异常</span>
+              <span class="step-body">.wrelease 哈希校验失败 / 节点健康检查失败 → 全网回滚到前一版本 → 前一版本物理目录永久保留禁止删除 → 90 秒内恢复稳定状态。</span>
+            </div>
+            <div class="step-row">
+              <span class="step-label">配置缺失</span>
+              <span class="step-body">PLC 点位配置 / 人脸服务配置缺失 → 后端启动阶段校验失败 → 拒绝启动并输出明确错误日志 → 问题在上线前被拦截，不进入运行状态。</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:14px;background:var(--soft);border:2px solid var(--black);font-size:14px;color:var(--dark)">
+            <strong>SDK 进程隔离：</strong>海康人脸 ISUP 5.0（C++ 动态库）以独立进程运行，通过 IPC/HTTP 与主进程通信。SDK 段错误只影响人脸进程，不株连 Node.js 主进程，其余 12 台月台的 PLC 轮询和 HMI 连接不受影响。
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ══ 关键问题与解决方案 ══ -->
+      <section class="section" id="qa" aria-labelledby="qa-title">
+        <div class="section__header">
+          <p class="eyebrow">Engineering Q&amp;A</p>
+          <h2 id="qa-title">关键问题与解决方案</h2>
+          <p>这些是现场联调和系统设计中真实踩过的坑，不是包装出来的。</p>
+        </div>
+        <div class="qa-list">
+          <article class="qa-item">
+            <p class="qa-q">Q1：HMI 多终端状态不一致怎么处理？</p>
+            <div class="qa-row">
+              <span class="qa-key">问题</span>
+              <span class="qa-val">工业现场电磁干扰频繁，12 台 HMI 可能在不同时间点断线重连，断线期间 PLC 状态发生变更，重连后前端可能回滚到历史错误状态，误导操作工。</span>
+              <span class="qa-key">处理</span>
+              <span class="qa-val">后端以 PostgreSQL 持久化所有月台状态快照（DockStore 状态总线）；HMI 重连时强制拉取最新全量状态快照覆盖本地状态；WebSocket 采用指数退避重连（避免 12 台同时重连冲垮服务）。</span>
+              <span class="qa-key">结果</span>
+              <span class="qa-val">重连后界面立即恢复最新状态，不依赖客户端本地缓存，消除状态漂移。</span>
+            </div>
           </article>
-          <article class="diagram-card">
-            <h3>现场部署拓扑</h3>
-            <p>公共工控机承载业务后端、部署控制和管理页；每台 HMI 本地运行代理与 Nginx。</p>
-            <div class="mini-stack"><span>公共工控机</span><span>HMI Agent</span><span>本地 Kiosk</span></div>
+          <article class="qa-item">
+            <p class="qa-q">Q2：人脸事件来了但前端没反应怎么定位？</p>
+            <div class="qa-row">
+              <span class="qa-key">问题</span>
+              <span class="qa-val">海康 ISUP 5.0 SDK 为 C++ 动态库，若直接加载到 Node.js 主进程，SDK 段错误会导致整个后端崩溃，所有月台同时中断。</span>
+              <span class="qa-key">处理</span>
+              <span class="qa-val">人脸服务以独立进程（C#/Python）运行，通过 IPC/HTTP 与 Node.js 主进程通信；SDK 崩溃只影响人脸进程，主进程继续运行；在调试控制中心加入人脸链路连通性测试页签，可逐段排查"SDK → 独立进程 → HTTP → 后端 → WebSocket → 前端"各节点状态。</span>
+              <span class="qa-key">结果</span>
+              <span class="qa-val">SDK 崩溃不株连主进程；链路排查时间从数小时缩短到分钟级定位。</span>
+            </div>
           </article>
-          <article class="diagram-card">
-            <h3>业务状态流转</h3>
-            <p>登录识别、任务接收、作业确认、装车控制、暂停换人、结束装车和下一任务。</p>
-            <div class="mini-flow"><span>识别</span><i></i><span>作业</span><i></i><span>结束</span></div>
+          <article class="qa-item">
+            <p class="qa-q">Q3：PLC 配置缺失时为什么要拒绝启动？</p>
+            <div class="qa-row">
+              <span class="qa-key">问题</span>
+              <span class="qa-val">三菱 FX5U PLC 内部以太网控制芯片并发连接数极其有限；若配置缺失后端仍启动并轮询，会产生无效并发 TCP 连接，导致 PLC 通讯端口过载，进而造成写指令丢失，引发安全事故。</span>
+              <span class="qa-key">处理</span>
+              <span class="qa-val">后端启动阶段对 PLC 点位映射表（260512_PLC点位映射表.csv）进行完整性校验；配置缺失或格式错误时拒绝启动并输出明确错误日志，不进入监听状态；同时设计 PLC 独占排队锁，保证读写串行，防止并发冲突。</span>
+              <span class="qa-key">结果</span>
+              <span class="qa-val">配置错误在上线前即被拦截；生产环境中 PLC 通讯冲突次数降为零。</span>
+            </div>
           </article>
-          <article class="diagram-card">
-            <h3>版本发布与回滚</h3>
-            <p>.wrelease 校验、全部节点准备、统一激活、健康确认；任一节点失败触发全网回滚。</p>
-            <div class="mini-flow"><span>校验</span><i></i><span>激活</span><i></i><span>回滚</span></div>
+          <article class="qa-item">
+            <p class="qa-q">Q4：HMI 版本升级失败如何回滚？</p>
+            <div class="qa-row">
+              <span class="qa-key">问题</span>
+              <span class="qa-val">12 台 HMI 统一升级时，若部分节点激活失败，系统将处于新旧版本混跑状态，可能导致前后端接口不兼容，引发全线异常。</span>
+              <span class="qa-key">处理</span>
+              <span class="qa-val">.wrelease 包导入后先进行完整性校验；控制器向所有节点下发"准备"指令，全部 12 台回报就绪后才执行统一激活；60s 内任一节点健康检查失败，控制器立即触发全网回滚指令，各 HMI Agent 切回前一版本目录（物理保留，永久禁止删除）并重启 Nginx。</span>
+              <span class="qa-key">结果</span>
+              <span class="qa-val">回滚完成后全网一致恢复上一稳定版本，最坏情况下中断时间不超过 90 秒。</span>
+            </div>
           </article>
-          <article class="diagram-card">
-            <h3>异常自愈链路</h3>
-            <p>针对服务崩溃、HMI 掉线、WebSocket 断开、发布包异常和配置缺失做显式失败处理。</p>
-            <div class="mini-stack"><span>检测</span><span>隔离</span><span>恢复</span></div>
+          <article class="qa-item">
+            <p class="qa-q">Q5：生产环境为什么要禁用 Mock？</p>
+            <div class="qa-row">
+              <span class="qa-key">问题</span>
+              <span class="qa-val">Mock 适配器在开发阶段模拟 PLC/调度/人脸响应，但若生产环境误用 Mock，工人操作的是虚假状态，PLC 实际动作与界面不符，存在严重安全风险。</span>
+              <span class="qa-key">处理</span>
+              <span class="qa-val">引入 apiMode / mockUiEnabled 双开关解耦；生产配置文件（deployment_control/native/config）强制锁定 apiMode=real，缺失 real adapter 配置时后端拒绝启动；Mock UI 仅允许在调试控制中心页签内启用，不影响主业务链路。</span>
+              <span class="qa-key">结果</span>
+              <span class="qa-val">生产链路与调试链路完全隔离，现场联调时可保留 Mock UI 调试界面的同时接入真实后端。</span>
+            </div>
           </article>
         </div>
       </section>
 
+      <!-- ══ SUPPLEMENT CASE 010 ══ -->
       <section class="section case case--compact" id="case-task010" aria-labelledby="task010-title">
         <div class="section__header">
           <p class="eyebrow">Supplement Case 02</p>
           <h2 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h2>
           <p>
-            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡、选味、PLC、喷码、生产状态、机器人取餐送餐和返程。
+            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程，前端 Vue + 后端 Node.js，在杭州母版基础上做天津差异化改造。
           </p>
         </div>
         <div class="process-strip" aria-label="餐饮产线流程">
@@ -166,23 +710,24 @@
         <div class="grid grid--4">
           <article class="tile">
             <h3>读卡服务独占</h3>
-            <p>避免页面或进程竞争串口 / HID 设备，提升刷卡归属稳定性。</p>
+            <p>避免页面或进程竞争串口 / HID 设备，读卡归属以独立服务持有，提升刷卡稳定性。</p>
           </article>
           <article class="tile">
             <h3>机器人 API 卡顿定位</h3>
-            <p>通过串行任务、异步导航轮询、状态缓存和 Kiosk 降级隔离提升控制稳定性。</p>
+            <p>通过串行任务、异步导航轮询、状态缓存和 Kiosk 降级隔离，解决机器人 API 高延迟导致的控制卡顿问题。</p>
           </article>
           <article class="tile">
             <h3>路线与地图恢复</h3>
-            <p>处理路线区域合并、路径点配置、地图自动恢复、环境预检和导航异常。</p>
+            <p>处理路线区域合并、路径点配置、地图自动恢复、环境预检和导航异常；同一框架适配杭州母版和天津差异场景。</p>
           </article>
           <article class="tile">
             <h3>生产配置收敛</h3>
-            <p>区分 dev / prod，关键 PLC、喷码器、机器人回调、数据库和 Redis 统一配置。</p>
+            <p>区分 dev / prod，PLC、喷码器、机器人回调、数据库和 Redis 统一从配置文件加载，杜绝硬编码。</p>
           </article>
         </div>
       </section>
 
+      <!-- ══ 工程化交付 ══ -->
       <section class="section" aria-labelledby="delivery-title">
         <div class="section__header">
           <p class="eyebrow">Delivery Method</p>
@@ -192,23 +737,25 @@
           <div class="panel">
             <h3>生产优先的判断</h3>
             <ul>
-              <li>真实设备状态优先，不用页面“看起来正常”代替链路验证。</li>
+              <li>真实设备状态优先，不用页面"看起来正常"代替链路验证。</li>
               <li>生产链路与调试链路隔离，关键配置缺失时拒绝启动或发版。</li>
               <li>先做可诊断、可回滚、可恢复，再谈更复杂的自动化。</li>
+              <li>外设 SDK 独立进程隔离，防止 C++ 库崩溃株连主进程。</li>
             </ul>
           </div>
           <div class="panel panel--dark">
             <h3>技术栈</h3>
-            <p>React、TypeScript、Vite、Node.js、Fastify、WebSocket、PostgreSQL、Java、Spring Boot、MySQL、Python、PowerShell、Nginx、NSSM、Android Kiosk、SLMP PLC、海康 ISUP 5.0。</p>
+            <p>React、TypeScript、Vite、Vue、Node.js、Fastify、WebSocket、PostgreSQL、Java、Spring Boot、MySQL、Python、PowerShell、Nginx、NSSM、Android Kiosk、SLMP PLC（三菱 FX5U）、海康 ISUP 5.0、HMI Agent、.wrelease 版本包。</p>
           </div>
         </div>
       </section>
 
+      <!-- ══ 项目卡片 ══ -->
       <section class="section posters" id="posters" aria-labelledby="posters-title">
         <div class="section__header">
           <p class="eyebrow">Delivery Images</p>
           <h2 id="posters-title">项目卡片</h2>
-          <p>三张卡片均为 1080 × 1920 竖屏 PNG，公开版已脱敏，可按需下载。</p>
+          <p>三张卡片均为 1080 × 1920 竖屏 PNG，公开版已脱敏，可按需下载后发给 HR 或技术负责人。</p>
         </div>
         <div class="poster-grid">
           <figure>
@@ -239,7 +786,11 @@
 
     <footer class="site-footer">
       <span>董达｜工业边缘应用工程师</span>
-      <span>电话 / 微信：18761576008</span>
+      <span>联系方式：<strong style="font-size:15px;letter-spacing:1px">18761576008</strong></span>
     </footer>
+
+    <script>
+      // 图谱区无需交互脚本（已改为页内展开）
+    </script>
   </body>
 </html>

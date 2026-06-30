@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>自动化餐饮产线与送餐机器人协同控制系统｜董达作品集</title>
+    <meta name="description" content="自动化餐饮产线与送餐机器人协同控制系统案例：刷卡器、选味屏、PLC、喷码器、机器人取餐送餐和生产配置收敛。" />
+    <meta name="theme-color" content="#101827" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="主导航">
+      <a class="brand" href="./index.html#top">董达</a>
+      <nav>
+        <a href="./digital-dock.html">数字月台</a>
+        <a class="is-active" href="./robot-line.html">机器人产线</a>
+        <a href="./simplehmi-weili.html">开源项目 SimpleHmi_WEILI</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- ══ SUPPLEMENT CASE 010 ══ -->
+      <section class="section case case--compact" id="case-task010" aria-labelledby="task010-title">
+        <div class="section__header">
+          <p class="eyebrow">Supplement Case 02</p>
+          <h2 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h2>
+          <p>
+            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程，前端 Vue + 后端 Node.js。
+          </p>
+        </div>
+        <div class="process-strip" aria-label="餐饮产线流程">
+          <span>刷卡器</span>
+          <span>选味屏</span>
+          <span>后端状态机</span>
+          <span>PLC / 喷码</span>
+          <span>机器人取餐</span>
+          <span>送餐 / 返程</span>
+        </div>
+        <div class="grid grid--4">
+          <article class="tile">
+            <h3>读卡服务独占</h3>
+            <p>避免页面或进程竞争串口 / HID 设备，读卡归属以独立服务持有，提升刷卡稳定性。</p>
+          </article>
+          <article class="tile">
+            <h3>机器人 API 卡顿定位</h3>
+            <p>通过串行任务、异步导航轮询、状态缓存和 Kiosk 降级隔离，解决机器人 API 高延迟导致的控制卡顿问题。</p>
+          </article>
+          <article class="tile">
+            <h3>路线与地图恢复</h3>
+            <p>处理路线区域合并、路径点配置、地图自动恢复、环境预检和导航异常；同一框架适配杭州母版和天津差异场景。</p>
+          </article>
+          <article class="tile">
+            <h3>生产配置收敛</h3>
+            <p>区分 dev / prod，PLC、喷码器、机器人回调、数据库和 Redis 统一从配置文件加载，杜绝硬编码。</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>董达｜工业边缘应用工程师</span>
+      <span><a href="./index.html#top">返回作品集首页</a></span>
+    </footer>
+  </body>
+</html>

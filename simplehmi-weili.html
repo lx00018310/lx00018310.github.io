@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SimpleHmi_WEILI｜工业 HMI / 工控前后端统一栈规范</title>
+    <meta
+      name="description"
+      content="SimpleHmi_WEILI 是面向 AI 的工业 HMI / 工控前后端统一栈规范仓库，用规范、流程、模板和验收门禁约束 AI 生成可运行、可验收的工业工控系统。"
+    />
+    <meta name="theme-color" content="#101827" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="主导航">
+      <a class="brand" href="./index.html#top">董达</a>
+      <nav>
+        <a href="./digital-dock.html">数字月台</a>
+        <a href="./robot-line.html">机器人产线</a>
+        <a class="is-active" href="./simplehmi-weili.html">开源项目 SimpleHmi_WEILI</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="project-cover" aria-labelledby="project-title">
+        <div class="project-cover__content">
+          <p class="eyebrow">Open Source Project</p>
+          <h1 id="project-title">SimpleHmi_WEILI</h1>
+          <p class="project-cover__lead">
+            一个面向 AI 的工业 HMI / 工控前后端统一栈规范仓库。它不是重代码框架，
+            而是把标准、流程、索引、模板和避坑经验写清楚，让 AI 按统一规则生成极简、可运行、可验收的工业工控系统。
+          </p>
+          <div class="project-meta" aria-label="项目关键词">
+            <span>工业 HMI</span>
+            <span>AI 生成规范</span>
+            <span>React / TypeScript / Vite</span>
+            <span>Fastify / 轻量后端</span>
+            <span>禁用生产 Mock</span>
+            <span>部署控制评估</span>
+          </div>
+          <div class="project-actions">
+            <a class="button" href="https://github.com/lx00018310/SimpleHmi_WEILI" target="_blank" rel="noreferrer">GitHub 仓库</a>
+            <a class="button button--primary" href="#demo-preview">查看示例页面</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="positioning" aria-labelledby="positioning-title">
+        <div class="section__header">
+          <p class="eyebrow">What It Is</p>
+          <h2 id="positioning-title">它解决的问题</h2>
+          <p>
+            工业现场项目最容易失控的不是页面，而是需求边界、设备状态、接口契约、部署方式、调试隔离和验收证据。
+            SimpleHmi_WEILI 把这些约束前置，让 AI 先按阶段读规范，再输出代码、接口、部署和验收材料。
+          </p>
+        </div>
+        <div class="project-statement">
+          <article class="panel">
+            <strong>适用对象</strong>
+            <p>工业 HMI、触摸屏一体机、工位操作台、Kiosk 自助终端、公共工控机 + 多屏终端，以及 PLC、读卡器、人脸机、机器人、调度系统等外部设备集成项目。</p>
+          </article>
+          <article class="panel panel--dark">
+            <strong>边界声明</strong>
+            <p>它不是通用后台管理模板，也不搬运任何具体业务项目代码。它沉淀的是通用工程规范、阶段流程、模板、验收门禁和工业项目避坑经验。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="process-title">
+        <div class="section__header">
+          <p class="eyebrow">Workflow</p>
+          <h2 id="process-title">AI 开发阶段约束</h2>
+        </div>
+        <div class="project-flow" aria-label="AI 开发流程">
+          <span>规划</span>
+          <span>架构</span>
+          <span>Demo</span>
+          <span>开发</span>
+          <span>调试</span>
+          <span>部署</span>
+          <span>验收</span>
+        </div>
+      </section>
+
+      <section class="section" id="demo-preview" aria-labelledby="demo-title">
+        <div class="section__header">
+          <p class="eyebrow">Demo Preview</p>
+          <h2 id="demo-title">工业工位 HMI 示例</h2>
+          <p>
+            仓库内提供了一个静态视觉示例，用来展示按规范生成的工业 HMI 页面密度、状态层级和操作组织方式。
+            示例只展示界面，不代表正式后端链路。
+          </p>
+        </div>
+        <figure class="project-preview">
+          <img src="./assets/images/simplehmi-weili-demo.png" alt="SimpleHmi_WEILI 工业工位 HMI 示例页面截图" />
+          <figcaption class="project-preview__caption">
+            <p>示例页面强调主操作、设备联锁、关键状态、事件记录和受控维护入口，避免把调试按钮混入正式业务链路。</p>
+            <a class="button button--ghost" href="https://github.com/lx00018310/SimpleHmi_WEILI/tree/main/examples/industrial-workstation-demo" target="_blank" rel="noreferrer">查看示例源码</a>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section" aria-labelledby="files-title">
+        <div class="section__header">
+          <p class="eyebrow">Repository Map</p>
+          <h2 id="files-title">核心入口</h2>
+        </div>
+        <div class="project-files">
+          <div class="project-file">
+            <strong>AGENTS.md</strong>
+            <span>AI 必读入口，说明不同阶段该读哪些规范。</span>
+          </div>
+          <div class="project-file">
+            <strong>SIMPLE_HMI.md</strong>
+            <span>总规范，定义项目定位、适用范围、默认技术栈、去 Mock 红线和验收原则。</span>
+          </div>
+          <div class="project-file">
+            <strong>ENGINES.md</strong>
+            <span>技术栈判定规则，避免 AI 静默选择后端技术方案。</span>
+          </div>
+          <div class="project-file">
+            <strong>docs/00_INDEX.md</strong>
+            <span>阶段规范索引，串起规划、架构、Demo、开发、调试、部署、验收。</span>
+          </div>
+          <div class="project-file">
+            <strong>deployment_control/README.md</strong>
+            <span>部署控制能力规范，用于评估版本包、健康检查、回滚和自愈是否需要接入。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="usage-title">
+        <div class="section__header">
+          <p class="eyebrow">How To Use</p>
+          <h2 id="usage-title">推荐给 AI 的第一条指令</h2>
+        </div>
+        <pre class="code-prompt"><code>请先读取 AGENTS.md、SIMPLE_HMI.md、docs/00_INDEX.md 和 ENGINES.md，
+判断当前处于哪个阶段，再按对应规范和模板输出结果。</code></pre>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>董达｜工业边缘应用工程师</span>
+      <span><a href="./index.html#top">返回作品集首页</a></span>
+      <span><a href="https://github.com/lx00018310/SimpleHmi_WEILI" target="_blank" rel="noreferrer">SimpleHmi_WEILI GitHub</a></span>
+    </footer>
+  </body>
+</html>

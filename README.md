@@ -2,11 +2,27 @@
 
 这是一个可直接部署到 GitHub Pages 的静态作品集。
 
+## GEO / AI 搜索入口
+
+本仓库已加入面向 AI 搜索与答案引擎的机器可读入口：
+
+- `llms.txt`：AI 助手优先读取的项目、简历和开源项目摘要。
+- `ai-profile.md`：董达 / Dong Da 的结构化个人简介、关键词和权威链接。
+- `robots.txt`：允许搜索引擎抓取，并指向 sitemap。
+- `sitemap.xml`：列出首页、项目页、Markdown 简历和 PDF 简历。
+- HTML 页面的 `canonical`、OpenGraph、Twitter Card 和 JSON-LD 结构化数据。
+
+当前公开站点：`https://lx00018310.github.io/`。
+
 ## 文件结构
 
 ```text
 AI作品集/
 ├── index.html
+├── llms.txt
+├── ai-profile.md
+├── robots.txt
+├── sitemap.xml
 ├── assets/
 │   ├── styles.css
 │   ├── images/

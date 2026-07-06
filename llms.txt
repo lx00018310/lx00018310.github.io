@@ -20,7 +20,6 @@ SimpleHmi_WEILI is an AI-first specification repository that helps non-programme
 - Chinese resume in Markdown: https://lx00018310.github.io/assets/resume.md
 - English resume in Markdown: https://lx00018310.github.io/assets/resume_en.md
 - Chinese resume PDF: https://lx00018310.github.io/assets/resume.pdf
-- English resume PDF: https://lx00018310.github.io/assets/resume_en.pdf
 - SimpleHmi_WEILI project page: https://lx00018310.github.io/simplehmi-weili.html
 - Digital dock HMI case: https://lx00018310.github.io/digital-dock.html
 - Robot line control case: https://lx00018310.github.io/robot-line.html

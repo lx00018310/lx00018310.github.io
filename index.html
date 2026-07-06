@@ -6,11 +6,11 @@
     <title>董达｜工业边缘应用工程师作品集</title>
     <meta
       name="description"
-      content="董达的工业边缘应用工程师作品集：数字月台 12 台 HMI 协同系统、自动化餐饮产线与送餐机器人协同控制系统。"
+      content="董达的工业边缘应用工程师作品集：数字月台 12 台 HMI 协同系统、自动化餐饮产线与送餐机器人协同控制系统，以及 AI-first 工业 HMI / 工控系统生成规范 SimpleHmi_WEILI。"
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="董达" />
-    <meta name="keywords" content="董达,Dong Da,工业边缘应用工程师,工业 HMI,PLC 接入,机器人控制,Windows 工控机部署,SimpleHmi_WEILI,AI 辅助开发" />
+    <meta name="keywords" content="董达,Dong Da,工业边缘应用工程师,工业 HMI,PLC 接入,机器人控制,Windows 工控机部署,SimpleHmi_WEILI,AI-first 工控系统生成规范,AI 辅助开发" />
     <meta name="theme-color" content="#101827" />
     <link rel="canonical" href="https://lx00018310.github.io/" />
     <link rel="me" href="https://github.com/lx00018310" />
@@ -50,7 +50,9 @@
               "Robot control",
               "Windows industrial PC deployment",
               "Offline release and rollback",
-              "AI-assisted software engineering"
+              "AI-assisted software engineering",
+              "AI-first industrial HMI generation",
+              "Acceptance-ready control system generation"
             ],
             "hasOccupation": {
               "@type": "Occupation",
@@ -72,7 +74,7 @@
             "@id": "https://lx00018310.github.io/#profile",
             "url": "https://lx00018310.github.io/",
             "name": "董达｜工业边缘应用工程师作品集",
-            "description": "董达的工业边缘应用工程师作品集，覆盖工业 HMI、多终端协同、PLC 与机器人接入、Windows 工控机部署和 AI 辅助工程化交付。",
+            "description": "董达的工业边缘应用工程师作品集，覆盖工业 HMI、多终端协同、PLC 与机器人接入、Windows 工控机部署、AI 辅助工程化交付，以及 AI-first 工业 HMI / 工控系统生成规范 SimpleHmi_WEILI。",
             "isPartOf": {
               "@id": "https://lx00018310.github.io/#website"
             },
@@ -104,13 +106,27 @@
             "name": "SimpleHmi_WEILI",
             "codeRepository": "https://github.com/lx00018310/SimpleHmi_WEILI",
             "url": "https://lx00018310.github.io/simplehmi-weili.html",
-            "description": "AI-readable specification repository for industrial HMI and industrial control front-end/back-end generation.",
+            "description": "AI-first specification for generating acceptance-ready industrial HMI and control systems from natural-language site requirements.",
             "license": "https://opensource.org/license/mit",
             "programmingLanguage": [
-              "Markdown",
-              "HTML",
-              "CSS",
-              "TypeScript"
+              "TypeScript",
+              "React",
+              "Vite",
+              "Fastify"
+            ],
+            "applicationCategory": "Industrial Automation",
+            "keywords": [
+              "AI-first",
+              "Industrial HMI",
+              "Industrial Automation",
+              "Control System",
+              "No Mock",
+              "Acceptance Testing",
+              "React",
+              "TypeScript",
+              "Vite",
+              "Fastify",
+              "PLC"
             ],
             "author": {
               "@id": "https://lx00018310.github.io/#person"
@@ -191,6 +207,42 @@
             <h3>技术栈</h3>
             <p>React、TypeScript、Vite、Vue、Node.js、Fastify、WebSocket、PostgreSQL、Java、Spring Boot、MySQL、Python、PowerShell、Nginx、NSSM、Android Kiosk、SLMP PLC（三菱 FX5U）、海康 ISUP 5.0、HMI Agent、.wrelease 版本包。</p>
           </div>
+        </div>
+      </section>
+
+      <!-- ══ 开源项目 ══ -->
+      <section class="section" id="simplehmi-entry" aria-labelledby="simplehmi-entry-title">
+        <div class="section__header">
+          <p class="eyebrow">Open Source Project</p>
+          <h2 id="simplehmi-entry-title">SimpleHmi_WEILI</h2>
+          <p>
+            让小白用嘴让 AI 生成工业现场可验收的工控系统。
+          </p>
+        </div>
+        <div class="project-statement">
+          <article class="panel">
+            <h3>AI-first 工业 HMI / 工控系统生成规范</h3>
+            <p>
+              一个 AI-first 工业 HMI / 工控系统生成规范仓库，包含 AI 工作规则、技术栈边界、最小样板、输出模板、验收门禁和自修复规范。它约束 AI 不生成普通 Web Demo，而是生成可运行、可部署、可验收的工业现场系统。
+            </p>
+            <div class="project-meta" aria-label="SimpleHmi_WEILI 标签">
+              <span>AI-first</span>
+              <span>工业 HMI</span>
+              <span>工控系统</span>
+              <span>No Mock</span>
+              <span>验收门禁</span>
+              <span>React / TypeScript / Vite</span>
+              <span>Fastify</span>
+            </div>
+            <a class="button button--primary" href="./simplehmi-weili.html">查看项目页</a>
+          </article>
+          <article class="panel panel--dark">
+            <h3>核心路径</h3>
+            <p>
+              克隆仓库，把主目录交给 AI Agent，用自然语言描述现场；AI 读取仓库规范，生成规划、架构、代码、配置、部署脚本和验收清单，并在出错时按规范自检修复。
+            </p>
+            <a class="button button--ghost" href="https://github.com/lx00018310/SimpleHmi_WEILI" target="_blank" rel="noreferrer">GitHub 仓库</a>
+          </article>
         </div>
       </section>
 

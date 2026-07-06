@@ -594,7 +594,7 @@ h3 {
   padding: 7px 11px;
   color: var(--black);
   background: var(--white);
-  border: 2px solid var(--white);
+  border: 2px solid var(--black);
   font-size: 15px;
   font-weight: 900;
 }
@@ -631,7 +631,7 @@ h3 {
 
 .project-flow {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 8px;
 }
 

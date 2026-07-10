@@ -69,7 +69,7 @@ def label(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str, inverse: bo
 
 def footer(draw: ImageDraw.ImageDraw) -> None:
     rule(draw, 1846, w=2)
-    draw.text((64, 1874), "董达｜工业边缘应用工程师｜电话 / 微信：18761576008", font=font(24), fill=BLACK)
+    draw.text((64, 1874), "董达｜AI 应用工程师｜电话 / 微信：18761576008", font=font(24), fill=BLACK)
     draw.text((1016, 1874), "PUBLIC PORTFOLIO", font=font(20, True), fill=MID, anchor="ra")
 
 
@@ -125,19 +125,19 @@ def poster_profile() -> None:
     draw_header(
         draw,
         "PROFILE 01",
-        "工业边缘\n应用工程师",
-        "把现场设备、HMI、后端状态机、部署脚本和异常恢复收口为可联调、可交付的系统。",
+        "AI\n应用工程师",
+        "利用 AI Coding Agent 快速进入陌生领域，把需求、行业知识和工程约束转化为可运行系统，再沉淀为 Agent 工作流与工程规范。",
     )
-    metric_row(draw, 448, [("经验", "16 年"), ("主线", "工业现场"), ("方式", "端到端")])
+    metric_row(draw, 448, [("经验", "16 年"), ("方式", "AI 驱动"), ("目标", "可交付")])
 
     draw.text((64, 664), "能力结构", font=font(44, True), fill=BLACK)
     rule(draw, 726)
     rows = [
-        ("01", "工业边缘中控", "公共工控机、状态聚合、指令下发、实时推送。"),
-        ("02", "多终端 HMI", "12 台触摸屏、Kiosk、操作员屏、线体屏与大屏。"),
-        ("03", "现场设备接入", "PLC、人脸、机器人、读卡器、喷码器、扫码枪。"),
-        ("04", "部署与自愈", "Windows 服务化、健康检查、版本激活、失败回滚。"),
-        ("05", "AI 工程化", "需求拆解、代码审查、接口梳理、SOP 与文档沉淀。"),
+        ("01", "陌生领域进入", "用 AI 阅读文档、源码、协议，输出领域模型与接口拓扑。"),
+        ("02", "复杂系统实现", "AI Coding 贯通前后端、设备接入、状态机与部署。"),
+        ("03", "Agent 工作流", "上下文、读取顺序、阶段状态、交付物与门禁。"),
+        ("04", "系统集成", "API、设备、遗留系统接入，处理协议与并发冲突。"),
+        ("05", "工程资产沉淀", "规范、模板、Skills、Adapters、检查清单与多模型审查。"),
     ]
     y = 760
     for no, title, body in rows:
@@ -153,9 +153,9 @@ def poster_profile() -> None:
         draw,
         1432,
         [
-            ("TASK-013", "数字月台：公共工控机 + 12 台 HMI + PLC + 调度 + 人脸 + 发布控制。"),
-            ("TASK-010", "餐饮产线：刷卡、选味、PLC、喷码、机器人取送餐与返程闭环。"),
-            ("工程方式", "真实状态优先，生产链路与调试链路隔离，部署日志回滚同步推进。"),
+            ("SimpleHmi_WEILI", "AI-first 工程规范：约束 AI 生成可运行、可部署、可验收的工业系统。"),
+            ("数字月台", "AI 工程落地：12 台 HMI + PLC + 调度 + 人脸 + 发布控制。"),
+            ("机器人产线", "AI 驱动改造：遗留系统阅读、调用拓扑、状态机与设备 Adapter。"),
         ],
         h=286,
     )
@@ -291,13 +291,13 @@ def hero_image() -> None:
     for y in range(90, 1261, 90):
         draw.line((0, y, 2400, y), fill=LIGHT, width=1)
 
-    draw.text((120, 120), "INDUSTRIAL EDGE", font=font(72, True), fill=BLACK)
-    draw.text((120, 222), "APPLICATION ENGINEER", font=font(72, True), fill=BLACK)
+    draw.text((120, 120), "AI APPLICATION", font=font(72, True), fill=BLACK)
+    draw.text((120, 222), "ENGINEER", font=font(72, True), fill=BLACK)
     draw.line((120, 340, 2280, 340), fill=BLACK, width=6)
 
     rect(draw, (860, 470, 1540, 852), BLACK, BLACK, 5)
-    draw.text((1200, 548), "工业边缘中控", font=font(68, True), fill=WHITE, anchor="ma")
-    draw.text((1200, 644), "状态聚合 / 设备接入 / 版本发布 / 自愈恢复", font=font(34), fill=WHITE, anchor="ma")
+    draw.text((1200, 548), "AI 工程闭环", font=font(68, True), fill=WHITE, anchor="ma")
+    draw.text((1200, 644), "陌生领域 → 领域抽象 → 系统实现 → 工程资产", font=font(34), fill=WHITE, anchor="ma")
 
     left = ["调度系统", "PLC / 点位 / 联锁", "人脸识别 / 扫码", "读卡 / 喷码 / 机器人"]
     for i, item in enumerate(left):
@@ -317,8 +317,64 @@ def hero_image() -> None:
     draw.line((1540, 660, 1760, 720), fill=BLACK, width=4)
 
     draw.text((120, 1132), "PUBLIC PORTFOLIO VISUAL / SANITIZED", font=font(30, True), fill=MID)
-    draw.text((120, 1190), "董达｜工业边缘应用工程师", font=font(42, True), fill=BLACK)
+    draw.text((120, 1190), "董达｜AI 应用工程师", font=font(42, True), fill=BLACK)
     im.save(IMG_DIR / "hero-industrial-edge.png", quality=94)
+
+
+def poster_ai_workflow() -> None:
+    im = Image.new("RGB", (1080, 1920), WHITE)
+    draw = ImageDraw.Draw(im)
+    for y in range(0, 1920, 96):
+        draw.line((0, y, 1080, y), fill=LIGHT, width=1)
+
+    draw_header(
+        draw,
+        "WORKFLOW 04",
+        "AI 工程闭环\n从陌生需求到可复用 Engine",
+        "通过结构化上下文、阶段状态、交付物和门禁，把 AI 从代码生成器变成可控的工程协作者。",
+    )
+
+    draw.text((64, 466), "六阶段闭环", font=font(44, True), fill=BLACK)
+    rule(draw, 528)
+    steps = [
+        ("01", "Context Intake", "读取业务文档、协议、源码、设备资料和现场约束"),
+        ("02", "Domain Extraction", "形成领域对象、状态机、接口关系和风险边界"),
+        ("03", "Plan & Architecture", "先规划再编码，明确范围、模块、数据流和验收标准"),
+        ("04", "AI-assisted Build", "AI Coding Agent 完成实现，人负责关键判断与边界控制"),
+        ("05", "Review & Verification", "多模型独立审查、自动化测试、真实链路验证和生产门禁"),
+        ("06", "Abstraction & Handover", "沉淀为 Skills、Engine、规范、模板、SOP 和可维护文档"),
+    ]
+    y = 580
+    for no, title, body in steps:
+        draw.text((64, y), no, font=font(38, True), fill=BLACK)
+        draw.text((148, y + 2), title, font=font(30, True), fill=BLACK)
+        text_box(draw, (148, y + 42), body, font(22), 840, DARK, gap=4)
+        draw.line((64, y + 86, 1016, y + 86), fill=LIGHT, width=2)
+        y += 100
+
+    draw.text((64, 1200), "AI 与人的职责分工", font=font(44, True), fill=BLACK)
+    rule(draw, 1262)
+    two_col_y = 1300
+    rect(draw, (64, two_col_y, 520, two_col_y + 220), WHITE, BLACK, 3)
+    draw.text((92, two_col_y + 18), "AI 的职责", font=font(30, True), fill=BLACK)
+    text_box(draw, (92, two_col_y + 64), "搜索、理解、生成、审查、文档整理。在明确边界内提高执行效率，不替代人对方向和风险的判断。", font(23), 410, DARK, gap=8)
+    rect(draw, (560, two_col_y, 1016, two_col_y + 220), BLACK, BLACK, 3)
+    draw.text((588, two_col_y + 18), "人的职责", font=font(30, True), fill=WHITE)
+    text_box(draw, (588, two_col_y + 64), "目标、边界、架构、风险、验收和最终责任。决定做什么、不做什么、做到什么程度，并对结果承担责任。", font(23), 410, WHITE, gap=8)
+
+    rect(draw, (64, 1560, 1016, 1814), BLACK, BLACK, 3)
+    draw.text((92, 1590), "核心原则", font=font(34, True), fill=WHITE)
+    text_box(
+        draw,
+        (92, 1646),
+        "AI 可以判断错，但工程流程不能失控。每一次交付可追踪、可审查、可复用。",
+        font(24),
+        880,
+        WHITE,
+        gap=8,
+    )
+    footer(draw)
+    im.save(POSTER_DIR / "04_ai_engineering_workflow.png", quality=95)
 
 
 def main() -> None:
@@ -328,6 +384,7 @@ def main() -> None:
     poster_profile()
     poster_task013()
     poster_task010()
+    poster_ai_workflow()
 
 
 if __name__ == "__main__":

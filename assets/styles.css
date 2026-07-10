@@ -6,6 +6,8 @@
   --mid: #6f6f6a;
   --dark: #1d1d1d;
   --soft: #efefeb;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
 }
 
 * {
@@ -880,6 +882,23 @@ h3 {
 #case-task010::before {
   background: #fdf6dc;
 }
+/* AI 应用工程师视角摘要：淡灰 */
+#ai-perspective {
+  position: relative;
+  z-index: 0;
+}
+#ai-perspective::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+  background: var(--soft);
+}
 
 /* topo 拓扑图 */
 .topo-table {
@@ -1092,5 +1111,537 @@ h3 {
 
   .project-flow {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════ */
+/* AI Application Engineer — New Components     */
+/* ═══════════════════════════════════════════ */
+
+/* ── Hero layout: left content + right flow ── */
+.hero--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero--split .hero__content {
+  width: 100%;
+  padding: 80px 0 60px;
+}
+
+.hero--split .hero__visual {
+  padding: 80px 0 60px;
+}
+
+/* ── Hero CTA row ── */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.hero-actions .button {
+  min-height: 54px;
+  font-size: 17px;
+}
+
+/* ── Button variants ── */
+.button--secondary {
+  color: var(--white);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.button--secondary:hover {
+  background: #1d4ed8;
+}
+
+.button--text {
+  color: var(--accent);
+  background: transparent;
+  border-color: transparent;
+  padding: 0 8px;
+  min-height: auto;
+  font-size: 16px;
+}
+
+.button--text:hover {
+  text-decoration: underline;
+}
+
+/* ── Hero flow diagram (right side) ── */
+.hero-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 3px solid var(--black);
+  background: var(--white);
+  padding: 28px;
+}
+
+.hero-flow__step {
+  padding: 16px 18px;
+  border-bottom: 3px solid var(--black);
+  font-size: 17px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.hero-flow__step:last-child {
+  border-bottom: none;
+}
+
+.hero-flow__step:first-child {
+  color: var(--white);
+  background: var(--black);
+}
+
+.hero-flow__step--accent {
+  color: var(--white);
+  background: var(--accent);
+}
+
+.hero-flow__arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--mid);
+}
+
+/* ── Capability cards (What I Do) ── */
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.capability-grid .tile h3 {
+  color: var(--accent);
+}
+
+.capability-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.capability-tags span {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+/* ── Process rail (6-stage AI engineering loop) ── */
+.process-rail {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  border: 3px solid var(--black);
+  background: var(--white);
+}
+
+.process-step {
+  padding: 24px 18px;
+  border-right: 3px solid var(--black);
+  text-align: center;
+}
+
+.process-step:last-child {
+  border-right: none;
+}
+
+.process-step__num {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--white);
+  background: var(--accent);
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+
+.process-step__title {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.process-step__desc {
+  font-size: 14px;
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+/* ── Case card (unified case structure) ── */
+.case-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  padding: 28px;
+}
+
+.case-card h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.case-field {
+  margin-bottom: 18px;
+}
+
+.case-field:last-child {
+  margin-bottom: 0;
+}
+
+.case-field__label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.case-field__body {
+  font-size: 16px;
+  color: var(--dark);
+  line-height: 1.55;
+}
+
+.case-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ── Status chips ── */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 900;
+  border: 2px solid var(--black);
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.status-chip--done {
+  color: var(--white);
+  background: var(--black);
+}
+
+.status-chip--progress {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.status-chip--todo {
+  color: var(--mid);
+  background: var(--soft);
+}
+
+/* ── Role boundary (capability boundary section) ── */
+.role-boundary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.role-boundary__col {
+  padding: 28px;
+  border: 3px solid var(--black);
+}
+
+.role-boundary__col--strong {
+  background: var(--white);
+}
+
+.role-boundary__col--limit {
+  background: var(--soft);
+}
+
+.role-boundary__col h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.role-boundary__col ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.role-boundary__col li {
+  font-size: 16px;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* ── Tech stack groups ── */
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tech-stack-group {
+  padding: 22px;
+  background: var(--white);
+  border: 3px solid var(--black);
+}
+
+.tech-stack-group h4 {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.tech-stack-group .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-stack-group .tags span {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  background: var(--soft);
+  border: 2px solid var(--black);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ── Final CTA ── */
+.contact-cta {
+  text-align: center;
+  padding: 60px 28px;
+  background: var(--black);
+  color: var(--white);
+  border: 3px solid var(--black);
+}
+
+.contact-cta h2 {
+  color: var(--white);
+  font-size: 42px;
+}
+
+.contact-cta p {
+  color: #ccc;
+  font-size: 20px;
+  max-width: 760px;
+  margin: 0 auto 28px;
+}
+
+.contact-cta .hero-actions {
+  justify-content: center;
+}
+
+.contact-cta .button {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.contact-cta .button--primary {
+  color: var(--white);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-cta .button--secondary {
+  color: var(--white);
+  background: transparent;
+  border-color: var(--white);
+}
+
+.contact-cta .button--ghost {
+  color: var(--white);
+  background: transparent;
+}
+
+/* ── Featured project section ── */
+.featured-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.featured-project__caps {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.featured-project__caps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--dark);
+}
+
+.featured-project__caps li::before {
+  content: "▸";
+  color: var(--accent);
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+/* ── Mobile nav improvements ── */
+.site-header nav a:hover {
+  border-color: var(--accent);
+}
+
+.site-header nav a.is-active {
+  border-color: var(--accent);
+}
+
+/* ── Nav with more items ── */
+.site-header--expanded nav {
+  gap: 18px;
+  font-size: 15px;
+}
+
+/* ── Section numbering ── */
+.section-eyebrow--accent {
+  background: var(--accent);
+}
+
+/* ── Focus visible for a11y ── */
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Responsive: new components ── */
+@media (max-width: 1080px) {
+  .hero--split {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero--split .hero__visual {
+    display: none;
+  }
+
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .process-step {
+    border-right: none;
+    border-bottom: 3px solid var(--black);
+  }
+
+  .process-step:nth-child(3) {
+    border-bottom: none;
+  }
+
+  .featured-project {
+    grid-template-columns: 1fr;
+  }
+
+  .case-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-boundary {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-cta h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header--expanded {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: 10px 18px 0;
+  }
+
+  .site-header--expanded nav {
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .process-rail {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .process-step {
+    border-right: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+
+  .process-step:nth-child(2n) {
+    border-right: none;
+  }
+
+  .process-step:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .process-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step {
+    border-right: none;
+    border-bottom: 3px solid var(--black);
+  }
+
+  .process-step:last-child {
+    border-bottom: none;
   }
 }

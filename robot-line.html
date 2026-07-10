@@ -3,36 +3,110 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>自动化餐饮产线与送餐机器人协同控制系统｜董达作品集</title>
-    <meta name="description" content="自动化餐饮产线与送餐机器人协同控制系统案例：刷卡器、选味屏、PLC、喷码器、机器人取餐送餐和生产配置收敛。" />
+    <title>机器人产线 AI 驱动遗留系统改造案例｜董达 AI 应用工程师作品集</title>
+    <meta name="description" content="AI 驱动的遗留系统改造案例：借助 AI 快速阅读 Java / Spring Boot / Vue 遗留仓库，生成设备调用拓扑，执行一致性审查，定位阻塞链路，拆分状态机和设备 Adapter，完成 PLC、读卡器、喷码器、机器人协同的自动化产线系统改造。" />
+    <meta name="keywords" content="机器人产线, AI 驱动改造, 遗留系统, Java Spring Boot, Vue, PLC, 读卡器, 喷码器, 机器人协同, 设备 Adapter, 状态机, 董达" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="董达" />
     <meta name="theme-color" content="#101827" />
     <link rel="canonical" href="https://lx00018310.github.io/robot-line.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="董达工业边缘应用工程师作品集" />
-    <meta property="og:title" content="自动化餐饮产线与送餐机器人协同控制系统｜董达作品集" />
-    <meta property="og:description" content="刷卡器、选味屏、PLC、喷码器、机器人取餐送餐、Android Kiosk 和生产配置收敛案例。" />
+    <meta property="og:site_name" content="董达 AI 应用工程师作品集" />
+    <meta property="og:title" content="机器人产线 AI 驱动遗留系统改造案例｜董达 AI 应用工程师作品集" />
+    <meta property="og:description" content="借助 AI 快速阅读 Java / Vue 遗留仓库，生成设备调用拓扑，执行一致性审查，拆分状态机和设备 Adapter，完成自动化产线系统改造。" />
     <meta property="og:url" content="https://lx00018310.github.io/robot-line.html" />
     <meta property="og:image" content="https://lx00018310.github.io/assets/posters/03_task010_robot_line.png" />
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <header class="site-header" aria-label="主导航">
+    <header class="site-header site-header--expanded" aria-label="主导航">
       <a class="brand" href="./index.html#top">董达</a>
       <nav>
-        <a href="./digital-dock.html">数字月台</a>
-        <a class="is-active" href="./robot-line.html">机器人产线</a>
-        <a href="./simplehmi-weili.html">开源项目 SimpleHmi_WEILI</a>
+        <a href="./ai-engineering.html">AI 工程方法</a>
+        <a href="./simplehmi-weili.html">SimpleHmi_WEILI</a>
+        <a href="./index.html#cases">项目案例</a>
+        <a href="./assets/resume.pdf">简历 PDF</a>
+        <a href="https://github.com/lx00018310" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
     </header>
 
     <main id="top">
+      <!-- ══ AI 应用工程师视角 ══ -->
+      <section class="section" id="ai-perspective" aria-labelledby="ai-perspective-title">
+        <div class="section__header">
+          <p class="eyebrow">AI Engineering Perspective</p>
+          <h2 id="ai-perspective-title">AI 应用工程师视角</h2>
+          <p>从遗留系统到可维护架构，AI 如何参与改造，人必须负责哪些判断，最终沉淀出哪些可复用抽象。</p>
+        </div>
+        <div class="case-fields-grid">
+          <article class="case-card">
+            <div class="case-field">
+              <span class="case-field__label">我面对的陌生系统</span>
+              <div class="case-field__body">
+                <ul style="margin:0;padding-left:20px">
+                  <li>Java / Spring Boot / Vue 遗留项目</li>
+                  <li>PLC、读卡器、喷码器、机器人</li>
+                  <li>多设备异步流程</li>
+                  <li>分散的运行配置</li>
+                  <li>文档与实现不一致</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="case-card">
+            <div class="case-field">
+              <span class="case-field__label">AI 如何参与</span>
+              <div class="case-field__body">
+                <ul style="margin:0;padding-left:20px">
+                  <li>快速阅读仓库</li>
+                  <li>生成类、函数、API、数据库和设备调用拓扑</li>
+                  <li>对照文档、前端、后端和真实设备执行一致性审查</li>
+                  <li>定位阻塞链路</li>
+                  <li>辅助拆分状态机和设备 Adapter</li>
+                  <li>生成修复计划与复测清单</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="case-card">
+            <div class="case-field">
+              <span class="case-field__label">人必须负责的判断</span>
+              <div class="case-field__body">
+                <ul style="margin:0;padding-left:20px">
+                  <li>串口设备唯一归属</li>
+                  <li>机器人命令串行化</li>
+                  <li>导航轮询策略</li>
+                  <li>设备异常后的恢复路径</li>
+                  <li>dev / prod 隔离</li>
+                  <li>真实设备状态的判定</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="case-card">
+            <div class="case-field">
+              <span class="case-field__label">最终抽象</span>
+              <div class="case-field__body">
+                <ul style="margin:0;padding-left:20px">
+                  <li>独占读卡服务</li>
+                  <li>串行任务队列</li>
+                  <li>设备 Adapter</li>
+                  <li>状态缓存</li>
+                  <li>硬件模拟面板</li>
+                  <li>调试 API</li>
+                  <li>配置和启动脚本规范</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <!-- ══ SUPPLEMENT CASE 010 ══ -->
       <section class="section case case--compact" id="case-task010" aria-labelledby="task010-title">
         <div class="section__header">
           <p class="eyebrow">Supplement Case 02</p>
-          <h2 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h2>
+          <h1 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h1>
           <p>
             面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程，前端 Vue + 后端 Node.js。
           </p>
@@ -68,8 +142,9 @@
     </main>
 
     <footer class="site-footer">
-      <span>董达｜工业边缘应用工程师</span>
+      <span>董达｜AI 应用工程师</span>
       <span><a href="./index.html#top">返回作品集首页</a></span>
+      <span><a href="https://github.com/lx00018310" target="_blank" rel="noreferrer">GitHub</a></span>
     </footer>
   </body>
 </html>

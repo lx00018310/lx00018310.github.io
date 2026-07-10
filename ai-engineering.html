@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 工程方法｜董达 AI 应用工程师作品集</title>
+    <meta
+      name="description"
+      content="董达的 AI 工程方法：通过结构化上下文、阶段状态、交付物和门禁，把 AI 从代码生成器变成可控的工程协作者，让 AI 负责加速执行，人负责目标、边界和最终责任。"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="董达" />
+    <meta name="keywords" content="董达,AI工程方法,AI工程化落地,多模型协作,Context Engineering,风险分级,完成定义,Agent Workflow,工程复用,AI Coding,系统集成" />
+    <meta name="theme-color" content="#101827" />
+    <link rel="canonical" href="https://lx00018310.github.io/ai-engineering.html" />
+    <link rel="me" href="https://github.com/lx00018310" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="董达 AI 应用工程师作品集" />
+    <meta property="og:title" content="AI 工程方法｜董达 AI 应用工程师作品集" />
+    <meta property="og:description" content="通过结构化上下文、阶段状态、交付物和门禁，把 AI 从代码生成器变成可控的工程协作者。" />
+    <meta property="og:url" content="https://lx00018310.github.io/ai-engineering.html" />
+    <meta property="og:image" content="https://lx00018310.github.io/assets/posters/01_industrial_edge_profile.png" />
+    <meta property="og:image:alt" content="董达 AI 工程方法总览" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI 工程方法｜董达 AI 应用工程师作品集" />
+    <meta name="twitter:description" content="通过结构化上下文、阶段状态、交付物和门禁，把 AI 从代码生成器变成可控的工程协作者。" />
+    <meta name="twitter:image" content="https://lx00018310.github.io/assets/posters/01_industrial_edge_profile.png" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <style>
+      /* 页面专属：5 列阶段轨道（共享 CSS 默认 6 列） */
+      .process-rail--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .method-hero h1 { color: var(--white); }
+      .method-hero__lead { color: #ccc; }
+      @media (max-width: 1080px) {
+        .process-rail--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .process-rail--5 .process-step:nth-child(3) { border-bottom: none; }
+      }
+      @media (max-width: 760px) {
+        .process-rail--5 { grid-template-columns: 1fr 1fr; }
+        .process-rail--5 .process-step { border-bottom: 3px solid var(--black); }
+        .process-rail--5 .process-step:nth-child(2n) { border-right: none; }
+        .process-rail--5 .process-step:nth-last-child(-n+1) { border-bottom: none; }
+        .method-hero h1 { font-size: clamp(30px, 8vw, 40px); }
+        .method-hero__lead { font-size: 20px; }
+      }
+      @media (max-width: 440px) {
+        .process-rail--5 { grid-template-columns: 1fr; }
+        .process-rail--5 .process-step { border-right: none; border-bottom: 3px solid var(--black); }
+        .process-rail--5 .process-step:last-child { border-bottom: none; }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://lx00018310.github.io/ai-engineering.html#method",
+        "headline": "把 AI 从代码生成器变成可控的工程协作者",
+        "name": "AI 工程方法",
+        "url": "https://lx00018310.github.io/ai-engineering.html",
+        "description": "通过结构化上下文、阶段状态、交付物和门禁，把 AI 从代码生成器变成可控的工程协作者，让 AI 负责加速执行，人负责目标、边界和最终责任。",
+        "inLanguage": "zh-CN",
+        "author": {
+          "@id": "https://lx00018310.github.io/#person"
+        },
+        "about": [
+          "AI 工程化落地",
+          "多模型协作",
+          "Context Engineering",
+          "风险分级",
+          "完成定义",
+          "工程复用"
+        ],
+        "isPartOf": {
+          "@id": "https://lx00018310.github.io/#website"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header site-header--expanded" aria-label="主导航">
+      <a class="brand" href="./index.html#top">董达</a>
+      <nav>
+        <a class="is-active" href="./ai-engineering.html">AI 工程方法</a>
+        <a href="./simplehmi-weili.html">SimpleHmi_WEILI</a>
+        <a href="./index.html#cases">项目案例</a>
+        <a href="./assets/resume.pdf">简历 PDF</a>
+        <a href="https://github.com/lx00018310" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- ══ HERO ══ -->
+      <section class="method-hero" id="method" style="background: var(--black); border-bottom: 4px solid var(--black);" aria-labelledby="hero-title">
+        <div style="width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 80px 0 60px;">
+          <p class="eyebrow" style="background: var(--accent); color: var(--white);">AI Engineering Method</p>
+          <h1 id="hero-title">把 AI 从代码生成器变成可控的工程协作者</h1>
+          <p class="method-hero__lead" style="max-width: 880px; margin-bottom: 28px; font-size: 24px; line-height: 1.4;">
+            通过结构化上下文、阶段状态、交付物和门禁，约束 AI 的工程行为——让 AI 负责加速执行，让人负责目标、边界和最终责任，使每一次交付可追踪、可审查、可复用。
+          </p>
+          <div class="hero-actions">
+            <a class="button button--secondary" href="#core-view">查看核心观点</a>
+            <a class="button button--ghost" href="./index.html#top">返回作品集首页</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 一、核心观点 ══ -->
+      <section class="section" id="core-view" aria-labelledby="core-view-title">
+        <div class="section__header">
+          <p class="eyebrow">Core Principle</p>
+          <h2 id="core-view-title">核心观点</h2>
+          <p>AI 可以判断错，但工程流程不能失控。</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="tile">
+            <h3>AI 的职责</h3>
+            <p>负责加速搜索、理解、生成、审查和文档整理。在明确边界内提高执行效率，不替代人对方向和风险的判断。</p>
+            <div class="capability-tags">
+              <span>搜索</span>
+              <span>理解</span>
+              <span>生成</span>
+              <span>审查</span>
+              <span>文档整理</span>
+            </div>
+          </article>
+          <article class="tile">
+            <h3>人的职责</h3>
+            <p>负责目标、边界、架构、风险、验收和最终责任。决定做什么、不做什么、做到什么程度，并对结果承担责任。</p>
+            <div class="capability-tags">
+              <span>目标</span>
+              <span>边界</span>
+              <span>架构</span>
+              <span>风险</span>
+              <span>验收</span>
+              <span>最终责任</span>
+            </div>
+          </article>
+          <article class="tile">
+            <h3>工程控制</h3>
+            <p>通过结构化上下文、阶段状态、交付物和门禁，降低模型随机性，使 AI 的输出可追踪、可审查、可交付。</p>
+            <div class="capability-tags">
+              <span>结构化上下文</span>
+              <span>阶段状态</span>
+              <span>交付物</span>
+              <span>门禁</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══ 二、进入陌生领域的方法 ══ -->
+      <section class="section" id="domain-entry" aria-labelledby="domain-entry-title">
+        <div class="section__header">
+          <p class="eyebrow">Domain Entry</p>
+          <h2 id="domain-entry-title">进入陌生领域的方法</h2>
+          <p>面对陌生业务领域，先收集输入、提取领域上下文，再形成可执行的工程产出物。</p>
+        </div>
+        <div class="split">
+          <article class="panel">
+            <h3>输入源</h3>
+            <ul>
+              <li>业务说明</li>
+              <li>接口文档</li>
+              <li>遗留源码</li>
+              <li>数据库结构</li>
+              <li>设备协议</li>
+              <li>现场约束</li>
+              <li>运行日志</li>
+              <li>已知问题</li>
+            </ul>
+          </article>
+          <article class="panel panel--dark">
+            <h3>输出物</h3>
+            <ul>
+              <li>术语表</li>
+              <li>领域对象</li>
+              <li>系统边界</li>
+              <li>调用拓扑</li>
+              <li>接口清单</li>
+              <li>状态机</li>
+              <li>风险矩阵</li>
+              <li>实施计划</li>
+            </ul>
+          </article>
+        </div>
+        <div class="panel panel--dark" style="margin-top: 18px;">
+          <p style="font-size: 20px; font-weight: 900; color: var(--accent); margin: 0;">
+            不是让 AI 直接写代码，而是先建立足够可靠的领域上下文。
+          </p>
+        </div>
+      </section>
+
+      <!-- ══ 三、多模型协作流程 ══ -->
+      <section class="section" id="multi-model" aria-labelledby="multi-model-title">
+        <div class="section__header">
+          <p class="eyebrow">Multi-Model Workflow</p>
+          <h2 id="multi-model-title">多模型协作流程</h2>
+          <p>规划、实现、审查、修复和验收由不同阶段承担，每个阶段有明确的输入、输出和门禁。</p>
+        </div>
+        <div class="process-rail process-rail--5" aria-label="多模型协作阶段">
+          <div class="process-step">
+            <span class="process-step__num">01</span>
+            <div class="process-step__title">Plan</div>
+            <p class="process-step__desc">规划</p>
+          </div>
+          <div class="process-step">
+            <span class="process-step__num">02</span>
+            <div class="process-step__title">Build</div>
+            <p class="process-step__desc">实现</p>
+          </div>
+          <div class="process-step">
+            <span class="process-step__num">03</span>
+            <div class="process-step__title">Review</div>
+            <p class="process-step__desc">独立审查</p>
+          </div>
+          <div class="process-step">
+            <span class="process-step__num">04</span>
+            <div class="process-step__title">Fix</div>
+            <p class="process-step__desc">问题修复</p>
+          </div>
+          <div class="process-step">
+            <span class="process-step__num">05</span>
+            <div class="process-step__title">Final Review</div>
+            <p class="process-step__desc">最终验收</p>
+          </div>
+        </div>
+        <div class="step-strip" style="margin-top: 24px;">
+          <div class="step-row">
+            <div class="step-label">Plan</div>
+            <div class="step-body">独立模型输出范围、架构、风险、步骤和验收标准。</div>
+          </div>
+          <div class="step-row">
+            <div class="step-label">Build</div>
+            <div class="step-body">执行模型按计划开发，并记录实际变更。</div>
+          </div>
+          <div class="step-row">
+            <div class="step-label">Review</div>
+            <div class="step-body">不同模型只做独立审查，不默认相信实现结果。</div>
+          </div>
+          <div class="step-row">
+            <div class="step-label">Fix</div>
+            <div class="step-body">根据问题清单逐项修复并复测。</div>
+          </div>
+          <div class="step-row">
+            <div class="step-label">Final Review</div>
+            <div class="step-body">对照需求、计划、Git 变更和测试证据做最终结论。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 四、风险分级 ══ -->
+      <section class="section" id="risk-levels" aria-labelledby="risk-levels-title">
+        <div class="section__header">
+          <p class="eyebrow">Risk Classification</p>
+          <h2 id="risk-levels-title">风险分级</h2>
+          <p>按变更影响范围将工程任务分为三档，每档对应不同的控制强度和验收要求。</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="tile">
+            <h3>低风险</h3>
+            <p>文案、样式、普通页面、非关键脚本。</p>
+            <div class="capability-tags">
+              <span>允许 AI 快速迭代</span>
+            </div>
+          </article>
+          <article class="tile">
+            <h3>中风险</h3>
+            <p>API、数据库、业务状态、外部系统集成、部署配置。</p>
+            <div class="capability-tags">
+              <span>要求测试</span>
+              <span>要求独立审查</span>
+            </div>
+          </article>
+          <article class="tile">
+            <h3>高风险</h3>
+            <p>设备控制、PLC 写入、并发、状态机、权限、资金 / 订单 / 不可逆操作。</p>
+            <div class="capability-tags">
+              <span>明确状态</span>
+              <span>幂等</span>
+              <span>锁</span>
+              <span>超时</span>
+              <span>重试边界</span>
+              <span>审计日志</span>
+              <span>人工验收</span>
+              <span>失败恢复</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══ 五、完成定义 ══ -->
+      <section class="section" id="definition-of-done" aria-labelledby="dod-title">
+        <div class="section__header">
+          <p class="eyebrow">Definition of Done</p>
+          <h2 id="dod-title">完成定义</h2>
+          <p>完成不是 AI 声称完成，而是存在可验证的交付证据。</p>
+        </div>
+        <div class="split">
+          <article class="panel panel--dark">
+            <h3>不等于完成</h3>
+            <ul>
+              <li>页面打开不等于完成。</li>
+              <li>API 返回 200 不等于业务正确。</li>
+              <li>Mock 通过不等于真实设备可用。</li>
+              <li>单节点成功不等于全网发布成功。</li>
+              <li>AI 声称完成不等于存在验收证据。</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>完成必须包含</h3>
+            <ul>
+              <li>可运行代码</li>
+              <li>测试结果</li>
+              <li>真实或明确标记的模拟验证</li>
+              <li>部署说明</li>
+              <li>回滚路径</li>
+              <li>日志和诊断</li>
+              <li>未完成项列表</li>
+              <li>可接手文档</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══ 六、如何形成 Scale / Engine ══ -->
+      <section class="section" id="scale-engine" aria-labelledby="scale-engine-title">
+        <div class="section__header">
+          <p class="eyebrow">Scale / Engine</p>
+          <h2 id="scale-engine-title">如何形成 Scale / Engine</h2>
+          <p>把一次性交付继续抽象为可复用的工程资产，让后续人员和 AI Agent 按统一路径接手。</p>
+        </div>
+        <div class="project-flow" aria-label="工程抽象过程">
+          <span>项目问题</span>
+          <span>提取重复模式</span>
+          <span>分离业务差异与公共内核</span>
+          <span>固化为 Adapter / Skill / Template / Checklist</span>
+          <span>加入测试和验收门禁</span>
+          <span>让后续人员与 Agent 使用</span>
+        </div>
+        <div class="panel" style="margin-top: 18px;">
+          <h3>主要实例：SimpleHmi_WEILI</h3>
+          <p>
+            SimpleHmi_WEILI 是这一抽象过程的主要实例。它从数字月台和机器人产线两个真实项目中提取工业 HMI / 控制系统的重复工程模式，分离业务差异与公共内核，固化为规范文档、Adapter、检查清单、验收门禁和自修复流程，使后续人员和 AI Agent 能够按统一路径生成可运行、可部署、可验收的工业系统。
+          </p>
+          <div class="hero-actions" style="margin-top: 16px;">
+            <a class="button button--primary" href="./simplehmi-weili.html">查看 SimpleHmi_WEILI</a>
+            <a class="button button--ghost" href="https://github.com/lx00018310/SimpleHmi_WEILI" target="_blank" rel="noreferrer">打开 GitHub 仓库</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 七、迁移能力 ══ -->
+      <section class="section" id="transferability" aria-labelledby="transferability-title">
+        <div class="section__header">
+          <p class="eyebrow">Transferability</p>
+          <h2 id="transferability-title">迁移能力</h2>
+          <p>该方法可迁移到以下需要可靠交付的场景：</p>
+        </div>
+        <div class="grid grid--4">
+          <article class="tile">
+            <h3>企业内部工具</h3>
+            <p>内部系统、管理后台、运营工具的快速构建与交付。</p>
+          </article>
+          <article class="tile">
+            <h3>智能硬件应用</h3>
+            <p>设备接入、状态管理、控制逻辑与人机界面的工程化实现。</p>
+          </article>
+          <article class="tile">
+            <h3>AI 助手和 Agent</h3>
+            <p>Agent 工作流、上下文工程、结构化输出与多模型协作。</p>
+          </article>
+          <article class="tile">
+            <h3>业务自动化</h3>
+            <p>流程编排、任务调度、异常恢复与可审计的自动化链路。</p>
+          </article>
+          <article class="tile">
+            <h3>遗留系统改造</h3>
+            <p>代码阅读、调用拓扑、状态机重构与渐进式迁移。</p>
+          </article>
+          <article class="tile">
+            <h3>数据采集和控制台</h3>
+            <p>设备数据采集、实时监控、报警规则与运维控制台。</p>
+          </article>
+          <article class="tile">
+            <h3>多系统 API 集成</h3>
+            <p>接口契约、数据映射、幂等处理与集成测试。</p>
+          </article>
+          <article class="tile">
+            <h3>垂直行业应用</h3>
+            <p>需要可靠交付、存在验收标准和不可逆操作约束的行业场景。</p>
+          </article>
+        </div>
+        <div class="panel panel--dark" style="margin-top: 18px;">
+          <p style="margin: 0;">
+            迁移的前提是目标场景存在明确的交付标准和可验证的工程边界，而非无限扩大适用范围。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>董达｜AI 应用工程师</span>
+      <span><a href="./index.html#top">返回作品集首页</a></span>
+      <span><a href="https://github.com/lx00018310" target="_blank" rel="noreferrer">GitHub</a></span>
+    </footer>
+  </body>
+</html>

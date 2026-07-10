@@ -1,238 +1,390 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>董达｜工业边缘应用工程师简历</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>董达｜AI 应用工程师</title>
+    <meta
+      name="description"
+      content="董达 AI 应用工程师在线简历：利用 AI Coding Agent 快速进入陌生业务领域，完成复杂系统开发、设备与 API 集成、测试部署，并将项目经验抽象为可复用的 Agent 工作流、工程规范与 Engine。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="董达" />
+    <meta name="keywords" content="董达,AI应用工程师,AI Coding,Agent工作流,Context Engineering,AI工程化落地,复杂系统开发,系统集成,SimpleHmi_WEILI" />
+    <link rel="canonical" href="https://lx00018310.github.io/assets/resume.html" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="董达 AI 应用工程师作品集" />
+    <meta property="og:title" content="董达｜AI 应用工程师" />
+    <meta property="og:description" content="AI 驱动软件工程与复杂系统落地，Agent 工作流与工程规范。" />
+    <meta property="og:url" content="https://lx00018310.github.io/assets/resume.html" />
+    <link rel="stylesheet" href="./styles.css" />
     <style>
-        @page {
-            size: A4;
-            margin: 18mm 20mm;
-        }
-        
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
-            font-size: 10.5pt;
-            line-height: 1.6;
-            color: #1d1d1d;
-            background: #fff;
-            margin: 0;
-            padding: 0;
-        }
-        
-        h1 {
-            font-size: 22pt;
-            font-weight: 900;
-            color: #000;
-            border-bottom: 3px solid #000;
-            padding-bottom: 8px;
-            margin: 0 0 10px;
-            letter-spacing: -0.3px;
-        }
-        
-        h2 {
-            font-size: 13pt;
-            font-weight: 900;
-            color: #fff;
-            background: #000;
-            display: inline-block;
-            padding: 3px 10px;
-            margin: 18px 0 10px;
-        }
-        
-        h3 {
-            font-size: 11.5pt;
-            font-weight: 900;
-            color: #000;
-            border-left: 4px solid #000;
-            padding-left: 8px;
-            margin: 14px 0 8px;
-        }
-        
-        p {
-            margin: 6px 0;
-            text-align: justify;
-        }
-        
-        strong {
-            font-weight: 900;
-            color: #000;
-        }
-        
-        ul {
-            margin: 6px 0;
-            padding-left: 20px;
-        }
-        
-        li {
-            margin: 4px 0;
-            line-height: 1.65;
-        }
-        
-        hr {
-            border: none;
-            border-top: 2px solid #000;
-            margin: 18px 0;
-        }
-        
-        .contact {
-            font-size: 10pt;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        
-        .job-title {
-            font-size: 10pt;
-            color: #444;
-            font-weight: 700;
-        }
+      /* ── 简历页面专属样式 ── */
+      .resume-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        width: min(1180px, calc(100% - 48px));
+        margin: 28px auto 0;
+      }
+      .resume-bar .hero-actions { margin-top: 0; }
+      .resume-bar .button { min-height: 48px; font-size: 16px; }
+
+      .resume-header {
+        width: min(1180px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 28px 0 12px;
+        border-bottom: 4px solid var(--black);
+      }
+      .resume-header h1 {
+        font-size: 64px;
+        margin-bottom: 12px;
+      }
+      .resume-header .subtitle {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--accent);
+        margin-bottom: 14px;
+      }
+      .resume-contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 22px;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .resume-contact a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      .resume-body {
+        width: min(1180px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 28px 0 48px;
+      }
+      .resume-body section { padding: 24px 0; border-top: 3px solid var(--black); }
+      .resume-body section:first-child { border-top: none; padding-top: 0; }
+      .resume-body h2 {
+        font-size: 34px;
+        margin-bottom: 16px;
+      }
+      .resume-body h3 {
+        font-size: 22px;
+        margin-top: 20px;
+        margin-bottom: 8px;
+      }
+      .resume-body h4 {
+        font-size: 18px;
+        font-weight: 900;
+        margin-top: 16px;
+        margin-bottom: 6px;
+      }
+      .resume-body p, .resume-body li {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--dark);
+      }
+      .resume-body ul { padding-left: 22px; }
+      .resume-body strong { color: var(--black); }
+      .resume-meta {
+        font-size: 14px;
+        color: var(--mid);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .resume-tech-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .resume-tech-grid div {
+        padding: 16px;
+        background: var(--white);
+        border: 2px solid var(--black);
+      }
+      .resume-tech-grid h4 { margin-top: 0; }
+      .resume-tech-grid p { font-size: 15px; margin: 0; }
+      .resume-project {
+        padding: 20px;
+        background: var(--white);
+        border: 3px solid var(--black);
+        margin-bottom: 18px;
+      }
+      .resume-status {
+        display: inline-block;
+        padding: 5px 12px;
+        font-size: 14px;
+        font-weight: 900;
+        background: var(--accent-soft);
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        margin-top: 8px;
+      }
+      .resume-keywords {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .resume-keywords span {
+        padding: 6px 12px;
+        background: var(--soft);
+        border: 2px solid var(--black);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .resume-footer {
+        width: min(1180px, calc(100% - 48px));
+        margin: 0 auto 48px;
+        padding: 20px 0;
+        border-top: 4px solid var(--black);
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--mid);
+      }
+
+      @media (max-width: 760px) {
+        .resume-header h1 { font-size: 44px; }
+        .resume-header .subtitle { font-size: 18px; }
+        .resume-body h2 { font-size: 28px; }
+        .resume-tech-grid { grid-template-columns: 1fr; }
+      }
+
+      /* ── A4 打印样式 ── */
+      @media print {
+        body { background: var(--white); font-size: 11pt; line-height: 1.4; }
+        .resume-bar { display: none; }
+        .resume-header { border-bottom: 2px solid #000; padding: 0 0 8px; margin-bottom: 0; }
+        .resume-header h1 { font-size: 28pt; margin-bottom: 4pt; }
+        .resume-header .subtitle { font-size: 13pt; }
+        .resume-contact { font-size: 10pt; gap: 4pt 16pt; }
+        .resume-body { padding: 12pt 0; width: 100%; }
+        .resume-body section { padding: 10pt 0; border-top: 1px solid #000; page-break-inside: avoid; }
+        .resume-body h2 { font-size: 16pt; margin-bottom: 6pt; }
+        .resume-body h3 { font-size: 12pt; margin-top: 10pt; }
+        .resume-body h4 { font-size: 11pt; }
+        .resume-body p, .resume-body li { font-size: 10pt; line-height: 1.45; }
+        .resume-tech-grid { grid-template-columns: 1fr 1fr; gap: 6pt; }
+        .resume-tech-grid div { padding: 8pt; border-width: 1px; }
+        .resume-tech-grid p { font-size: 9pt; }
+        .resume-project { padding: 10pt; border-width: 1px; margin-bottom: 8pt; page-break-inside: avoid; }
+        .resume-status { font-size: 9pt; padding: 3pt 8pt; }
+        .resume-keywords span { font-size: 9pt; }
+        .resume-footer { border-top: 1px solid #000; margin-bottom: 0; padding: 8pt 0; }
+        a { color: #000; text-decoration: none; }
+        @page { margin: 14mm 14mm 12mm; }
+      }
     </style>
-</head>
-<body>
-    <h1>董达</h1>
-    <p class="contact"><strong>工业边缘应用工程师｜工业互联网 / HMI 多终端协同｜PLC、机器人与现场设备集成</strong></p>
-    <p class="job-title">电话 / 微信：18761576008</p>
-    <p class="job-title">个人网页：lx00018310.github.io</p>
-    
-    <h2>求职方向</h2>
-    <p>工业边缘应用工程师 / 工业互联网应用开发工程师 / 智能制造软件工程师 / 工控上位机开发工程师 / HMI 与现场设备集成工程师 / 智能设备系统集成工程师</p>
-    
-    <h2>职业概况</h2>
-    <p>具备机械设计、工业项目管理、工业现场软件开发与 AI 辅助工程化交付的复合背景，累计 16 年工业及项目经验。近阶段聚焦工业边缘应用、HMI 多终端协同、PLC 与机器人设备接入、Windows 工控机部署、自愈运维和现场联调。</p>
-    <p>能够贯通从需求拆解、协议梳理、系统架构、前后端开发、设备接入、状态机设计、实机联调到部署交付的完整链路。当前重点项目覆盖公共工控机、12 台 HMI 触摸终端、PLC、调度系统、人脸识别设备、机器人、读卡器、喷码器、数据库和局域网发布系统。</p>
-    <p><strong>我擅长把工控机、HMI、PLC、机器人、人脸设备、部署脚本和异常恢复机制，收口成可联调、可部署、可交付的工业边缘系统。</strong>我的核心优势不是单点写页面或单点接硬件，而是能在复杂工业现场中，把业务流程、设备信号、前后端系统、终端交互、部署脚本和异常恢复机制收口为一个可运行、可联调、可交付的系统。</p>
-    
-    <h2>核心优势</h2>
-    <ul>
-        <li><strong>工业边缘中控能力</strong>：以公共工控机为主控节点，连接 HMI、PLC、调度系统、人脸设备、机器人等现场端，完成状态聚合、指令下发、终端展示、日志记录和异常恢复。</li>
-        <li><strong>多终端 HMI 协同能力</strong>：面向 12 台触摸屏一体机、Android Kiosk、操作员屏、线体确认屏、场馆大屏等不同终端，设计角色分层、权限显隐、状态同步和极简交互。</li>
-        <li><strong>现场设备集成能力</strong>：接入 SLMP 3E PLC、海康 ISUP 5.0、人脸识别终端、Android 机器人 SDK、读卡器、喷码器、扫码枪等设备，能够处理协议差异、接口不稳定、现场网络和调试边界问题。</li>
-        <li><strong>部署与自愈能力</strong>：熟悉 Windows 工控机环境下的原生服务化部署、Nginx、NSSM、PowerShell、离线发布、完整性校验、版本激活、失败回滚、健康检查和异常文件修复。</li>
-        <li><strong>AI 辅助开发能力</strong>：高频使用 AI coding 和 AI 工作流辅助需求拆解、文档沉淀、代码审查、接口梳理、测试计划和工程化复用，但坚持以真实设备状态、生产边界和可交付结果为最终标准。</li>
-    </ul>
-    
-    <h2>核心技术</h2>
-    <ul>
-        <li><strong>工业边缘与终端</strong>：工业 HMI、Android Kiosk、设备 Agent、终端心跳、运行时配置、离线发布、远程升级、故障恢复、边缘中控</li>
-        <li><strong>工业通信与设备接入</strong>：SLMP 3E PLC、TCP/IP、HTTP、WebSocket、海康 ISUP 5.0、Android 机器人 SDK、读卡器、喷码器、扫码枪、人脸识别终端</li>
-        <li><strong>后端与数据</strong>：TypeScript、Node.js、Fastify、Java、Spring Boot、Python、FastAPI、PostgreSQL、MySQL、SQLite</li>
-        <li><strong>前端与交互</strong>：React、TypeScript、Vite、Vue、工业触摸屏 HMI、操作员面板、Kiosk 全屏交互、面向一线人员的低认知负担 UI</li>
-        <li><strong>部署与运维</strong>：Windows 工控机、Nginx、PowerShell、NSSM、Docker、离线部署、批量升级、版本回滚、健康检查、日志排查</li>
-        <li><strong>AI 工程化</strong>：AI coding、RAG、API 编排、OCR 预标、人脸识别接入、工程文档自动化、调试 SOP、可复用模板沉淀</li>
-    </ul>
-    
-    <h2>重点项目</h2>
-    
-    <h3>数字月台工业边缘中控与多 HMI 协同系统</h3>
-    <p><strong>核心开发 / 系统集成｜2026.03 - 至今</strong></p>
-    
-    <p><strong>项目背景：</strong>面向工厂自动装车与数字月台场景，建设一套由公共工控机、12 台触摸屏 HMI、PLC、调度系统、人脸识别终端和局域网发布系统组成的工业边缘中控系统。系统需要支持月台作业展示、人员核验、设备控制、报警处理、状态推送、版本统一发布和现场部署恢复。</p>
-    
-    <p><strong>技术架构：</strong>React + TypeScript + Vite / Node.js + Fastify + WebSocket / PostgreSQL / SLMP 3E PLC / Python + 海康 ISUP 5.0 / HMI Agent / Windows 工控机 / Nginx / NSSM / PowerShell</p>
-    
-    <p><strong>核心工作：</strong></p>
-    <p>我在该项目中承担核心开发与系统集成职责，覆盖以下六个主要方向：</p>
-    <ul>
-        <li><strong>HMI 前端与角色分层</strong>：使用 React、TypeScript、Vite 构建竖屏全屏 HMI 应用，搭建 12 台触摸屏前端，完成登录确认、作业信息、设备控制、报警、管理调试等核心页面；针对操作工、主管、维护人员设计不同界面层级与权限显隐，A/B 机型差异处理，降低一线人员操作复杂度。</li>
-        <li><strong>Node.js / Fastify / WebSocket 中控后端</strong>：使用 Node.js、Fastify、WebSocket 与 PostgreSQL 建设中控后端，完成月台状态存储、任务状态流转、事件总线、实时推送、关键运行态持久化与服务重启恢复；建立调度系统 Dispatch Adapter，支持 mock / real 模式切换，对调度入站接口、DTO 校验、结构化日志和异常链路进行收口。</li>
-        <li><strong>PLC 点位与网关链路</strong>：接入真实 SLMP 3E PLC 网关，完成 12 个月台 PLC、配零出口 PLC、工位、扫码枪、人脸设备和工控机等 IP 与点位配置；设计 PLC 独占排队锁机制，实现后台轮询、来源标记和安全联锁，防止并发写冲突；设计 HMI 客户端 IP 绑定与校验机制，限制非授权终端操作。</li>
-        <li><strong>人脸 ISUP 服务联调</strong>：基于 Python 与海康 ISUP 5.0 SDK 建设独立人脸边缘服务（进程隔离防 SDK 崩溃株连），打通设备注册、状态监听、报警事件解析、人员下发、人脸图片下发、照片回采与 HMI 工位绑定；优化人脸识别到 HMI 前端的事件链路，解决人脸事件解析、设备序列号映射、图片通道阻塞、WebSocket 推送和前端状态无响应等问题。</li>
-        <li><strong>HMI Agent / 部署控制 / 版本回滚</strong>：设计部署控制器与 HMI 常驻代理（PowerShell），实现 12 台终端身份认证、心跳检测、版本管理、完整性校验、统一激活、失败回滚与离线恢复；设计 <code>.wrelease</code> 不可变发布包和目标版本自动收敛机制，支持局域网全网发布、版本校验、前端 Mock UI 禁用校验和异常包拦截，任一节点失败全网回滚，中断时间 &lt; 90 秒。</li>
-        <li><strong>Windows 服务化、自愈脚本、联调文档</strong>：推进 Windows 原生绿色服务化部署，使用 PowerShell、NSSM 和健康检查脚本完成一键安装、两级服务守护（NSSM 5秒拉起 + 控制器主动巡检）、崩溃重启、死锁自愈和异常文件修复；设计 HMI Bootstrap 兜底机制；坚持生产链路与调试链路隔离，关键配置缺失时阻断启动或发版；输出完整的联调文档、SOP和异常排查手册。</li>
-    </ul>
-    
-    <p><strong>项目结果：</strong></p>
-    <ul>
-        <li>已完成主要软件链路、本机集成验证、PLC 业务状态聚合、人脸真实链路 MVP、HMI 局域网版本控制和部署自愈机制。</li>
-        <li>已形成数字月台总体架构、接口协议、数据模型、状态机、PLC 点位、现场部署和联调验收等文档资产。</li>
-        <li>当前进入公共工控机、12 台真实 HMI、PLC、调度、人脸设备的现场联调与整体验收阶段。</li>
-    </ul>
-    
-    <p><strong>可迁移价值：</strong>该项目能力可迁移至智能工厂、数字月台、AGV 调度、仓储物流、工业 HMI、工业边缘网关、无人值守设备、现场多终端协同和局域网发布系统等场景。</p>
-    
-    <hr>
-    
-    <h3>智能餐饮产线与送餐机器人协同控制系统</h3>
-    <p><strong>核心开发 / 设备联调｜2026.03 - 至今</strong></p>
-    
-    <p><strong>项目背景：</strong>面向自动化餐饮 / 展陈式产线场景，建设一套由工控机后端、操作员控制屏、取餐 / 选餐终端、线体确认面板、场馆大屏、PLC、读卡器、喷码器和送餐机器人组成的现场流程编排系统。系统需要完成从刷卡、选味、掉桶、喷码、产线流转到机器人取餐、送餐、返程的完整闭环。</p>
-    
-    <p><strong>技术架构：</strong>Java / Spring Boot / Vue / MySQL / Android Kiosk / Android 机器人 SDK / PLC / TCP 喷码器 / USB 读卡器 / 本地 HTTP 服务 / Windows 工控机</p>
-    
-    <p><strong>核心工作：</strong></p>
-    <ul>
-        <li>基于 Spring Boot、Vue 和 MySQL 收口刷卡选味、生产状态、组垛、喷码、机器人调度和异常复位流程，建设操作员控制面板和设备状态监控能力。</li>
-        <li>设计业务状态机，将自助刷卡、口味选择、投桶、PLC 信号确认、喷码、机器人取餐、送餐、返程等环节串联为可追踪流程。</li>
-        <li>封装 PLC、机器人、喷码器和读卡器接入层，处理多设备协议差异和现场接口不稳定问题。</li>
-        <li>建设本地独占读卡服务，避免多个页面或进程竞争串口 / HID 设备，解决刷卡归属不稳定问题。</li>
-        <li>开发 Android 机器人 Kiosk 与本地 HTTP 控制服务，实现路线配置、按桌送餐、人工返程、正式回充、取消任务和解锁复位。</li>
-        <li>定位并解决机器人 API 阻塞和状态卡顿问题，通过串行任务、异步导航轮询、状态缓存和 Kiosk 降级隔离提升控制稳定性。</li>
-        <li>完成机器人路线区域合并、路线地图画布、路径点配置、真实 IP 同步、地图自动恢复、运行能力预检和导航异常处理。</li>
-        <li>实现机器人精密脉冲点动、定位恢复、地图加载、急停复检、电量检查、避障熔断、实时位姿校验和环境预检。</li>
-        <li>建设硬件模拟调试面板与机器人调试 API，使 PLC 点位、机器人路线、刷卡、喷码等链路可在联调阶段分层验证。</li>
-        <li>推进生产配置收敛，区分 dev / prod 环境，关键 PLC、喷码器、机器人回调、数据库、Redis 等配置从环境变量或统一配置文件读取。</li>
-        <li>清理生产环境调试入口，采用条件加载和配置拒启机制，避免调试接口污染正式业务链路。</li>
-        <li>增加终端心跳、运行时配置、前端联调启动脚本、后端生产启动脚本和一键打开工控机所有前端脚本，提高现场部署效率。</li>
-    </ul>
-    
-    <p><strong>项目结果：</strong></p>
-    <ul>
-        <li>已完成主要流程和单机实测，形成刷卡、选味、喷码、PLC 状态、机器人路线、Kiosk 控制和生产配置收敛等核心能力。</li>
-        <li>完成机器人 API 卡顿定位、地图加载恢复、整机关机链路、送餐路线地图、区域合桌路线、读卡服务归属等关键问题排查与修复。</li>
-        <li>当前真实 PLC 点位、机器人完整路线、喷码模板和多设备现场验收仍在推进。</li>
-    </ul>
-    
-    <p><strong>可迁移价值：</strong>该项目能力可迁移至自动化餐饮、展陈自动化、服务机器人、智能门店、机器人配送、工控流程编排、设备联动控制和现场调试平台等场景。</p>
-    
-    <hr>
-    
-    <h3>企业 AI 工具与工程化资产建设</h3>
-    <p><strong>AI 辅助开发 / 内部工具 / 工程规范沉淀｜2026.03 - 至今</strong></p>
-    <ul>
-        <li>使用 AI coding 工具辅助需求拆解、代码生成、接口梳理、联调 SOP、测试计划、异常排查和项目文档沉淀，提高复杂工业项目推进效率。</li>
-        <li>开发 OCR 半自动预标、AI 辅助制图、企业飞书机器人等内部工具，将知识检索、API 编排与人工复核组合为可执行工作流。</li>
-        <li>建设工业前后端公共模板和开发规范，将设备适配、调试隔离、运行时配置、健康检查、部署脚本和项目进度文档沉淀为可复用资产。</li>
-        <li>探索面向工控项目的 RAG / 知识库能力，用于管理协议文档、设备手册、PLC 点位、联调记录、异常报告和项目 SOP，辅助后续工业项目快速启动。</li>
-    </ul>
-    
-    <h2>工作经历</h2>
-    
-    <h3>浙江维力智能装备有限公司｜AI 工程师 / 工业边缘应用开发｜2026 - 至今</h3>
-    <ul>
-        <li>负责工业智能终端、机器人协同、设备接入、AI 工具和部署系统开发，推动项目从需求、协议和设备信息梳理进入可运行软件、实机联调和现场验收阶段。</li>
-        <li>参与公司工业前后端统一技术栈建设，形成"公共内核 + 业务配置 / 设备适配层"的复用方式。</li>
-        <li>主导或深度参与数字月台多 HMI 协同系统、智能餐饮产线与送餐机器人协同系统等项目，覆盖前端、后端、PLC、机器人、人脸设备、部署脚本和现场调试。</li>
-        <li>通过 AI coding、工程文档、自动化脚本和规范化进度记录，提高需求拆解、开发验证、问题排查和知识沉淀效率。</li>
-    </ul>
-    
-    <h3>浙江先秦科技有限公司｜新业务负责人｜2020 - 2025</h3>
-    <ul>
-        <li>负责新业务策划、资源协调、方案设计与项目落地，推进多个创新项目从 0 到 1。</li>
-        <li>长期承担客户需求理解、方案表达、跨团队协调、资源整合和交付推进工作，为后续工业软件项目中的需求拆解、项目统筹和现场沟通打下基础。</li>
-        <li>参与 AI 方向、数字化工具和新业务模式探索，形成从业务目标倒推产品方案和落地路径的能力。</li>
-    </ul>
-    
-    <h3>浙江拾方旅游发展有限公司｜项目负责人｜2017 - 2020</h3>
-    <ul>
-        <li>负责大型文旅项目方案策划、项目统筹、客户沟通和跨团队协作。</li>
-        <li>参与建阳考亭文化旅游区等项目，积累复杂项目推进、节点管理、资源协调和交付复盘经验。</li>
-        <li>形成较强的方案结构化表达、项目风险识别和多方协同能力，可迁移到工业现场项目推进与客户沟通。</li>
-    </ul>
-    
-    <h3>机械制造企业｜机械工程师｜2010 - 2017</h3>
-    <ul>
-        <li>从事工业产品结构设计、制造工艺、现场问题处理和工程落地。</li>
-        <li>熟悉机械结构、加工装配、生产现场和设备实施逻辑，能够理解工业项目中的硬件约束、空间约束、安全边界和现场操作习惯。</li>
-        <li>具备从机械现场转向工业软件、设备集成和智能制造应用开发的复合背景。</li>
-    </ul>
-    
-    <h2>教育背景</h2>
-    <p><strong>华北电力大学（211）｜机械设计制造及其自动化｜本科｜2006 - 2010</strong></p>
-    
-    <h2>个人关键词</h2>
-    <p>工业边缘应用｜HMI 多终端协同｜PLC 接入｜机器人控制｜人脸识别设备｜Windows 工控机部署｜现场联调｜状态机｜WebSocket｜设备心跳｜版本发布与回滚｜AI 辅助开发｜工业项目交付</p>
-</body>
+  </head>
+  <body>
+    <div class="resume-bar">
+      <a class="button button--ghost" href="../index.html#top">返回作品集</a>
+      <div class="hero-actions">
+        <a class="button button--primary" href="./resume.pdf">下载 PDF</a>
+        <a class="button button--ghost" href="../index.html#top">在线作品集</a>
+      </div>
+    </div>
+
+    <header class="resume-header">
+      <h1>董达</h1>
+      <p class="subtitle">AI 应用工程师｜AI 驱动软件工程与复杂系统落地｜Agent 工作流与工程规范</p>
+      <div class="resume-contact">
+        <span>电话 / 微信：18761576008</span>
+        <span>邮箱：624290365@qq.com</span>
+        <span>作品集：<a href="https://lx00018310.github.io/">lx00018310.github.io</a></span>
+        <span>GitHub：<a href="https://github.com/lx00018310">github.com/lx00018310</a></span>
+      </div>
+    </header>
+
+    <main class="resume-body">
+      <section>
+        <h2>求职方向</h2>
+        <p>AI 应用工程师 / AI 工程化落地工程师 / AI Coding 工程师 / AI Agent / AI 工作流工程师 / AI 解决方案工程师</p>
+      </section>
+
+      <section>
+        <h2>职业概况</h2>
+        <p>利用 AI Coding Agent 快速进入陌生业务领域，将需求、行业知识和工程约束转化为可运行系统；再把一次性交付抽象为可复用的 Agent 工作流、工程规范与 Engine。机械工程与复杂项目背景，16 年工业及复杂项目经验，近阶段聚焦 AI 驱动的软件工程、复杂系统实现与生产交付。</p>
+        <p>能够贯通从需求拆解、领域抽象、系统架构、前后端开发、设备与 API 集成、状态机设计、测试、部署、异常恢复到工程资产沉淀的完整链路。核心优势不是单点写页面或单点接硬件，而是能借助 AI 在复杂业务领域中，把业务流程、设备信号、遗留系统、前后端系统、终端交互、部署脚本和异常恢复机制收口为一个可运行、可审查、可交付、可复用的系统。</p>
+      </section>
+
+      <section>
+        <h2>核心竞争力</h2>
+        <ul>
+          <li><strong>AI 驱动的陌生领域进入与领域抽象能力</strong>：用 AI Coding Agent 阅读业务文档、接口说明、遗留源码、设备协议和现场约束，输出术语表、领域对象、调用拓扑、接口清单、状态机、风险矩阵和实施计划，再进入编码。</li>
+          <li><strong>AI Coding 与复杂系统实现能力</strong>：在明确边界内让 AI Agent 负责搜索、理解、生成、审查和文档整理，人负责目标、边界、架构、风险和最终验收，贯通前后端、设备接入、数据持久化和部署交付。</li>
+          <li><strong>Agent 工作流设计与 Context Engineering</strong>：为 AI Agent 建立上下文、读取顺序、阶段状态、交付物和门禁，把多模型规划、实现、审查、修复和验收编排为可追踪的工作流。</li>
+          <li><strong>API、设备与遗留系统集成</strong>：接入 PLC、机器人、人脸终端、读卡器、喷码器等真实设备，以及 Java / Vue 遗留系统，处理协议差异、接口不稳定、并发冲突和调试边界问题。</li>
+          <li><strong>生产工程交付：状态机、测试、部署和异常恢复</strong>：熟悉 Windows 工控机环境下的原生服务化部署、Nginx、NSSM、PowerShell、离线发布、完整性校验、版本激活、失败回滚、健康检查和异常文件修复。</li>
+          <li><strong>将项目经验抽象成可复用工程资产</strong>：把一次性交付继续抽象为规范、模板、Skills、Adapters、检查清单和多模型审查工作流，让后续人员和 AI Agent 更容易接手。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>核心技术</h2>
+        <div class="resume-tech-grid">
+          <div>
+            <h4>AI 工程</h4>
+            <p>AI Coding Agent、Prompt / Context Engineering、多模型规划、审查与修复、Agent Workflow、RAG 原型、API 编排、结构化输出</p>
+          </div>
+          <div>
+            <h4>软件工程</h4>
+            <p>Python、TypeScript、JavaScript、Java、React、Vue、Node.js、Fastify、Spring Boot、FastAPI、SQL</p>
+          </div>
+          <div>
+            <h4>系统与集成</h4>
+            <p>WebSocket、PostgreSQL、MySQL、SQLite、Redis、状态机、任务队列、Adapter、进程隔离、Windows 部署</p>
+          </div>
+          <div>
+            <h4>真实设备场景</h4>
+            <p>PLC、机器人、人脸终端、读卡器、喷码器、Android Kiosk、工业 HMI</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>重点项目</h2>
+
+        <article class="resume-project">
+          <h3>1. SimpleHmi_WEILI：AI-first 工程规范</h3>
+          <p class="resume-meta">维护者 / 工程抽象｜2026.04 - 至今</p>
+          <p>开源仓库：<a href="https://github.com/lx00018310/SimpleHmi_WEILI">github.com/lx00018310/SimpleHmi_WEILI</a></p>
+          <p>从数字月台和机器人产线两个真实复杂项目中提取工程经验，沉淀为一套 AI-first 工业 HMI / 控制系统工程规范。它面向不懂代码但能描述现场需求的人，约束 AI 如何读取上下文、选择技术栈、规划系统、接入设备、执行测试、部署和提交验收证据，生成可运行、可部署、可验收的工业现场系统。</p>
+          <h4>核心工作</h4>
+          <ul>
+            <li>设计 AI Agent 的上下文入口与读取顺序（START_HERE → AGENTS → SIMPLE_HMI → ENGINES → WEILI_LADDER → docs/00_INDEX）。</li>
+            <li>把"真实现场优先、主链路优先、默认禁止 Mock、完成必须有证据"固化为可检查、可拦截的规则。</li>
+            <li>约束 AI 默认使用 React、TypeScript、Vite、Node.js、Fastify 等轻量技术栈。</li>
+            <li>提供需求澄清、架构规划、接口契约、设备接入、配置、验收等模板和门禁清单。</li>
+            <li>提供最小可运行样板 examples/minimal-hmi-system。</li>
+          </ul>
+          <h4>AI 如何参与</h4>
+          <p>AI Agent 是这套规范的执行对象。AI 按规范读取上下文、先规划再编码、生成前后端与设备 Adapter、出错时按自修复规范搜索定位修改复测，最终输出验收证据。</p>
+          <h4>可复用沉淀</h4>
+          <p>AI-first 工程规范、AI Agent 上下文与读取顺序、技术栈边界约束、No Mock 生产门禁、验收门禁清单、自修复流程、最小可运行样板。</p>
+          <span class="resume-status">已完成规范主体、模板、检查清单和最小可运行样板</span>
+        </article>
+
+        <article class="resume-project">
+          <h3>2. 数字月台：AI 工程落地案例</h3>
+          <p class="resume-meta">核心开发 / 系统集成｜2026.03 - 至今</p>
+          <p>面向工厂自动装车与数字月台场景，建设由公共工控机、12 台触摸屏 HMI、PLC、调度系统、人脸识别终端和局域网发布系统组成的工业边缘中控系统。</p>
+          <h4>核心工作</h4>
+          <ul>
+            <li>HMI 前端与角色分层：React / TypeScript / Vite 构建竖屏全屏 HMI，12 台触摸屏前端，操作工、主管、维护人员不同权限层级。</li>
+            <li>Node.js / Fastify / WebSocket 中控后端：月台状态存储、任务状态流转、事件总线、实时推送、关键运行态持久化。</li>
+            <li>PLC 点位与网关链路：SLMP 3E PLC 网关，PLC 独占排队锁防止并发写冲突。</li>
+            <li>人脸 ISUP 服务联调：Python + 海康 ISUP 5.0 SDK 独立进程隔离，防 SDK 崩溃株连。</li>
+            <li>HMI Agent / 部署控制 / 版本回滚：.wrelease 不可变发布包，任一节点失败全网回滚，中断时间 < 90 秒。</li>
+            <li>Windows 服务化、自愈脚本：NSSM 两级服务守护、崩溃重启、死锁自愈、异常文件修复。</li>
+          </ul>
+          <h4>AI 如何参与</h4>
+          <p>借助 AI 快速进入自动装车、AGV 调度、三菱 PLC、海康 ISUP C++ SDK 等陌生领域；AI 阅读归纳资料、建立系统边界、生成接口与设备拓扑、协助设计状态机、辅助代码生成、执行一致性审查、生成测试和联调计划、整理部署与排障 SOP。</p>
+          <h4>可复用沉淀</h4>
+          <p>HMI Agent、.wrelease 版本包、部署控制器、Adapter 模式、PLC 独占队列、状态机模板、健康检查、发布回滚门禁、部署和故障排查 SOP。</p>
+          <span class="resume-status">已完成主要软件链路 · 已完成本机集成验证 · 已完成真实链路 MVP · 正在现场联调 · 待现场验收</span>
+        </article>
+
+        <article class="resume-project">
+          <h3>3. 机器人产线：AI 驱动遗留系统改造</h3>
+          <p class="resume-meta">核心开发 / 设备联调｜2026.03 - 至今</p>
+          <p>面向自动化餐饮 / 展陈式产线场景，建设由工控机后端、操作员控制屏、PLC、读卡器、喷码器和送餐机器人组成的现场流程编排系统，完成从刷卡、选味、掉桶、喷码、产线流转到机器人取餐、送餐、返程的完整闭环。</p>
+          <h4>核心工作</h4>
+          <ul>
+            <li>基于 Spring Boot、Vue 和 MySQL 收口刷卡选味、生产状态、组垛、喷码、机器人调度和异常复位流程。</li>
+            <li>设计业务状态机，将各环节串联为可追踪流程。</li>
+            <li>封装 PLC、机器人、喷码器和读卡器接入层，处理协议差异和接口不稳定。</li>
+            <li>建设本地独占读卡服务，避免进程竞争串口 / HID 设备。</li>
+            <li>开发 Android 机器人 Kiosk 与本地 HTTP 控制服务。</li>
+            <li>定位并解决机器人 API 阻塞和状态卡顿问题。</li>
+            <li>建设硬件模拟调试面板与机器人调试 API，分层验证设备链路。</li>
+            <li>推进生产配置收敛，区分 dev / prod 环境。</li>
+          </ul>
+          <h4>AI 如何参与</h4>
+          <p>借助 AI 快速阅读 Java / Spring Boot / Vue 遗留仓库，生成类、函数、API、数据库和设备调用拓扑；AI 对照文档、前端、后端和真实设备执行一致性审查，定位阻塞链路，辅助拆分状态机和设备 Adapter，生成修复计划与复测清单。</p>
+          <h4>可复用沉淀</h4>
+          <p>设备 Adapter、独占读卡服务、串行任务队列、状态缓存、硬件模拟面板、调试 API、配置和启动脚本规范。</p>
+          <span class="resume-status">已完成主要流程 · 已完成单机测试 · 正在现场联调 · 待现场验收</span>
+        </article>
+
+        <article class="resume-project">
+          <h3>4. 企业 AI 工具与多模型工作流</h3>
+          <p class="resume-meta">AI 辅助开发 / 内部工具 / 工程规范沉淀｜2026.03 - 至今</p>
+          <ul>
+            <li>使用 AI Coding 工具辅助需求拆解、代码生成、接口梳理、联调 SOP、测试计划、异常排查和项目文档沉淀。</li>
+            <li>开发 OCR 半自动预标、AI 辅助制图、企业飞书机器人等内部工具，将知识检索、API 编排与人工复核组合为可执行工作流。</li>
+            <li>建设前后端公共模板和开发规范，将设备适配、调试隔离、运行时配置、健康检查、部署脚本沉淀为可复用资产。</li>
+            <li>探索 RAG / 知识库能力，管理协议文档、设备手册、PLC 点位、联调记录和项目 SOP。</li>
+            <li>实践多模型协作流程：规划、实现、审查、修复和验收由不同阶段承担。</li>
+          </ul>
+          <h4>AI 如何参与</h4>
+          <p>AI 是工具链的主要执行者，负责资料检索、代码生成、文档整理和一致性审查；人负责工作流编排、结果复核和生产边界控制。</p>
+          <h4>可复用沉淀</h4>
+          <p>多模型协作流程、风险分级、完成定义、RAG / 知识库原型、公共模板与开发规范。</p>
+          <span class="resume-status">已完成多个内部工具与工作流原型，持续迭代</span>
+        </article>
+      </section>
+
+      <section>
+        <h2>工作经历</h2>
+        <h3>浙江维力智能装备有限公司｜AI 应用工程师 / 工业边缘应用开发｜2026 - 至今</h3>
+        <ul>
+          <li>负责工业智能终端、机器人协同、设备接入、AI 工具和部署系统开发。</li>
+          <li>参与公司工业前后端统一技术栈建设，形成"公共内核 + 业务配置 / 设备适配层"的复用方式。</li>
+          <li>主导或深度参与数字月台多 HMI 协同系统、智能餐饮产线与送餐机器人协同系统等项目。</li>
+          <li>通过 AI Coding、工程文档、自动化脚本和规范化进度记录，提高需求拆解、开发验证、问题排查和知识沉淀效率。</li>
+          <li>将项目经验抽象为 SimpleHmi_WEILI 开源工程规范，验证 AI 驱动的复杂系统工程化落地能力。</li>
+        </ul>
+        <h3>浙江先秦科技有限公司｜新业务负责人｜2020 - 2025</h3>
+        <ul>
+          <li>负责新业务策划、资源协调、方案设计与项目落地，推进多个创新项目从 0 到 1。</li>
+          <li>长期承担客户需求理解、方案表达、跨团队协调、资源整合和交付推进工作，为后续 AI 工程项目中的需求拆解、项目统筹和现场沟通打下基础。</li>
+          <li>参与 AI 方向、数字化工具和新业务模式探索，形成从业务目标倒推产品方案和落地路径的能力。</li>
+        </ul>
+        <h3>浙江拾方旅游发展有限公司｜项目负责人｜2017 - 2020</h3>
+        <ul>
+          <li>负责大型文旅项目方案策划、项目统筹、客户沟通和跨团队协作。</li>
+          <li>积累复杂项目推进、节点管理、资源协调和交付复盘经验。</li>
+          <li>形成较强的方案结构化表达、项目风险识别和多方协同能力，可迁移到 AI 工程项目推进与客户沟通。</li>
+        </ul>
+        <h3>机械制造企业｜机械工程师｜2010 - 2017</h3>
+        <ul>
+          <li>从事工业产品结构设计、制造工艺、现场问题处理和工程落地。</li>
+          <li>熟悉机械结构、加工装配、生产现场和设备实施逻辑，能够理解复杂项目中的硬件约束、空间约束、安全边界和现场操作习惯。</li>
+          <li>具备从机械现场转向 AI 驱动软件开发、设备集成和复杂系统应用的复合背景。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>教育背景</h2>
+        <p><strong>华北电力大学（211）｜机械设计制造及其自动化｜本科｜2006 - 2010</strong></p>
+      </section>
+
+      <section>
+        <h2>个人关键词</h2>
+        <div class="resume-keywords">
+          <span>AI 应用工程师</span>
+          <span>AI Coding</span>
+          <span>Agent 工作流</span>
+          <span>Context Engineering</span>
+          <span>AI 工程化落地</span>
+          <span>复杂系统开发</span>
+          <span>系统集成</span>
+          <span>生产交付</span>
+          <span>状态机</span>
+          <span>SimpleHmi_WEILI</span>
+          <span>工业边缘（次级）</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="resume-footer">
+      <p>董达｜AI 应用工程师｜AI 驱动软件工程与复杂系统落地｜Agent 工作流与工程规范</p>
+    </footer>
+  </body>
 </html>

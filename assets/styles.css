@@ -480,6 +480,14 @@ h3 {
   color: var(--white);
 }
 
+.panel--dark h3 {
+  color: var(--white);
+}
+
+.panel--dark li {
+  color: var(--white);
+}
+
 .poster-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

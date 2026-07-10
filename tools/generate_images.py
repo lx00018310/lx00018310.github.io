@@ -7,8 +7,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-IMG_DIR = ROOT / "assets" / "images"
-POSTER_DIR = ROOT / "assets" / "posters"
+IMG_DIR = ROOT / "docs" / "assets" / "images"
+POSTER_DIR = ROOT / "docs" / "assets" / "posters"
 
 FONT_REG = Path(r"C:\Windows\Fonts\msyh.ttc")
 FONT_BOLD = Path(r"C:\Windows\Fonts\msyhbd.ttc")

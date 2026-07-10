@@ -14,99 +14,104 @@
 
 | 页面 | 文件 | 说明 |
 | --- | --- | --- |
-| 作品集首页 | `index.html` | AI 应用工程师定位、能力总览、AI 工程闭环、核心开源项目、真实案例 |
-| AI 工程方法 | `ai-engineering.html` | 结构化上下文、阶段状态、交付物、门禁、多模型协作、风险分级、完成定义 |
-| SimpleHmi_WEILI | `simplehmi-weili.html` | AI-first 工程规范、核心路径、仓库入口、最小样板、失败模式 |
-| 数字月台案例 | `digital-dock.html` | AI 工程落地案例、系统架构、五张核心图谱、关键问题与解决方案 |
-| 机器人产线案例 | `robot-line.html` | AI 驱动遗留系统改造、设备调用拓扑、状态机、设备 Adapter |
-| 在线简历 | `assets/resume.html` | A4 打印友好的在线简历页面 |
-| Markdown 简历 | `assets/resume.md` | AI 应用工程师中文简历 |
-| 英文简历 | `assets/resume_en.md` | AI Application Engineer 英文简历 |
-| PDF 简历 | `assets/resume.pdf` | PDF 版简历（由用户提供，勿修改） |
-| AI 可读简介 | `ai-profile.md` | 结构化个人简介、关键词、权威链接和准确性说明 |
+| 作品集首页 | `docs/index.html` | AI 应用工程师定位、能力总览、AI 工程闭环、核心开源项目、真实案例 |
+| AI 工程方法 | `docs/ai-engineering.html` | 结构化上下文、阶段状态、交付物、门禁、多模型协作、风险分级、完成定义 |
+| SimpleHmi_WEILI | `docs/simplehmi-weili.html` | AI-first 工程规范、核心路径、仓库入口、最小样板、失败模式 |
+| 数字月台案例 | `docs/digital-dock.html` | AI 工程落地案例、系统架构、五张核心图谱、关键问题与解决方案 |
+| 机器人产线案例 | `docs/robot-line.html` | AI 驱动遗留系统改造、设备调用拓扑、状态机、设备 Adapter |
+| 在线简历 | `docs/assets/resume.html` | A4 打印友好的在线简历页面 |
+| Markdown 简历 | `docs/assets/resume.md` | AI 应用工程师中文简历 |
+| 英文简历 | `docs/assets/resume_en.md` | AI Application Engineer 英文简历 |
+| PDF 简历 | `docs/assets/resume.pdf` | PDF 版简历（由用户提供，勿修改） |
+| AI 可读简介 | `docs/ai-profile.md` | 结构化个人简介、关键词、权威链接和准确性说明 |
 
 ## 事实来源
 
 本作品集的事实来源按优先级排列：
 
-1. `llms.txt`：AI 助手优先读取的项目、简历和开源项目摘要。
-2. `ai-profile.md`：董达的结构化个人简介、搜索短语和准确性说明。
-3. `assets/resume.md` / `assets/resume.html` / `assets/resume_en.md`：最新简历内容。
-4. `simplehmi-weili.html` / `digital-dock.html` / `robot-line.html`：项目页详细内容。
-5. `ai-engineering.html`：AI 工程方法详细说明。
+1. `docs/llms.txt`：AI 助手优先读取的项目、简历和开源项目摘要。
+2. `docs/ai-profile.md`：董达的结构化个人简介、搜索短语和准确性说明。
+3. `docs/assets/resume.md` / `docs/assets/resume.html` / `docs/assets/resume_en.md`：最新简历内容。
+4. `docs/simplehmi-weili.html` / `docs/digital-dock.html` / `docs/robot-line.html`：项目页详细内容。
+5. `docs/ai-engineering.html`：AI 工程方法详细说明。
 
 ## GEO / AI 搜索入口
 
 本仓库已加入面向 AI 搜索与答案引擎的机器可读入口：
 
-- `llms.txt`：AI 助手优先读取的项目、简历和开源项目摘要，包含推荐读取顺序。
-- `ai-profile.md`：董达 / Dong Da 的结构化个人简介、关键词和权威链接。
-- `robots.txt`：允许搜索引擎抓取，并指向 sitemap。
-- `sitemap.xml`：列出首页、AI 工程方法页、项目页、Markdown / HTML / PDF 简历。
+- `docs/llms.txt`：AI 助手优先读取的项目、简历和开源项目摘要，包含推荐读取顺序。
+- `docs/ai-profile.md`：董达 / Dong Da 的结构化个人简介、关键词和权威链接。
+- `docs/robots.txt`：允许搜索引擎抓取，并指向 sitemap。
+- `docs/sitemap.xml`：列出首页、AI 工程方法页、项目页、Markdown / HTML / PDF 简历。
 - HTML 页面的 `canonical`、OpenGraph、Twitter Card 和 JSON-LD 结构化数据。
 
 ## 文件结构
 
 ```text
 AI作品集/
-├── index.html
-├── ai-engineering.html
-├── simplehmi-weili.html
-├── digital-dock.html
-├── robot-line.html
-├── llms.txt
-├── ai-profile.md
-├── robots.txt
-├── sitemap.xml
-├── assets/
-│   ├── styles.css
-│   ├── resume.md
-│   ├── resume.html
-│   ├── resume_en.md
-│   ├── resume.pdf
-│   ├── images/
-│   │   ├── hero-industrial-edge.png
-│   │   └── simplehmi-weili-demo.png
-│   └── posters/
-│       ├── 01_industrial_edge_profile.png
-│       ├── 02_task013_digital_dock.png
-│       ├── 03_task010_robot_line.png
-│       └── 04_ai_engineering_workflow.png
-├── tools/
-│   └── generate_images.py
-└── .nojekyll
+├── README.md
+├── docs/
+│   ├── index.html
+│   ├── ai-engineering.html
+│   ├── simplehmi-weili.html
+│   ├── digital-dock.html
+│   ├── robot-line.html
+│   ├── llms.txt
+│   ├── ai-profile.md
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   ├── .nojekyll
+│   ├── assets/
+│   │   ├── styles.css
+│   │   ├── resume.md
+│   │   ├── resume.html
+│   │   ├── resume_en.md
+│   │   ├── resume.pdf
+│   │   ├── images/
+│   │   │   ├── hero-industrial-edge.png
+│   │   │   └── simplehmi-weili-demo.png
+│   │   └── posters/
+│   │       ├── 01_industrial_edge_profile.png
+│   │       ├── 02_task013_digital_dock.png
+│   │       ├── 03_task010_robot_line.png
+│   │       └── 04_ai_engineering_workflow.png
+└── tools/
+    ├── generate_images.py
+    └── md_to_pdf.py
 ```
 
 ### 文件结构说明
 
 | 文件 | 说明 |
 | --- | --- |
-| `index.html` | AI 应用工程师主页 |
-| `ai-engineering.html` | AI 工程方法与多模型工作流 |
-| `simplehmi-weili.html` | 核心开源项目 |
-| `digital-dock.html` | 数字月台 AI 工程落地案例 |
-| `robot-line.html` | 机器人产线遗留系统改造案例 |
-| `assets/resume.html` | A4 打印友好的在线简历页面 |
-| `assets/resume.md` | AI 应用工程师中文简历 |
-| `assets/resume_en.md` | AI Application Engineer 英文简历 |
-| `assets/resume.pdf` | PDF 版简历（由用户提供，勿修改） |
+| `docs/index.html` | AI 应用工程师主页 |
+| `docs/ai-engineering.html` | AI 工程方法与多模型工作流 |
+| `docs/simplehmi-weili.html` | 核心开源项目 |
+| `docs/digital-dock.html` | 数字月台 AI 工程落地案例 |
+| `docs/robot-line.html` | 机器人产线遗留系统改造案例 |
+| `docs/assets/resume.html` | A4 打印友好的在线简历页面 |
+| `docs/assets/resume.md` | AI 应用工程师中文简历 |
+| `docs/assets/resume_en.md` | AI Application Engineer 英文简历 |
+| `docs/assets/resume.pdf` | PDF 版简历（由用户提供，勿修改） |
 
 ## 本地预览
 
 在项目根目录启动一个简单的 HTTP 服务器：
 
 ```powershell
-python -m http.server 8000
+python -m http.server 8000 --directory docs
 ```
 
 然后访问 `http://localhost:8000/`。
 
 ## 部署方式
 
-1. 将 `AI作品集` 目录内容提交到 GitHub 仓库。
-2. 在仓库 `Settings -> Pages` 中选择部署分支。
-3. 如果放在仓库根目录，直接访问 GitHub Pages 地址。
-4. 如果放在子目录，需要让 Pages 指向该目录，或把本目录内容复制到发布根目录。
+1. 将仓库内容提交到 GitHub。
+2. 在仓库 `Settings -> Pages` 中选择 `Source: Deploy from a branch`。
+3. 选择 `main` 分支，文件夹选择 `docs`。
+4. 保存后等待 1-2 分钟，访问 GitHub Pages 地址即可。
+
+`docs/.nojekyll` 文件确保 GitHub Pages 跳过 Jekyll 处理，直接以静态文件方式部署。
 
 ## 脱敏规则
 

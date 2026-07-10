@@ -138,6 +138,6 @@ def convert_md_to_pdf(md_path, pdf_path):
 
 if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    md_path = os.path.join(base_dir, "assets", "resume.md")
-    pdf_path = os.path.join(base_dir, "assets", "resume.pdf")
+    md_path = os.path.join(base_dir, "docs", "assets", "resume.md")
+    pdf_path = os.path.join(base_dir, "docs", "assets", "resume.pdf")
     convert_md_to_pdf(md_path, pdf_path)

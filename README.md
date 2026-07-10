@@ -1,6 +1,8 @@
 # 董达｜AI 应用工程师作品集
 
-这是一个可直接部署到 GitHub Pages 的静态作品集，展示 AI 驱动的跨领域学习、复杂系统实现、生产交付、多模型协作与工程资产抽象能力。
+本仓库是董达的 AI 应用工程师个人作品集，是一个可直接部署到 GitHub Pages 的静态站点，展示 AI 驱动的跨领域学习、复杂系统实现、生产交付、多模型协作与工程资产抽象能力。
+
+工业边缘、HMI、PLC、机器人和智能设备，是当前作品集中最主要的高约束工程验证场景，但网站的第一职业定位是 AI 应用工程师。
 
 ## 站点定位
 
@@ -75,6 +77,20 @@ AI作品集/
 └── .nojekyll
 ```
 
+### 文件结构说明
+
+| 文件 | 说明 |
+| --- | --- |
+| `index.html` | AI 应用工程师主页 |
+| `ai-engineering.html` | AI 工程方法与多模型工作流 |
+| `simplehmi-weili.html` | 核心开源项目 |
+| `digital-dock.html` | 数字月台 AI 工程落地案例 |
+| `robot-line.html` | 机器人产线遗留系统改造案例 |
+| `assets/resume.html` | A4 打印友好的在线简历页面 |
+| `assets/resume.md` | AI 应用工程师中文简历 |
+| `assets/resume_en.md` | AI Application Engineer 英文简历 |
+| `assets/resume.pdf` | PDF 版简历（由用户提供，勿修改） |
+
 ## 本地预览
 
 在项目根目录启动一个简单的 HTTP 服务器：
@@ -94,7 +110,7 @@ python -m http.server 8000
 
 ## 脱敏规则
 
-当前版本已脱敏，不包含内部 IP、令牌、PLC 点位表、客户原始布局图和源码截图。
+公开版本不包含客户内部 IP、账号、Token、密钥、生产端口、真实设备配置和未脱敏日志。
 
 需要修改文案或重新生成图片时，运行：
 
@@ -103,3 +119,7 @@ python .\tools\generate_images.py
 ```
 
 生成脚本会输出 hero 图和四张项目海报（`1080 x 1920` PNG）。
+
+---
+
+更新日期: 2026-07-10

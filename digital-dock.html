@@ -134,7 +134,10 @@
           <p class="eyebrow">Core Case 01</p>
           <h1 id="task013-title">数字月台工业边缘中控与 12 台 HMI 协同系统</h1>
           <p>
-            面向工厂自动装车与数字月台场景，系统由 1 台公共工控机、12 台触摸屏 HMI（192.168.37.51–.62）、12 台月台 PLC（FX5U，SLMP协议）、AGV 调度系统、12 台海康人脸识别终端（ISUP 5.0）和局域网版本控制系统组成，现场 40 台联网设备，子网 192.168.37.0/24。
+            面向工厂自动装车与数字月台场景，系统由 1 台公共工控机、12 台触摸屏 HMI、12 台月台 PLC（FX5U，SLMP协议）、AGV 调度系统、12 台海康人脸识别终端（ISUP 5.0）和局域网版本控制系统组成，现场 40 台联网设备，部署于独立业务子网。
+          </p>
+          <p style="font-size:14px;color:var(--mid);margin-top:8px">
+            说明：为保护客户现场与设备安全，本页面仅展示逻辑架构，具体网络地址、设备配置、端口和生产参数已脱敏。
           </p>
         </div>
 
@@ -143,14 +146,13 @@
           <div class="diagram system-diagram" aria-label="数字月台系统架构示意">
             <div class="diagram__column">
               <span class="node node--blue">AGV 调度系统<br><small style="font-weight:400;font-size:13px">HTTP / 轮询</small></span>
-              <span class="node node--green">SLMP PLC ×12<br><small style="font-weight:400;font-size:13px">192.168.37.21–32</small></span>
+              <span class="node node--green">SLMP PLC ×12<br><small style="font-weight:400;font-size:13px">三菱 FX5U</small></span>
               <span class="node node--amber">海康 ISUP 5.0<br>人脸识别 ×12<br><small style="font-weight:400;font-size:13px">独立进程隔离</small></span>
               <span class="node node--cyan">扫码枪 / 工位<br><small style="font-weight:400;font-size:13px">TCP 独立进程</small></span>
             </div>
             <div class="flow-arrow"></div>
             <div class="node node--core">
               <strong>公共工控机中控</strong>
-              <span>192.168.37.10</span>
               <span>Node.js / Fastify 后端</span>
               <span>WebSocket 事件总线</span>
               <span>PostgreSQL 状态持久化</span>
@@ -207,7 +209,7 @@
             <span class="diagram-page__num">图谱 01 / 05</span>
             <h3 class="diagram-page__title">系统架构图</h3>
           </div>
-          <p class="diagram-page__sub">TASK-013 数字月台 — 完整节点关系，子网 192.168.37.0/24</p>
+          <p class="diagram-page__sub">TASK-013 数字月台 — 完整节点关系，独立业务子网</p>
           <div class="eng-diagram">
             <svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="font-family:'Microsoft YaHei UI',Arial,sans-serif;width:100%;height:auto">
               <rect x="0" y="0" width="780" height="520" fill="#f4f4f1"/>
@@ -229,14 +231,14 @@
               <text x="84" y="324" text-anchor="middle" font-size="11" fill="#666">TCP 独立进程</text>
               <rect x="18" y="348" width="132" height="54" fill="#fff" stroke="#000" stroke-width="2"/>
               <text x="84" y="373" text-anchor="middle" font-size="13" font-weight="900" fill="#000">零库 PLC ×1</text>
-              <text x="84" y="390" text-anchor="middle" font-size="11" fill="#666">FX5U / 37.40</text>
+              <text x="84" y="390" text-anchor="middle" font-size="11" fill="#666">FX5U</text>
               <!-- 箭头 -->
               <line x1="158" y1="260" x2="214" y2="260" stroke="#000" stroke-width="3"/>
               <polygon points="214,254 226,260 214,266" fill="#000"/>
               <!-- 中央：公共工控机 -->
               <rect x="226" y="30" width="200" height="460" fill="#000"/>
               <text x="326" y="58" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">公共工控机中控</text>
-              <text x="326" y="75" text-anchor="middle" font-size="11" fill="#aaa">192.168.37.10</text>
+              <text x="326" y="75" text-anchor="middle" font-size="11" fill="#aaa">公共中控节点</text>
               <rect x="236" y="85" width="180" height="36" fill="#333"/>
               <text x="326" y="108" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">Node.js / Fastify 后端</text>
               <rect x="236" y="129" width="180" height="36" fill="#333"/>
@@ -261,7 +263,7 @@
               <!-- 右侧：HMI 终端 -->
               <text x="559" y="48" text-anchor="middle" font-size="12" font-weight="900" fill="#000">12 台 HMI 终端</text>
               <rect x="496" y="60" width="126" height="400" fill="#fff" stroke="#000" stroke-width="2"/>
-              <text x="559" y="88" text-anchor="middle" font-size="11" fill="#666">37.51–37.62</text>
+              <text x="559" y="88" text-anchor="middle" font-size="11" fill="#666">HMI 节点 ×12</text>
               <g fill="#fff" stroke="#000" stroke-width="1">
                 <rect x="506" y="100" width="46" height="38"/><text x="529" y="124" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">01</text>
                 <rect x="560" y="100" width="46" height="38"/><text x="583" y="124" text-anchor="middle" font-size="13" font-weight="normal" fill="#000">02</text>
@@ -286,7 +288,7 @@
               <rect x="646" y="90" width="16" height="16" fill="#000"/><text x="668" y="103" font-size="10" fill="#000">中控核心节点</text>
               <rect x="646" y="114" width="16" height="16" fill="#fff" stroke="#000" stroke-width="2"/><text x="668" y="127" font-size="10" fill="#000">外围设备节点</text>
               <line x1="646" y1="146" x2="662" y2="146" stroke="#000" stroke-width="2"/><polygon points="662,142 670,146 662,150" fill="#000"/><text x="676" y="150" font-size="10" fill="#000">数据流向</text>
-              <text x="646" y="175" font-size="9" fill="#888">子网：192.168.37.0/24</text>
+              <text x="646" y="175" font-size="9" fill="#888">独立业务子网</text>
             </svg>
           </div>
         </div>
@@ -297,59 +299,59 @@
             <span class="diagram-page__num">图谱 02 / 05</span>
             <h3 class="diagram-page__title">现场部署拓扑</h3>
           </div>
-          <p class="diagram-page__sub">TASK-013 — 40 台联网设备 IP 规划与软件部署分层</p>
+          <p class="diagram-page__sub">TASK-013 — 40 台联网设备逻辑拓扑与软件部署分层</p>
           <table class="topo-table">
             <thead>
-              <tr><th>层级</th><th>设备</th><th>数量</th><th>IP 范围</th><th>运行软件</th></tr>
+              <tr><th>层级</th><th>设备</th><th>数量</th><th>逻辑节点</th><th>运行软件</th></tr>
             </thead>
             <tbody>
               <tr>
                 <td><span class="badge">中控层</span></td>
                 <td>公共工控机</td>
                 <td>1</td>
-                <td>192.168.37.10</td>
-                <td>Node.js 后端（4067）、部署控制器、PostgreSQL、Nginx 管理页、NSSM 服务守护</td>
+                <td>公共中控节点</td>
+                <td>Node.js 后端、部署控制器、PostgreSQL、Nginx 管理页、NSSM 服务守护</td>
               </tr>
               <tr>
                 <td><span class="badge">PLC 层</span></td>
                 <td>月台 PLC（FX5U）</td>
                 <td>12</td>
-                <td>192.168.37.21–32</td>
+                <td>PLC 节点 ×12</td>
                 <td>SLMP 协议通讯，PLC 独占排队锁由后端管理</td>
               </tr>
               <tr>
                 <td><span class="badge">PLC 层</span></td>
                 <td>零库 PLC（FX5U）</td>
                 <td>1</td>
-                <td>192.168.37.40</td>
+                <td>零库 PLC 节点</td>
                 <td>SLMP 协议通讯</td>
               </tr>
               <tr>
                 <td><span class="badge">HMI 层</span></td>
                 <td>十寸触控一体机</td>
                 <td>12</td>
-                <td>192.168.37.51–62</td>
-                <td>HMI Agent（PowerShell）、Nginx（反代 37.10:4067）、Edge Kiosk 模式、HMI Bootstrap（SYSTEM 自启）</td>
+                <td>HMI 节点 ×12</td>
+                <td>HMI Agent（PowerShell）、Nginx 反代、Edge Kiosk 模式、HMI Bootstrap（SYSTEM 自启）</td>
               </tr>
               <tr>
                 <td><span class="badge">识别层</span></td>
                 <td>海康人脸识别终端</td>
                 <td>12</td>
-                <td>192.168.37.71–82</td>
+                <td>人脸终端 ×12</td>
                 <td>ISUP 5.0 协议，后端独立进程接入（防 SDK 株连）</td>
               </tr>
               <tr>
                 <td><span class="badge">电控层</span></td>
                 <td>电气控制触摸屏</td>
                 <td>2</td>
-                <td>192.168.37.91–92</td>
+                <td>电气控制节点 ×2</td>
                 <td>电气控制面板（独立硬件）</td>
               </tr>
             </tbody>
           </table>
           <div style="margin-top:22px;padding:16px;background:var(--soft);border:2px solid var(--black)">
             <strong style="font-size:15px">HMI 零配置部署原理</strong>
-            <p style="font-size:14px;color:var(--dark);margin:10px 0 0">HMI 前端使用同源路径（/api、/ws），由本地 Nginx 代理到公共机 192.168.37.10:4067。HMI 不存储后端地址，宿主 IP 变更时只需更新 Nginx 配置，前端无需重新构建或修改。</p>
+            <p style="font-size:14px;color:var(--dark);margin:10px 0 0">HMI 前端使用同源路径（/api、/ws），由本地 Nginx 反代到公共中控节点。HMI 不存储后端地址，宿主变更时只需更新 Nginx 配置，前端无需重新构建或修改。</p>
           </div>
         </div>
 
@@ -433,7 +435,7 @@
             </div>
           </div>
           <div style="margin-top:16px;padding:14px;background:var(--soft);border:2px solid var(--black);font-size:14px;color:var(--dark)">
-            <strong>HMI Bootstrap 兜底：</strong>以 SYSTEM 身份随系统启动，每 30 秒检查 Agent 文件、配置、进程和计划任务；Agent 损坏或缺失时从 C:\WeiliHmi\bootstrap\payload 本地可信副本自动恢复，不依赖网络或控制器。
+            <strong>HMI Bootstrap 兜底：</strong>以 SYSTEM 身份随系统启动，每 30 秒检查 Agent 文件、配置、进程和计划任务；Agent 损坏或缺失时从本地可信副本自动恢复，不依赖网络或控制器。
           </div>
         </div>
 
@@ -529,7 +531,7 @@
               <span class="qa-key">问题</span>
               <span class="qa-val">三菱 FX5U PLC 内部以太网控制芯片并发连接数极其有限；若配置缺失后端仍启动并轮询，会产生无效并发 TCP 连接，导致 PLC 通讯端口过载，进而造成写指令丢失，引发安全事故。</span>
               <span class="qa-key">处理</span>
-              <span class="qa-val">后端启动阶段对 PLC 点位映射表（260512_PLC点位映射表.csv）进行完整性校验；配置缺失或格式错误时拒绝启动并输出明确错误日志，不进入监听状态；同时设计 PLC 独占排队锁，保证读写串行，防止并发冲突。</span>
+              <span class="qa-val">后端启动阶段对 PLC 点位映射表进行完整性校验；配置缺失或格式错误时拒绝启动并输出明确错误日志，不进入监听状态；同时设计 PLC 独占排队锁，保证读写串行，防止并发冲突。</span>
               <span class="qa-key">结果</span>
               <span class="qa-val">配置错误在上线前即被拦截；生产环境中 PLC 通讯冲突次数降为零。</span>
             </div>

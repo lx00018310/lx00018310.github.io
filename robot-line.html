@@ -108,7 +108,7 @@
           <p class="eyebrow">Supplement Case 02</p>
           <h1 id="task010-title">自动化餐饮产线与送餐机器人协同控制系统</h1>
           <p>
-            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程，前端 Vue + 后端 Node.js。
+            面向自动化餐饮 / 展陈式产线场景，系统串联刷卡器、选味屏、PLC、喷码器、产线状态机、机器人取餐送餐和返程。原业务系统为 Java / Spring Boot / Vue / MySQL，设备与机器人控制侧为独立本地控制服务和 Android Kiosk。
           </p>
         </div>
         <div class="process-strip" aria-label="餐饮产线流程">
@@ -139,7 +139,28 @@
         </div>
       </section>
 
-    </main>
+      <!-- ══ 个人交付 ══ -->
+      <section class="section" id="personal-delivery" aria-labelledby="delivery-title">
+        <div class="section__header">
+          <p class="eyebrow">Personal Delivery</p>
+          <h2 id="delivery-title">个人交付内容</h2>
+        </div>
+        <div class="panel">
+          <div class="contrib-grid">
+            <div class="contrib-item">遗留系统审计与调用拓扑生成</div>
+            <div class="contrib-item">业务状态机设计与拆分</div>
+            <div class="contrib-item">设备 Adapter（PLC / 读卡器 / 喷码器 / 机器人）</div>
+            <div class="contrib-item">独占读卡服务设计</div>
+            <div class="contrib-item">机器人串行任务队列</div>
+            <div class="contrib-item">状态缓存与异常恢复</div>
+            <div class="contrib-item">硬件模拟调试面板与调试 API</div>
+            <div class="contrib-item">生产配置收口与部署说明</div>
+          </div>
+          <p style="margin-top:16px;font-size:15px;color:var(--mid)">
+            其中遗留系统基于 Spring Boot / Vue，设备控制侧为独立本地服务；部分工作与现场团队协作完成。
+          </p>
+        </div>
+      </section>
 
     <footer class="site-footer">
       <span>董达｜AI 应用工程师</span>

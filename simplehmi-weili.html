@@ -323,6 +323,32 @@
         </div>
       </section>
 
+      <!-- ══ 抽象来源 ══ -->
+      <section class="section" id="abstraction-source" aria-labelledby="abstraction-source-title">
+        <div class="section__header">
+          <p class="eyebrow">Abstraction Source</p>
+          <h2 id="abstraction-source-title">这些规则从哪里来</h2>
+        </div>
+        <div class="panel">
+          <p>
+            SimpleHmi_WEILI 不是先写规范再寻找应用场景，而是从两个真实项目中的失败、修复、部署和联调经验中，逐步提取公共模式。
+          </p>
+          <div class="grid grid--2" style="margin-top:20px">
+            <div class="tile">
+              <h3>TASK-013 数字月台</h3>
+              <p>多终端协同、PLC 并发写保护、SDK 进程隔离、版本发布回滚、Windows 服务自愈等真实问题。</p>
+            </div>
+            <div class="tile">
+              <h3>TASK-010 智能餐饮机器人产线</h3>
+              <p>遗留系统阅读、设备 Adapter 拆分、串行任务队列、状态缓存、硬件模拟面板等真实问题。</p>
+            </div>
+          </div>
+          <p style="margin-top:16px;font-size:15px;color:var(--mid)">
+            规范的每一条约束，都对应着现场联调中真实踩过的坑——Mock 冒充真实、配置写死、部署不可回滚、验收没有证据。
+          </p>
+        </div>
+      </section>
+
       <section class="section" id="proves" aria-labelledby="proves-title">
         <div class="section__header">
           <p class="eyebrow">What It Proves</p>

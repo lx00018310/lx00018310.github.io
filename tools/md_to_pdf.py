@@ -13,7 +13,7 @@ def convert_md_to_pdf(md_path, pdf_path):
     <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
-        <title>董达｜AI 应用工程师简历</title>
+        <title>董达｜AI 智能自动化工程师简历</title>
     </head>
     <body>
         {html_content}
@@ -26,7 +26,7 @@ def convert_md_to_pdf(md_path, pdf_path):
             size: A4;
             margin: 2cm 2.2cm;
             @top-center {
-                content: "董达｜AI 应用工程师";
+                content: "董达｜AI 智能自动化工程师";
                 font-family: "Microsoft YaHei", sans-serif;
                 font-size: 10px;
                 color: #666;

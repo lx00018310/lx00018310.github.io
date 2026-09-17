@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" width="100%" height="100%" role="img" aria-label="SimpleHmi 规范交付路径">
+  <rect width="720" height="180" fill="#FAFCFD" rx="12"/>
+  <rect x="10" y="10" width="700" height="160" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+
+  <text x="24" y="32" font-family="sans-serif" font-size="14" font-weight="700" fill="#0F172A">SimpleHmi：从需求到可检查工业界面的规范路径</text>
+
+  <g transform="translate(24, 48)">
+    <rect width="144" height="76" rx="6" fill="#FAF5FF" stroke="#E2E8F0"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">1. 需求卡片输入</text>
+    <text x="12" y="44" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F172A">工位与操作约束</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="10.5" fill="#475569">状态定义 / 交互红线</text>
+  </g>
+
+  <path d="M 174 86 L 196 86" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="196,86 188,82 188,90" fill="#D946EF"/>
+
+  <g transform="translate(198, 48)">
+    <rect width="148" height="76" rx="6" fill="#FAF5FF" stroke="#E2E8F0"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">2. 协议与状态机</text>
+    <text x="12" y="44" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F172A">WebSocket 消息体</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="10.5" fill="#475569">统一数据包格式与心跳</text>
+  </g>
+
+  <path d="M 352 86 L 374 86" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="374,86 366,82 366,90" fill="#D946EF"/>
+
+  <g transform="translate(376, 48)">
+    <rect width="148" height="76" rx="6" fill="#FDF4FF" stroke="#D946EF"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">3. 开源样板实现</text>
+    <text x="12" y="44" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F172A">React + TS 界面</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="10.5" fill="#475569">工业触屏组件范例</text>
+  </g>
+
+  <path d="M 530 86 L 552 86" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="552,86 544,82 544,90" fill="#D946EF"/>
+
+  <g transform="translate(554, 48)">
+    <rect width="142" height="76" rx="6" fill="#FAF5FF" stroke="#E2E8F0"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">4. 检查与交付</text>
+    <text x="12" y="44" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F172A">设计规范自检</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="10.5" fill="#475569">交付文档与开箱即用</text>
+  </g>
+
+  <text x="360" y="152" font-family="sans-serif" font-size="11" fill="#64748B" text-anchor="middle">工业软件轻量化原型规范 ｜ 代码开源于 GitHub</text>
+</svg>

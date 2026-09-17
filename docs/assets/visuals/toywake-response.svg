@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="100%" height="100%" role="img" aria-label="ToyWake 后端适配与平滑降级流程">
+  <rect width="720" height="260" fill="#FAFCFD" rx="12"/>
+  <rect x="10" y="10" width="700" height="240" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+
+  <text x="24" y="34" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">后端模型接口适配与双层降级机制</text>
+
+  <!-- 客户端请求 -->
+  <g transform="translate(24, 60)">
+    <rect width="130" height="88" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">客户端发起请求</text>
+    <text x="12" y="44" font-family="monospace" font-size="10" fill="#475569">POST /v1/prompt</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="11" fill="#475569">携带玩具标签</text>
+    <text x="12" y="78" font-family="sans-serif" font-size="10" fill="#64748B">FastAPI 接收</text>
+  </g>
+
+  <!-- 箭头 -->
+  <path d="M 154 104 L 180 104" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="180,104 172,100 172,108" fill="#D946EF"/>
+
+  <!-- 模型调用与校验 (实线正常路径) -->
+  <g transform="translate(182, 50)">
+    <rect width="210" height="108" rx="8" fill="#FDF4FF" stroke="#D946EF" stroke-width="1.5"/>
+    <text x="12" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">主路径: 外部模型适配</text>
+    <text x="12" y="42" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0F172A">OpenAI 兼容接口封装</text>
+    <text x="12" y="60" font-family="sans-serif" font-size="11" fill="#475569">HTTP 请求 / 超时与异常捕获</text>
+    <text x="12" y="78" font-family="sans-serif" font-size="11" fill="#475569">输出字段与长度安全校验</text>
+    <text x="12" y="96" font-family="monospace" font-size="10" fill="#34C759">校验成功: source=model</text>
+  </g>
+
+  <!-- 箭头 正常输出 -->
+  <path d="M 392 104 L 540 104" stroke="#34C759" stroke-width="2"/>
+  <polygon points="540,104 532,100 532,108" fill="#34C759"/>
+  <text x="446" y="96" font-family="sans-serif" font-size="10" fill="#34C759">格式校验通过</text>
+
+  <!-- 兜底降级库 (虚线降级路径) -->
+  <g transform="translate(220, 172)">
+    <rect width="280" height="64" rx="8" fill="#ECFEFF" stroke="#CFFAFE" stroke-dasharray="4,3"/>
+    <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#0891B2">兜底路径: 本地固定提示库 (fixed_contents)</text>
+    <text x="14" y="40" font-family="sans-serif" font-size="11" fill="#475569">未配 Key 默认启动 ｜ API 超时 / 异常 / 校验不合格自动切换</text>
+    <text x="14" y="56" font-family="monospace" font-size="10" fill="#0891B2">平滑降级: source=fixed (不向前端报错)</text>
+  </g>
+
+  <!-- 降级虚线 -->
+  <path d="M 287 158 L 287 172" stroke="#0891B2" stroke-width="2" stroke-dasharray="3,3"/>
+  <path d="M 500 204 L 540 204 L 540 134" stroke="#0891B2" stroke-width="2" stroke-dasharray="3,3"/>
+  <polygon points="540,134 536,142 544,142" fill="#0891B2"/>
+
+  <!-- 输出终端 -->
+  <g transform="translate(542, 60)">
+    <rect width="150" height="88" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">终端接收引导语</text>
+    <text x="12" y="46" font-family="sans-serif" font-size="12" font-weight="600" fill="#D946EF">1-2 句简短引导</text>
+    <text x="12" y="66" font-family="sans-serif" font-size="10.5" fill="#475569">带来源标识</text>
+    <text x="12" y="80" font-family="monospace" font-size="10" fill="#34C759">体验不中断</text>
+  </g>
+</svg>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>社交预览图生成器 · 1200×630</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #2c2c2e;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .og {
+    width: 1200px;
+    height: 630px;
+    background: #ffffff;
+    color: #0F172A;
+    display: grid;
+    grid-template-columns: 480px 720px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .og-left {
+    padding: 64px 48px 64px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
+    border-right: 1px solid #E2E8F0;
+    z-index: 2;
+  }
+  .og-right {
+    background: #FAF5FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 36px;
+    overflow: hidden;
+  }
+  .og-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+  }
+  .eyebrow {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #D946EF;
+    margin-bottom: 14px;
+  }
+  .eyebrow--comm { color: #0891B2; }
+  .eyebrow--proto { color: #475569; }
+  .eyebrow--deliv { color: #2e7d32; }
+
+  .title {
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .title.sm { font-size: 32px; }
+
+  .sub {
+    font-size: 17px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .foot {
+    border-top: 1px solid #E2E8F0;
+    padding-top: 18px;
+  }
+  .who {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
+  }
+  .who small {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #64748B;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 1. 首页 ═══ -->
+<div class="og" id="og-home">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow">个人作品集</div>
+      <div class="title">董达<br>AI 产品经理</div>
+      <div class="sub">技术型 · 应用落地 · 0→1 产品。把业务问题，变成可以运行、可以验证的 AI 产品。</div>
+    </div>
+    <div class="foot">
+      <div class="who">董达<small>AI 产品经理 ｜ 技术型 · 应用落地</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/hero-solutions.svg" alt="方案表达、工业中控与AI原型">
+  </div>
+</div>
+
+<!-- ═══ 2. 数字月台 ═══ -->
+<div class="og" id="og-digital-dock">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow">工业中控软件 ｜ 已上线已验收</div>
+      <div class="title sm">数字月台：把订单、界面与设备连接起来</div>
+      <div class="sub">负责工控软件架构与多工位触摸屏 HMI，统一维护订单状态机，实现异常隔离与版本回滚机制。</div>
+    </div>
+    <div class="foot">
+      <div class="who">数字月台<small>董达 · 工控程序负责人</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/dock-system.svg" alt="数字月台系统拓扑与职责边界">
+  </div>
+</div>
+
+<!-- ═══ 2.5 IRO_agent ═══ -->
+<div class="og" id="og-iro-agent">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow">工业故障诊断 AI Agent ｜ 应用验证</div>
+      <div class="title sm">IRO_agent：让 AI 像工程师一样逐步取证</div>
+      <div class="sub">面向工业排障噪声与断片问题，通过竞争假设、动态取证与三大 Harness 架构，构建严格只读、可评测的工业排障闭环。</div>
+    </div>
+    <div class="foot">
+      <div class="who">IRO_agent<small>董达 · AI 产品经理 ｜ 210 项测试通过</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/iro-workflow.svg" alt="IRO_agent 架构拓扑与调查闭环">
+  </div>
+</div>
+
+<!-- ═══ 3. 天津机器人产线 ═══ -->
+<div class="og" id="og-robot-line">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow eyebrow--deliv">工控主程序与协同 ｜ 已交付</div>
+      <div class="title sm">天津机器人产线：协调取餐与送餐协同</div>
+      <div class="sub">负责工控主程序任务调度，打通刷卡、取餐机构与送餐机器人，参与送餐机器人定位偏差现场排查修复。</div>
+    </div>
+    <div class="foot">
+      <div class="who">天津机器人产线<small>董达 · 工控主程序研发与协同</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/robot-process.svg" alt="天津机器人产线协同流程图">
+  </div>
+</div>
+
+<!-- ═══ 4. ToyWake ═══ -->
+<div class="og" id="og-toywake">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow eyebrow--proto">亲子共玩 AI 原型 ｜ 个人原型</div>
+      <div class="title sm">ToyWake：给一句提示，把游戏还给亲子</div>
+      <div class="sub">探索克制化生成式交互：给出简短引导后设备静默退出。实现后端模型接口适配与本地固定库平滑降级。</div>
+    </div>
+    <div class="foot">
+      <div class="who">ToyWake · 亲子共玩<small>董达 · 个人探索原型</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/toywake-story.svg" alt="ToyWake 三步分镜交互示意">
+  </div>
+</div>
+
+<!-- ═══ 5. AI 辅助开发方法 ═══ -->
+<div class="og" id="og-ai-engineering">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow">工作方法论</div>
+      <div class="title sm">AI 辅助开发：让 AI 写得快，也让修改可检查</div>
+      <div class="sub">人定边界、AI 加速、闭环复核；严格区分单测逻辑自洽与现场上线已验收。</div>
+    </div>
+    <div class="foot">
+      <div class="who">工作方法<small>董达 · 研发方法论</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/ai-workflow.svg" alt="AI辅助开发闭环与证据层级">
+  </div>
+</div>
+
+<!-- ═══ 6. SimpleHmi ═══ -->
+<div class="og" id="og-simplehmi">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow">开源工程规范</div>
+      <div class="title sm">SimpleHmi：从需求到可检查的工业软件</div>
+      <div class="sub">总结工业现场触摸屏的共性交互模式，提供从需求卡片到样板实现的轻量化交付规范。</div>
+    </div>
+    <div class="foot">
+      <div class="who">SimpleHmi<small>董达 · 开源工程规范</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/simplehmi-path.svg" alt="SimpleHmi 规范路径图">
+  </div>
+</div>
+
+<!-- ═══ 7. 湖州美食地图 ═══ -->
+<div class="og" id="og-huzhou">
+  <div class="og-left">
+    <div>
+      <div class="eyebrow">移动交互原型</div>
+      <div class="title sm">湖州美食地图：把店铺信息做成有依据的地图</div>
+      <div class="sub">多源信息清洗、经纬度匹配与单手地图交互探索。数据校验不通过即阻断门禁。</div>
+    </div>
+    <div class="foot">
+      <div class="who">湖州美食地图<small>董达 · 前端规则边界实践</small></div>
+    </div>
+  </div>
+  <div class="og-right">
+    <img src="../docs/assets/visuals/foodmap-evidence.svg" alt="湖州美食地图数据结构与依据示意">
+  </div>
+</div>
+
+</body>
+</html>

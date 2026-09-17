@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="100%" height="100%" role="img" aria-label="天津机器人产线协同流程示意">
+  <rect width="720" height="220" fill="#FAFCFD" rx="12"/>
+  <rect x="10" y="10" width="700" height="200" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+
+  <text x="24" y="36" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">天津机器人产线：工控主程序与取送餐协同流程</text>
+
+  <!-- 4 步协同流程 -->
+  <!-- 步骤 1 -->
+  <g transform="translate(24, 56)">
+    <rect width="146" height="96" rx="8" fill="#FAF5FF" stroke="#E2E8F0"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">阶段 1: 身份触发</text>
+    <text x="12" y="46" font-family="sans-serif" font-size="13" font-weight="700" fill="#0F172A">终端扫码 / 刷卡</text>
+    <text x="12" y="66" font-family="sans-serif" font-size="11" fill="#475569">用户刷卡发起就餐</text>
+    <text x="12" y="82" font-family="monospace" font-size="10" fill="#64748B">网络事件传递至主程序</text>
+  </g>
+
+  <path d="M 174 104 L 194 104" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="194,104 186,100 186,108" fill="#D946EF"/>
+
+  <!-- 步骤 2 (本人主程序) -->
+  <g transform="translate(196, 50)">
+    <rect width="168" height="108" rx="8" fill="#FDF4FF" stroke="#D946EF" stroke-width="2"/>
+    <text x="12" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">阶段 2: 本人负责</text>
+    <text x="12" y="42" font-family="sans-serif" font-size="13.5" font-weight="700" fill="#0F172A">工控主程序调度</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="11" fill="#475569">订单状态校验与匹配</text>
+    <text x="12" y="80" font-family="sans-serif" font-size="11" fill="#475569">协调取餐就绪检测</text>
+    <text x="12" y="98" font-family="monospace" font-size="10" fill="#34C759">调度送餐机器人启程</text>
+  </g>
+
+  <path d="M 368 104 L 388 104" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="388,104 380,100 380,108" fill="#D946EF"/>
+
+  <!-- 步骤 3 -->
+  <g transform="translate(390, 56)">
+    <rect width="146" height="96" rx="8" fill="#FAF5FF" stroke="#E2E8F0"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">阶段 3: 产线对接</text>
+    <text x="12" y="46" font-family="sans-serif" font-size="13" font-weight="700" fill="#0F172A">机械臂取餐移载</text>
+    <text x="12" y="66" font-family="sans-serif" font-size="11" fill="#475569">就绪到位检测闭环</text>
+    <text x="12" y="82" font-family="monospace" font-size="10" fill="#64748B">完成信号反馈主程序</text>
+  </g>
+
+  <path d="M 540 104 L 560 104" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="560,104 552,100 552,108" fill="#D946EF"/>
+
+  <!-- 步骤 4 -->
+  <g transform="translate(562, 56)">
+    <rect width="134" height="96" rx="8" fill="#FAF5FF" stroke="#E2E8F0"/>
+    <text x="10" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">阶段 4: 设备投递</text>
+    <text x="10" y="46" font-family="sans-serif" font-size="13" font-weight="700" fill="#0F172A">送餐机器人行进</text>
+    <text x="10" y="66" font-family="sans-serif" font-size="11" fill="#475569">自主导航至就餐位</text>
+    <text x="10" y="82" font-family="monospace" font-size="10" fill="#34C759">状态：已交付</text>
+  </g>
+
+  <rect x="24" y="172" width="672" height="26" rx="4" fill="#FAF5FF"/>
+  <text x="360" y="189" font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">协同流程示意 ｜ 本人参与送餐机器人定位偏差问题的排查修复；项目已交付并在生产环境使用</text>
+</svg>

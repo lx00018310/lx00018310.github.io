@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>董达｜AI 产品经理</title>
+    <style>
+      :root {
+        --paper: #f4f2ed;
+        --surface: #ffffff;
+        --ink: #111111;
+        --ink-2: #3a3a3a;
+        --ink-3: #757575;
+        --line: #111111;
+        --line-thin: #d8d5ce;
+        --magenta: #d946ef;
+        --magenta-ink: #a21caf;
+        --cyan: #0891b2;
+        --cyan-ink: #0e7490;
+        --grot: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--grot);
+        color: var(--ink);
+        background: #dcd8cf;
+        font-size: 13.5px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        padding: 10px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--mono);
+      }
+      .toolbar-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--ink);
+        letter-spacing: 0.05em;
+      }
+      .btn-print {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 18px;
+        background: var(--ink);
+        color: #ffffff !important;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+        font-family: var(--mono);
+        transition: background 0.15s ease;
+      }
+      .btn-print:hover {
+        background: var(--magenta);
+        color: #ffffff !important;
+      }
+      .resume-container {
+        width: 210mm;
+        margin: 24px auto 48px;
+      }
+
+      /* 静态信号场背景：网点纸纹 + 对角微弱套印渐变 */
+      .resume-page {
+        width: 210mm;
+        height: 297mm;
+        padding: 12mm 15mm;
+        position: relative;
+        background-color: var(--paper);
+        background-image:
+          radial-gradient(circle at 10% 10%, rgba(217, 70, 239, 0.05) 0%, transparent 45%),
+          radial-gradient(circle at 90% 90%, rgba(8, 145, 178, 0.05) 0%, transparent 45%),
+          radial-gradient(var(--line-thin) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 12px 12px;
+        background-repeat: no-repeat, no-repeat, repeat;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        margin-bottom: 24px;
+      }
+
+      /* 规线标记（Registration Marks） */
+      .reg-mark {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        pointer-events: none;
+        z-index: 5;
+      }
+      .reg-mark::before, .reg-mark::after {
+        content: "";
+        position: absolute;
+        background: var(--line);
+      }
+      .reg-mark::before { top: 0; bottom: 0; left: 6.5px; width: 1px; }
+      .reg-mark::after { left: 0; right: 0; top: 6.5px; height: 1px; }
+      .reg-mark--tl { top: 6mm; left: 6mm; }
+      .reg-mark--tr { top: 6mm; right: 6mm; }
+      .reg-mark--bl { bottom: 6mm; left: 6mm; }
+      .reg-mark--br { bottom: 6mm; right: 6mm; }
+
+      /* 页眉 */
+      .header-section {
+        border-bottom: 2px solid var(--line);
+        padding-bottom: 8px;
+        margin-bottom: 9px;
+        position: relative;
+      }
+      .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      h1 {
+        font-size: 26px;
+        margin: 0;
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      .target-role {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--magenta-ink);
+        letter-spacing: 0.04em;
+      }
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12px;
+        color: var(--ink-2);
+        margin-top: 5px;
+      }
+      .contact-row span {
+        display: inline-flex;
+        align-items: center;
+      }
+      .contact-row a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--cyan);
+      }
+
+      /* 章节标题 */
+      .section-block {
+        margin-bottom: 8px;
+      }
+      h2 {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--ink);
+        background: transparent;
+        border-bottom: 1px solid var(--line);
+        padding: 0 0 3px 0;
+        margin: 0 0 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      h2::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: var(--magenta);
+      }
+
+      .lead-text {
+        font-size: 12px;
+        color: var(--ink-2);
+        line-height: 1.5;
+        margin: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        padding: 6px 9px;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: 700;
+        font-size: 12.5px;
+        color: var(--ink);
+        margin-bottom: 3px;
+      }
+      .job-role {
+        font-family: var(--mono);
+        color: var(--magenta-ink);
+        font-weight: 700;
+      }
+      .item-desc-list {
+        margin: 0;
+        padding-left: 15px;
+        font-size: 11.8px;
+        line-height: 1.45;
+        color: var(--ink-2);
+      }
+      .item-desc-list li {
+        margin-bottom: 2px;
+      }
+
+      /* 项目卡片（瑞士海报式条目卡） */
+      .project-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        padding: 6px 9px;
+        margin-bottom: 6px;
+      }
+      .project-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+      .project-badge {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        font-weight: 600;
+        padding: 1px 6px;
+        background: var(--paper);
+        color: var(--ink);
+        border: 1px solid var(--line);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .project-badge::before {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background: var(--magenta);
+      }
+      .project-badge--comm::before { background: var(--cyan); }
+      .project-badge--proto::before { background: var(--magenta); }
+      .project-badge--proto {
+        color: var(--magenta-ink);
+        border-color: var(--magenta);
+      }
+      .project-badge--comm {
+        color: var(--cyan-ink);
+        border-color: var(--cyan);
+      }
+
+      .stack-line {
+        font-size: 10.5px;
+        color: var(--ink-3);
+        margin-top: 3px;
+        font-family: var(--mono);
+        border-top: 1px dashed var(--line-thin);
+        padding-top: 3px;
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        font-size: 11.5px;
+        color: var(--ink-2);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        padding: 7px 9px;
+        line-height: 1.4;
+      }
+
+      /* 打印与导出规则 */
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+        body {
+          background: #ffffff !important;
+          color: #111111 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .toolbar { display: none !important; }
+        .resume-container {
+          width: 210mm !important;
+          margin: 0 !important;
+        }
+        .resume-page {
+          width: 210mm !important;
+          height: 297mm !important;
+          max-height: 297mm !important;
+          margin: 0 !important;
+          border: none !important;
+          page-break-after: always !important;
+          break-after: page !important;
+        }
+        .resume-page:last-child {
+          page-break-after: avoid !important;
+          break-after: avoid !important;
+        }
+        a {
+          color: #111111 !important;
+          text-decoration: none !important;
+        }
+      }
+
+      @media screen and (max-width: 820px) {
+        .resume-container {
+          width: 100% !important;
+          margin: 0 !important;
+        }
+        .resume-page {
+          width: 100% !important;
+          height: auto !important;
+          min-height: auto !important;
+          padding: 16px 14px !important;
+          border-left: none;
+          border-right: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <div class="toolbar-title">
+        董达 ｜ AI 产品经理
+      </div>
+      <div>
+        <a class="btn-print" href="resume.pdf" download>下载 PDF</a>
+      </div>
+    </div>
+
+    <div class="resume-container">
+      <!-- ════════ 第一页 ════════ -->
+      <section class="resume-page">
+        <div class="reg-mark reg-mark--tl"></div>
+        <div class="reg-mark reg-mark--tr"></div>
+        <div class="reg-mark reg-mark--bl"></div>
+        <div class="reg-mark reg-mark--br"></div>
+
+        <header class="header-section">
+          <div class="header-row">
+            <h1>董达</h1>
+            <div class="target-role">应聘方向：AI 产品经理 ｜ 技术型 · AI 应用落地 · 0→1 产品</div>
+          </div>
+          <div class="contact-row">
+            <span>电话 / 微信：<strong>18761576008</strong></span>
+            <span>邮箱：<strong><a href="mailto:624290365@qq.com">624290365@qq.com</a></strong></span>
+            <span>作品集：<strong><a href="https://lx00018310.github.io/">lx00018310.github.io</a></strong></span>
+          </div>
+          <div class="contact-row" style="margin-top: 3px; font-size: 11.5px; color: var(--ink-3);">
+            <span>目标城市：杭州、湖州、苏州 / 吴江</span>
+            <span>｜</span>
+            <span>到岗时间：约一个月到岗</span>
+            <span>｜</span>
+            <span>出差意向：可接受短期出差</span>
+          </div>
+        </header>
+
+        <div class="section-block">
+          <h2>个人概述</h2>
+          <p class="lead-text">
+            具备机械工程、商业策划、创新项目与工业软件实践经历，当前聚焦企业 AI 应用与工业 Agent 应用验证与落地探索。擅长从复杂业务和现场约束中识别关键问题，形成产品机制与规则边界，并利用 AI Coding 快速完成可运行原型、系统集成与验证。能够连接业务、产品与工程，推进从场景洞察、需求定义到 AI 应用实现和真实交付的完整闭环。实践技术覆盖 Python、TypeScript、Java、FastAPI、Fastify、Spring Boot、React、Vue、Android、SQL、WebSocket、Agent Harness 与工业设备接口。
+          </p>
+        </div>
+
+        <div class="section-block">
+          <h2>近期工作</h2>
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 5px 9px;">
+            <div class="job-header">
+              <span>浙江维力智能装备有限公司</span>
+              <span class="job-role">AI 应用工程师｜工业软件 / 工控方向</span>
+              <span>2026 – 至今</span>
+            </div>
+            <ul class="item-desc-list">
+              <li>负责工业中控软件与 AI 应用实践，使用 AI Coding 和大模型工具完成需求拆解、原型实现、代码审查、测试与故障排查；参与 TypeScript / Java / Python 应用、数据库、PLC、机器人及现场系统集成。</li>
+              <li>基于真实工业运维场景设计 IRO_agent，将日志、数据库、代码、版本和网页信息接入只读 Agent Harness，探索基于证据的工业故障诊断与 AI 辅助运维流程。</li>
+              <li>推进数字月台、机器人产线等工业软件项目的业务流程梳理、状态机设计、系统联调、异常恢复和生产环境交付。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2>核心代表项目（产品证据）</h2>
+
+          <!-- 项目 1: 数字月台 -->
+          <article class="project-card">
+            <div class="project-head">
+              <span>数字月台 ｜ 工业中控软件与流程状态设计</span>
+              <span class="project-badge">已上线已验收</span>
+            </div>
+            <ul class="item-desc-list">
+              <li><strong>复杂业务产品化：</strong>面对自动装车现场从单屏进度展示扩展为工业中控系统的诉求，围绕订单、工位、设备和异常状态重新梳理流程，定义全局状态机。</li>
+              <li><strong>系统协同与中控架构：</strong>基于 Fastify + React + WebSocket 构建中控软件，统一调度订单全局状态流；与电气/硬件团队紧密协同完成 SLMP PLC 接口联调。</li>
+              <li><strong>稳定性闭环与版本回滚：</strong>定位修复调度大小写混用导致的物料误拒问题，在仓储层实现归一化合并与额度校验；建立生产版本发布与快速回滚机制。</li>
+            </ul>
+            <div class="stack-line">技术栈：Node.js · Fastify · React · TypeScript · WebSocket · PostgreSQL · SLMP PLC 接口</div>
+          </article>
+
+          <!-- 项目 2: IRO_agent -->
+          <article class="project-card">
+            <div class="project-head">
+              <span>IRO_agent ｜ 工业故障诊断 AI Agent</span>
+              <span class="project-badge project-badge--proto">应用验证</span>
+            </div>
+            <ul class="item-desc-list">
+              <li><strong>问题定义与产品机制：</strong>面向工业现场故障排查中日志噪声、信息不完整和错误归因问题，设计证据驱动的 AI 诊断 Agent；将“一次性回答”改造成“竞争假设 → 逐轮取证 → 动态重规划 → 证据锚定”的调查闭环。</li>
+              <li><strong>产品边界与安全决策：</strong>明确 Agent 严格定位为“证据调查员与诊断辅助”，只负责取证与推断，不直接修改生产系统；设置只读工具白名单与参数校验；证据不足时自动 Fail Closed 闭锁，数字证据充分且无异常后才升级现场物理排查。</li>
+              <li><strong>Harness 架构与评测闭环：</strong>设计 Project Learning、Investigation 与 Evaluation 三层 Harness，驱动 LLM 逐轮重规划与竞争假设流转；建立基于典型工业场景与历史缺陷的 DEV/REGRESSION 基准集与确定性 Grader，实测通过 210 项自动化测试（pytest 全部通过）。</li>
+            </ul>
+            <div class="stack-line">技术栈：Python · Agent Harness · Tool Calling · Evidence Grounding · Evaluation · State Machine · Safety Guardrail</div>
+          </article>
+
+          <!-- 项目 3: 天津机器人产线 -->
+          <article class="project-card">
+            <div class="project-head">
+              <span>天津机器人产线 ｜ 跨系统产品落地与排障协同</span>
+              <span class="project-badge">已交付</span>
+            </div>
+            <ul class="item-desc-list">
+              <li><strong>跨系统业务状态协同：</strong>全程参与天津版本工控主程序，处理刷卡终端、产线机械取餐机构与送餐机器人的状态协同与接口通信。</li>
+              <li><strong>现场排障与产品逻辑反哺：</strong>深入现场参与排查送餐机器人定位偏差与修复，协同恢复产线正常节拍；以现场真实约束反向修正系统异常恢复逻辑。</li>
+            </ul>
+            <div class="stack-line">技术栈：Spring Boot · Vue · MySQL · 机器人通信接口 · 自动化产线协同</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ════════ 第二页 ════════ -->
+      <section class="resume-page">
+        <div class="reg-mark reg-mark--tl"></div>
+        <div class="reg-mark reg-mark--tr"></div>
+        <div class="reg-mark reg-mark--bl"></div>
+        <div class="reg-mark reg-mark--br"></div>
+
+        <div class="section-block">
+          <h2>0→1 商业策划与产品定义案例</h2>
+          <article class="project-card">
+            <div class="project-head">
+              <span>考亭古街 ｜ 0→1 业务定义与商业策划</span>
+              <span class="project-badge project-badge--comm">售前策划主创 ｜ 212 万元 ｜ 2019.07–2019.11</span>
+            </div>
+            <ul class="item-desc-list">
+              <li><strong>非标诉求洞察与命题提炼：</strong>面对政府举办文旅大会、文化资源丰富但缺少统一定位的诉求，从市场、文化、客户目标等变量中提炼“文旅溯源地”核心命题并获认同。</li>
+              <li><strong>商业方案编制与全流程推进：</strong>作为售前策划主创，提出“文旅溯源地”主题方案并获认可，参与设计服务从方案编制、高层汇报到实施配合与回款支持全过程。</li>
+              <li><strong>商业闭环与合同履约：</strong>所参与的设计服务合同金额为 212 万元，作为关键技术与策划支撑推进项目签约，完成阶段性履约交付与商务回款支持。</li>
+            </ul>
+            <div class="stack-line">涉及能力：非标诉求洞察 · 0→1 命题提炼 · 商业方案策划 · 方案汇报答辩 · 商务履约闭环</div>
+          </article>
+        </div>
+
+        <div class="section-block">
+          <h2>职业经历</h2>
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 6px 9px; margin-bottom: 5px;">
+            <div class="job-header">
+              <span>浙江先秦科技有限公司</span>
+              <span class="job-role">创新事业负责人</span>
+              <span>2020 – 2025</span>
+            </div>
+            <ul class="item-desc-list">
+              <li>负责多个创新项目的立项推动、需求梳理、方案策划与跨角色推进；运用 AI 工具链辅助工作流加速方案原型落地。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 6px 9px; margin-bottom: 5px;">
+            <div class="job-header">
+              <span>浙江拾方旅游发展有限公司</span>
+              <span class="job-role">项目负责人 / 售前主创</span>
+              <span>2017 – 2020</span>
+            </div>
+            <ul class="item-desc-list">
+              <li>负责文旅项目方案策划、跨方协调与实施推进；在考亭古街项目（2019.07–2019.11）中担任售前策划主创参与全过程。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 6px 9px;">
+            <div class="job-header">
+              <span>机械制造企业</span>
+              <span class="job-role">机械工程师</span>
+              <span>2010 – 2017</span>
+            </div>
+            <ul class="item-desc-list">
+              <li>从事机械设计与现场问题处理，积累扎实的物理设备认知、机械动作逻辑与现场结构约束评估经验。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2>能力与技术实践（服务于产品验证与落地）</h2>
+          <div class="skills-grid">
+            <div><strong>需求拆解与产品定义：</strong>从非标诉求中提炼核心价值，梳理流程、规则边界与异常路径</div>
+            <div><strong>AI Coding 快速原型：</strong>运用 AI 工具链结合 Python / TypeScript / React 快速完成可运行验证 Demo</div>
+            <div><strong>工业系统集成与可靠性：</strong>多终端 HMI 状态流转、设备通信接口联调、日志排障与版本回滚</div>
+            <div><strong>工程规范与交付边界：</strong>沉淀 SimpleHmi 开源规范，坚持生产链路 No-Mock，以运行结果验收产品</div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2>教育背景与代码档案</h2>
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 7px 9px;">
+            <div class="job-header">
+              <span>华北电力大学（211） ｜ 机械设计制造及其自动化 ｜ 本科</span>
+              <span>2006 – 2010</span>
+            </div>
+            <div style="font-size: 11.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.55;">
+              <strong>作品集主页：</strong><a href="https://lx00018310.github.io/" style="color: var(--magenta-ink); text-decoration: none; border-bottom: 1px solid var(--cyan);">lx00018310.github.io</a><br>
+              <strong>个人 GitHub：</strong><a href="https://github.com/lx00018310" style="color: var(--magenta-ink); text-decoration: none; border-bottom: 1px solid var(--cyan);">github.com/lx00018310</a>（IRO_agent 工业故障诊断 Agent 与 SimpleHmi 开源中控规范）
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>把订单、界面与设备连接起来｜董达</title>
+  <meta name="description" content="数字月台：工业自动装车中控软件。负责中控业务服务、多工位触摸屏 HMI 与现场设备接口联调，统一维护订单状态，支持版本回退与数据归一化校验。状态：已上线已验收。">
+  <link rel="canonical" href="https://lx00018310.github.io/digital-dock.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/digital-dock.html">
+  <meta property="og:title" content="数字月台：把订单、界面与设备连接起来｜董达">
+  <meta property="og:description" content="负责工控软件架构与多端 HMI，状态：已上线已验收。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-digital-dock.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="数字月台：把订单、界面与设备连接起来｜董达">
+  <meta name="twitter:description" content="负责工控软件架构与多端 HMI，状态：已上线已验收。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-digital-dock.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--accent);">数字月台</span>
+            <span class="status-pill">已上线已验收</span>
+          </div>
+          <h1>把订单、界面与设备连接起来</h1>
+          <p>
+            面向工厂自动装车场景，承担工业中控软件系统的需求拆解、状态机搭建与各端联调。连接企业调度、多工位操作触摸屏与现场 PLC 设备。
+          </p>
+        </div>
+
+        <!-- 主视觉 V02 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/dock-system.svg" width="720" height="400" alt="数字月台系统拓扑与职责边界">
+        </div>
+        <span class="fig-caption">FIG.01 — 系统架构与职责边界拓扑</span>
+      </div>
+    </section>
+
+    <!-- 业务流转与协同 V03 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Workflow & Boundaries</p>
+        <h2 class="section-title">业务协同流程与专业分工</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 24px;">
+          中控系统统一维护订单状态机，通过 WebSocket 向多终端实时广播，并与 PLC 设备信号交互闭环。
+        </p>
+
+        <!-- 流程图 V03 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/dock-flow.svg" width="720" height="240" alt="数字月台业务协同流程图">
+        </div>
+        <span class="fig-caption" style="margin-bottom: 32px;">FIG.02 — 订单与信号业务协同流转</span>
+
+        <!-- 职责与协作边界对照 -->
+        <div class="subpage-split-grid">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">本人负责软件范围</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">中控服务与多端 HMI</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>中控业务服务：</strong>基于 Node.js / Fastify 构建核心状态机，实现订单流转控制与数据持久化。</li>
+              <li><strong>多端 HMI 界面：</strong>基于 React 与 TypeScript 开发工位触摸屏交互，负责订单呈现与人工确认。</li>
+              <li><strong>系统协议对接：</strong>负责软件侧与企业调度系统、PLC 及人脸识别桥接服务的接口设计与联调。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">外部专业协作范围</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">硬件、PLC 与现场实施</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>PLC 控制程序：</strong>由公司自动化电气专业人员编写，本人负责网络层 SLMP 信号交互与超时保护。</li>
+              <li><strong>电气接线与机械硬件：</strong>现场传感器、输送滚筒与装车机构由机械电气团队负责安装与物理调试。</li>
+              <li><strong>生产组织：</strong>现场装车调度规则与司机刷卡由厂区运营部门制定与推行。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 实现内容与事实边界表 -->
+    <section class="v2-section">
+      <div class="wrap">
+        <p class="section-kicker">Facts & Verification</p>
+        <h2 class="section-title">实现内容与验证状态</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 16px;">
+          基于实际代码实现与现场运行情况，客观呈现系统能力与证据边界。
+        </p>
+
+        <table class="facts-table-v2">
+          <thead>
+            <tr>
+              <th style="width: 25%;">模块 / 机制</th>
+              <th style="width: 50%;">具体实现内容</th>
+              <th style="width: 25%;">当前验证状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>订单全局状态机</strong></td>
+              <td>统一维护订单各工位生命周期，各终端状态变更经由中控服务权威广播，防止多端状态不一致。</td>
+              <td><span class="status-pill">已上线运行</span></td>
+            </tr>
+            <tr>
+              <td><strong>版本回退支持</strong></td>
+              <td>制定标准化部署流程，在生产环境遇到非预期异常时支持快速回滚至上一稳定版本。</td>
+              <td><span class="status-pill">架构已支持</span></td>
+            </tr>
+            <tr>
+              <td><strong>物料归一化与额度校验</strong></td>
+              <td>修复调度推送大小写混用问题，并在仓储入账路径执行归一化合并，增加剩余额度校验防止超额入账。</td>
+              <td><span class="status-pill">单测 458 项全通</span></td>
+            </tr>
+            <tr>
+              <td><strong>异常隔离与容错</strong></td>
+              <td>人脸识别与第三方硬件桥接服务采用独立子进程启动，硬件中断不影响中控核心服务。</td>
+              <td><span class="status-pill">已上线运行</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="background: var(--paper); border: 1px solid var(--line); padding: 18px 20px; font-size: 14px; color: var(--ink-2); margin-top: 24px; line-height: 1.6;">
+          <strong>客观事实与边界说明：</strong>系统目前处于<strong>已上线已验收</strong>状态，多终端 HMI 协同中控系统已在客户自动化装车生产线正式投入运行。本轮不使用实际部署数量指标；系统运行受现场工况与各方设备接口约束，未作未经审计的无故障运行承诺。
+        </div>
+
+        <div style="margin-top: 32px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 16px;">
+          技术栈：Node.js ｜ Fastify ｜ TypeScript ｜ React ｜ PostgreSQL ｜ WebSocket ｜ SLMP PLC Protocol
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>让 AI 不再“猜故障”，而是像工程师一样逐步取证｜董达</title>
+  <meta name="description" content="IRO_agent：面向工业现场故障排查的证据驱动 AI Agent。重塑排障交互，以竞争假设、动态取证与三大 Harness 架构，构建严格只读、可量化评测的工业排障闭环。状态：应用验证。">
+  <link rel="canonical" href="https://lx00018310.github.io/iro-agent.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/iro-agent.html">
+  <meta property="og:title" content="IRO_agent：让 AI 不再“猜故障”，而是像工程师一样逐步取证｜董达">
+  <meta property="og:description" content="工业故障诊断 AI Agent，从项目认知、动态取证到评测闭环，状态：应用验证。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-iro-agent.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IRO_agent：让 AI 不再“猜故障”，而是像工程师一样逐步取证｜董达">
+  <meta name="twitter:description" content="工业故障诊断 AI Agent，从项目认知、动态取证到评测闭环，状态：应用验证。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-iro-agent.png">
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "让 AI 不再“猜故障”，而是像工程师一样逐步取证",
+    "description": "IRO_agent：面向工业现场故障排查的证据驱动 AI Agent。以竞争假设、动态取证与三大 Harness 架构，构建严格只读、可量化评测的工业排障闭环。",
+    "author": {
+      "@type": "Person",
+      "name": "董达",
+      "jobTitle": "AI Application Engineer",
+      "url": "https://lx00018310.github.io/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "董达"
+    },
+    "url": "https://lx00018310.github.io/iro-agent.html"
+  }
+  </script>
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--magenta);">IRO_agent</span>
+            <span class="status-pill">应用验证</span>
+          </div>
+          <h1>让 AI 不再“猜故障”，而是像工程师一样逐步取证</h1>
+          <p>
+            针对工业现场故障排查中日志噪声大、信息断片和容易产生主观误导的痛点，将 AI 从“一次性对话问答”重塑为证据驱动的逐轮调查系统。通过竞争假设、动态重规划、只读工具调用、安全 Guardrail 与确定性 Evaluation 评测闭环，构建可验证的工业 AI 排障流程。
+          </p>
+        </div>
+
+        <!-- 主视觉流程图 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/iro-workflow.svg" width="720" height="400" alt="IRO_agent 架构拓扑与调查闭环">
+        </div>
+        <span class="fig-caption">FIG.01 — IRO_agent 架构拓扑：三大 Harness 与调查闭环</span>
+      </div>
+    </section>
+
+    <!-- 痛点与产品定义 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Problem & Definition</p>
+        <h2 class="section-title">为什么工业排障不适合普通聊天 Agent</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 24px;">
+          在工业现场，让通用大模型直接回答“系统报错怎么办”极其危险。现场往往存在多层观测挑战，要求排障产品必须具备严格的证据锚定能力。
+        </p>
+
+        <div class="subpage-split-grid">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--magenta); margin-bottom: 8px;">现场痛点</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">工业排障的现实约束</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>海量日志与信息噪声：</strong>秒级滚动的工业通信日志中混杂大量无效信息，直接喂给 LLM 极易导致上下文冲淡或注意力漂移。</li>
+              <li><strong>主观误导与锚定效应：</strong>报障人员经常依据局部现象给出主观猜测，传统单轮问答会被提问者带偏，忽视真正根因。</li>
+              <li><strong>虚假幻觉的严重后果：</strong>在工控与产线环境下，凭空捏造的排障建议可能引发停线甚至设备损坏，必须“无证据不结论”。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">产品重构</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">从聊天变成逐轮取证</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>并发竞争假设机制：</strong>初始化阶段针对故障现象生成多个互斥假设，防止被单一猜测锁定。</li>
+              <li><strong>逐轮取证与动态重规划：</strong>每一轮由 LLM 自主选择调用只读工具采集证据，根据证据反馈重新评估假设置信度。</li>
+              <li><strong>严格证据锚定：</strong>诊断结论必须附带具体日志行、SQL 记录或代码段，做到结论全链路可溯源。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三大 Harness 架构 -->
+    <section class="v2-section">
+      <div class="wrap">
+        <p class="section-kicker">Architecture</p>
+        <h2 class="section-title">三大 Harness 支撑的 Agentic 系统</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 24px;">
+          IRO_agent 将工程实现与 AI 能力解耦，构建认知建模、调查取证与自动化评测三层 Harness。
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 20px;">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--ink-3); margin-bottom: 6px;">HARNESS 01</div>
+            <h3 style="font-size: 17px; margin: 0 0 10px; color: var(--ink);">Project Learning Harness</h3>
+            <p style="font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0;">
+              <strong>项目认知建模：</strong>将系统架构拓扑、关键状态流、常见故障指纹和环境配置形成标准化认知文件，让 Agent 在开始排障前充分理解具体工业软件背景。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 20px;">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--magenta-ink); margin-bottom: 6px;">HARNESS 02</div>
+            <h3 style="font-size: 17px; margin: 0 0 10px; color: var(--ink);">Investigation Harness</h3>
+            <p style="font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0;">
+              <strong>调查与规划调度：</strong>驱动 LLM 进行假设生成、工具分发、证据收集与置信度更新；内置状态机管理调查生命周期，支持最大步数限制与死循环熔断。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 20px;">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--cyan-ink); margin-bottom: 6px;">HARNESS 03</div>
+            <h3 style="font-size: 17px; margin: 0 0 10px; color: var(--ink);">Evaluation Harness</h3>
+            <p style="font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0;">
+              <strong>自动化评测闭环：</strong>脱离主观“人工看回复”，使用基于典型工业场景与历史缺陷构建的 DEV/REGRESSION 基准集与确定性 Grader，量化评估根因命中、证据锚定与安全性。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 安全边界与严格只读 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Safety Boundaries</p>
+        <h2 class="section-title">严格只读与工业安全防御</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 16px;">
+          在工业场景中，安全必须具备硬性防线。AI 的定位是“证据调查员与诊断辅助”，坚决不赋予任何破坏性执行权限。
+        </p>
+
+        <table class="facts-table-v2">
+          <thead>
+            <tr>
+              <th style="width: 25%;">安全机制</th>
+              <th style="width: 50%;">具体产品规则与控制手段</th>
+              <th style="width: 25%;">约束边界</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Strict Read-Only</strong></td>
+              <td>所有接入工具（日志读取、只读 SQL 查询、代码与配置检查、网页抓取）全部通过只读工具白名单 + Schema/参数校验 + 权限硬门槛，拦截任何写操作。</td>
+              <td><span class="status-pill">系统级阻断</span></td>
+            </tr>
+            <tr>
+              <td><strong>零破坏性执行</strong></td>
+              <td>禁止执行任何可能修改生产环境配置、变更 PLC 寄存器、清空数据库或重启生产进程的操作。</td>
+              <td><span class="status-pill">硬性隔离</span></td>
+            </tr>
+            <tr>
+              <td><strong>Fail Closed 闭锁</strong></td>
+              <td>当证据不足、置信度低或工具报错超过容限时，Agent 自动闭锁，输出已知事实并明确提示“信息不足”。</td>
+              <td><span class="status-pill">安全闭锁</span></td>
+            </tr>
+            <tr>
+              <td><strong>物理现场人工升级</strong></td>
+              <td>当排查路径指向传感器硬件损坏、机械卡阻或接线异常等物理故障时，生成现场物理排查清单，并建议升级人工排查。</td>
+              <td><span class="status-pill">转交人工</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 评测体系与测试验证 -->
+    <section class="v2-section">
+      <div class="wrap">
+        <p class="section-kicker">Verification & Metrics</p>
+        <h2 class="section-title">自动化评测与真实测试验证</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 16px;">
+          坚持“可以运行、可以验证”的工程原则，以自动化测试结果和确定性评测指标作为核心产品证据。
+        </p>
+
+        <div class="subpage-split-grid" style="margin-bottom: 24px;">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <h3 style="font-size: 17px; margin: 0 0 12px; color: var(--ink);">确定性评测维度 (Grader)</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>Root Cause Accuracy：</strong>最终诊断假设是否准确击中真实根因。</li>
+              <li><strong>Evidence Grounding：</strong>关键结论是否严格引用了真实存在的日志证据。</li>
+              <li><strong>Safety Compliance：</strong>排障全程是否存在越界调用或非只读操作意图。</li>
+              <li><strong>Path Efficiency：</strong>调查步数与只读工具调用的有效性与精简度。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <h3 style="font-size: 17px; margin: 0 0 12px; color: var(--ink);">本地代码与测试验证</h3>
+            <p style="font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin: 0 0 12px;">
+              整个项目基于 Python 构建，覆盖工具注册表、调度引擎、状态机、提示词模板与评测集。
+            </p>
+            <div style="background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; font-family: var(--mono); font-size: 13px; color: var(--ink);">
+              <span style="color: #16A34A; font-weight: 700;">pytest -q</span><br>
+              <strong>210 passed</strong>
+            </div>
+            <div style="font-size: 12.5px; color: var(--ink-3); margin-top: 8px;">
+              本地最新全量回归测试通过，全部为真实单测、集成测试与评测套件。
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--paper); border: 1px solid var(--line); padding: 18px 20px; font-size: 14px; color: var(--ink-2); line-height: 1.6;">
+          <strong>客观事实与边界声明：</strong>本项目处于<strong>应用验证与探索阶段</strong>，已在开源代码中完成全链路端到端闭环并持续迭代评测用例。不虚假夸大宣称“已全面替代现场人工”、“具备 100% 自动修复能力”或“大规模商用”。
+        </div>
+
+        <div style="margin-top: 32px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 16px;">
+          技术栈：Python ｜ Agent Harness ｜ Tool Calling ｜ Evidence Grounding ｜ Evaluation ｜ State Machine ｜ Safety Guardrail
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="https://github.com/lx00018310/IRO_agent" target="_blank" rel="noopener">GitHub 仓库</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

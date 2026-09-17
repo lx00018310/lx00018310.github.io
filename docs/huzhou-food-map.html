@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>把店铺信息做成有依据的地图｜董达</title>
+  <meta name="description" content="湖州美食地图：面向移动端单手交互的轻量级地图应用。聚焦数据清洗、坐标匹配与真实依据呈现。状态：移动端交互原型。">
+  <link rel="canonical" href="https://lx00018310.github.io/huzhou-food-map.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/huzhou-food-map.html">
+  <meta property="og:title" content="湖州美食地图：把店铺信息做成有依据的地图｜董达">
+  <meta property="og:description" content="单手地图交互与结构化数据呈现原型。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-huzhou.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="湖州美食地图：把店铺信息做成有依据的地图｜董达">
+  <meta name="twitter:description" content="单手地图交互与结构化数据呈现原型。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-huzhou.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 V11 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--accent);">湖州美食地图</span>
+            <span class="status-pill">移动交互原型</span>
+          </div>
+          <h1>把店铺信息做成有依据的地图</h1>
+          <p>
+            针对本地生活推荐碎片化问题，探索一套结构化数据清洗与单手地图呈现的原型：将推荐笔记转化为具备坐标、招牌与来源依据的清晰信息流。
+          </p>
+        </div>
+
+        <!-- 主视觉 V11 数据结构图 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/foodmap-evidence.svg" width="720" height="180" alt="湖州美食地图数据结构与依据示意">
+        </div>
+        <span class="fig-caption">FIG.01 — 美食地图数据结构与依据示意</span>
+      </div>
+    </section>
+
+    <!-- 信息结构卡与数据清洗流程 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Data & Presentation</p>
+        <h2 class="section-title">信息结构设计与处理链路</h2>
+
+        <div class="subpage-split-grid">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">店铺信息卡三要素</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>准确位置：</strong>经纬度与物理门牌对齐，杜绝定位漂移与虚假打标。</li>
+              <li><strong>招牌菜品：</strong>直接提炼 1–2 道真实口碑单品，剔除商业推广修饰词。</li>
+              <li><strong>来源出处：</strong>记录信息收录来源与整理时间，保持数据可查证。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">移动端单手交互</h3>
+            <p style="font-size: 14.5px; color: var(--ink-2); line-height: 1.65; margin: 0 0 12px;">
+              针对外出找店场景设计下沉式卡片交互：地图占据上半屏保持视线通透，操作控件集中于拇指操作区，支持离线轻量缓存与即时检索。
+            </p>
+            <div style="font-size: 12.5px; color: var(--ink-3);">
+              注：本项目为个人前端原型探索，数据结构示意不用于真实车辆导航。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

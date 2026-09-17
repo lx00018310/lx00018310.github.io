@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>让 AI 写得快，也让修改可检查｜董达</title>
+  <meta name="description" content="AI 辅助开发工作方法：人定需求与安全边界，AI 加速代码实现，人机闭环审查与测试，严格区分本地单测自洽与现场上线已验收。">
+  <link rel="canonical" href="https://lx00018310.github.io/ai-engineering.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/ai-engineering.html">
+  <meta property="og:title" content="AI 辅助开发：让 AI 写得快，也让修改可检查｜董达">
+  <meta property="og:description" content="人定边界、AI加速、闭环复核与证据分级。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-ai-engineering.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI 辅助开发：让 AI 写得快，也让修改可检查｜董达">
+  <meta name="twitter:description" content="人定边界、AI加速、闭环复核与证据分级。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-ai-engineering.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 V09 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <p class="section-kicker">Methodology</p>
+          <h1>让 AI 写得快，也让修改可检查</h1>
+          <p>
+            AI 能够大幅加速需求拆解、状态机骨架与测试初稿编写；但代码的业务合理性、极端边界防御与现场后果必须由人承担决策责任。
+          </p>
+        </div>
+
+        <!-- 主视觉 V09 流程图 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/ai-workflow.svg" width="720" height="260" alt="AI辅助开发闭环与证据层级">
+        </div>
+        <span class="fig-caption">FIG.01 — AI 辅助开发闭环与证据层级</span>
+      </div>
+    </section>
+
+    <!-- 人机分工泳道与复核小环路 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Responsibility & Loop</p>
+        <h2 class="section-title">人机协同分工与缺陷审查小环路</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 24px;">
+          严格划分工具能力与人工职责，建立测试驱动的审查闭环机制。
+        </p>
+
+        <div class="subpage-split-grid">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--magenta); margin-bottom: 8px;">人：定义边界与最终裁决</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">需求范围、状态机与安全红线</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>输入约束定义：</strong>梳理客户口头需求，明确状态机的合法状态与不允许发生的跳变。</li>
+              <li><strong>审查连带缺陷：</strong>例如在物料大小写归一化后，审查是否存在同批次回调未聚合超额入账的连带风险。</li>
+              <li><strong>现场交付决策：</strong>决定是否回滚版本、何时切入备用路径，承担工程最终后果。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">AI：加速初稿与自动化辅助</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">骨架生成与用例补齐</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>骨架快速实现：</strong>基于需求约束快速生成 TypeScript / Fastify 路由与状态机原型代码。</li>
+              <li><strong>测试初稿扩充：</strong>根据接口规范快速补充正常分支与常见异常用例初稿。</li>
+              <li><strong>迭代修复重构：</strong>接收人工审查指出的具体逻辑缺陷，在约束范围内快速完成局部重构。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三级证据层级对比表 -->
+    <section class="v2-section">
+      <div class="wrap">
+        <p class="section-kicker">Evidence Hierarchy</p>
+        <h2 class="section-title">证据层级与验证边界</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 20px;">
+          绝不将“代码已写完”或“本地测试通过”等同于“现场完成验收”。
+        </p>
+
+        <div class="subpage-trio-grid">
+          <div style="background: var(--surface); padding: 22px; border: 1px solid var(--line);">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--magenta); margin-bottom: 6px;">证据层级 1</div>
+            <strong style="font-size: 16.5px; color: var(--ink);">本地代码实现与编译</strong>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin: 8px 0 0; line-height: 1.55;">
+              TypeScript 类型检查无报错，接口定义自洽。仅证明语法与接口契约成立。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); padding: 22px; border: 1px solid var(--line);">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--cyan); margin-bottom: 6px;">证据层级 2</div>
+            <strong style="font-size: 16.5px; color: var(--ink);">本地自动化回归测试</strong>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin: 8px 0 0; line-height: 1.55;">
+              测试套件全通，边界用例断言成立。证明在预设模拟数据下算法逻辑自洽。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); padding: 22px; border: 1px solid var(--line);">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--cyan); margin-bottom: 6px;">证据层级 3</div>
+            <strong style="font-size: 16.5px; color: var(--ink);">现场上线与实际使用</strong>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin: 8px 0 0; line-height: 1.55;">
+              现场各设备联调闭环并在生产环境运转。例如数字月台处于“已上线已验收”阶段。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

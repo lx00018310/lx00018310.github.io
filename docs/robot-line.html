@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>让工控主程序协调取餐与送餐｜董达</title>
+  <meta name="description" content="天津机器人产线：工控主程序与设备协同。负责主程序逻辑、刷卡取餐联动与机器人调度，参与送餐机器人定位偏差排障。状态：已交付并在生产环境投入使用。">
+  <link rel="canonical" href="https://lx00018310.github.io/robot-line.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/robot-line.html">
+  <meta property="og:title" content="天津机器人产线：让工控主程序协调取餐与送餐｜董达">
+  <meta property="og:description" content="负责工控主程序与设备调度，状态：已交付。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-robot-line.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="天津机器人产线：让工控主程序协调取餐与送餐｜董达">
+  <meta name="twitter:description" content="负责工控主程序与设备调度，状态：已交付。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-robot-line.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--accent);">天津机器人产线</span>
+            <span class="status-pill status-pill--delivered">已交付</span>
+          </div>
+          <h1>让工控主程序协调取餐与送餐</h1>
+          <p>
+            面向智慧餐饮自动化产线，负责工控主程序的任务调度与状态协同。打通刷卡终端、产线取餐机械机构与送餐机器人的自动化流转链路。
+          </p>
+        </div>
+
+        <!-- 主视觉 V04 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/robot-process.svg" width="720" height="220" alt="天津机器人产线协同流程图">
+        </div>
+        <span class="fig-caption">FIG.01 — 产线工控主程序调度与机器人协同流转</span>
+      </div>
+    </section>
+
+    <!-- 协同流程与排障 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Core Implementation</p>
+        <h2 class="section-title">工控主程序调度与现场排障</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 24px;">
+          产线涵盖多设备协同交互，工控主程序作为调度中枢负责推进状态闭环。
+        </p>
+
+        <div class="subpage-split-grid">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--magenta); margin-bottom: 8px;">主程序调度实现</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">状态推进与接口协调</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>业务状态机：</strong>实现从用户刷卡、订单匹配、餐品移载到调度机器人投递的全程状态推进。</li>
+              <li><strong>协议对接：</strong>打通工控主程序与现场刷卡终端、PLC 取餐机械机构及 AGV 送餐机器人的通信交互。</li>
+              <li><strong>异常检测：</strong>对超时未取餐、传感器误报等异常信号设置超时保护与状态回执。</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">现场代表性排障事实</div>
+            <h3 style="font-size: 18px; margin: 0 0 12px; color: var(--ink);">送餐机器人定位偏差排障</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              <li><strong>现象识别：</strong>现场联调期间送餐机器人在特定工位停靠产生偏差，影响餐品平稳移载。</li>
+              <li><strong>协同定位：</strong>与现场工程师紧密协同，调取通信时序日志，参与送餐机器人定位偏差问题的排查与修复。</li>
+              <li><strong>生产投入：</strong>现场问题得到解决，产线恢复正常生产节拍，项目顺利完成交付。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 交付与事实边界 -->
+    <section class="v2-section">
+      <div class="wrap">
+        <p class="section-kicker">Facts & Scope</p>
+        <h2 class="section-title">交付状态与证据边界</h2>
+
+        <div style="background: var(--paper); border: 1px solid var(--line); padding: 28px;">
+          <div style="margin-bottom: 16px;">
+            <span class="status-pill status-pill--delivered">状态：已交付</span>
+            <strong style="font-size: 16px; color: var(--ink); margin-left: 8px;">生产环境稳定运行</strong>
+            <p style="margin: 8px 0 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.65;">
+              天津机器人产线项目已顺利完成全部联调与现场交付验收，目前在实际生产环境中稳定投入使用。
+            </p>
+          </div>
+          <div style="border-top: 1px solid var(--line); padding-top: 14px; font-size: 13.5px; color: var(--ink-3); line-height: 1.6;">
+            <strong>客观边界说明：</strong>本案例呈现的定位排查属于现场协同解决的代表性工程记录，不代表诊断全过程；本案不绘制无依据的误差补偿柱状图或虚构轨迹对比。
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

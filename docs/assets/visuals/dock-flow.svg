@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="100%" height="100%" role="img" aria-label="数字月台业务流转与职责色带">
+  <rect width="720" height="240" fill="#FAFCFD" rx="12"/>
+  <rect x="10" y="10" width="700" height="220" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+
+  <text x="24" y="36" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">订单与装车协同流转逻辑</text>
+
+  <!-- 4 个流转节点 -->
+  <!-- 节点 1: 外部调度推送 -->
+  <g transform="translate(24, 60)">
+    <rect width="144" height="96" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#64748B">1. 外部输入</text>
+    <text x="12" y="44" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0F172A">调度订单推送</text>
+    <text x="12" y="64" font-family="sans-serif" font-size="11" fill="#475569">装车批次、物料编码</text>
+    <text x="12" y="82" font-family="monospace" font-size="10" fill="#D946EF">大小写混用待规范</text>
+  </g>
+
+  <!-- 箭头 1->2 -->
+  <path d="M 172 108 L 194 108" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="194,108 186,104 186,112" fill="#D946EF"/>
+
+  <!-- 节点 2: 中控状态机与校验 (核心高亮) -->
+  <g transform="translate(196, 52)">
+    <rect width="180" height="112" rx="8" fill="#FDF4FF" stroke="#D946EF" stroke-width="2"/>
+    <text x="12" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">2. 本人负责：软件核心</text>
+    <text x="12" y="42" font-family="sans-serif" font-size="13" font-weight="700" fill="#0F172A">中控状态机推进</text>
+    <text x="12" y="62" font-family="sans-serif" font-size="11" fill="#475569">编码归一化与额度合并</text>
+    <text x="12" y="80" font-family="sans-serif" font-size="11" fill="#475569">防超额入账 / 事务同步</text>
+    <text x="12" y="98" font-family="monospace" font-size="10" fill="#34C759">支持异常版本快速回退</text>
+  </g>
+
+  <!-- 箭头 2->3 -->
+  <path d="M 380 108 L 402 108" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="402,108 394,104 394,112" fill="#D946EF"/>
+
+  <!-- 节点 3: 多端 HMI 同步 -->
+  <g transform="translate(404, 60)">
+    <rect width="144" height="96" rx="8" fill="#FDF4FF" stroke="#D946EF"/>
+    <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D946EF">3. 本人负责：界面</text>
+    <text x="12" y="44" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0F172A">触摸屏 HMI 同步</text>
+    <text x="12" y="64" font-family="sans-serif" font-size="11" fill="#475569">WebSocket 实时广播</text>
+    <text x="12" y="82" font-family="sans-serif" font-size="10" fill="#475569">工位状态确认 / 异常呈现</text>
+  </g>
+
+  <!-- 箭头 3->4 -->
+  <path d="M 552 108 L 574 108" stroke="#D946EF" stroke-width="2"/>
+  <polygon points="574,108 566,104 566,112" fill="#D946EF"/>
+
+  <!-- 节点 4: PLC 与物理设备 -->
+  <g transform="translate(576, 60)">
+    <rect width="120" height="96" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+    <text x="10" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#64748B">4. 外部专业</text>
+    <text x="10" y="44" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">PLC 联锁作业</text>
+    <text x="10" y="64" font-family="sans-serif" font-size="11" fill="#475569">装车机构就绪</text>
+    <text x="10" y="82" font-family="sans-serif" font-size="10" fill="#64748B">硬件电气专业协作</text>
+  </g>
+
+  <!-- 底部色带图例 -->
+  <g transform="translate(24, 184)">
+    <rect x="0" y="4" width="14" height="14" rx="3" fill="#D946EF"/>
+    <text x="22" y="16" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#0F172A">本人负责：软件中控研发、HMI 交互与接口适配</text>
+    <rect x="360" y="4" width="14" height="14" rx="3" fill="#64748B"/>
+    <text x="382" y="16" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#475569">其他专业：现场 PLC 梯形图、电气接线与机械硬件</text>
+  </g>
+</svg>

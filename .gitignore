@@ -1,0 +1,30 @@
+# 本地私下求职与证据目录
+/job-search-private/
+_internal/
+docs/_internal/
+*_facts*.md
+
+# 本地工作流、规划与定位推演文档（不对外公开）
+*Plan*.md
+*PLAN*.md
+*CHANGELOG*.md
+
+# 本地 QA 证据与快照生成脚本（不对外公开）
+/tools/generate_qa_artifacts.py
+/tools/generate_after_artifacts.py
+
+# 缓存与日志
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+*.bak
+
+# 操作系统与编辑器配置
+.DS_Store
+Thumbs.db
+desktop.ini
+.workbuddy
+.uploads
+.agents

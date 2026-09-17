@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>从需求到可检查的工业软件｜董达</title>
+  <meta name="description" content="SimpleHmi：面向工业中控触摸屏的轻量化工程规范与开源样板。从需求卡片、接口契约到可复查的 React + TypeScript 界面。">
+  <link rel="canonical" href="https://lx00018310.github.io/simplehmi-weili.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/simplehmi-weili.html">
+  <meta property="og:title" content="SimpleHmi：从需求到可检查的工业软件｜董达">
+  <meta property="og:description" content="工业软件轻量化工程规范与开源样板。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-simplehmi.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SimpleHmi：从需求到可检查的工业软件｜董达">
+  <meta name="twitter:description" content="工业软件轻量化工程规范与开源样板。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-simplehmi.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 V10 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--accent);">SimpleHmi</span>
+            <span class="status-pill">开源规范样板</span>
+          </div>
+          <h1>从需求到可检查的工业软件</h1>
+          <p>
+            总结工业现场触摸屏的共性交互模式，提炼从需求定义、接口约束到样板实现的规范路径，帮助团队降低理解成本、实现代码快速复查。
+          </p>
+        </div>
+
+        <!-- 主视觉 V10 规范路径图 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/simplehmi-path.svg" width="720" height="180" alt="SimpleHmi 规范路径图">
+        </div>
+        <span class="fig-caption">FIG.01 — SimpleHmi 规范路径图</span>
+      </div>
+    </section>
+
+    <!-- 样板界面展示与规范四阶段 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Template & Architecture</p>
+        <h2 class="section-title">开源样板界面与四步规范</h2>
+
+        <div class="subpage-split-grid" style="align-items: center;">
+          <!-- 样板界面截图 -->
+          <div class="visual-frame reg-mark-box">
+            <div class="reg-mark reg-mark--tl"></div>
+            <div class="reg-mark reg-mark--tr"></div>
+            <div class="reg-mark reg-mark--bl"></div>
+            <div class="reg-mark reg-mark--br"></div>
+            <img src="assets/images/simplehmi-weili-demo.png" alt="SimpleHmi 开源样板界面（非生产实拍）" style="width: 100%; height: auto;">
+            <div style="padding: 10px 14px; font-family: var(--mono); font-size: 12px; color: var(--ink-3); background: var(--surface); text-align: center; border-top: 1px solid var(--line);">
+              图注：SimpleHmi 开源样板界面（非生产实拍）
+            </div>
+          </div>
+
+          <!-- 四阶段清单 -->
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: var(--surface); border: 1px solid var(--line); padding: 16px;">
+              <strong style="font-size: 15px; color: var(--ink);">1. 需求卡片与工位约束</strong>
+              <p style="font-size: 13.5px; color: var(--ink-2); margin: 4px 0 0;">明确工位任务、操作边界与错误阻断条件，避免口头需求反复漂移。</p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid var(--line); padding: 16px;">
+              <strong style="font-size: 15px; color: var(--ink);">2. 协议定义与心跳机制</strong>
+              <p style="font-size: 13.5px; color: var(--ink-2); margin: 4px 0 0;">定义标准的 WebSocket 状态推送格式、网络重连与超时检测规范。</p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid var(--line); padding: 16px;">
+              <strong style="font-size: 15px; color: var(--ink);">3. React + TS 样板界面</strong>
+              <p style="font-size: 13.5px; color: var(--ink-2); margin: 4px 0 0;">提供适配工业触控屏的大按钮、高对比度组件与多端响应式框架。</p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid var(--line); padding: 16px;">
+              <strong style="font-size: 15px; color: var(--ink);">4. 交付检查清单</strong>
+              <p style="font-size: 13.5px; color: var(--ink-2); margin: 4px 0 0;">对照红线清单完成边界测试与自检，确保交付可追踪、可维护。</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 28px; text-align: right;">
+          <a href="https://github.com/lx00018310/simplehmi-weili" target="_blank" rel="noopener noreferrer" class="signal-link" style="font-family: var(--mono); font-size: 14px; font-weight: 600;">
+            在 GitHub 上查看开源仓库与代码规范 →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

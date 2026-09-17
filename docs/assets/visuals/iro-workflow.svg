@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="100%" height="100%" role="img" aria-label="IRO_agent 架构拓扑与调查闭环">
+  <rect width="720" height="400" fill="#FAFCFD" rx="14"/>
+  <rect x="12" y="12" width="696" height="376" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+
+  <text x="28" y="42" font-family="sans-serif" font-size="16" font-weight="700" fill="#0F172A">IRO_agent：证据驱动的工业排障 Agent 架构</text>
+  <text x="28" y="62" font-family="sans-serif" font-size="12" fill="#475569">三大 Harness 协同：从项目认知、竞争假设取证到确定性质量评测闭环</text>
+
+  <!-- 左侧：Project Learning Harness (认知层) -->
+  <g transform="translate(28, 86)">
+    <rect width="180" height="280" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <rect width="180" height="32" rx="10" fill="#475569"/>
+    <rect y="20" width="180" height="12" fill="#475569"/>
+    <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">01 Project Learning</text>
+
+    <g transform="translate(12, 44)">
+      <rect width="156" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="10" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">项目认知建模</text>
+      <text x="10" y="40" font-family="sans-serif" font-size="10" fill="#475569">系统拓扑 · 核心状态流</text>
+      <text x="10" y="54" font-family="monospace" font-size="9" fill="#0284C7">system_model.json</text>
+    </g>
+
+    <g transform="translate(12, 118)">
+      <rect width="156" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="10" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">历史故障指纹库</text>
+      <text x="10" y="40" font-family="sans-serif" font-size="10" fill="#475569">先验假说 · 检查清单</text>
+      <text x="10" y="54" font-family="monospace" font-size="9" fill="#0284C7">known_patterns</text>
+    </g>
+
+    <g transform="translate(12, 192)">
+      <rect width="156" height="74" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="10" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">只读工具清单定义</text>
+      <text x="10" y="40" font-family="sans-serif" font-size="10" fill="#475569">Log/DB/Code/Web</text>
+      <text x="10" y="54" font-family="sans-serif" font-size="10" fill="#64748B">权限声明与沙箱绑定</text>
+      <text x="10" y="68" font-family="monospace" font-size="9" fill="#D946EF">Strict Read-Only</text>
+    </g>
+  </g>
+
+  <!-- 中间：Investigation Harness (调查与推理闭环) -->
+  <g transform="translate(226, 86)">
+    <rect width="270" height="280" rx="10" fill="#FDF4FF" stroke="#D946EF" stroke-width="1.5"/>
+    <rect width="270" height="32" rx="10" fill="#D946EF"/>
+    <rect y="20" width="270" height="12" fill="#D946EF"/>
+    <text x="16" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">02 Investigation Harness (核心)</text>
+
+    <!-- 竞争假设 -->
+    <g transform="translate(14, 44)">
+      <rect width="242" height="52" rx="6" fill="#FFFFFF" stroke="#F5D0FE"/>
+      <text x="12" y="22" font-family="sans-serif" font-size="11" font-weight="700" fill="#A21CAF">竞争假设生成 (Multi-Hypothesis)</text>
+      <text x="12" y="38" font-family="sans-serif" font-size="10" fill="#475569">针对现象并发生成互斥假说 H1, H2, H3</text>
+    </g>
+
+    <!-- 动态取证重规划 -->
+    <g transform="translate(14, 104)">
+      <rect width="242" height="66" rx="6" fill="#FFFFFF" stroke="#F5D0FE"/>
+      <text x="12" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#A21CAF">逐轮动态取证与重规划</text>
+      <text x="12" y="36" font-family="sans-serif" font-size="10" fill="#0F172A">LLM 调用只读工具收集真实日志与现场数据</text>
+      <text x="12" y="52" font-family="sans-serif" font-size="10" fill="#475569">根据证据权重新评分，动态修正假设优先级</text>
+    </g>
+
+    <!-- 证据锚定与结论 -->
+    <g transform="translate(14, 178)">
+      <rect width="242" height="46" rx="6" fill="#FFFFFF" stroke="#F5D0FE"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="11" font-weight="700" fill="#A21CAF">证据锚定 (Evidence Grounding)</text>
+      <text x="12" y="34" font-family="sans-serif" font-size="10" fill="#475569">每项结论必须附带具体日志行/代码/DB记录</text>
+    </g>
+
+    <!-- 防护与升级 -->
+    <g transform="translate(14, 230)">
+      <rect width="242" height="40" rx="6" fill="#FFFBEB" stroke="#FDE68A"/>
+      <text x="10" y="18" font-family="sans-serif" font-size="10" font-weight="700" fill="#B45309">安全防护：Fail Closed ｜ 升级现场人工</text>
+      <text x="10" y="32" font-family="sans-serif" font-size="9" fill="#92400E">证据不足或触碰安全边界时立即闭锁并转派工程师</text>
+    </g>
+  </g>
+
+  <!-- 右侧：Evaluation Harness (评测闭环) -->
+  <g transform="translate(512, 86)">
+    <rect width="180" height="280" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <rect width="180" height="32" rx="10" fill="#0891B2"/>
+    <rect y="20" width="180" height="12" fill="#0891B2"/>
+    <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">03 Evaluation Harness</text>
+
+    <g transform="translate(12, 44)">
+      <rect width="156" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#0E7490">DEV / REGRESSION 集</text>
+      <text x="10" y="36" font-family="sans-serif" font-size="10" fill="#475569">标准工控故障回放案例</text>
+    </g>
+
+    <g transform="translate(12, 104)">
+      <rect width="156" height="66" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#0E7490">确定性 Grader 评测</text>
+      <text x="10" y="36" font-family="sans-serif" font-size="10" fill="#475569">1. 根因命中率</text>
+      <text x="10" y="50" font-family="sans-serif" font-size="10" fill="#475569">2. 证据锚定率 ｜ 3. 路径质量</text>
+    </g>
+
+    <g transform="translate(12, 178)">
+      <rect width="156" height="88" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#16A34A">本地测试全通过</text>
+      <text x="10" y="38" font-family="monospace" font-size="13" font-weight="700" fill="#16A34A">210 PASSED</text>
+      <text x="10" y="56" font-family="sans-serif" font-size="10" fill="#475569">单元/集成/沙箱测试</text>
+      <text x="10" y="72" font-family="sans-serif" font-size="10" fill="#64748B">No-Mock 运行验证</text>
+    </g>
+  </g>
+</svg>

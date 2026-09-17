@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>给一句提示，把游戏还给亲子｜董达</title>
+  <meta name="description" content="ToyWake：亲子共玩 AI 原型应用。探索克制化生成式交互，只提供简短开端提示，随后设备静默退出。实现后端模型接口适配与本地固定内容库双层平滑降级。状态：个人原型。">
+  <link rel="canonical" href="https://lx00018310.github.io/toywake.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lx00018310.github.io/toywake.html">
+  <meta property="og:title" content="ToyWake：给一句提示，把游戏还给亲子｜董达">
+  <meta property="og:description" content="克制化亲子 AI 交互原型，状态：个人原型。">
+  <meta property="og:image" content="https://lx00018310.github.io/assets/og-toywake.png">
+  <meta property="og:site_name" content="董达的个人作品集">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ToyWake：给一句提示，把游戏还给亲子｜董达">
+  <meta name="twitter:description" content="克制化亲子 AI 交互原型，状态：个人原型。">
+  <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-toywake.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="portfolio-v2">
+  <div class="field-blob-container" aria-hidden="true">
+    <div class="field-blob field-blob--magenta"></div>
+    <div class="field-blob field-blob--cyan"></div>
+  </div>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="站点导航">
+    <div class="wrap">
+      <a class="brand" href="index.html">董达<small>DONG DA ｜ AI 产品经理</small></a>
+      <div class="nav-links">
+        <a class="item" href="index.html#cases">项目</a>
+        <a class="item" href="index.html#commercial">商业</a>
+        <a class="item" href="index.html#experience">经历</a>
+        <a class="item" href="index.html#how">方法</a>
+        <a class="item" href="index.html#contact">联系</a>
+        <a class="item" href="assets/resume.html">简历</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 头部与主视觉 V05 -->
+    <section class="detail-hero-v2">
+      <div class="wrap">
+        <div class="detail-header-v2">
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--magenta);">ToyWake</span>
+            <span class="status-pill status-pill--prototype">个人原型</span>
+          </div>
+          <h1>给一句提示，把游戏还给亲子</h1>
+          <p>
+            针对幼儿家庭场景探索克制式生成交互：摒弃连续多轮聊天的设备沉迷模式，仅在游戏开端由 AI 生成 1–2 句具象启发，设备随即静默退出，把互动空间留给父母与孩子。
+          </p>
+        </div>
+
+        <!-- 主视觉 V05 分镜图 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/toywake-story.svg" width="720" height="240" alt="ToyWake 三步分镜交互示意">
+        </div>
+        <span class="fig-caption">FIG.01 — ToyWake 三步分镜交互示意</span>
+      </div>
+    </section>
+
+    <!-- 后端适配与降级机制 V06 -->
+    <section class="v2-section v2-section--subtle">
+      <div class="wrap">
+        <p class="section-kicker">Engineering & Fallback</p>
+        <h2 class="section-title">模型接口适配与双层平滑降级</h2>
+        <p style="font-size: 16px; color: var(--ink-2); margin-bottom: 24px;">
+          后端采用 FastAPI 封装标准模型接口，内置格式与适宜性校验，并提供本地固定内容库兜底支持。
+        </p>
+
+        <!-- 流程图 V06 -->
+        <div class="visual-frame reg-mark-box" style="margin-bottom: 12px;">
+          <div class="reg-mark reg-mark--tl"></div>
+          <div class="reg-mark reg-mark--tr"></div>
+          <div class="reg-mark reg-mark--bl"></div>
+          <div class="reg-mark reg-mark--br"></div>
+          <img src="assets/visuals/toywake-response.svg" width="720" height="260" alt="ToyWake 后端适配与降级流程图">
+        </div>
+        <span class="fig-caption" style="margin-bottom: 32px;">FIG.02 — 模型适配与本地降级流程</span>
+
+        <!-- 技术机制说明 -->
+        <div class="subpage-split-grid">
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <h3 style="font-size: 17px; margin: 0 0 10px; color: var(--ink);">主路径：模型适配与校验</h3>
+            <p style="font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin: 0;">
+              实现了兼容 OpenAI 协议的标准 HTTP 客户端封装，支持超时控制与错误捕获。对模型输出进行严格字数约束与儿童安全合规校验，成功时返回带 <code>source=model</code> 的短语提示。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--line); padding: 24px;">
+            <h3 style="font-size: 17px; margin: 0 0 10px; color: var(--cyan);">兜底路径：本地固定库降级</h3>
+            <p style="font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin: 0;">
+              内置预置的高质量启发提示库（<code>fixed_contents</code>）。在未配置 API Key、网络超时或模型输出校验不合规时，自动切换至本地固定内容（<code>source=fixed</code>），保证前端交互体验平滑。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三状态事实边界说明 -->
+    <section class="v2-section">
+      <div class="wrap">
+        <p class="section-kicker">Facts & Boundaries</p>
+        <h2 class="section-title">当前状态与事实边界</h2>
+
+        <div class="subpage-trio-grid" style="margin-top: 24px;">
+          <div style="background: var(--surface); padding: 20px; border: 1px solid var(--line);">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--magenta); margin-bottom: 6px;">代码工程状态</div>
+            <strong style="font-size: 16px; color: var(--ink);">双端原型代码已跑通</strong>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin: 8px 0 0; line-height: 1.55;">
+              Python FastAPI 后端与 Android (Kotlin + Jetpack Compose) 客户端原型已在本地跑通，相关代码已开源于 GitHub。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); padding: 20px; border: 1px solid var(--line);">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--cyan); margin-bottom: 6px;">测试验证状态</div>
+            <strong style="font-size: 16px; color: var(--ink);">现有测试采用模拟响应</strong>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin: 8px 0 0; line-height: 1.55;">
+              测试环节使用 mock / monkeypatch 模拟网络请求与异常响应，默认运行于本地固定库模式。
+            </p>
+          </div>
+
+          <div style="background: var(--surface); padding: 20px; border: 1px solid var(--line);">
+            <div style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--cyan); margin-bottom: 6px;">客观效果边界</div>
+            <strong style="font-size: 16px; color: var(--ink);">家庭效果未做真实核验</strong>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin: 8px 0 0; line-height: 1.55;">
+              本项目处于个人探索原型阶段；本轮未核验真实商用模型调用效果，无可引用的真实家庭留存或长期效果数据。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-left">
+        <a class="signal-link" href="index.html">← 返回首页</a> ｜
+        <a class="signal-link" href="assets/resume.html">查看在线简历</a>
+      </div>
+      <div class="footer-right">
+        <span class="stamp-overprint" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/signal.js"></script>
+</body>
+</html>

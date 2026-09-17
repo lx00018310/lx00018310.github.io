@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>董达 · 简历（AI 产品经理）</title>
+<meta name="description" content="具备机械工程、商业策划与工业软件实践经历，专注技术型 AI 产品经理与应用落地，从场景洞察、需求拆解到原型验证、系统集成与真实交付。">
+<style>
+  :root {
+    --paper: #f4f2ed;
+    --surface: #ffffff;
+    --ink: #111111;
+    --ink-2: #3a3a3a;
+    --ink-3: #757575;
+    --line: #111111;
+    --line-thin: #d8d5ce;
+    --magenta: #d946ef;
+    --magenta-ink: #a21caf;
+    --cyan: #0891b2;
+    --cyan-ink: #0e7490;
+    --grot: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 6mm 8mm;
+  }
+  body {
+    font-family: var(--grot);
+    color: var(--ink);
+    background: #dcd8cf;
+    font-size: 11.5px;
+    line-height: 1.4;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    max-width: 100%;
+    margin: 16px auto;
+    padding: 10mm 12mm;
+    position: relative;
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(217, 70, 239, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 90% 90%, rgba(8, 145, 178, 0.05) 0%, transparent 45%),
+      radial-gradient(var(--line-thin) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 12px 12px;
+    background-repeat: no-repeat, no-repeat, repeat;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  /* 规线标记 */
+  .reg-mark {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+  }
+  .reg-mark::before, .reg-mark::after {
+    content: "";
+    position: absolute;
+    background: var(--line);
+  }
+  .reg-mark::before { top: 0; bottom: 0; left: 5.5px; width: 1px; }
+  .reg-mark::after { left: 0; right: 0; top: 5.5px; height: 1px; }
+  .reg-mark--tl { top: 4mm; left: 4mm; }
+  .reg-mark--tr { top: 4mm; right: 4mm; }
+  .reg-mark--bl { bottom: 4mm; left: 4mm; }
+  .reg-mark--br { bottom: 4mm; right: 4mm; }
+
+  header {
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 5px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); line-height: 1; }
+  .title-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--magenta-ink); margin-top: 3px; }
+  .contacts { text-align: right; font-size: 11px; line-height: 1.45; color: var(--ink-2); font-family: var(--mono); }
+  .contacts a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--cyan); }
+  
+  .constraint-bar {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 3px 8px;
+    margin-bottom: 6px;
+  }
+
+  section { margin-bottom: 6px; }
+  h2 {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    background: transparent;
+    padding: 0 0 2px 0;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+  }
+  h2::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: var(--magenta);
+  }
+
+  .intro-p { font-size: 11.5px; color: var(--ink-2); line-height: 1.4; margin-bottom: 2px; background: var(--surface); border: 1px solid var(--line); padding: 4px 8px; }
+
+  .proj-list { display: flex; flex-direction: column; gap: 4px; }
+  .proj-card { border: 1px solid var(--line); padding: 4px 7px; background: var(--surface); font-size: 11.2px; line-height: 1.4; }
+  .proj-card h3 { font-size: 12px; font-weight: 700; margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center; color: var(--ink); }
+  .badge { font-family: var(--mono); font-size: 10.5px; font-weight: 600; background: var(--paper); color: var(--ink); border: 1px solid var(--line); padding: 0 4px; display: inline-flex; align-items: center; gap: 3px; }
+  .badge::before { content: ""; display: inline-block; width: 4px; height: 4px; background: var(--magenta); }
+  .badge--comm::before { background: var(--cyan); }
+  .badge--proto { color: var(--magenta-ink); border-color: var(--magenta); }
+  .proj-card ul { padding-left: 14px; margin-bottom: 2px; }
+  .proj-card li { margin-bottom: 1px; color: var(--ink-2); }
+  .proj-card .stack { font-size: 10.2px; color: var(--ink-3); font-family: var(--mono); border-top: 1px dashed var(--line-thin); padding-top: 2px; margin-top: 2px; }
+
+  .exp-item { margin-bottom: 3.5px; font-size: 11.2px; background: var(--surface); border: 1px solid var(--line); padding: 4px 7px; }
+  .exp-head { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 1px; }
+  .exp-head .role { font-family: var(--mono); color: var(--magenta-ink); }
+  .exp-desc { color: var(--ink-2); line-height: 1.35; }
+
+  .skills-box { background: var(--surface); border: 1px solid var(--line); padding: 5px 8px; font-size: 11px; line-height: 1.4; color: var(--ink-2); }
+  .skills-box strong { color: var(--ink); }
+
+  .edu-row { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink); margin-top: 3px; padding-top: 3px; border-top: 1px solid var(--line-thin); }
+
+  @media print {
+    body { background: #ffffff !important; font-size: 11px; line-height: 1.35; }
+    .page { padding: 0; max-width: 100%; border: none !important; margin: 0; }
+    .proj-card { padding: 3.5px 6px; }
+    h1 { font-size: 19px; }
+    h2 { font-size: 11px; margin-bottom: 3px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="reg-mark reg-mark--tl"></div>
+  <div class="reg-mark reg-mark--tr"></div>
+  <div class="reg-mark reg-mark--bl"></div>
+  <div class="reg-mark reg-mark--br"></div>
+
+  <header>
+    <div>
+      <h1>董达</h1>
+      <div class="title-tag">求职方向：AI 产品经理 ｜ 技术型 · 应用落地</div>
+    </div>
+    <div class="contacts">
+      <div>电话 / 微信：18761576008 ｜ 邮箱：624290365@qq.com</div>
+      <div>作品集：<a href="https://lx00018310.github.io">lx00018310.github.io</a> ｜ GitHub：<a href="https://github.com/lx00018310">github.com/lx00018310</a></div>
+    </div>
+  </header>
+
+  <div class="constraint-bar">
+    目标城市：杭州 / 湖州 / 苏州（吴江） ｜ 约一个月到岗 ｜ 可接受短期出差
+  </div>
+
+  <!-- 1 · 个人概述 -->
+  <section>
+    <h2>个人概述</h2>
+    <p class="intro-p">
+      具备机械工程、商业策划、创新项目与工业软件实践经历，聚焦技术型 AI 产品经理与工业 Agent 应用验证与落地探索。擅长从复杂业务中提炼关键问题，利用 AI 与 Coding 快速完成可运行原型，推进系统集成与交付闭环。
+    </p>
+  </section>
+
+  <!-- 2 · 代表项目 -->
+  <section>
+    <h2>代表项目与产品证据</h2>
+    <div class="proj-list">
+      <div class="proj-card">
+        <h3>数字月台 ｜ 工业中控软件与流程状态设计 <span class="badge">已上线已验收</span></h3>
+        <ul>
+          <li><strong>流程产品化与架构协同：</strong>将单屏展示诉求升级为多终端工业中控系统，梳理订单状态流转与设备联控；基于 Fastify + React + WebSocket 实现。</li>
+          <li><strong>稳定性闭环：</strong>修复调度大小写混用导致的误拒缺陷，实现仓储层归一化校验；建立生产版本平滑发布与回滚机制。</li>
+        </ul>
+        <div class="stack">技术：React · TypeScript · Fastify · WebSocket · PostgreSQL · SLMP PLC 接口</div>
+      </div>
+
+      <div class="proj-card">
+        <h3>IRO_agent ｜ 工业故障诊断 AI Agent <span class="badge badge--proto">应用验证</span></h3>
+        <ul>
+          <li><strong>机制闭环与 Harness：</strong>针对工业排障噪声与断片问题，设计“竞争假设 → 逐轮取证 → 动态重规划 → 证据锚定”的调查 Agent；构建项目认知、动态取证与自动评测三层 Harness。</li>
+          <li><strong>安全边界与确定性评测：</strong>严格只读（Strict Read-Only），接入日志/DB/代码等只读工具；本地通过 <strong>210 项自动化测试</strong>，建立 DEV/REGRESSION 数据集与 Grader 闭环评测。</li>
+        </ul>
+        <div class="stack">技术：Python · Agent Harness · Tool Calling · Evidence Grounding · Evaluation · Safety Guardrail</div>
+      </div>
+
+      <div class="proj-card">
+        <h3>考亭古街 ｜ 0→1 业务定义与商业策划 <span class="badge badge--comm">售前策划主创 · 212 万元</span></h3>
+        <ul>
+          <li><strong>命题提炼与方案策划：</strong>面对非标诉求，从文化资源中提炼“文旅溯源地”主题方案并获认可，参与方案汇报到实施回款全过程。</li>
+          <li><strong>商业闭环：</strong>所参与的设计服务合同金额为 <strong>212 万元</strong>，支撑项目顺利签约与阶段性交付回款。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 工作经历 -->
+  <section>
+    <h2>工作经历</h2>
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>浙江维力智能装备有限公司</span>
+        <span class="role">AI 应用工程师｜工业软件 / 工控方向</span>
+        <span>2026 – 至今</span>
+      </div>
+      <div class="exp-desc">负责工业中控软件与 AI 应用实践，设计 IRO_agent 诊断 Agent；推进多终端 HMI 协同联调与天津机器人产线排障协同。</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>浙江先秦科技有限公司</span>
+        <span class="role">创新事业负责人</span>
+        <span>2020 – 2025</span>
+      </div>
+      <div class="exp-desc">负责多个创新项目的立项推动、需求梳理、方案策划与实施协调；运用 AI 工具链辅助工作流加速方案原型落地。</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>浙江拾方旅游发展有限公司</span>
+        <span class="role">项目负责人 / 售前主创</span>
+        <span>2017 – 2020</span>
+      </div>
+      <div class="exp-desc">负责文旅项目方案策划、跨方协调与实施推进；在考亭古街项目（2019.07–2019.11）中担任售前策划主创参与全过程。</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>机械制造企业</span>
+        <span class="role">机械工程师</span>
+        <span>2010 – 2017</span>
+      </div>
+      <div class="exp-desc">从事机械设计与现场问题处理，具备设备结构、工艺与物理约束评估经验。</div>
+    </div>
+  </section>
+
+  <!-- 4 · 能力与教育 -->
+  <section>
+    <h2>能力实践与教育背景</h2>
+    <div class="skills-box">
+      <div>• <strong>产品与商业定义：</strong>非标诉求梳理、差异化命题提炼、方案策划表达、交互规则设计与商务推进。</div>
+      <div>• <strong>原型与工程集成：</strong>AI Coding 快速原型 (Python / Agent Harness / Tool Calling / Evaluation / TypeScript / React)、多端状态协同、设备接口对接与 No-Mock 验收规范。</div>
+      <div class="edu-row">
+        <span><strong>华北电力大学（211）</strong> ｜ 机械设计制造及其自动化 ｜ 本科</span>
+        <span>2006 – 2010</span>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -23,8 +23,8 @@
   const CONFIG = {
     cell: 12,                  // 严格对齐 CSS 点阵 12px 网格
     dotRadius: 2.8,          // 元胞小圆点半径 (px，原 1.4px 的 2 倍)
-    aliveAlpha: 0.62,          // 桌面端活细胞纯黑透明度
-    mobileAliveAlpha: 0.48,    // 移动端活细胞纯黑透明度
+    aliveAlpha: 0.88,          // 桌面端主题色紫色透明度
+    mobileAliveAlpha: 0.76,    // 移动端主题色紫色透明度
     stepInterval: 240,         // 桌面端演化步进周期 (ms)
     mobileStepInterval: 320,   // 移动端演化步进周期 (ms)
     minAliveThreshold: 12,     // 最低存活细胞阈值（触发补种）
@@ -49,8 +49,10 @@
     height = window.innerHeight;
     isMobile = width <= 768;
 
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     cols = Math.ceil(width / CONFIG.cell) + 1;
@@ -187,7 +189,7 @@
     ctx.clearRect(0, 0, width, height);
 
     const alpha = isMobile ? CONFIG.mobileAliveAlpha : CONFIG.aliveAlpha;
-    ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`;
+    ctx.fillStyle = `rgba(217, 70, 239, ${alpha})`;
 
     ctx.beginPath();
     const halfCell = CONFIG.cell / 2; // 6px，中心与 background-image 严格重叠

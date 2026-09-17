@@ -133,7 +133,8 @@ body::before {
 }
 
 /* Layer 3 · 信号脉冲（Canvas） */
-#signal-field {
+#signal-field,
+#cellular-automata-field {
   position: fixed;
   inset: 0;
   z-index: -1;

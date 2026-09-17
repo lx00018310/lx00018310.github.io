@@ -22,7 +22,7 @@
   // ── 配置参数 ─────────────────────────────────────────
   const CONFIG = {
     cell: 12,                  // 严格对齐 CSS 点阵 12px 网格
-    dotRadius: 1.4,            // 元胞小圆点半径 (px)
+    dotRadius: 3,            // 元胞小圆点半径 (px)
     aliveAlpha: 0.62,          // 桌面端活细胞纯黑透明度
     mobileAliveAlpha: 0.48,    // 移动端活细胞纯黑透明度
     stepInterval: 240,         // 桌面端演化步进周期 (ms)

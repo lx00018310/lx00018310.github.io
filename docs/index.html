@@ -104,27 +104,14 @@
           </div>
         </div>
 
-        <!-- 下半部分：棋盘镂空元胞自动机动画视口（复刻截图 1 底部图框） -->
-        <div class="giats-checkerboard-viewport reveal" data-delay="2">
+        <!-- 下半部分：全幅元胞自动机动画图框（整区域满幅，左上角标注：元胞自动机 · 1970） -->
+        <div class="giats-cellular-viewport reveal" data-delay="2">
+          <div class="cellular-corner-tag">
+            <span class="cellular-tag-dot"></span>
+            <span>元胞自动机 · 1970</span>
+          </div>
           <!-- 内部动态元胞机 Canvas -->
           <canvas id="hero-cellular-canvas"></canvas>
-          <!-- 6 列 x 2 行交错镂空遮罩 -->
-          <div class="giats-checkerboard-mask" aria-hidden="true">
-            <!-- Row 1 -->
-            <div class="mask-tile mask-tile--transparent"></div>
-            <div class="mask-tile mask-tile--white"></div>
-            <div class="mask-tile mask-tile--transparent"></div>
-            <div class="mask-tile mask-tile--transparent"></div>
-            <div class="mask-tile mask-tile--white"></div>
-            <div class="mask-tile mask-tile--transparent"></div>
-            <!-- Row 2 -->
-            <div class="mask-tile mask-tile--transparent"></div>
-            <div class="mask-tile mask-tile--white"></div>
-            <div class="mask-tile mask-tile--transparent"></div>
-            <div class="mask-tile mask-tile--white"></div>
-            <div class="mask-tile mask-tile--transparent"></div>
-            <div class="mask-tile mask-tile--white"></div>
-          </div>
         </div>
       </div>
     </section>

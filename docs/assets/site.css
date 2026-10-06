@@ -2320,17 +2320,20 @@ footer.site-footer, footer {
   }
 }
 
-/* 3. 首页下半部棋盘镂空图框（元胞自动机动画视口） */
+/* 3. 首页下半部完整图框（元胞自动机动画视口，全幅无不规则遮罩） */
+.giats-cellular-viewport,
 .giats-checkerboard-viewport {
   position: relative;
   width: 100%;
-  height: clamp(300px, 38vh, 460px);
-  background: #0b0e14;
+  height: clamp(320px, 42vh, 480px);
+  background: #090c10;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
-  margin-top: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 24px;
 }
+.giats-cellular-viewport canvas,
 .giats-checkerboard-viewport canvas {
   position: absolute;
   top: 0;
@@ -2339,22 +2342,37 @@ footer.site-footer, footer {
   height: 100%;
   display: block;
 }
-/* 6 列 x 2 行交错镂空遮罩层（完全复刻截图中的棋盘马赛克格） */
-.giats-checkerboard-mask {
+
+/* 左上角标签：元胞自动机 · 1970 */
+.cellular-corner-tag {
   position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  top: 20px;
+  left: 24px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: rgba(15, 20, 28, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.06em;
+  user-select: none;
   pointer-events: none;
-  z-index: 2;
 }
-.mask-tile--white {
-  background: var(--paper); /* 与全站纸张背景同色，遮挡非透出区域 */
+.cellular-tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a855f7;
+  box-shadow: 0 0 10px #c084fc;
 }
-.mask-tile--transparent {
-  background: transparent; /* 镂空，透出内部元胞机 Canvas */
-}
+
 
 /* 4. 2、3、4 页面双图层固定滚动联动 (Sticky Pinning) */
 .showcase-scroller-stage {

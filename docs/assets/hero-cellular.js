@@ -151,6 +151,23 @@
     animId = requestAnimationFrame(loop);
   }
 
+  container.addEventListener('mousemove', function(e) {
+    var rect = canvas.getBoundingClientRect();
+    var mx = e.clientX - rect.left;
+    var my = e.clientY - rect.top;
+    var c = Math.floor(mx / cellSize);
+    var r = Math.floor(my / cellSize);
+    for (var dy = -1; dy <= 1; dy++) {
+      for (var dx = -1; dx <= 1; dx++) {
+        var gx = (c + dx + cols) % cols;
+        var gy = (r + dy + rows) % rows;
+        if (Math.random() < 0.6) {
+          grid[gy * cols + gx] = 1;
+        }
+      }
+    }
+  });
+
   window.addEventListener('resize', resize);
   resize();
   animId = requestAnimationFrame(loop);

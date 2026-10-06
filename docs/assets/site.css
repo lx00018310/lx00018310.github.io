@@ -2140,6 +2140,85 @@ footer.site-footer, footer {
   }
 }
 
+/* ==== giats-style fullscreen pages ==== */
+
+/* (a) 逐屏滚动（scroll-snap 方案，桌面端 proximity 防止溢出卡死） */
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 0;
+  }
+  .hero-screen, .milestone-section, .milestone-screen--contact {
+    scroll-snap-align: start;
+  }
+}
+
+/* (b) 每屏占满视口 + 内容垂直居中 */
+.hero-screen, .milestone-section, .milestone-screen--contact {
+  min-height: 100vh;
+  min-height: 100svh;              /* 移动端动态视口修正 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;               /* 给顶部 nav 留位 */
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+/* (c) 年份放大为视觉主角 */
+.milestone-year {
+  font-size: clamp(72px, 12vw, 160px);
+  font-weight: 500;               /* 用户约定：数字标签不加粗，靠字号制造体量感 */
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+.milestone-title {
+  font-size: clamp(30px, 4.2vw, 52px);
+}
+
+/* (d) 内容超高兜底（数字月台、元胞会社大图优化） */
+.milestone-media-box img {
+  max-height: 34vh;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.milestone-trio-grid {
+  margin-top: 24px;               /* 压缩纵向间距以贴合 100vh 视口 */
+}
+.tourism-facts-bar {
+  margin: 14px 0 0;
+}
+
+/* (e) 滚动入场动效 */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,.8,.32,1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+.reveal[data-delay="1"] { transition-delay: .12s; }
+.reveal[data-delay="2"] { transition-delay: .24s; }
+.reveal[data-delay="3"] { transition-delay: .36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* (f) 首屏 jump 卡贴底与呼吸感 */
+.hero-screen .hero-jump-strip {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+
 
 
 

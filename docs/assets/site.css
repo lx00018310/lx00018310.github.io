@@ -2320,18 +2320,18 @@ footer.site-footer, footer {
   }
 }
 
-/* 3. 首页下半部完整图框（元胞自动机动画视口，全幅无不规则遮罩） */
+/* 3. 首页下半部完整图框（元胞自动机动画视口，加高为原尺寸的 250%） */
 .giats-cellular-viewport,
 .giats-checkerboard-viewport {
   position: relative;
   width: 100%;
-  height: clamp(320px, 42vh, 480px);
+  height: clamp(800px, 105vh, 1200px); /* 加高为现在的 250% */
   background: #090c10;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  margin-top: 24px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin-top: 32px;
 }
 .giats-cellular-viewport canvas,
 .giats-checkerboard-viewport canvas {
@@ -2341,36 +2341,38 @@ footer.site-footer, footer {
   width: 100%;
   height: 100%;
   display: block;
+  z-index: 1;
 }
 
-/* 左上角标签：元胞自动机 · 1970 */
+/* 严格位于图框内部左上角的水印/标牌：元胞自动机 · 1970 */
 .cellular-corner-tag {
   position: absolute;
-  top: 20px;
-  left: 24px;
-  z-index: 10;
+  top: 24px;
+  left: 28px;
+  z-index: 20; /* 保证置于 Canvas 图层上方 */
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 16px;
-  background: rgba(15, 20, 28, 0.72);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(11, 14, 20, 0.82);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.06em;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
   user-select: none;
   pointer-events: none;
 }
 .cellular-tag-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #a855f7;
-  box-shadow: 0 0 10px #c084fc;
+  box-shadow: 0 0 12px #c084fc;
 }
 
 

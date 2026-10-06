@@ -22,7 +22,7 @@
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     width = container.clientWidth || 1200;
-    height = container.clientHeight || 420;
+    height = container.clientHeight || 1000;
 
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
@@ -41,8 +41,8 @@
 
   function seedRandom() {
     grid.fill(0);
-    // 随机播种多个活动核心
-    var clusterCount = Math.max(4, Math.floor(cols / 8));
+    // 随机播种多个活动核心（根据超大画幅网格成比例增加）
+    var clusterCount = Math.max(8, Math.floor((cols * rows) / 220));
     for (var i = 0; i < clusterCount; i++) {
       var cx = Math.floor(Math.random() * cols);
       var cy = Math.floor(Math.random() * rows);

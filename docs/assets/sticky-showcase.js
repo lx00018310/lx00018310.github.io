@@ -57,21 +57,19 @@
 
   var activeIndex = -1;
   var isTransitioning = false;
+  var queuedIndex = -1;
 
-  function updateContent(index) {
-    if (index === activeIndex || isTransitioning) return;
+  function doSwitch(index) {
     activeIndex = index;
     var data = PROJECTS[index];
     if (!data) return;
 
-    // 添加平滑淡出过渡
     pinnedContainer.classList.add('is-switching');
     isTransitioning = true;
 
     setTimeout(function() {
       if (pinnedYear) pinnedYear.textContent = data.year;
       if (pinnedTitle) pinnedTitle.textContent = data.title;
-      if (pinnedCategory) pinnedCategory.textContent = data.category;
       if (pinnedLead) pinnedLead.textContent = data.lead;
 
       if (pinnedFacts) {
@@ -84,21 +82,36 @@
         });
       }
 
-      if (floatingCardImg) floatingCardImg.src = data.cardImg;
-      if (floatingCardTitle) floatingCardTitle.textContent = data.cardTitle;
-      if (floatingCardCaption) floatingCardCaption.textContent = data.cardCaption;
-      if (floatingCardStatus) floatingCardStatus.textContent = data.cardStatus;
+      if (floatingCardImg) {
+        floatingCardImg.src = data.cardImg;
+      }
 
       pinnedContainer.classList.remove('is-switching');
       isTransitioning = false;
-    }, 160);
+
+      // 如果快速滚动中有积压的最新状态，立即处理
+      if (queuedIndex !== -1 && queuedIndex !== activeIndex) {
+        var next = queuedIndex;
+        queuedIndex = -1;
+        doSwitch(next);
+      }
+    }, 130);
+  }
+
+  function updateContent(index) {
+    if (index === activeIndex) return;
+    if (isTransitioning) {
+      queuedIndex = index;
+      return;
+    }
+    doSwitch(index);
   }
 
   function syncPinning() {
     var rect = stage.getBoundingClientRect();
     var windowH = window.innerHeight || document.documentElement.clientHeight;
 
-    // 1. 严格的状态机：保障上图层无论在任何浏览器中都 100% 稳固跟随视口吸附
+    // 1. 严格的状态机：保障上图层稳固跟随视口吸附
     if (rect.top > 0) {
       // 阶段 A：视口尚未滚入舞台，上图层停留在舞台最顶部
       pinnedContainer.style.position = 'absolute';
@@ -116,15 +129,27 @@
       pinnedContainer.style.bottom = 'auto';
     }
 
-    // 2. 依据当前舞台滚过的像素距离，准确计算当前展示的项目 (0: 考亭古街, 1: 数字月台, 2: 元胞会社)
-    var scrolled = -rect.top;
-    if (scrolled < 0) {
-      updateContent(0);
-      return;
+    // 2. 复刻模板物理规律：计算物理边界滑过上层图框中心线时精准触发切换
+    var cardEl = document.getElementById('pinned-floating-card');
+    var triggerY = windowH * 0.5;
+    if (cardEl) {
+      var cardRect = cardEl.getBoundingClientRect();
+      triggerY = cardRect.top + cardRect.height * 0.5;
     }
 
-    var progress = scrolled / windowH;
-    var index = Math.min(2, Math.max(0, Math.floor(progress + 0.38)));
+    // 两条页面物理分界线在当前视口中的绝对 Y 坐标
+    var boundary1 = rect.top + windowH;     // 2-3 页物理分界线
+    var boundary2 = rect.top + 2 * windowH; // 3-4 页物理分界线
+
+    var index = 0;
+    if (boundary2 <= triggerY) {
+      index = 2; // 3-4 分界线已滑过卡片中线，展示第 4 页（EmergentInc）
+    } else if (boundary1 <= triggerY) {
+      index = 1; // 2-3 分界线已滑过卡片中线，展示第 3 页（数字月台）
+    } else {
+      index = 0; // 2-3 分界线尚未滑过卡片，展示第 2 页（考亭古街）
+    }
+
     updateContent(index);
   }
 

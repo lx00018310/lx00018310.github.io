@@ -40,7 +40,6 @@
 | SimpleHmi | `docs/simplehmi-weili.html` | 从需求到可检查的工业软件：轻量规范路径与 No-Mock 开源交付标准 |
 | 湖州美食地图 | `docs/huzhou-food-map.html` | 把店铺信息做成有依据的地图：数据清洗与单手地图交互原型 |
 | 简历（两页 A4） | `docs/assets/resume.html` | 唯一主投简历，适配两页 A4 打印与屏幕浏览（AI 解决方案定位，含核心项目解决方案证据与真实履历） |
-| 简历（PDF） | `docs/assets/resume.pdf` | 由 `resume.html` 导出的两页 A4 PDF 文件（严格 2 页，文本可选中） |
 | 精简简历（一页 A4） | `docs/assets/董达_简历_一页.html` | A4 一页精炼版在线与打印简历（AI 解决方案顾问，严格 1 页） |
 | AI 可读档案 | `docs/ai-profile.md` | 供大模型与搜索引擎读取的个人结构化档案 |
 | LLMs 入口文本 | `docs/llms.txt` | 供大语言模型消费的标准文本摘要 |

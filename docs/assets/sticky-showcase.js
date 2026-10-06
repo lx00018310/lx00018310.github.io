@@ -1,6 +1,6 @@
 /**
- * 2、3、4 页面双图层联动切换引擎 (Multi-layer Sticky Pinning Engine)
- * 效果：鼠标下滑时下图层（全幅背景）跟随滚动，上图层（文字+悬浮卡片）固定在视口，在背景切换时平滑更新文本与视觉
+ * 2、3、4 页面物理切片擦除联动引擎 (Split-Screen Clip-Path Wipe Engine)
+ * 效果：鼠标下滑时下一个画板自视口底部升起，红线之上为上一个画板，红线之下实时透出下一个画板 (背景+文字+图框一体物理切片)
  */
 (function() {
   'use strict';
@@ -8,156 +8,67 @@
   var stage = document.getElementById('showcase-stage');
   if (!stage) return;
 
-  var pinnedYear = document.getElementById('pinned-year');
-  var pinnedTitle = document.getElementById('pinned-title');
-  var pinnedLead = document.getElementById('pinned-lead');
-  var pinnedCategory = document.getElementById('pinned-category');
-  var pinnedFacts = document.getElementById('pinned-facts');
-  var floatingCardImg = document.getElementById('floating-card-img');
-  var floatingCardTitle = document.getElementById('floating-card-title');
-  var floatingCardCaption = document.getElementById('floating-card-caption');
-  var floatingCardStatus = document.getElementById('floating-card-status');
-  var pinnedContainer = document.querySelector('.showcase-pinned-overlay');
+  var viewport = document.getElementById('showcase-viewport');
+  var layer1 = document.getElementById('showcase-layer-1');
+  var layer2 = document.getElementById('showcase-layer-2');
+  if (!viewport || !layer1 || !layer2) return;
 
-  var PROJECTS = [
-    {
-      year: '2020',
-      title: '考亭古街',
-      category: 'COMMERCIAL DEFINITION',
-      lead: '面对混沌非标诉求，坚决不被杂音带偏。提炼“文旅溯源地”唯一成立主线，售前主创推动 212 万元合同签署与回款闭环。',
-      tags: ['合同金额 212 万元', '售前策划主创', '多轮高层汇报立项'],
-      cardTitle: 'KAOTING · TOP STRATEGY',
-      cardImg: 'assets/images/kaoting.jpg',
-      cardCaption: '福建建阳考亭古街：落地实景与文脉溯源空间',
-      cardStatus: '已立项交付'
-    },
-    {
-      year: '2024',
-      title: '数字月台',
-      category: 'INDUSTRIAL HMI & CONTROL',
-      lead: '多终端工业中控状态机，打通真实 PLC 与移动机器人硬件协议。单兵解决多工位冲突与异常断线，100% No-Mock 真实联调。',
-      tags: ['生产环境已上线已验收', '订单全局状态机', 'Fastify · React · PLC'],
-      cardTitle: 'DIGITAL DOCK · CONTROL SPEC',
-      cardImg: 'assets/visuals/dock-system.svg',
-      cardCaption: '工业中控职责边界拓扑（调度层 ↔ 中控 ↔ PLC 控制器）',
-      cardStatus: '生产环境运行中'
-    },
-    {
-      year: '2025',
-      title: 'EmergentInc',
-      category: 'AI-NATIVE AUTONOMOUS SYSTEM',
-      lead: '让 AI 走出对话框。开源自主智能体系统，打通 4 链 USDT 自动核销、pure-ast-json 纯 AST 安全沙箱与持久区自进化。',
-      tags: ['开源自主系统架构', '4 链 USDT 自动核销', '纯 AST 安全沙箱'],
-      cardTitle: 'EMERGENTINC · AUTONOMOUS AGENT',
-      cardImg: 'assets/images/emergentinc.png',
-      cardCaption: '智能体自主经营全景（商城销售 · 基因谱系 · 链上核销）',
-      cardStatus: '开源代码库就绪'
-    }
-  ];
-
-  var activeIndex = -1;
-  var isTransitioning = false;
-  var queuedIndex = -1;
-
-  function doSwitch(index) {
-    activeIndex = index;
-    var data = PROJECTS[index];
-    if (!data) return;
-
-    pinnedContainer.classList.add('is-switching');
-    isTransitioning = true;
-
-    setTimeout(function() {
-      if (pinnedYear) pinnedYear.textContent = data.year;
-      if (pinnedTitle) pinnedTitle.textContent = data.title;
-      if (pinnedLead) pinnedLead.textContent = data.lead;
-
-      if (pinnedFacts) {
-        pinnedFacts.innerHTML = '';
-        data.tags.forEach(function(tag) {
-          var span = document.createElement('span');
-          span.className = 'fact-tag';
-          span.textContent = tag;
-          pinnedFacts.appendChild(span);
-        });
-      }
-
-      if (floatingCardImg) {
-        floatingCardImg.src = data.cardImg;
-      }
-
-      pinnedContainer.classList.remove('is-switching');
-      isTransitioning = false;
-
-      // 如果快速滚动中有积压的最新状态，立即处理
-      if (queuedIndex !== -1 && queuedIndex !== activeIndex) {
-        var next = queuedIndex;
-        queuedIndex = -1;
-        doSwitch(next);
-      }
-    }, 130);
-  }
-
-  function updateContent(index) {
-    if (index === activeIndex) return;
-    if (isTransitioning) {
-      queuedIndex = index;
-      return;
-    }
-    doSwitch(index);
-  }
-
-  function syncPinning() {
+  function render() {
     var rect = stage.getBoundingClientRect();
     var windowH = window.innerHeight || document.documentElement.clientHeight;
 
-    // 1. 严格的状态机：保障上图层稳固跟随视口吸附
+    // 1. 严格的状态机吸附：确保在舞台区间内视口牢牢钉在屏幕中
     if (rect.top > 0) {
-      // 阶段 A：视口尚未滚入舞台，上图层停留在舞台最顶部
-      pinnedContainer.style.position = 'absolute';
-      pinnedContainer.style.top = '0px';
-      pinnedContainer.style.bottom = 'auto';
+      // 视口尚未滚入舞台，停留在舞台顶部
+      viewport.style.position = 'absolute';
+      viewport.style.top = '0px';
+      viewport.style.bottom = 'auto';
     } else if (rect.bottom <= windowH) {
-      // 阶段 C：舞台已滚到底部，上图层钉在舞台末尾，随页面向上滚入第 5 屏
-      pinnedContainer.style.position = 'absolute';
-      pinnedContainer.style.top = 'auto';
-      pinnedContainer.style.bottom = '0px';
+      // 舞台已滚到底部，钉在舞台末尾，随页面向上滚入第 5 屏
+      viewport.style.position = 'absolute';
+      viewport.style.top = 'auto';
+      viewport.style.bottom = '0px';
     } else {
-      // 阶段 B：舞台正处于视口中滚轮下滑区间，上图层定格在视口中央跟随滚动
-      pinnedContainer.style.position = 'fixed';
-      pinnedContainer.style.top = '0px';
-      pinnedContainer.style.bottom = 'auto';
+      // 处于舞台联动区间，固定在视口中
+      viewport.style.position = 'fixed';
+      viewport.style.top = '0px';
+      viewport.style.bottom = 'auto';
     }
 
-    // 2. 复刻模板物理规律：计算物理边界滑过上层图框中心线时精准触发切换
-    var cardEl = document.getElementById('pinned-floating-card');
-    var triggerY = windowH * 0.5;
-    if (cardEl) {
-      var cardRect = cardEl.getBoundingClientRect();
-      triggerY = cardRect.top + cardRect.height * 0.5;
-    }
+    // 2. 物理擦除切片算法 (Clip-Path Wipe)
+    // 舞台内有效可滚动高度为 200vh (stage.offsetHeight - windowH)
+    var scrolled = -rect.top;
 
-    // 两条页面物理分界线在当前视口中的绝对 Y 坐标
-    var boundary1 = rect.top + windowH;     // 2-3 页物理分界线
-    var boundary2 = rect.top + 2 * windowH; // 3-4 页物理分界线
-
-    var index = 0;
-    if (boundary2 <= triggerY) {
-      index = 2; // 3-4 分界线已滑过卡片中线，展示第 4 页（EmergentInc）
-    } else if (boundary1 <= triggerY) {
-      index = 1; // 2-3 分界线已滑过卡片中线，展示第 3 页（数字月台）
+    if (scrolled <= 0) {
+      // 尚未开始切入第 3 屏
+      layer1.style.clipPath = 'inset(100% 0 0 0)';
+      layer2.style.clipPath = 'inset(100% 0 0 0)';
+    } else if (scrolled < windowH) {
+      // 阶段 1：Layer 0 (考亭古街) -> Layer 1 (数字月台)
+      // 进度 p 随滚动由 0 增加至 1
+      var p1 = scrolled / windowH;
+      // 裁剪红线从屏幕底部 (100%) 升至屏幕顶部 (0%)
+      var clipY1 = (1 - p1) * 100;
+      layer1.style.clipPath = 'inset(' + clipY1.toFixed(3) + '% 0 0 0)';
+      layer2.style.clipPath = 'inset(100% 0 0 0)';
+    } else if (scrolled < 2 * windowH) {
+      // 阶段 2：Layer 1 (数字月台) -> Layer 2 (EmergentInc)
+      layer1.style.clipPath = 'inset(0% 0 0 0)';
+      var p2 = (scrolled - windowH) / windowH;
+      var clipY2 = (1 - p2) * 100;
+      layer2.style.clipPath = 'inset(' + clipY2.toFixed(3) + '% 0 0 0)';
     } else {
-      index = 0; // 2-3 分界线尚未滑过卡片，展示第 2 页（考亭古街）
+      // 阶段 3：完全展现 Layer 2 (EmergentInc)，并准备向上滑入第 5 屏
+      layer1.style.clipPath = 'inset(0% 0 0 0)';
+      layer2.style.clipPath = 'inset(0% 0 0 0)';
     }
-
-    updateContent(index);
   }
 
   var ticking = false;
   function requestTick() {
     if (!ticking) {
       window.requestAnimationFrame(function() {
-        syncPinning();
+        render();
         ticking = false;
       });
       ticking = true;
@@ -167,7 +78,6 @@
   window.addEventListener('scroll', requestTick, { passive: true });
   window.addEventListener('resize', requestTick, { passive: true });
 
-  // 初始化执行一次
-  syncPinning();
-  updateContent(0);
+  // 初始首帧渲染
+  render();
 })();

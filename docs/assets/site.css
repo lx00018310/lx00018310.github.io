@@ -2325,7 +2325,7 @@ footer.site-footer, footer {
 .giats-checkerboard-viewport {
   position: relative;
   width: 100%;
-  height: clamp(560px, 74vh, 840px); /* 调整为现在的 70% */
+  height: clamp(400px, 60vh, 700px); 
   background: #090c10;
   border-radius: 20px;
   overflow: hidden;
@@ -2376,52 +2376,74 @@ footer.site-footer, footer {
 }
 
 
-/* 4. 2、3、4 页面双图层固定滚动联动 (Sticky Pinning) */
+/* 4. 2、3、4 页面物理切片擦除联动 (Split-Screen Clip-Path Wipe) */
 .showcase-scroller-stage {
   position: relative;
-  height: 300vh; /* 3 个项目，各占 100vh 滚动区间 */
+  height: 300vh; /* 3 个画板，总计 300vh 滚动区间 */
 }
-.showcase-backplates {
+
+/* 固定吸附视口容器 */
+.showcase-viewport {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-}
-.showcase-backplate {
   height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 30;
+}
+
+/* 独立的物理画板图层 (GPU Clip-Path 驱动) */
+.showcase-layer {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  will-change: clip-path;
+  pointer-events: none;
+}
+.showcase-layer--0 {
+  z-index: 10;
+}
+.showcase-layer--1 {
+  z-index: 20;
+  clip-path: inset(100% 0 0 0);
+}
+.showcase-layer--2 {
+  z-index: 30;
+  clip-path: inset(100% 0 0 0);
+}
+
+/* 画板背景 */
+.showcase-layer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
 }
-.showcase-backplate::after {
+.showcase-layer-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(10, 15, 24, 0.15); /* 极轻薄通透遮罩，大幅提高背景透明度 */
 }
 
-/* 固定在视口的悬浮上图层 (Sticky Overlay) */
-.showcase-pinned-overlay {
-  position: sticky;
-  top: 0;
-  left: 0;
+/* 画板内容 */
+.showcase-layer-content {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  height: 100%;
   display: flex;
   align-items: center;
-  z-index: 30;
   pointer-events: none;
-  box-sizing: border-box;
-  transition: opacity 0.22s ease, transform 0.22s ease;
 }
-.showcase-pinned-overlay.is-switching {
-  opacity: 0.15;
-  transform: translateY(8px);
-}
+
 .showcase-overlay-wrap {
   width: 100%;
   max-width: 1420px;

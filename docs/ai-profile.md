@@ -8,7 +8,6 @@
 - IRO_agent 仓库：https://github.com/lx00018310/IRO_agent
 - 开源规范：https://github.com/lx00018310/SimpleHmi_WEILI
 - 主投简历（HTML）：https://lx00018310.github.io/assets/resume.html
-- 主投简历（PDF）：https://lx00018310.github.io/assets/resume.pdf
 - 精简简历（HTML）：https://lx00018310.github.io/assets/%E8%91%A3%E8%BE%BE_%E7%AE%80%E5%8E%86_%E4%B8%80%E9%A1%B5.html
 - 联系电话 / 微信：18761576008 ｜ 邮箱：624290365@qq.com
 - 目标城市：杭州 / 湖州 / 苏州（吴江）｜ 到岗时间：约一个月到岗（可接受短期出差）

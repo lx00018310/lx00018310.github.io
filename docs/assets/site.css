@@ -2376,13 +2376,36 @@ footer.site-footer, footer {
 }
 
 
-/* 4. 2、3、4 页面物理切片擦除联动 (Split-Screen Clip-Path Wipe) */
+/* 4. 2、3、4 页面双图层联动（下层背景随鼠标滑动，上层内容固定物理切片） */
 .showcase-scroller-stage {
   position: relative;
-  height: 300vh; /* 3 个画板，总计 300vh 滚动区间 */
+  height: 300vh; /* 3 个全屏背景，总计 300vh 滚动区间 */
 }
 
-/* 固定吸附视口容器 */
+/* 下图层：随鼠标垂直滚动的全景背景长卷 */
+.showcase-backplates {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.showcase-backplate {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.showcase-backplate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 24, 0.15); /* 极轻薄通透遮罩，大幅提高背景透明度 */
+}
+
+/* 上图层：固定吸附视口容器 (仅前景内容，无背景) */
 .showcase-viewport {
   position: absolute;
   top: 0;
@@ -2392,14 +2415,17 @@ footer.site-footer, footer {
   height: 100svh;
   overflow: hidden;
   z-index: 30;
+  pointer-events: none;
 }
 
-/* 独立的物理画板图层 (GPU Clip-Path 驱动) */
+/* 独立的物理内容画板图层 (GPU Clip-Path 驱动) */
 .showcase-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   will-change: clip-path;
   pointer-events: none;
@@ -2414,34 +2440,6 @@ footer.site-footer, footer {
 .showcase-layer--2 {
   z-index: 30;
   clip-path: inset(100% 0 0 0);
-}
-
-/* 画板背景 */
-.showcase-layer-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.showcase-layer-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 15, 24, 0.15); /* 极轻薄通透遮罩，大幅提高背景透明度 */
-}
-
-/* 画板内容 */
-.showcase-layer-content {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
 }
 
 .showcase-overlay-wrap {

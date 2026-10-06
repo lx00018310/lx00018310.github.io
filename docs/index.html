@@ -16,7 +16,7 @@
   <meta name="twitter:title" content="董达｜全链路解决方案与交付工程作品集｜商业定义 · 工业中控 · AI 自主系统">
   <meta name="twitter:description" content="把模糊的想法梳理定位好，亲手用 AI 做可运行 Demo，最后还能在真实环境落地交付。">
   <meta name="twitter:image" content="https://lx00018310.github.io/assets/og-home.png">
-  <link rel="stylesheet" href="assets/site.css?v=3.4">
+  <link rel="stylesheet" href="assets/site.css?v=3.5">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -120,110 +120,111 @@
          下滑时：下图层全幅背景跟随滚动，上图层固定在视口，切换背景时更新文字与卡片
          ══════════════════════════════════════════════════════════════════════ -->
     <!-- ══════════════════════════════════════════════════════════════════════
-         第 2、3、4 屏：物理切片扫描联动舞台 (Wipe Transition)
-         下滑时：各画板通过 clip-path 自下而上实时物理擦除切片，红线之上为上一个，红线之下为下一个
+         第 2、3、4 屏：双图层联动舞台（下层背景随鼠标滑动，上层内容固定物理切片）
          ══════════════════════════════════════════════════════════════════════ -->
     <div class="showcase-scroller-stage" id="showcase-stage">
+      <!-- 下图层：随着鼠标下滑垂直向上滑动的 300vh 全屏背景板长卷 -->
+      <div class="showcase-backplates">
+        <!-- 背景 1: 2020 考亭古街实景全貌 -->
+        <div class="showcase-backplate" id="tourism" style="background-image: linear-gradient(135deg, rgba(10,14,22,0.28) 0%, rgba(10,14,22,0.15) 100%), url('assets/images/kaoting.jpg');"></div>
+        <!-- 背景 2: 2024 数字月台工业现场中控 -->
+        <div class="showcase-backplate" id="industrial" style="background-image: linear-gradient(135deg, rgba(10,14,22,0.28) 0%, rgba(10,14,22,0.15) 100%), url('assets/visuals/dock-system.svg');"></div>
+        <!-- 背景 3: 2025 EmergentInc 元胞会社系统全景 -->
+        <div class="showcase-backplate" id="emergentinc" style="background-image: linear-gradient(135deg, rgba(10,14,22,0.28) 0%, rgba(10,14,22,0.15) 100%), url('assets/images/emergentinc.png');"></div>
+      </div>
+
+      <!-- 上图层：固定吸附在视口中的内容切片容器 (仅前景文字+悬浮图框，无背景) -->
       <div class="showcase-viewport" id="showcase-viewport">
-        <!-- 画板 0 (第 2 屏): 2020 考亭古街 (底层) -->
+        <!-- 画板 0: 2020 考亭古街内容 (底层) -->
         <div class="showcase-layer showcase-layer--0" id="showcase-layer-0">
-          <div class="showcase-layer-bg" id="tourism" style="background-image: linear-gradient(135deg, rgba(10,14,22,0.28) 0%, rgba(10,14,22,0.15) 100%), url('assets/images/kaoting.jpg');"></div>
-          <div class="showcase-layer-content">
-            <div class="showcase-overlay-wrap">
-              <div class="showcase-info-col">
-                <div class="showcase-year-badge">2020</div>
-                <h2 class="showcase-pinned-title">考亭古街</h2>
-                <p class="showcase-pinned-lead">
-                  面对混沌非标诉求，坚决不被杂音带偏。提炼“文旅溯源地”唯一成立主线，售前主创推动 212 万元合同签署与回款闭环。
-                </p>
-                <div class="showcase-pinned-facts">
-                  <span class="fact-tag">合同金额 212 万元</span>
-                  <span class="fact-tag">售前策划主创</span>
-                  <span class="fact-tag">多轮高层汇报立项</span>
-                </div>
+          <div class="showcase-overlay-wrap">
+            <div class="showcase-info-col">
+              <div class="showcase-year-badge">2020</div>
+              <h2 class="showcase-pinned-title">考亭古街</h2>
+              <p class="showcase-pinned-lead">
+                面对混沌非标诉求，坚决不被杂音带偏。提炼“文旅溯源地”唯一成立主线，售前主创推动 212 万元合同签署与回款闭环。
+              </p>
+              <div class="showcase-pinned-facts">
+                <span class="fact-tag">合同金额 212 万元</span>
+                <span class="fact-tag">售前策划主创</span>
+                <span class="fact-tag">多轮高层汇报立项</span>
               </div>
-              <div class="showcase-floating-card-wrap">
-                <div class="showcase-floating-card">
-                  <div class="card-glass-header">
-                    <div class="card-dots-group">
-                      <span class="card-dot"></span>
-                      <span class="card-dot"></span>
-                      <span class="card-dot"></span>
-                    </div>
+            </div>
+            <div class="showcase-floating-card-wrap">
+              <div class="showcase-floating-card">
+                <div class="card-glass-header">
+                  <div class="card-dots-group">
+                    <span class="card-dot"></span>
+                    <span class="card-dot"></span>
+                    <span class="card-dot"></span>
                   </div>
-                  <div class="card-media-viewport">
-                    <img src="assets/images/kaoting.jpg" alt="考亭古街特写视图">
-                  </div>
+                </div>
+                <div class="card-media-viewport">
+                  <img src="assets/images/kaoting.jpg" alt="考亭古街特写视图">
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 画板 1 (第 3 屏): 2024 数字月台 (中层，被 clip-path 控制) -->
+        <!-- 画板 1: 2024 数字月台内容 (中层，随背景滑入被 clip-path 擦除切出) -->
         <div class="showcase-layer showcase-layer--1" id="showcase-layer-1">
-          <div class="showcase-layer-bg" id="industrial" style="background-image: linear-gradient(135deg, rgba(10,14,22,0.28) 0%, rgba(10,14,22,0.15) 100%), url('assets/visuals/dock-system.svg');"></div>
-          <div class="showcase-layer-content">
-            <div class="showcase-overlay-wrap">
-              <div class="showcase-info-col">
-                <div class="showcase-year-badge">2024</div>
-                <h2 class="showcase-pinned-title">数字月台</h2>
-                <p class="showcase-pinned-lead">
-                  多终端工业中控状态机，打通真实 PLC 与移动机器人硬件协议。单兵解决多工位冲突与异常断线，100% No-Mock 真实联调。
-                </p>
-                <div class="showcase-pinned-facts">
-                  <span class="fact-tag">生产环境已上线已验收</span>
-                  <span class="fact-tag">订单全局状态机</span>
-                  <span class="fact-tag">Fastify · React · PLC</span>
-                </div>
+          <div class="showcase-overlay-wrap">
+            <div class="showcase-info-col">
+              <div class="showcase-year-badge">2024</div>
+              <h2 class="showcase-pinned-title">数字月台</h2>
+              <p class="showcase-pinned-lead">
+                多终端工业中控状态机，打通真实 PLC 与移动机器人硬件协议。单兵解决多工位冲突与异常断线，100% No-Mock 真实联调。
+              </p>
+              <div class="showcase-pinned-facts">
+                <span class="fact-tag">生产环境已上线已验收</span>
+                <span class="fact-tag">订单全局状态机</span>
+                <span class="fact-tag">Fastify · React · PLC</span>
               </div>
-              <div class="showcase-floating-card-wrap">
-                <div class="showcase-floating-card">
-                  <div class="card-glass-header">
-                    <div class="card-dots-group">
-                      <span class="card-dot"></span>
-                      <span class="card-dot"></span>
-                      <span class="card-dot"></span>
-                    </div>
+            </div>
+            <div class="showcase-floating-card-wrap">
+              <div class="showcase-floating-card">
+                <div class="card-glass-header">
+                  <div class="card-dots-group">
+                    <span class="card-dot"></span>
+                    <span class="card-dot"></span>
+                    <span class="card-dot"></span>
                   </div>
-                  <div class="card-media-viewport">
-                    <img src="assets/visuals/dock-system.svg" alt="数字月台系统拓扑视图">
-                  </div>
+                </div>
+                <div class="card-media-viewport">
+                  <img src="assets/visuals/dock-system.svg" alt="数字月台系统拓扑视图">
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 画板 2 (第 4 屏): 2025 EmergentInc (顶层，被 clip-path 控制) -->
+        <!-- 画板 2: 2025 EmergentInc 内容 (顶层，随背景滑入被 clip-path 擦除切出) -->
         <div class="showcase-layer showcase-layer--2" id="showcase-layer-2">
-          <div class="showcase-layer-bg" id="emergentinc" style="background-image: linear-gradient(135deg, rgba(10,14,22,0.28) 0%, rgba(10,14,22,0.15) 100%), url('assets/images/emergentinc.png');"></div>
-          <div class="showcase-layer-content">
-            <div class="showcase-overlay-wrap">
-              <div class="showcase-info-col">
-                <div class="showcase-year-badge">2025</div>
-                <h2 class="showcase-pinned-title">EmergentInc</h2>
-                <p class="showcase-pinned-lead">
-                  让 AI 走出对话框。开源自主智能体系统，打通 4 链 USDT 自动核销、pure-ast-json 纯 AST 安全沙箱与持久区自进化。
-                </p>
-                <div class="showcase-pinned-facts">
-                  <span class="fact-tag">开源自主系统架构</span>
-                  <span class="fact-tag">4 链 USDT 自动核销</span>
-                  <span class="fact-tag">纯 AST 安全沙箱</span>
-                </div>
+          <div class="showcase-overlay-wrap">
+            <div class="showcase-info-col">
+              <div class="showcase-year-badge">2025</div>
+              <h2 class="showcase-pinned-title">EmergentInc</h2>
+              <p class="showcase-pinned-lead">
+                让 AI 走出对话框。开源自主智能体系统，打通 4 链 USDT 自动核销、pure-ast-json 纯 AST 安全沙箱与持久区自进化。
+              </p>
+              <div class="showcase-pinned-facts">
+                <span class="fact-tag">开源自主系统架构</span>
+                <span class="fact-tag">4 链 USDT 自动核销</span>
+                <span class="fact-tag">纯 AST 安全沙箱</span>
               </div>
-              <div class="showcase-floating-card-wrap">
-                <div class="showcase-floating-card">
-                  <div class="card-glass-header">
-                    <div class="card-dots-group">
-                      <span class="card-dot"></span>
-                      <span class="card-dot"></span>
-                      <span class="card-dot"></span>
-                    </div>
+            </div>
+            <div class="showcase-floating-card-wrap">
+              <div class="showcase-floating-card">
+                <div class="card-glass-header">
+                  <div class="card-dots-group">
+                    <span class="card-dot"></span>
+                    <span class="card-dot"></span>
+                    <span class="card-dot"></span>
                   </div>
-                  <div class="card-media-viewport">
-                    <img src="assets/images/emergentinc.png" alt="EmergentInc 系统全景视图">
-                  </div>
+                </div>
+                <div class="card-media-viewport">
+                  <img src="assets/images/emergentinc.png" alt="EmergentInc 系统全景视图">
                 </div>
               </div>
             </div>
@@ -289,6 +290,6 @@
   <script src="assets/cellular-automata.js?v=3.1"></script>
   <script src="assets/reveal.js" defer></script>
   <script src="assets/hero-cellular.js?v=3.2"></script>
-  <script src="assets/sticky-showcase.js?v=3.4"></script>
+  <script src="assets/sticky-showcase.js?v=3.5"></script>
 </body>
 </html>

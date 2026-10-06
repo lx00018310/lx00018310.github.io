@@ -105,27 +105,13 @@
     ctx.fillStyle = '#0b0e14';
     ctx.fillRect(0, 0, width, height);
 
-    // 绘制暗色微网格
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (var x = 0; x <= width; x += cellSize) {
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, height);
-    }
-    for (var y = 0; y <= height; y += cellSize) {
-      ctx.moveTo(0, y);
-      ctx.lineTo(width, y);
-    }
-    ctx.stroke();
-
-    // 绘制存活元胞（以紫色球体/渐变粒子体现）
+    // 绘制存活元胞（直径缩小为原尺寸的 70%）
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
         if (grid[r * cols + c] === 1) {
           var px = c * cellSize + cellSize * 0.5;
           var py = r * cellSize + cellSize * 0.5;
-          var radius = cellSize * 0.38;
+          var radius = cellSize * 0.266; // 原 cellSize * 0.38 的 70%
 
           // 白色球体立体光晕（纯白高光 -> 极浅白灰 -> 银灰边界）
           var radGrad = ctx.createRadialGradient(px - radius * 0.3, py - radius * 0.3, radius * 0.08, px, py, radius);

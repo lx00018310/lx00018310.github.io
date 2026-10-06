@@ -1,7 +1,7 @@
 # 董达 / Dong Da - AI-Readable Profile
 
-董达 / Dong Da，求职主定位为 **AI 产品经理（技术型 · 应用落地 · 0→1 产品）** / **AI Product Manager | Technical & Application Delivery**。
-具备机械工程、商业策划、创新项目与工业软件实践经历，擅长从复杂业务和现场约束中提炼关键问题，形成产品假设，并利用 AI 与 Coding 工具快速完成可运行原型。能够连接业务、产品和工程，从场景洞察、需求拆解、产品定义，到应用实现、系统集成和交付验证推进完整闭环。
+董达 / Dong Da，求职主定位为 **AI 解决方案顾问（企业 AI 应用 · 快速 PoC · 业务落地）** / **AI Solutions Consultant | Enterprise AI & PoC Delivery**。
+具备机械工程、商业策划、创新项目与工业软件实践经历。擅长从复杂业务和现场约束中识别关键问题，判断什么值得 AI 化，把模糊诉求变成可执行解决方案，并利用 AI 与 Coding 工具亲手完成可运行 PoC。能够连接客户、业务与工程，从需求诊断、方案设计到应用实现、系统集成和交付验证推进完整闭环。
 
 - 官方主页：https://lx00018310.github.io/
 - GitHub：https://github.com/lx00018310
@@ -19,13 +19,13 @@
 ## 1. 核心定位与求职方向
 
 ### 统一主定位
-- **对外职位**：AI 产品经理 (AI Product Manager)
-- **差异化标签**：技术型 · AI 应用落地 · 0→1 产品
-- **核心主张**：把业务问题，变成可以运行、可以验证的 AI 产品。
+- **对外职位**：AI 解决方案顾问 (AI Solutions Consultant)
+- **差异化标签**：懂业务 · 能做方案 · 能亲手做 AI PoC
+- **核心主张**：先判断什么值得 AI 化，再用低成本 PoC 快速验证，并推进真实落地。
 
 ### 目标岗位
-- **主投方向**：AI 产品经理、AI 应用产品经理、Agent / 智能体产品经理、AIGC 产品经理、技术型 AI 产品经理、企业 AI 产品经理、0→1 创新产品经理。
-- **排除岗位**：大模型底层训练、CUDA/算子优化、推理框架开发、纯学术算法研究、传统互联网 C 端纯买量增长。
+- **主投方向**：AI 解决方案顾问、AI 解决方案经理、AI 售前解决方案、AI Presales、AI 应用解决方案、Agent 解决方案、企业 AI / 数字化转型顾问、偏业务落地的 AI 应用工程师。
+- **排除岗位**：大模型底层训练、CUDA/算子优化、推理框架开发、纯学术算法研究、只做 PRD 的纯互联网产品岗位、传统 C 端纯买量增长。
 
 ### 时间线 (Work History Timeline)
 
@@ -41,8 +41,8 @@
 
 ## 2. 核心能力与技术栈实践
 
-- **产品定义与规则设计**：非标需求拆解、差异化命题提炼、核心业务流程梳理、交互规则与边界定义、异常路径规划与最小可行性验证 (MVP)。
-- **AI 原型工程化与 Agent Harness**：大模型 API 封装适配、Prompt 与输出内容校验、Agentic Planning、Tool Calling、Multi-Hypothesis、Evidence Grounding、Evaluation Harness、Fail Closed 与安全 Guardrail。
+- **业务诊断与方案设计**：非标需求拆解、价值判断、差异化命题提炼、核心业务流程梳理、方案表达、规则边界与最小验证范围设计。
+- **AI PoC 工程化与 Agent Harness**：大模型 API 封装适配、Prompt 与输出内容校验、Agentic Planning、Tool Calling、Multi-Hypothesis、Evidence Grounding、Evaluation Harness、Fail Closed 与安全 Guardrail。
 - **工业系统集成**：多终端 HMI 状态流转、订单全局状态机、PLC 与机器人通信接口联调、日志排查、生产环境快速回滚与 No-Mock 验收。
 - **技术栈实践**：Python · TypeScript · Java · FastAPI · Fastify · Spring Boot · React · Vue · Android (Kotlin / Compose) · WebSocket · PostgreSQL · MySQL · SLMP PLC 接口集成。
 

@@ -66,6 +66,7 @@
 
     // 添加平滑淡出过渡
     pinnedContainer.classList.add('is-switching');
+    isTransitioning = true;
 
     setTimeout(function() {
       if (pinnedYear) pinnedYear.textContent = data.year;
@@ -89,14 +90,33 @@
       if (floatingCardStatus) floatingCardStatus.textContent = data.cardStatus;
 
       pinnedContainer.classList.remove('is-switching');
-    }, 180);
+      isTransitioning = false;
+    }, 160);
   }
 
-  function onScroll() {
+  function syncPinning() {
     var rect = stage.getBoundingClientRect();
-    var windowH = window.innerHeight;
+    var windowH = window.innerHeight || document.documentElement.clientHeight;
 
-    // 计算滚入位置
+    // 1. 严格的状态机：保障上图层无论在任何浏览器中都 100% 稳固跟随视口吸附
+    if (rect.top > 0) {
+      // 阶段 A：视口尚未滚入舞台，上图层停留在舞台最顶部
+      pinnedContainer.style.position = 'absolute';
+      pinnedContainer.style.top = '0px';
+      pinnedContainer.style.bottom = 'auto';
+    } else if (rect.bottom <= windowH) {
+      // 阶段 C：舞台已滚到底部，上图层钉在舞台末尾，随页面向上滚入第 5 屏
+      pinnedContainer.style.position = 'absolute';
+      pinnedContainer.style.top = 'auto';
+      pinnedContainer.style.bottom = '0px';
+    } else {
+      // 阶段 B：舞台正处于视口中滚轮下滑区间，上图层定格在视口中央跟随滚动
+      pinnedContainer.style.position = 'fixed';
+      pinnedContainer.style.top = '0px';
+      pinnedContainer.style.bottom = 'auto';
+    }
+
+    // 2. 依据当前舞台滚过的像素距离，准确计算当前展示的项目 (0: 考亭古街, 1: 数字月台, 2: 元胞会社)
     var scrolled = -rect.top;
     if (scrolled < 0) {
       updateContent(0);
@@ -108,7 +128,21 @@
     updateContent(index);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  // 初始化渲染
+  var ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        syncPinning();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestTick, { passive: true });
+  window.addEventListener('resize', requestTick, { passive: true });
+
+  // 初始化执行一次
+  syncPinning();
   updateContent(0);
 })();

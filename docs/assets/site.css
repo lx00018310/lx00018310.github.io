@@ -46,7 +46,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 72px;
   background-color: var(--paper);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -61,7 +61,7 @@ body {
   -webkit-font-smoothing: antialiased;
   position: relative;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 code, kbd, samp {
@@ -2320,12 +2320,12 @@ footer.site-footer, footer {
   }
 }
 
-/* 3. 首页下半部完整图框（元胞自动机动画视口，加高为原尺寸的 250%） */
+/* 3. 首页下半部完整图框（元胞自动机动画视口，高度调整为原高尺寸的 70%） */
 .giats-cellular-viewport,
 .giats-checkerboard-viewport {
   position: relative;
   width: 100%;
-  height: clamp(800px, 105vh, 1200px); /* 加高为现在的 250% */
+  height: clamp(560px, 74vh, 840px); /* 调整为现在的 70% */
   background: #090c10;
   border-radius: 20px;
   overflow: hidden;

@@ -1611,3 +1611,231 @@ footer.site-footer, footer {
   transform: translateX(4px);
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   单页作品集四大深度章节组件（Single-Page Deep-Dive Showcase）
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* 1. 三大案例引航传送门 */
+.jump-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+.jump-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+.jump-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.jump-card-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--magenta-ink);
+  margin-bottom: 6px;
+}
+.jump-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.jump-card-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0 0 14px;
+  flex: 1;
+}
+.jump-card-action {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 860px) {
+  .jump-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2. 深度章节标题栏与事实看板 */
+.chapter-header {
+  margin-bottom: 28px;
+}
+.chapter-num-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.chapter-idx {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--ink);
+  color: #fff;
+  padding: 2px 8px;
+}
+.chapter-title {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.chapter-subtitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+.chapter-facts-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--paper);
+  border: 1px solid var(--line-thin);
+  margin-bottom: 24px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink);
+}
+
+/* 3. 四步推演网格（Quad-Step Grid） */
+.deep-quad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.deep-quad-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+}
+.deep-quad-step {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--magenta-ink);
+  margin-bottom: 6px;
+}
+.deep-quad-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+.deep-quad-body {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .deep-quad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .deep-quad-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 4. 深度技术与视觉展示双栏（Split Box） */
+.deep-showcase-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.deep-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.deep-showcase-grid--reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+.deep-showcase-grid--reverse .deep-media-col {
+  order: 2;
+}
+.deep-showcase-grid--reverse .deep-text-col {
+  order: 1;
+}
+
+.deep-media-frame {
+  background: var(--paper);
+  border: 1px solid var(--line-thin);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deep-media-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+.deep-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.deep-spec-item {
+  border-left: 3px solid var(--cyan);
+  padding-left: 12px;
+}
+.deep-spec-item strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.deep-spec-item p {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .deep-showcase-grid, .deep-showcase-grid--reverse {
+    grid-template-columns: 1fr;
+  }
+  .deep-showcase-grid--reverse .deep-media-col { order: 1; }
+  .deep-showcase-grid--reverse .deep-text-col { order: 2; }
+}
+
+

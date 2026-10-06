@@ -127,11 +127,11 @@
           var py = r * cellSize + cellSize * 0.5;
           var radius = cellSize * 0.38;
 
-          // 仿球体渐变光晕
-          var radGrad = ctx.createRadialGradient(px - radius * 0.3, py - radius * 0.3, radius * 0.1, px, py, radius);
-          radGrad.addColorStop(0, '#bd7aff');
-          radGrad.addColorStop(0.5, '#7822ec');
-          radGrad.addColorStop(1, '#3b0764');
+          // 白色球体立体光晕（纯白高光 -> 极浅白灰 -> 银灰边界）
+          var radGrad = ctx.createRadialGradient(px - radius * 0.3, py - radius * 0.3, radius * 0.08, px, py, radius);
+          radGrad.addColorStop(0, '#ffffff');
+          radGrad.addColorStop(0.65, '#f1f5f9');
+          radGrad.addColorStop(1, '#cbd5e1');
 
           ctx.fillStyle = radGrad;
           ctx.beginPath();

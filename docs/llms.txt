@@ -19,7 +19,6 @@
 - https://lx00018310.github.io/huzhou-food-map.html — 湖州本地小馆地图：规则边界与数据校验实践。
 - https://lx00018310.github.io/ai-profile.md — 供大模型与机器检索读取的结构化档案。
 - https://lx00018310.github.io/assets/resume.html — 唯一主投简历（A4 两页完整版 HTML）。
-- https://lx00018310.github.io/assets/resume.pdf — 唯一主投简历（两页 A4 导出 PDF）。
 - https://lx00018310.github.io/assets/%E8%91%A3%E8%BE%BE_%E7%AE%80%E5%8E%86_%E4%B8%80%E9%A1%B5.html — 精简简历（A4 一页 HTML）。
 
 ## 核心实体与经历 / Core Entities

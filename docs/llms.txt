@@ -1,15 +1,15 @@
-# 董达 / Dong Da — AI 产品经理
+# 董达 / Dong Da — AI 解决方案顾问
 
-> 董达（Dong Da），求职主定位：AI 产品经理（技术型 · 应用落地 · 0→1 产品）(AI Product Manager | Technical & Application Delivery)。
-> 核心价值主张：把业务问题，变成可以运行、可以验证的 AI 产品。具备机械工程、商业策划、创新项目与工业软件实践经历，擅长场景洞察、需求拆解、产品定义、可运行原型、系统集成与交付验证完整闭环。
+> 董达（Dong Da），求职主定位：AI 解决方案顾问（企业 AI 应用 · 快速 PoC · 业务落地）(AI Solutions Consultant | Enterprise AI & PoC Delivery)。
+> 核心价值主张：先判断什么问题值得 AI 化，再把模糊需求变成可执行方案，并亲手用 AI 做出可运行 PoC，推进系统集成与真实交付。具备机械工程、商业策划、创新项目与工业软件实践经历。
 
 ## 核心概述 / Summary
 
-董达经历横跨机械工程、商业策划、创新项目与工业软件。擅长从复杂业务和现场约束中识别关键问题，利用 AI Coding 工具链（FastAPI / Android / React / Fastify / TypeScript / Python / Java）快速完成可运行原型，并能进入真实工业中控、状态机、设备接口联调与生产环境交付验证。
+董达经历横跨机械工程、商业策划、创新项目与工业软件。擅长从复杂业务和现场约束中识别关键问题、形成解决方案，并利用 AI Coding 工具链（FastAPI / Android / React / Fastify / TypeScript / Python / Java）快速完成可运行原型，并能进入真实工业中控、状态机、设备接口联调与生产环境交付验证。
 
 ## 权威页面 / Authoritative Pages
 
-- https://lx00018310.github.io/ — 作品集首页。个人概述、五步产品工作法、代表项目证据、技术能力验证、商业洞察与产品定义方法、工作经历与联系方式。
+- https://lx00018310.github.io/ — 作品集首页。个人概述、五步解决方案工作法、代表项目证据、PoC 与技术能力验证、业务判断与方案方法、工作经历与联系方式。
 - https://lx00018310.github.io/digital-dock.html — 数字月台：自动装车中控软件（已上线已验收）。
 - https://lx00018310.github.io/iro-agent.html — IRO_agent：工业故障诊断 AI Agent（应用验证阶段）。
 - https://lx00018310.github.io/robot-line.html — 天津机器人产线：工控主程序与设备协同（已交付）。
@@ -25,7 +25,7 @@
 ## 核心实体与经历 / Core Entities
 
 ### 1. 董达 (Dong Da)
-- **求职方向**：AI 产品经理（技术型 · 应用落地）
+- **求职方向**：AI 解决方案顾问（企业 AI 应用 · 快速 PoC · 业务落地）
 - **教育背景**：华北电力大学（211），机械设计制造及其自动化，本科（2006–2010）。
 - **目标城市**：杭州 / 湖州 / 苏州（吴江）
 - **到岗约束**：约一个月到岗；可接受短期出差。

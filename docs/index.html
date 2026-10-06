@@ -65,18 +65,14 @@
   <canvas id="signal-field" aria-hidden="true"></canvas>
   <canvas id="cellular-automata-field" aria-hidden="true"></canvas>
 
-  <nav class="nav" aria-label="站点导航">
-    <div class="wrap">
-      <a class="brand" href="index.html">董达<small>DONG DA ｜ 商业策划 · 工业中控 · AI 自主系统</small></a>
-      <div class="nav-links">
-        <a class="item" href="#overview">概览</a>
-        <a class="item" href="#tourism">2020 考亭古街</a>
-        <a class="item" href="#industrial">2024 数字月台</a>
-        <a class="item" href="#emergentinc">2025 元胞会社</a>
-        <a class="item" href="#contact">联系与简历</a>
-      </div>
+  <!-- 顶部导航：完全复刻截图 1 药丸胶囊按钮导航 -->
+  <header class="giats-nav-bar">
+    <a class="giats-nav-logo" href="index.html">董达</a>
+    <div class="giats-nav-actions">
+      <a class="giats-pill-btn giats-pill-btn--light" href="#contact">GET IN TOUCH</a>
+      <a class="giats-pill-btn giats-pill-btn--dark" href="assets/resume.pdf" download>简历下载</a>
     </div>
-  </nav>
+  </header>
 
   <main>
     <!-- 旧页面兼容锚点（防止外部或旧子页面死链） -->
@@ -89,225 +85,105 @@
     <span id="how" style="display:none;" aria-hidden="true"></span>
 
     <!-- ══════════════════════════════════════════════════════════════════════
-         第 1 屏：HERO 概览（从模糊想法到可运行系统）
+         第 1 屏：首页（完全复刻截图 1 布局 + 底部棋盘元胞自动机动画）
          ══════════════════════════════════════════════════════════════════════ -->
-    <section class="hero-screen" id="overview">
-      <div class="wrap">
-        <div class="hero-eyebrow reveal">
-          <span>PORTFOLIO</span>
-          <span>／</span>
-          <span>DONG DA · 董达</span>
-          <span>／</span>
-          <span>AI APPLICATION ENGINEER</span>
-        </div>
-
-        <h1 class="hero-main-title reveal" data-delay="1">
-          从模糊的想法，<br>到可运行的系统。
-        </h1>
-
-        <p class="hero-manifesto reveal" data-delay="2">
-          擅长解决没有定论、没有现成模板的复杂问题。<br>
-          把混沌非标的诉求<strong>梳理出成立的商业主线</strong>；
-          亲手用全栈代码与 AI Coding <strong>跑通端到端可运行原型</strong>；
-          深入真实物理现场与生产网络，<strong>完成 100% 确定性落地交付</strong>。
-        </p>
-
-        <div class="reveal" data-delay="2" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <a class="btn-v2 btn-v2--primary" href="#tourism">浏览 3 大标杆里程碑 ↓</a>
-          <a class="btn-v2 btn-v2--secondary" href="assets/resume.pdf" download>下载主投简历 (PDF)</a>
-          <a class="signal-link" href="assets/董达_简历_一页.html" style="font-family: var(--mono); font-size: 13.5px; margin-left: 8px;">一页精简版简历 →</a>
-        </div>
-
-        <!-- 3 个年份里程碑快速导航（giats.me 风格） -->
-        <div class="hero-jump-strip">
-          <a class="hero-jump-card reveal" data-delay="1" href="#tourism">
-            <div class="hero-jump-year">2020 ｜ COMMERCIAL DEFINITION</div>
-            <div class="hero-jump-heading">考亭古街：把模糊想法变清晰</div>
-            <p class="hero-jump-desc">从混沌诉求提炼“文旅溯源地”主线，售前主创推动 212 万元合同签署与回款闭环。</p>
-          </a>
-          <a class="hero-jump-card reveal" data-delay="2" href="#industrial">
-            <div class="hero-jump-year">2024 ｜ INDUSTRIAL CONTROL</div>
-            <div class="hero-jump-heading">数字月台：把复杂现场变自动化</div>
-            <p class="hero-jump-desc">多终端工业中控状态机，打通真实 PLC 与工业机器人协议，生产现场已上线已验收。</p>
-          </a>
-          <a class="hero-jump-card reveal" data-delay="3" href="#emergentinc">
-            <div class="hero-jump-year">2025 ｜ AI AUTONOMOUS SYSTEM</div>
-            <div class="hero-jump-heading">EmergentInc：让 AI 走出对话框</div>
-            <p class="hero-jump-desc">开源自主 Agent 体系：4 链 USDT 自动核销、pure-ast-json 纯 AST 安全沙箱与自进化。</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════════
-         第 2 屏：MILESTONE 01 ｜ 2020 考亭古街（全幅实景背景图沉浸体验）
-         ══════════════════════════════════════════════════════════════════════ -->
-    <section class="milestone-section milestone-section--tourism" id="tourism" style="background-image: linear-gradient(135deg, rgba(247, 246, 242, 0.90) 0%, rgba(244, 243, 239, 0.84) 50%, rgba(240, 238, 232, 0.93) 100%), url('assets/images/kaoting.jpg'); background-size: cover; background-position: center;">
-      <div class="wrap">
-        <div class="milestone-meta-row reveal">
-          <span class="milestone-year">2020</span>
-          <span class="milestone-category">商业定义 ｜ 售前策划主创</span>
-        </div>
-
-        <h2 class="milestone-title reveal" data-delay="1">考亭古街：把模糊的非标诉求，变清晰成立的商业方案</h2>
-        <p class="milestone-lead reveal" data-delay="2">
-          面对信息繁杂、各方诉求割裂的原始命题，坚决不被杂音带偏，提炼出唯一成立的商业主线，并推动商务落地。
-        </p>
-
-        <div class="tourism-facts-bar reveal" data-delay="2">
-          <span><strong>项目标的：</strong>考亭古街顶层策划与设计服务</span>
-          <span>｜</span>
-          <span><strong>合同金额：</strong>212 万元</span>
-          <span>｜</span>
-          <span><strong>成果：</strong>多轮高层汇报抗辩立项 · 签署合同并达成阶段回款</span>
-        </div>
-
-        <!-- 3 组极简破局短句（leerob 风格） -->
-        <div class="milestone-trio-grid reveal" data-delay="3">
-          <div class="tourism-glass-card">
-            <div class="milestone-trio-phase">PHASE 01 ｜ 混沌输入</div>
-            <h3 class="milestone-trio-heading">庞杂割裂的非标诉求</h3>
-            <p class="milestone-trio-text">
-              地方政府筹办文旅大会，文化资源庞杂（朱子理学、建盏、山水）。原始诉求宏大却模糊，无人说得清项目到底该怎么做。
+    <section class="hero-screen" id="overview" style="padding-top: 100px; padding-bottom: 30px;">
+      <div class="giats-hero-wrap">
+        <!-- 上半部分左右双栏 -->
+        <div class="giats-hero-split">
+          <div class="giats-hero-left reveal">
+            <h1>
+              <span class="giats-hero-subtitle">从模糊的想法</span>
+              <span class="giats-hero-title-bold">到可运行的系统</span>
+            </h1>
+          </div>
+          <div class="giats-hero-right reveal" data-delay="1">
+            <p>
+              面对没有现成模板的复杂问题，把混沌非标的诉求梳理出成立的商业主线；亲手用全栈代码与 AI Coding 跑通可运行原型；深入真实物理现场与生产网络完成确定性交付。
             </p>
           </div>
-          <div class="tourism-glass-card">
-            <div class="milestone-trio-phase">PHASE 02 ｜ 升维破局</div>
-            <h3 class="milestone-trio-heading">提炼“文旅溯源地”主线</h3>
-            <p class="milestone-trio-text">
-              跳出“仿古小吃街”俗套。从文化源流与消费逻辑中找到差异化变量，升维提炼出核心命题，构建清晰的空间规划与业态落位。
-            </p>
-          </div>
-          <div class="tourism-glass-card">
-            <div class="milestone-trio-phase">PHASE 03 ｜ 商业闭环</div>
-            <h3 class="milestone-trio-heading">212 万元立项与回款</h3>
-            <p class="milestone-trio-text">
-              主持面向政府高层多轮汇报抗辩，击退竞品方案推动立项。协同跨专业团队完成施工图落地与阶段性回款，合同金额 212 万元。
-            </p>
+        </div>
+
+        <!-- 下半部分：棋盘镂空元胞自动机动画视口（复刻截图 1 底部图框） -->
+        <div class="giats-checkerboard-viewport reveal" data-delay="2">
+          <!-- 内部动态元胞机 Canvas -->
+          <canvas id="hero-cellular-canvas"></canvas>
+          <!-- 6 列 x 2 行交错镂空遮罩 -->
+          <div class="giats-checkerboard-mask" aria-hidden="true">
+            <!-- Row 1 -->
+            <div class="mask-tile mask-tile--transparent"></div>
+            <div class="mask-tile mask-tile--white"></div>
+            <div class="mask-tile mask-tile--transparent"></div>
+            <div class="mask-tile mask-tile--transparent"></div>
+            <div class="mask-tile mask-tile--white"></div>
+            <div class="mask-tile mask-tile--transparent"></div>
+            <!-- Row 2 -->
+            <div class="mask-tile mask-tile--transparent"></div>
+            <div class="mask-tile mask-tile--white"></div>
+            <div class="mask-tile mask-tile--transparent"></div>
+            <div class="mask-tile mask-tile--white"></div>
+            <div class="mask-tile mask-tile--transparent"></div>
+            <div class="mask-tile mask-tile--white"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════════════
-         第 3 屏：MILESTONE 02 ｜ 2024 数字月台（大画幅工业中控现场落地）
+         第 2、3、4 屏：双图层联动展示舞台（完全复刻截图 2 动态效果）
+         下滑时：下图层全幅背景跟随滚动，上图层固定在视口，切换背景时更新文字与卡片
          ══════════════════════════════════════════════════════════════════════ -->
-    <section class="milestone-section" id="industrial">
-      <div class="wrap">
-        <div class="milestone-meta-row reveal">
-          <span class="milestone-year">2024</span>
-          <span class="milestone-category">工业现场中控 ｜ 全栈交付</span>
-        </div>
+    <div class="showcase-scroller-stage" id="showcase-stage">
+      <!-- 下图层：随着鼠标下滑垂直向上滚动的全屏背景板 -->
+      <div class="showcase-backplates">
+        <!-- 背景 1: 2020 考亭古街实景全貌 -->
+        <div class="showcase-backplate" id="tourism" style="background-image: linear-gradient(135deg, rgba(15,20,28,0.72) 0%, rgba(15,20,28,0.52) 100%), url('assets/images/kaoting.jpg');"></div>
+        <!-- 背景 2: 2024 数字月台工业现场中控 -->
+        <div class="showcase-backplate" id="industrial" style="background-image: linear-gradient(135deg, rgba(15,20,28,0.78) 0%, rgba(15,20,28,0.58) 100%), url('assets/visuals/dock-system.svg');"></div>
+        <!-- 背景 3: 2025 EmergentInc 元胞会社系统全景 -->
+        <div class="showcase-backplate" id="emergentinc" style="background-image: linear-gradient(135deg, rgba(15,20,28,0.78) 0%, rgba(15,20,28,0.58) 100%), url('assets/images/emergentinc.png');"></div>
+      </div>
 
-        <h2 class="milestone-title reveal" data-delay="1">数字月台：把复杂的工业流程，交付为高可靠中控系统</h2>
-        <p class="milestone-lead reveal" data-delay="2">
-          面对硬件异构、流程割裂且高容错要求的物理现场，用软件状态机构建确定性，实现 100% 真实联调上线。
-        </p>
-
-        <div class="tourism-facts-bar reveal" data-delay="2" style="background: var(--surface);">
-          <span><strong>项目主体：</strong>自动化装车数字月台中控 + 机器人产线</span>
-          <span>｜</span>
-          <span><strong>交付状态：</strong>真实生产环境已上线已验收（100% No-Mock）</span>
-          <span>｜</span>
-          <span><strong>技术栈：</strong>Fastify · React · WebSocket · PostgreSQL · PLC</span>
-        </div>
-
-        <!-- 3 组极简推演短句 -->
-        <div class="milestone-trio-grid reveal" data-delay="3">
-          <div class="milestone-trio-card">
-            <div class="milestone-trio-phase">PHASE 01 ｜ 现场痛点</div>
-            <h3 class="milestone-trio-heading">异构设备多工位冲突</h3>
-            <p class="milestone-trio-text">
-              自动装车涉及地磅、装车机、PLC 与人脸识别。客户原始需求仅为单屏看板，根本无法协同多工位冲突与异常断线。
+      <!-- 上图层：固定在视口中央（Sticky），只在换背景时更新文本与悬浮卡片 -->
+      <div class="showcase-pinned-overlay">
+        <div class="showcase-overlay-wrap">
+          <!-- 左侧固定信息区（年份 + 标题 + 核心破局） -->
+          <div class="showcase-info-col">
+            <div class="showcase-year-badge" id="pinned-year">2020</div>
+            <h2 class="showcase-pinned-title" id="pinned-title">考亭古街</h2>
+            <p class="showcase-pinned-lead" id="pinned-lead">
+              面对混沌非标诉求，坚决不被杂音带偏。提炼“文旅溯源地”唯一成立主线，售前主创推动 212 万元合同签署与回款闭环。
             </p>
+            <div class="showcase-pinned-facts" id="pinned-facts">
+              <span class="fact-tag">合同金额 212 万元</span>
+              <span class="fact-tag">售前策划主创</span>
+              <span class="fact-tag">多轮高层汇报立项</span>
+            </div>
           </div>
-          <div class="milestone-trio-card">
-            <div class="milestone-trio-phase">PHASE 02 ｜ 状态机闭环</div>
-            <h3 class="milestone-trio-heading">升维中控全局状态机</h3>
-            <p class="milestone-trio-text">
-              升维为工业中控协同系统。梳理订单生命周期状态机、工位互斥规则与秒级配置热回退机制，确保数据严格归一化。
-            </p>
-          </div>
-          <div class="milestone-trio-card">
-            <div class="milestone-trio-phase">PHASE 03 ｜ 严苛验收</div>
-            <h3 class="milestone-trio-heading">生产上线与现场排障</h3>
-            <p class="milestone-trio-text">
-              坚守“生产链路严禁 Mock”。亲赴天津等现场抓包排查机器人定位偏差与网络抖动，与真实 PLC 硬件无缝联调并通过验收。
-            </p>
-          </div>
-        </div>
 
-        <!-- 大画幅视觉中控架构图 -->
-        <div class="milestone-media-box reg-mark-box reveal" data-delay="3">
-          <div class="reg-mark reg-mark--tl"></div>
-          <div class="reg-mark reg-mark--tr"></div>
-          <div class="reg-mark reg-mark--bl"></div>
-          <div class="reg-mark reg-mark--br"></div>
-          <img src="assets/visuals/dock-system.svg" alt="数字月台工业中控系统职责边界拓扑" loading="lazy">
-          <span class="milestone-media-caption">FIG.01 — 工业中控系统职责边界拓扑（调度层 ↔ 中控状态机 ↔ 触屏 HMI ↔ 现场 PLC 控制器）</span>
+          <!-- 右侧悬浮画中画卡片（完全复刻截图 2 悬浮视口窗口） -->
+          <div class="showcase-floating-card-wrap">
+            <div class="showcase-floating-card" id="pinned-floating-card">
+              <div class="card-glass-header">
+                <div class="card-dots-group">
+                  <span class="card-dot"></span>
+                  <span class="card-dot"></span>
+                  <span class="card-dot"></span>
+                </div>
+                <span id="floating-card-title">KAOTING · TOP STRATEGY</span>
+              </div>
+              <div class="card-media-viewport">
+                <img id="floating-card-img" src="assets/images/kaoting.jpg" alt="项目特写视图">
+              </div>
+              <div class="card-footer-info">
+                <span class="status-pill status-pill--live" id="floating-card-status">已立项交付</span>
+                <span id="floating-card-caption">福建建阳考亭古街：落地实景与文脉溯源空间</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════════
-         第 4 屏：MILESTONE 03 ｜ 2025 EmergentInc（AI 原生自治系统）
-         ══════════════════════════════════════════════════════════════════════ -->
-    <section class="milestone-section" id="emergentinc">
-      <div class="wrap">
-        <div class="milestone-meta-row reveal">
-          <span class="milestone-year">2025</span>
-          <span class="milestone-category">AI 原生自治系统 ｜ 开源架构</span>
-        </div>
-
-        <h2 class="milestone-title reveal" data-delay="1">EmergentInc 元胞会社：让 AI 走出对话框，构建自主进化系统</h2>
-        <p class="milestone-lead reveal" data-delay="2">
-          不把 AI 当作聊天玩具。设计并实现支持智能体自主探索机会、开发产品、自动加密收款并安全进化的完整架构。
-        </p>
-
-        <div class="tourism-facts-bar reveal" data-delay="2" style="background: var(--surface);">
-          <span><strong>项目定位：</strong>帮助每个人用 AI 开启并运营线上生意的开源系统</span>
-          <span>｜</span>
-          <span><strong>技术栈：</strong>Node.js 24 · TypeScript · SQLite · pnpm Workspace · Vitest</span>
-          <span>｜</span>
-          <span><strong>安全执行：</strong>pure-ast-json 纯 AST 解释沙箱</span>
-        </div>
-
-        <!-- 3 组极简推演短句 -->
-        <div class="milestone-trio-grid reveal" data-delay="3">
-          <div class="milestone-trio-card">
-            <div class="milestone-trio-phase">PHASE 01 ｜ 突破对话框</div>
-            <h3 class="milestone-trio-heading">自主 Agent 运营体系</h3>
-            <p class="milestone-trio-text">
-              打破单次 Prompt 局限：人提供想法与决策；AI 人物（千机）与元胞自主探索机会、构建产品、对外推广销售并持续演化。
-            </p>
-          </div>
-          <div class="milestone-trio-card">
-            <div class="milestone-trio-phase">PHASE 02 ｜ 商业闭环</div>
-            <h3 class="milestone-trio-heading">4 链 USDT 自动核销</h3>
-            <p class="milestone-trio-text">
-              免登录商城前端 + 链上自动结算。支持 Solana、BSC、Polygon 与 TRON 四条主网 USDT，通过独立 Reference 实现零人工核验与归集。
-            </p>
-          </div>
-          <div class="milestone-trio-card">
-            <div class="milestone-trio-phase">PHASE 03 ｜ 工程级安全</div>
-            <h3 class="milestone-trio-heading">纯 AST 沙箱与自进化</h3>
-            <p class="milestone-trio-text">
-              设计 <code>pure-ast-json@1</code> 纯 AST 解释器杜绝 eval；结合 SQLite 持久区与 Release 哈希审批机制，确保代码升级而商业数据永存。
-            </p>
-          </div>
-        </div>
-
-        <!-- 大画幅视觉系统全景界面 -->
-        <div class="milestone-media-box reg-mark-box reveal" data-delay="3">
-          <div class="reg-mark reg-mark--tl"></div>
-          <div class="reg-mark reg-mark--tr"></div>
-          <div class="reg-mark reg-mark--bl"></div>
-          <div class="reg-mark reg-mark--br"></div>
-          <img src="assets/images/emergentinc.png" alt="EmergentInc 元胞会社智能体自主经营全景界面" loading="lazy">
-          <span class="milestone-media-caption">FIG.02 — EmergentInc 智能体自主经营全景（商城销售 · 千机人物 · 基因谱系 · 链上核销）</span>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <!-- ══════════════════════════════════════════════════════════════════════
          第 5 屏：CONTACT & RESUME（交流探讨与简历获取）
@@ -365,5 +241,7 @@
   <script src="assets/signal.js"></script>
   <script src="assets/cellular-automata.js?v=3.1"></script>
   <script src="assets/reveal.js" defer></script>
+  <script src="assets/hero-cellular.js"></script>
+  <script src="assets/sticky-showcase.js"></script>
 </body>
 </html>

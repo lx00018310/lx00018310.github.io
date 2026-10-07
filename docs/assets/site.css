@@ -2507,32 +2507,14 @@ footer.site-footer, footer {
   justify-content: flex-end;
 }
 .showcase-floating-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(24px);
+  background: #000;
   border-radius: 20px;
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
   width: 100%;
   max-width: 672px; /* 原 560px 宽度加大 20% 至 672px */
   transition: transform 0.3s ease;
-}
-.card-glass-header {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  background: rgba(240, 240, 240, 0.85);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-.card-dots-group {
-  display: flex;
-  gap: 6px;
-}
-.card-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #cbd5e1;
 }
 .card-media-viewport {
   background: #000;

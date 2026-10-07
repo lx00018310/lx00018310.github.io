@@ -2239,8 +2239,13 @@ footer.site-footer, footer {
   font-size: 28px;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: var(--ink);
+  color: var(--magenta) !important;
+  text-shadow: 2px 2px 0 #ffffff, 3px 3px 0 rgba(0, 0, 0, 0.45) !important;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.giats-nav-logo:hover {
+  opacity: 0.9;
 }
 .giats-nav-actions {
   display: flex;
@@ -2575,7 +2580,7 @@ footer.site-footer, footer {
   justify-content: space-between;
   background-color: var(--paper);
   color: var(--ink);
-  padding: 120px 48px 24px;
+  padding: 120px 36px 24px;
   box-sizing: border-box;
   overflow: hidden;
   z-index: 20;
@@ -2583,8 +2588,8 @@ footer.site-footer, footer {
 
 .gf-container {
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2714,7 +2719,7 @@ footer.site-footer, footer {
   text-transform: uppercase;
   margin: 0;
   user-select: none;
-  transform: translateX(-4px);
+  transform: none;
 }
 
 .gf-back-to-top {
@@ -2738,6 +2743,9 @@ footer.site-footer, footer {
 }
 
 @media (max-width: 960px) {
+  .giats-nav-bar {
+    padding: 18px 24px;
+  }
   .giats-footer-screen {
     padding: 80px 24px 20px;
   }

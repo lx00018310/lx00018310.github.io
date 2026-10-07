@@ -91,4 +91,16 @@
 
   // 初始首帧渲染
   render();
+
+  // 实时时钟更新 (复刻模板 Current Time: HH:mm)
+  var timeDisplay = document.getElementById('gf-time-display');
+  function updateTime() {
+    if (!timeDisplay) return;
+    var now = new Date();
+    var h = String(now.getHours()).padStart(2, '0');
+    var m = String(now.getMinutes()).padStart(2, '0');
+    timeDisplay.textContent = 'Current Time: ' + h + ':' + m;
+  }
+  updateTime();
+  setInterval(updateTime, 10000);
 })();

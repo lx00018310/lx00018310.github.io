@@ -9,9 +9,10 @@
   if (!stage) return;
 
   var viewport = document.getElementById('showcase-viewport');
+  var layer0 = document.getElementById('showcase-layer-0');
   var layer1 = document.getElementById('showcase-layer-1');
   var layer2 = document.getElementById('showcase-layer-2');
-  if (!viewport || !layer1 || !layer2) return;
+  if (!viewport || !layer0 || !layer1 || !layer2) return;
 
   function render() {
     var rect = stage.getBoundingClientRect();
@@ -35,32 +36,42 @@
       viewport.style.bottom = 'auto';
     }
 
-    // 2. 物理擦除切片算法 (Clip-Path Wipe)
-    // 舞台内有效可滚动高度为 200vh (stage.offsetHeight - windowH)
+    // 2. 物理互斥切片算法 (Complementary Inset Wipe)
+    // 两个相邻图层在红线两侧严格空间互斥，彻底消除文字重叠
     var scrolled = -rect.top;
 
     if (scrolled <= 0) {
-      // 尚未开始切入第 3 屏
+      // 尚未开始切入第 3 屏：纯展示 Layer 0
+      layer0.style.clipPath = 'inset(0% 0 0% 0)';
       layer1.style.clipPath = 'inset(100% 0 0 0)';
       layer2.style.clipPath = 'inset(100% 0 0 0)';
     } else if (scrolled < windowH) {
       // 阶段 1：Layer 0 (考亭古街) -> Layer 1 (数字月台)
-      // 进度 p 随滚动由 0 增加至 1
       var p1 = scrolled / windowH;
-      // 裁剪红线从屏幕底部 (100%) 升至屏幕顶部 (0%)
       var clipY1 = (1 - p1) * 100;
+      // 互斥双向切片：
+      // Layer 0 只保留红线上方区间 (0 ~ clipY1)，裁切下方 (100 - clipY1)
+      layer0.style.clipPath = 'inset(0 0 ' + (100 - clipY1).toFixed(3) + '% 0)';
+      // Layer 1 只保留红线下方区间 (clipY1 ~ 100)，裁切上方 clipY1
       layer1.style.clipPath = 'inset(' + clipY1.toFixed(3) + '% 0 0 0)';
+      // Layer 2 完全隐藏
       layer2.style.clipPath = 'inset(100% 0 0 0)';
     } else if (scrolled < 2 * windowH) {
       // 阶段 2：Layer 1 (数字月台) -> Layer 2 (EmergentInc)
-      layer1.style.clipPath = 'inset(0% 0 0 0)';
+      // Layer 0 完全隐藏
+      layer0.style.clipPath = 'inset(100% 0 0 0)';
       var p2 = (scrolled - windowH) / windowH;
       var clipY2 = (1 - p2) * 100;
+      // 互斥双向切片：
+      // Layer 1 只保留红线上方区间 (0 ~ clipY2)，裁切下方 (100 - clipY2)
+      layer1.style.clipPath = 'inset(0 0 ' + (100 - clipY2).toFixed(3) + '% 0)';
+      // Layer 2 只保留红线下方区间 (clipY2 ~ 100)，裁切上方 clipY2
       layer2.style.clipPath = 'inset(' + clipY2.toFixed(3) + '% 0 0 0)';
     } else {
       // 阶段 3：完全展现 Layer 2 (EmergentInc)，并准备向上滑入第 5 屏
-      layer1.style.clipPath = 'inset(0% 0 0 0)';
-      layer2.style.clipPath = 'inset(0% 0 0 0)';
+      layer0.style.clipPath = 'inset(100% 0 0 0)';
+      layer1.style.clipPath = 'inset(100% 0 0 0)';
+      layer2.style.clipPath = 'inset(0% 0 0% 0)';
     }
   }
 

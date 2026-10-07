@@ -1,6 +1,8 @@
 /**
  * 首页棋盘视口专属 · 元胞自动机生灭演化 (Cellular Automata Engine)
- * 专为首屏镂空棋盘视口定制，纯原生 Canvas 驱动
+ * 专为首屏镂空棋盘视口定制，6px 高精网格驱动
+ * 特性：初始化以 Bahnschrift / DIN 工业字形采样呈现「Cellular Automaton / Conway's Game of Life / 1970」，
+ * 静态定格 5 秒后启动康威生命游戏局部规则自主演化。
  */
 (function() {
   'use strict';
@@ -12,17 +14,22 @@
 
   var container = canvas.parentElement;
   var width = 0, height = 0, dpr = 1;
-  var cellSize = 16;
+  var cellSize = 6; // 6px 高精网格
   var cols = 0, rows = 0;
   var grid = null, nextGrid = null;
   var lastStep = 0;
-  var stepInterval = 180; // 180ms 步进
+  var stepInterval = 120; // 120ms 步进，平滑流动
   var animId = null;
+
+  // 静态定格 5 秒机制
+  var freezeDuration = 5000;
+  var freezeUntil = 0;
+  var hasTextSeeded = false;
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     width = container.clientWidth || 1200;
-    height = container.clientHeight || 1000;
+    height = container.clientHeight || 560;
 
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
@@ -36,20 +43,116 @@
     grid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
 
-    seedRandom();
+    // 首次或重置时执行文字点阵采样并定格 5 秒
+    if (!hasTextSeeded) {
+      seedText();
+      freezeUntil = performance.now() + freezeDuration;
+      hasTextSeeded = true;
+    } else {
+      seedRandom();
+    }
+  }
+
+  /**
+   * 采用 Bahnschrift / DIN 工业字体对文字进行高精度 6px 点阵采样
+   */
+  function seedText() {
+    grid.fill(0);
+    var offCanvas = document.createElement('canvas');
+    offCanvas.width = width;
+    offCanvas.height = height;
+    var offCtx = offCanvas.getContext('2d');
+    if (!offCtx) return;
+
+    offCtx.fillStyle = '#000000';
+    offCtx.fillRect(0, 0, width, height);
+
+    var line1 = "Cellular Automaton";
+    var line2 = "Conway's Game of Life";
+    var line3 = "1970";
+
+    // 严格限制最大宽度在画布的 68% 以内，保证在视口画框内留出呼吸边距
+    var maxW = Math.floor(width * 0.68);
+    var fontFamily = '"Bahnschrift", "DIN Alternate", "DIN", "Segoe UI Semibold", sans-serif';
+
+    var low = 16, high = Math.min(Math.floor(height * 0.35), 140);
+    var bestF2 = 64;
+    while (low <= high) {
+      var mid = Math.floor((low + high) / 2);
+      offCtx.font = '700 ' + mid + 'px ' + fontFamily;
+      var textW = offCtx.measureText(line2).width;
+      if (textW <= maxW) {
+        bestF2 = mid;
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+
+    var f2Size = bestF2;
+    var f1Size = Math.max(Math.floor(f2Size * 0.70), 14);
+    var f3Size = Math.max(Math.floor(f2Size * 0.65), 14);
+    var spacing = Math.floor(f2Size * 0.22);
+    var totalH = f1Size + f2Size + f3Size + spacing * 2;
+    var startY = Math.floor((height - totalH) / 2);
+
+    var y1 = startY + f1Size * 0.82;
+    var y2 = startY + f1Size + spacing + f2Size * 0.82;
+    var y3 = startY + f1Size + spacing + f2Size + spacing + f3Size * 0.82;
+
+    offCtx.fillStyle = '#ffffff';
+    offCtx.textAlign = 'center';
+
+    offCtx.font = '700 ' + f1Size + 'px ' + fontFamily;
+    offCtx.fillText(line1, width / 2, y1);
+
+    offCtx.font = '700 ' + f2Size + 'px ' + fontFamily;
+    offCtx.fillText(line2, width / 2, y2);
+
+    offCtx.font = '700 ' + f3Size + 'px ' + fontFamily;
+    offCtx.fillText(line3, width / 2, y3);
+
+    // 网格多点采样，形成清晰实心点阵
+    var imgData = offCtx.getImageData(0, 0, width, height).data;
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var cx = Math.floor(c * cellSize + cellSize * 0.5);
+        var cy = Math.floor(r * cellSize + cellSize * 0.5);
+        if (cx < width && cy < height) {
+          var hits = 0;
+          var samplePts = [
+            [cx, cy],
+            [cx - 1, cy],
+            [cx + 1, cy],
+            [cx, cy - 1],
+            [cx, cy + 1]
+          ];
+          for (var k = 0; k < samplePts.length; k++) {
+            var sx = samplePts[k][0];
+            var sy = samplePts[k][1];
+            if (sx >= 0 && sx < width && sy >= 0 && sy < height) {
+              var a = imgData[(sy * width + sx) * 4 + 3];
+              if (a > 80) hits++;
+            }
+          }
+          if (hits >= 2) {
+            grid[r * cols + c] = 1;
+          }
+        }
+      }
+    }
   }
 
   function seedRandom() {
     grid.fill(0);
-    // 随机播种多个活动核心（根据超大画幅网格成比例增加）
-    var clusterCount = Math.max(8, Math.floor((cols * rows) / 220));
+    var clusterCount = Math.max(16, Math.floor((cols * rows) / 450));
     for (var i = 0; i < clusterCount; i++) {
       var cx = Math.floor(Math.random() * cols);
       var cy = Math.floor(Math.random() * rows);
-      var radius = 4;
+      var radius = 5;
       for (var dy = -radius; dy <= radius; dy++) {
         for (var dx = -radius; dx <= radius; dx++) {
-          if (dx * dx + dy * dy <= radius * radius && Math.random() < 0.48) {
+          if (dx * dx + dy * dy <= radius * radius && Math.random() < 0.46) {
             var gx = (cx + dx + cols) % cols;
             var gy = (cy + dy + rows) % rows;
             grid[gy * cols + gx] = 1;
@@ -95,8 +198,8 @@
     grid = nextGrid;
     nextGrid = temp;
 
-    // 若存活细胞过低，自动重新播种
-    if (alive < cols * 0.8) {
+    // 若存活细胞过低，自动自补种维持生机
+    if (alive < cols * 0.9) {
       seedRandom();
     }
   }
@@ -105,15 +208,14 @@
     ctx.fillStyle = '#0b0e14';
     ctx.fillRect(0, 0, width, height);
 
-    // 绘制存活元胞（直径缩小为原尺寸的 70%）
+    var radius = cellSize * 0.32;
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
         if (grid[r * cols + c] === 1) {
           var px = c * cellSize + cellSize * 0.5;
           var py = r * cellSize + cellSize * 0.5;
-          var radius = cellSize * 0.266; // 原 cellSize * 0.38 的 70%
 
-          // 白色球体立体光晕（纯白高光 -> 极浅白灰 -> 银灰边界）
+          // 白色球体立体光晕（纯白高光 -> 极浅灰白 -> 银灰边界）
           var radGrad = ctx.createRadialGradient(px - radius * 0.3, py - radius * 0.3, radius * 0.08, px, py, radius);
           radGrad.addColorStop(0, '#ffffff');
           radGrad.addColorStop(0.65, '#f1f5f9');
@@ -129,10 +231,16 @@
   }
 
   function loop(now) {
-    if (now - lastStep >= stepInterval) {
-      step();
+    if (now < freezeUntil) {
+      // 5 秒静态冻结期：恒定渲染文字点阵，不进行演化步进
       render();
-      lastStep = now;
+    } else {
+      // 5 秒后：激活康威生命游戏生灭演化规则
+      if (now - lastStep >= stepInterval) {
+        step();
+        render();
+        lastStep = now;
+      }
     }
     animId = requestAnimationFrame(loop);
   }
@@ -143,11 +251,11 @@
     var my = e.clientY - rect.top;
     var c = Math.floor(mx / cellSize);
     var r = Math.floor(my / cellSize);
-    for (var dy = -1; dy <= 1; dy++) {
-      for (var dx = -1; dx <= 1; dx++) {
+    for (var dy = -2; dy <= 2; dy++) {
+      for (var dx = -2; dx <= 2; dx++) {
         var gx = (c + dx + cols) % cols;
         var gy = (r + dy + rows) % rows;
-        if (Math.random() < 0.6) {
+        if (Math.random() < 0.55) {
           grid[gy * cols + gx] = 1;
         }
       }

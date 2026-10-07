@@ -1,8 +1,10 @@
 /**
  * 首页棋盘视口专属 · 元胞自动机生灭演化 (Cellular Automata Engine)
  * 专为首屏镂空棋盘视口定制，6px 高精网格驱动
- * 特性：初始化以 Bahnschrift / DIN 工业字形采样呈现「Cellular Automaton / Conway's Game of Life / 1970」，
- * 静态定格 5 秒后启动康威生命游戏局部规则自主演化。
+ * 特性：
+ * 1. 初始化以 Bahnschrift / DIN 工业字形采样呈现「Cellular Automaton / Conway's Game of Life / 1970」；
+ * 2. 动效时间线：前 1s 主题紫色定格 -> 随后 3s 平滑渐变为白色 -> 保持白色定格 1s (总计 5s 静态文字)；
+ * 3. 5s 后正式进入康威生命游戏生灭自主演化。
  */
 (function() {
   'use strict';
@@ -21,8 +23,9 @@
   var stepInterval = 120; // 120ms 步进
   var animId = null;
 
-  // 静态定格 5 秒机制
+  // 动效时间轴参数（总冻结期 5000ms：1s 紫色定格 + 3s 渐变转白 + 1s 白色定格）
   var freezeDuration = 5000;
+  var freezeStartTime = 0;
   var freezeUntil = 0;
 
   function resize() {
@@ -42,9 +45,10 @@
     grid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
 
-    // 在 5 秒冻结期内或首次进入时，始终重置并采样文字
+    // 在 5 秒冻结期内或首次进入时，重置并采样文字
     if (freezeUntil === 0 || performance.now() < freezeUntil) {
-      freezeUntil = performance.now() + freezeDuration;
+      freezeStartTime = performance.now();
+      freezeUntil = freezeStartTime + freezeDuration;
       seedText();
     } else {
       seedRandom();
@@ -146,7 +150,6 @@
               var idx = (sy * width + sx) * 4;
               var red = imgData[idx];
               var alpha = imgData[idx + 3];
-              // 必须同时具备红色高亮与不透明度，确保只捕获绘制的白色文字
               if (red > 80 && alpha > 80) {
                 hits++;
               }
@@ -221,9 +224,65 @@
     }
   }
 
-  function render() {
+  /**
+   * 计算当前时间点的球体光感颜色渐变色标
+   * 0s ~ 1s: 主题色紫色定格
+   * 1s ~ 4s: 3秒内从主题紫色平滑渐变到纯白
+   * 4s ~ 5s: 纯白色定格
+   * 5s 以后: 保持纯白演化
+   */
+  function getColorStops(now) {
+    if (now >= freezeUntil) {
+      return {
+        c0: '#ffffff',
+        c1: '#f1f5f9',
+        c2: '#cbd5e1'
+      };
+    }
+
+    var elapsed = Math.max(0, now - freezeStartTime);
+    var t = 0; // 0 = 纯主题紫, 1 = 纯白
+
+    if (elapsed <= 1000) {
+      // 阶段 1: 0 ~ 1000ms 主题紫色定格
+      t = 0;
+    } else if (elapsed < 4000) {
+      // 阶段 2: 1000ms ~ 4000ms (3秒内线性平滑渐变)
+      t = (elapsed - 1000) / 3000;
+    } else {
+      // 阶段 3: 4000ms ~ 5000ms 白色定格
+      t = 1;
+    }
+
+    t = Math.max(0, Math.min(1, t));
+
+    // 从主题紫色 (#d946ef) 渐变至 银白色立体球标
+    var r0 = Math.round(245 + (255 - 245) * t);
+    var g0 = Math.round(205 + (255 - 205) * t);
+    var b0 = Math.round(255 + (255 - 255) * t);
+
+    var r1 = Math.round(217 + (241 - 217) * t);
+    var g1 = Math.round(70 + (245 - 70) * t);
+    var b1 = Math.round(239 + (249 - 239) * t);
+
+    var r2 = Math.round(162 + (203 - 162) * t);
+    var g2 = Math.round(28 + (213 - 28) * t);
+    var b2 = Math.round(175 + (225 - 175) * t);
+
+    return {
+      c0: 'rgb(' + r0 + ',' + g0 + ',' + b0 + ')',
+      c1: 'rgb(' + r1 + ',' + g1 + ',' + b1 + ')',
+      c2: 'rgb(' + r2 + ',' + g2 + ',' + b2 + ')'
+    };
+  }
+
+  function render(stops) {
     ctx.fillStyle = '#0b0e14';
     ctx.fillRect(0, 0, width, height);
+
+    var c0 = stops ? stops.c0 : '#ffffff';
+    var c1 = stops ? stops.c1 : '#f1f5f9';
+    var c2 = stops ? stops.c2 : '#cbd5e1';
 
     var radius = cellSize * 0.32;
     for (var r = 0; r < rows; r++) {
@@ -232,11 +291,10 @@
           var px = c * cellSize + cellSize * 0.5;
           var py = r * cellSize + cellSize * 0.5;
 
-          // 白色球体立体光晕（纯白高光 -> 极浅灰白 -> 银灰边界）
           var radGrad = ctx.createRadialGradient(px - radius * 0.3, py - radius * 0.3, radius * 0.08, px, py, radius);
-          radGrad.addColorStop(0, '#ffffff');
-          radGrad.addColorStop(0.65, '#f1f5f9');
-          radGrad.addColorStop(1, '#cbd5e1');
+          radGrad.addColorStop(0, c0);
+          radGrad.addColorStop(0.65, c1);
+          radGrad.addColorStop(1, c2);
 
           ctx.fillStyle = radGrad;
           ctx.beginPath();
@@ -248,14 +306,16 @@
   }
 
   function loop(now) {
+    var stops = getColorStops(now);
+
     if (now < freezeUntil) {
-      // 5 秒静态冻结期：恒定渲染文字点阵，不进行演化步进
-      render();
+      // 5 秒静态冻结期：逐帧根据色彩时间线平滑插值，不进行生命演化步进
+      render(stops);
     } else {
       // 5 秒后：激活康威生命游戏生灭演化规则
       if (now - lastStep >= stepInterval) {
         step();
-        render();
+        render(stops);
         lastStep = now;
       }
     }

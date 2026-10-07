@@ -3,7 +3,7 @@
  * 专为首屏镂空棋盘视口定制，6px 高精网格驱动
  * 特性：
  * 1. 初始化以 Bahnschrift / DIN 工业字形采样呈现「Cellular Automaton / Conway's Game of Life / 1970」；
- * 2. 动效时间线：前 1s 主题紫色定格 -> 随后 3s 平滑渐变为白色 -> 保持白色定格 1s (总计 5s 静态文字)；
+ * 2. 动效时间线：1s 主题紫色 -> 1s 电光青色 -> 1s 霓虹热红 -> 1s 科技电蓝 -> 1s 极境纯白 (总计 5s 静态赛博朋克文字)；
  * 3. 5s 后正式进入康威生命游戏生灭自主演化。
  */
 (function() {
@@ -224,11 +224,34 @@
     }
   }
 
+  // 赛博朋克 5 色阶调色盘 (c0: 中心高光, c1: 主球体色, c2: 边缘深度色)
+  var PALETTES = [
+    // 0: 主题紫色 (0s ~ 1s)
+    { c0: [250, 232, 255], c1: [217, 70, 239], c2: [162, 28, 175] },
+    // 1: 电光青色 (1s ~ 2s)
+    { c0: [207, 250, 254], c1: [6, 182, 212],  c2: [14, 116, 144] },
+    // 2: 霓虹热红 (2s ~ 3s)
+    { c0: [255, 228, 230], c1: [244, 63, 94],  c2: [190, 18, 60] },
+    // 3: 电光科技蓝 (3s ~ 4s)
+    { c0: [219, 234, 254], c1: [59, 130, 246], c2: [29, 78, 216] },
+    // 4: 极境纯白 (4s ~ 5s)
+    { c0: [255, 255, 255], c1: [241, 245, 249], c2: [203, 213, 225] }
+  ];
+
+  function interpolateColor(rgbA, rgbB, t) {
+    var r = Math.round(rgbA[0] + (rgbB[0] - rgbA[0]) * t);
+    var g = Math.round(rgbA[1] + (rgbB[1] - rgbA[1]) * t);
+    var b = Math.round(rgbA[2] + (rgbB[2] - rgbA[2]) * t);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  }
+
   /**
    * 计算当前时间点的球体光感颜色渐变色标
-   * 0s ~ 1s: 主题色紫色定格
-   * 1s ~ 4s: 3秒内从主题紫色平滑渐变到纯白
-   * 4s ~ 5s: 纯白色定格
+   * 0s ~ 1s: 主题紫色 (Purple)
+   * 1s ~ 2s: 电光青色 (Cyan)
+   * 2s ~ 3s: 霓虹热红 (Neon Red)
+   * 3s ~ 4s: 科技电蓝 (Electric Blue)
+   * 4s ~ 5s: 极境纯白 (Pure White，持续1s)
    * 5s 以后: 保持纯白演化
    */
   function getColorStops(now) {
@@ -241,38 +264,31 @@
     }
 
     var elapsed = Math.max(0, now - freezeStartTime);
-    var t = 0; // 0 = 纯主题紫, 1 = 纯白
-
-    if (elapsed <= 1000) {
-      // 阶段 1: 0 ~ 1000ms 主题紫色定格
-      t = 0;
-    } else if (elapsed < 4000) {
-      // 阶段 2: 1000ms ~ 4000ms (3秒内线性平滑渐变)
-      t = (elapsed - 1000) / 3000;
-    } else {
-      // 阶段 3: 4000ms ~ 5000ms 白色定格
-      t = 1;
+    var sec = Math.floor(elapsed / 1000); // 0, 1, 2, 3, 4
+    if (sec >= 4) {
+      return {
+        c0: '#ffffff',
+        c1: '#f1f5f9',
+        c2: '#cbd5e1'
+      };
     }
 
-    t = Math.max(0, Math.min(1, t));
+    var stageTime = elapsed % 1000;
+    var fromP = PALETTES[sec];
+    var toP = PALETTES[sec + 1];
 
-    // 从主题紫色 (#d946ef) 渐变至 银白色立体球标
-    var r0 = Math.round(245 + (255 - 245) * t);
-    var g0 = Math.round(205 + (255 - 205) * t);
-    var b0 = Math.round(255 + (255 - 255) * t);
-
-    var r1 = Math.round(217 + (241 - 217) * t);
-    var g1 = Math.round(70 + (245 - 70) * t);
-    var b1 = Math.round(239 + (249 - 239) * t);
-
-    var r2 = Math.round(162 + (203 - 162) * t);
-    var g2 = Math.round(28 + (213 - 28) * t);
-    var b2 = Math.round(175 + (225 - 175) * t);
+    // 后 160ms 内平滑过渡到下一个色彩，其余 840ms 保持 100% 饱和高光状态
+    var transitionDuration = 160;
+    var t = 0;
+    if (stageTime > (1000 - transitionDuration)) {
+      t = (stageTime - (1000 - transitionDuration)) / transitionDuration;
+      t = t * t * (3 - 2 * t); // smoothstep
+    }
 
     return {
-      c0: 'rgb(' + r0 + ',' + g0 + ',' + b0 + ')',
-      c1: 'rgb(' + r1 + ',' + g1 + ',' + b1 + ')',
-      c2: 'rgb(' + r2 + ',' + g2 + ',' + b2 + ')'
+      c0: interpolateColor(fromP.c0, toP.c0, t),
+      c1: interpolateColor(fromP.c1, toP.c1, t),
+      c2: interpolateColor(fromP.c2, toP.c2, t)
     };
   }
 

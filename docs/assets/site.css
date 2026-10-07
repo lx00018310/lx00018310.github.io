@@ -2537,16 +2537,16 @@ footer.site-footer, footer {
 .showcase-floating-card {
   background: #000;
   border-radius: 20px;
-  box-shadow: 12px 12px 0 #000000, 0 30px 80px rgba(0, 0, 0, 0.5); /* 黑色实体硬叠影 */
+  box-shadow: 12px 12px 0 #ffffff, 0 30px 80px rgba(0, 0, 0, 0.5); /* 第 2、4 页：纯白实体硬叠影 */
   border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
   width: 100%;
   max-width: 940px; /* 原 672px 宽度放大 140% 至 940px */
   transition: transform 0.3s ease;
 }
-/* 数字月台画板：专属纯白实体硬叠影 */
+/* 第 3 页数字月台画板：专属主题紫色实体硬叠影 */
 .showcase-layer--1 .showcase-floating-card {
-  box-shadow: 12px 12px 0 #ffffff, 0 30px 80px rgba(0, 0, 0, 0.25); /* 白色实体硬叠影 */
+  box-shadow: 12px 12px 0 var(--magenta), 0 30px 80px rgba(217, 70, 239, 0.35); /* 主题紫色实体硬叠影 */
 }
 .card-media-viewport {
   background: #000;

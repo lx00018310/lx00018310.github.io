@@ -69,12 +69,12 @@
     var line2 = "Conway's Game of Life";
     var line3 = "1970";
 
-    // 严格限制最大宽度在画布宽度的 68% 以内，留出充足留白
-    var maxW = Math.floor(width * 0.68);
+    // 严格限制最大宽度在画布宽度的 90% 以内
+    var maxW = Math.floor(width * 0.90);
     var fontFamily = '"Bahnschrift", "DIN Alternate", "DIN", "Segoe UI Semibold", sans-serif';
 
     // 动态二分逼近适合字号
-    var low = 16, high = Math.min(Math.floor(height * 0.35), 140);
+    var low = 16, high = Math.min(Math.floor(height * 0.38), 200);
     var bestF2 = 64;
     while (low <= high) {
       var mid = Math.floor((low + high) / 2);
@@ -93,6 +93,17 @@
     var f3Size = Math.max(Math.floor(f2Size * 0.65), 14);
     var spacing = Math.floor(f2Size * 0.22);
     var totalH = f1Size + f2Size + f3Size + spacing * 2;
+
+    // 若总高度超出画框安全区域 (85% 视口高度)，等比例自适应缩放
+    if (totalH > height * 0.85) {
+      var scale = (height * 0.85) / totalH;
+      f2Size = Math.floor(f2Size * scale);
+      f1Size = Math.max(Math.floor(f2Size * 0.70), 14);
+      f3Size = Math.max(Math.floor(f2Size * 0.65), 14);
+      spacing = Math.floor(f2Size * 0.22);
+      totalH = f1Size + f2Size + f3Size + spacing * 2;
+    }
+
     var startY = Math.floor((height - totalH) / 2);
 
     // 显式基线与居中对齐

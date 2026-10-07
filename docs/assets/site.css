@@ -2456,10 +2456,9 @@ footer.site-footer, footer {
   pointer-events: auto;
 }
 
-/* 左侧固定信息 */
+/* 左侧固定信息 (第 2、4 页默认：白字 + 纯黑实体硬叠影) */
 .showcase-info-col {
   color: #fff;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
 }
 .showcase-year-badge {
   font-family: var(--mono);
@@ -2468,6 +2467,7 @@ footer.site-footer, footer {
   letter-spacing: -0.04em;
   margin-bottom: 8px;
   opacity: 0.95;
+  text-shadow: 3px 3px 0 #000000;
 }
 .showcase-pinned-title {
   font-size: clamp(44px, 5.5vw, 76px);
@@ -2476,13 +2476,15 @@ footer.site-footer, footer {
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: #fff;
+  text-shadow: 4px 4px 0 #000000;
 }
 .showcase-pinned-lead {
   font-size: 17px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.95);
   margin: 0 0 24px;
   max-width: 500px;
+  text-shadow: 2px 2px 0 #000000;
 }
 .showcase-pinned-facts {
   display: flex;
@@ -2492,39 +2494,42 @@ footer.site-footer, footer {
 .showcase-pinned-facts .fact-tag {
   display: inline-block;
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 3px 3px 0 #000000;
   font-family: var(--mono);
   font-size: 12px;
   color: #fff;
   border-radius: 4px;
+  text-shadow: 1px 1px 0 #000000;
 }
 
-/* 画板 1: 数字月台专属主题色紫色体系 (匹配浅色 SVG 背景并提升视觉一致性) */
+/* 画板 1: 数字月台专属主题色紫色体系 (第 3 页：紫字 + 纯白实体硬叠影，复刻例 2) */
 .showcase-layer--1 .showcase-info-col {
   color: var(--magenta-ink);
-  text-shadow: none;
 }
 .showcase-layer--1 .showcase-year-badge {
   color: var(--magenta);
+  text-shadow: 3px 3px 0 #ffffff;
 }
 .showcase-layer--1 .showcase-pinned-title {
   color: var(--magenta);
-  text-shadow: 0 2px 24px rgba(217, 70, 239, 0.28);
+  text-shadow: 4px 4px 0 #ffffff;
 }
 .showcase-layer--1 .showcase-pinned-lead {
   color: #701a75;
-  text-shadow: none;
+  text-shadow: 2px 2px 0 #ffffff;
 }
 .showcase-layer--1 .showcase-pinned-facts .fact-tag {
   color: #701a75;
   border-color: rgba(217, 70, 239, 0.45);
   background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 2px 10px rgba(217, 70, 239, 0.12);
+  box-shadow: 3px 3px 0 #ffffff;
+  text-shadow: none;
 }
 
-/* 右侧悬浮画中画卡片 (宽高放大 140%) */
+/* 右侧悬浮画中画卡片 (宽高放大 140%，实体硬边缘叠影) */
 .showcase-floating-card-wrap {
   display: flex;
   justify-content: flex-end;
@@ -2532,12 +2537,16 @@ footer.site-footer, footer {
 .showcase-floating-card {
   background: #000;
   border-radius: 20px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  box-shadow: 12px 12px 0 #000000, 0 30px 80px rgba(0, 0, 0, 0.5); /* 黑色实体硬叠影 */
   border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
   width: 100%;
   max-width: 940px; /* 原 672px 宽度放大 140% 至 940px */
   transition: transform 0.3s ease;
+}
+/* 数字月台画板：专属纯白实体硬叠影 */
+.showcase-layer--1 .showcase-floating-card {
+  box-shadow: 12px 12px 0 #ffffff, 0 30px 80px rgba(0, 0, 0, 0.25); /* 白色实体硬叠影 */
 }
 .card-media-viewport {
   background: #000;

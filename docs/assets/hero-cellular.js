@@ -18,13 +18,12 @@
   var cols = 0, rows = 0;
   var grid = null, nextGrid = null;
   var lastStep = 0;
-  var stepInterval = 120; // 120ms 步进，平滑流动
+  var stepInterval = 120; // 120ms 步进
   var animId = null;
 
   // 静态定格 5 秒机制
   var freezeDuration = 5000;
   var freezeUntil = 0;
-  var hasTextSeeded = false;
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -43,11 +42,10 @@
     grid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
 
-    // 首次或重置时执行文字点阵采样并定格 5 秒
-    if (!hasTextSeeded) {
-      seedText();
+    // 在 5 秒冻结期内或首次进入时，始终重置并采样文字
+    if (freezeUntil === 0 || performance.now() < freezeUntil) {
       freezeUntil = performance.now() + freezeDuration;
-      hasTextSeeded = true;
+      seedText();
     } else {
       seedRandom();
     }
@@ -64,17 +62,18 @@
     var offCtx = offCanvas.getContext('2d');
     if (!offCtx) return;
 
-    offCtx.fillStyle = '#000000';
-    offCtx.fillRect(0, 0, width, height);
+    // 清除透明画布，未绘制区域保持 RGBA(0, 0, 0, 0)
+    offCtx.clearRect(0, 0, width, height);
 
     var line1 = "Cellular Automaton";
     var line2 = "Conway's Game of Life";
     var line3 = "1970";
 
-    // 严格限制最大宽度在画布的 68% 以内，保证在视口画框内留出呼吸边距
+    // 严格限制最大宽度在画布宽度的 68% 以内，留出充足留白
     var maxW = Math.floor(width * 0.68);
     var fontFamily = '"Bahnschrift", "DIN Alternate", "DIN", "Segoe UI Semibold", sans-serif';
 
+    // 动态二分逼近适合字号
     var low = 16, high = Math.min(Math.floor(height * 0.35), 140);
     var bestF2 = 64;
     while (low <= high) {
@@ -96,12 +95,14 @@
     var totalH = f1Size + f2Size + f3Size + spacing * 2;
     var startY = Math.floor((height - totalH) / 2);
 
-    var y1 = startY + f1Size * 0.82;
-    var y2 = startY + f1Size + spacing + f2Size * 0.82;
-    var y3 = startY + f1Size + spacing + f2Size + spacing + f3Size * 0.82;
-
-    offCtx.fillStyle = '#ffffff';
+    // 显式基线与居中对齐
+    offCtx.textBaseline = 'middle';
     offCtx.textAlign = 'center';
+    offCtx.fillStyle = '#ffffff';
+
+    var y1 = startY + f1Size * 0.5;
+    var y2 = y1 + f1Size * 0.5 + spacing + f2Size * 0.5;
+    var y3 = y2 + f2Size * 0.5 + spacing + f3Size * 0.5;
 
     offCtx.font = '700 ' + f1Size + 'px ' + fontFamily;
     offCtx.fillText(line1, width / 2, y1);
@@ -112,7 +113,7 @@
     offCtx.font = '700 ' + f3Size + 'px ' + fontFamily;
     offCtx.fillText(line3, width / 2, y3);
 
-    // 网格多点采样，形成清晰实心点阵
+    // 读取像素数据进行元胞中心与边缘采样
     var imgData = offCtx.getImageData(0, 0, width, height).data;
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
@@ -131,8 +132,13 @@
             var sx = samplePts[k][0];
             var sy = samplePts[k][1];
             if (sx >= 0 && sx < width && sy >= 0 && sy < height) {
-              var a = imgData[(sy * width + sx) * 4 + 3];
-              if (a > 80) hits++;
+              var idx = (sy * width + sx) * 4;
+              var red = imgData[idx];
+              var alpha = imgData[idx + 3];
+              // 必须同时具备红色高亮与不透明度，确保只捕获绘制的白色文字
+              if (red > 80 && alpha > 80) {
+                hits++;
+              }
             }
           }
           if (hits >= 2) {

@@ -2467,7 +2467,7 @@ footer.site-footer, footer {
   letter-spacing: -0.04em;
   margin-bottom: 8px;
   opacity: 0.95;
-  text-shadow: 4px 4px 0 #000000 !important;
+  text-shadow: 1.5px 1.5px 0 #000000 !important;
 }
 .showcase-pinned-title {
   font-size: clamp(44px, 5.5vw, 76px);
@@ -2476,7 +2476,7 @@ footer.site-footer, footer {
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: #fff;
-  text-shadow: 6px 6px 0 #000000 !important;
+  text-shadow: 2px 2px 0 #000000 !important;
 }
 .showcase-pinned-lead {
   font-size: 17px;
@@ -2484,7 +2484,7 @@ footer.site-footer, footer {
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 24px;
   max-width: 500px;
-  text-shadow: 2px 2px 0 #000000 !important;
+  text-shadow: 1px 1px 0 #000000 !important;
 }
 .showcase-pinned-facts {
   display: flex;
@@ -2497,7 +2497,7 @@ footer.site-footer, footer {
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 4px 4px 0 #000000 !important;
+  box-shadow: 1.5px 1.5px 0 #000000 !important;
   font-family: var(--mono);
   font-size: 12px;
   color: #fff;
@@ -2511,21 +2511,21 @@ footer.site-footer, footer {
 }
 .showcase-layer--1 .showcase-year-badge {
   color: var(--magenta);
-  text-shadow: 4px 4px 0 #ffffff, 5px 5px 0 rgba(0, 0, 0, 0.45) !important;
+  text-shadow: 1.5px 1.5px 0 #ffffff, 2px 2px 0 rgba(0, 0, 0, 0.45) !important;
 }
 .showcase-layer--1 .showcase-pinned-title {
   color: var(--magenta);
-  text-shadow: 6px 6px 0 #ffffff, 7px 7px 0 rgba(0, 0, 0, 0.45) !important;
+  text-shadow: 2px 2px 0 #ffffff, 3px 3px 0 rgba(0, 0, 0, 0.45) !important;
 }
 .showcase-layer--1 .showcase-pinned-lead {
   color: #701a75;
-  text-shadow: 2px 2px 0 #ffffff, 3px 3px 0 rgba(0, 0, 0, 0.45) !important;
+  text-shadow: 1px 1px 0 #ffffff, 1.5px 1.5px 0 rgba(0, 0, 0, 0.45) !important;
 }
 .showcase-layer--1 .showcase-pinned-facts .fact-tag {
   color: #701a75;
   border-color: rgba(217, 70, 239, 0.45);
   background: rgba(255, 255, 255, 0.88);
-  box-shadow: 4px 4px 0 var(--magenta) !important;
+  box-shadow: 1.5px 1.5px 0 var(--magenta) !important;
   text-shadow: none !important;
 }
 
@@ -2537,7 +2537,7 @@ footer.site-footer, footer {
 .showcase-floating-card {
   background: #000;
   border-radius: 20px !important;
-  box-shadow: 16px 16px 0 #ffffff, 0 30px 80px rgba(0, 0, 0, 0.5) !important; /* 第 2、4 页：纯白实体硬叠影 */
+  box-shadow: 5px 5px 0 #ffffff, 0 30px 80px rgba(0, 0, 0, 0.5) !important; /* 第 2、4 页：纯白实体硬叠影 */
   border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
   width: 100%;
@@ -2546,7 +2546,7 @@ footer.site-footer, footer {
 }
 /* 第 3 页数字月台画板：专属主题紫色实体硬叠影 */
 .showcase-layer--1 .showcase-floating-card {
-  box-shadow: 16px 16px 0 var(--magenta), 0 30px 80px rgba(217, 70, 239, 0.35) !important; /* 主题紫色实体硬叠影 */
+  box-shadow: 5px 5px 0 var(--magenta), 0 30px 80px rgba(217, 70, 239, 0.35) !important; /* 主题紫色实体硬叠影 */
 }
 .card-media-viewport {
   background: #000;

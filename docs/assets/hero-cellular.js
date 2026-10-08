@@ -22,6 +22,18 @@
   var lastStep = 0;
   var stepInterval = 120; // 120ms 步进
   var animId = null;
+  var isVisible = false;
+  var isRunning = false;
+  var pausedAt = null;
+  var renderInterval = 1000 / 30;
+  var lastRender = -Infinity;
+  var lastColorKey = '';
+  var needsRender = true;
+  var dotCanvas = document.createElement('canvas');
+  var dotCtx = dotCanvas.getContext('2d');
+  var dotSize = 0;
+  var dotColorKey = '';
+  var dotDpr = 0;
 
   // 动效时间轴参数（总冻结期 5000ms：1s 紫色定格 + 3s 渐变转白 + 1s 白色定格）
   var freezeDuration = 5000;
@@ -45,14 +57,19 @@
     grid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
 
+    var now = performance.now();
+    var animationNow = pausedAt === null ? now : pausedAt;
     // 在 5 秒冻结期内或首次进入时，重置并采样文字
-    if (freezeUntil === 0 || performance.now() < freezeUntil) {
-      freezeStartTime = performance.now();
+    if (freezeUntil === 0 || animationNow < freezeUntil) {
+      freezeStartTime = now;
       freezeUntil = freezeStartTime + freezeDuration;
       seedText();
     } else {
       seedRandom();
     }
+    if (pausedAt !== null) pausedAt = now;
+    needsRender = true;
+    lastRender = -Infinity;
   }
 
   /**
@@ -292,53 +309,97 @@
     };
   }
 
-  function render(stops) {
+  // 同一组颜色的渐变圆点只生成一次，所有元胞共用。
+  function updateDotSprite(stops, colorKey) {
+    if (dotColorKey === colorKey && dotDpr === dpr) return;
+    if (dotDpr !== dpr) {
+      dotCanvas.width = Math.ceil(cellSize * dpr);
+      dotCanvas.height = dotCanvas.width;
+      dotCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dotSize = dotCanvas.width / dpr;
+      dotDpr = dpr;
+    }
+    var center = dotSize / 2;
+    var radius = cellSize * 0.32;
+    dotCtx.clearRect(0, 0, dotSize, dotSize);
+    var gradient = dotCtx.createRadialGradient(center - radius * 0.3, center - radius * 0.3, radius * 0.08, center, center, radius);
+    gradient.addColorStop(0, stops.c0);
+    gradient.addColorStop(0.65, stops.c1);
+    gradient.addColorStop(1, stops.c2);
+    dotCtx.fillStyle = gradient;
+    dotCtx.beginPath();
+    dotCtx.arc(center, center, radius, 0, Math.PI * 2);
+    dotCtx.fill();
+    dotColorKey = colorKey;
+  }
+
+  function render(stops, colorKey) {
+    updateDotSprite(stops, colorKey);
     ctx.fillStyle = '#0b0e14';
     ctx.fillRect(0, 0, width, height);
-
-    var c0 = stops ? stops.c0 : '#ffffff';
-    var c1 = stops ? stops.c1 : '#f1f5f9';
-    var c2 = stops ? stops.c2 : '#cbd5e1';
-
-    var radius = cellSize * 0.32;
+    var halfDot = dotSize / 2;
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
         if (grid[r * cols + c] === 1) {
           var px = c * cellSize + cellSize * 0.5;
           var py = r * cellSize + cellSize * 0.5;
 
-          var radGrad = ctx.createRadialGradient(px - radius * 0.3, py - radius * 0.3, radius * 0.08, px, py, radius);
-          radGrad.addColorStop(0, c0);
-          radGrad.addColorStop(0.65, c1);
-          radGrad.addColorStop(1, c2);
-
-          ctx.fillStyle = radGrad;
-          ctx.beginPath();
-          ctx.arc(px, py, radius, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.drawImage(dotCanvas, px - halfDot, py - halfDot, dotSize, dotSize);
         }
       }
     }
   }
 
   function loop(now) {
+    animId = null;
+    if (!isRunning) return;
     var stops = getColorStops(now);
+    var colorKey = stops.c0 + '|' + stops.c1 + '|' + stops.c2;
 
     if (now < freezeUntil) {
-      // 5 秒静态冻结期：逐帧根据色彩时间线平滑插值，不进行生命演化步进
-      render(stops);
+      // 静态颜色不重画；渐变和鼠标交互最多每秒绘制 30 次。
+      if ((needsRender || colorKey !== lastColorKey) && now - lastRender >= renderInterval) {
+        render(stops, colorKey);
+        lastColorKey = colorKey;
+        lastRender = now;
+        needsRender = false;
+      }
     } else {
       // 5 秒后：激活康威生命游戏生灭演化规则
       if (now - lastStep >= stepInterval) {
         step();
-        render(stops);
+        render(stops, colorKey);
         lastStep = now;
       }
     }
     animId = requestAnimationFrame(loop);
   }
 
+  function syncAnimation() {
+    var shouldRun = isVisible && !document.hidden;
+    if (shouldRun === isRunning) return;
+    isRunning = shouldRun;
+    if (!isRunning) {
+      pausedAt = performance.now();
+      if (animId !== null) cancelAnimationFrame(animId);
+      animId = null;
+      return;
+    }
+    var now = performance.now();
+    if (pausedAt !== null) {
+      // 暂停期间不推进开场时间线，也不补算生命游戏帧。
+      var pauseDuration = now - pausedAt;
+      freezeStartTime += pauseDuration;
+      freezeUntil += pauseDuration;
+      pausedAt = null;
+    }
+    lastStep = now;
+    lastRender = -Infinity;
+    animId = requestAnimationFrame(loop);
+  }
+
   container.addEventListener('mousemove', function(e) {
+    if (!isRunning) return;
     var rect = canvas.getBoundingClientRect();
     var mx = e.clientX - rect.left;
     var my = e.clientY - rect.top;
@@ -353,9 +414,16 @@
         }
       }
     }
+    needsRender = true;
   });
 
   window.addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', syncAnimation);
   resize();
-  animId = requestAnimationFrame(loop);
+  pausedAt = performance.now();
+  var visibilityObserver = new IntersectionObserver(function(entries) {
+    isVisible = entries[0].isIntersecting;
+    syncAnimation();
+  });
+  visibilityObserver.observe(container);
 })();

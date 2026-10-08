@@ -40,8 +40,11 @@
   let nextGrid = null;
   let lastStepTime = 0;
   let lastSeedTime = 0;
-  let isRunning = true;
+  let isRunning = false;
   let animId = null;
+  const showcaseStage = document.getElementById('showcase-stage');
+  let isCovered = false;
+  let coverageFrameId = null;
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -212,6 +215,7 @@
 
   // ── 主循环 ───────────────────────────────────────────
   function loop(now) {
+    animId = null;
     if (!isRunning) return;
 
     const interval = isMobile ? CONFIG.mobileStepInterval : CONFIG.stepInterval;
@@ -225,30 +229,52 @@
     animId = requestAnimationFrame(loop);
   }
 
+  function syncAnimation() {
+    const shouldRun = !isReducedMotion && !document.hidden && !isCovered;
+    if (shouldRun === isRunning) return;
+    isRunning = shouldRun;
+    if (isRunning) {
+      lastStepTime = performance.now();
+      animId = requestAnimationFrame(loop);
+    } else {
+      if (animId !== null) cancelAnimationFrame(animId);
+      animId = null;
+    }
+  }
+
+  function updateCoverage() {
+    if (showcaseStage) {
+      const rect = showcaseStage.getBoundingClientRect();
+      // 作品背景完全覆盖视口时，全屏元胞没有可见区域。
+      isCovered = rect.top <= 0 && rect.bottom >= window.innerHeight;
+    }
+    syncAnimation();
+  }
+
+  function requestCoverageCheck() {
+    if (coverageFrameId === null) {
+      coverageFrameId = requestAnimationFrame(function () {
+        coverageFrameId = null;
+        updateCoverage();
+      });
+    }
+  }
+
   // ── 事件监听与生命周期 ─────────────────────────────────
   window.addEventListener('resize', () => {
     resize();
     draw();
+    updateCoverage();
   }, { passive: true });
 
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) {
-      isRunning = false;
-      if (animId) cancelAnimationFrame(animId);
-    } else if (!isRunning) {
-      isRunning = true;
-      lastStepTime = performance.now();
-      animId = requestAnimationFrame(loop);
-    }
-  });
+  document.addEventListener('visibilitychange', updateCoverage);
+  if (showcaseStage) {
+    window.addEventListener('scroll', requestCoverageCheck, { passive: true });
+  }
 
   // 初始化
   resize();
   draw();
 
-  // 若开启无障碍减弱动态效果，仅渲染静态初始种子，不启动步进循环
-  if (!isReducedMotion) {
-    lastStepTime = performance.now();
-    animId = requestAnimationFrame(loop);
-  }
+  updateCoverage();
 })();

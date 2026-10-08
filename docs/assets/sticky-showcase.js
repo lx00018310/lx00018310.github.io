@@ -104,14 +104,7 @@
   updateTime();
   setInterval(updateTime, 10000);
 
-  // 顶部「中文 / EN」多语言切换按钮占位交互
-  var langBtn = document.getElementById('lang-switch-btn');
-  if (langBtn) {
-    langBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      showToast('英文版本正在搭建中，敬请期待 / English version coming soon');
-    });
-  }
+
 
   function showToast(msg) {
     var existing = document.getElementById('global-lang-toast');

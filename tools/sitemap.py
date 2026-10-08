@@ -18,6 +18,7 @@ SITE = "https://lx00018310.github.io/"
 # 路径 -> (changefreq, priority)。顺序即 sitemap 里的顺序。
 ENTRIES = [
     ("index.html",            "weekly",  "1.0"),
+    ("index-en.html",         "weekly",  "0.9"),
     ("assets/resume.html",    "monthly", "0.8"),
 ]
 

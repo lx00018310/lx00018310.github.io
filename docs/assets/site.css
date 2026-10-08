@@ -2326,7 +2326,7 @@ footer.site-footer, footer {
 }
 .giats-hero-subtitle {
   display: inline;
-  font-size: clamp(48px, 6vw, 76px);
+  font-size: clamp(58px, 7.2vw, 91px);
   font-weight: 300;
   color: var(--ink);
 }
@@ -2336,7 +2336,7 @@ footer.site-footer, footer {
 }
 .giats-hero-title-bold {
   display: block;
-  font-size: clamp(54px, 7vw, 92px);
+  font-size: clamp(76px, 9.8vw, 129px);
   font-weight: 800;
   color: var(--ink);
 }

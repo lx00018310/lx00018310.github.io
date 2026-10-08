@@ -2543,8 +2543,8 @@ footer.site-footer, footer {
   text-shadow: 1.5px 1.5px 0 #ffffff, 2px 2px 0 rgba(0, 0, 0, 0.45) !important;
 }
 .showcase-layer--1 .showcase-pinned-lead {
-  color: #701a75;
-  text-shadow: none !important; /* 按照用户要求，该段导语不再加叠影 */
+  color: #fff;
+  text-shadow: none !important; /* 按照用户要求，该段导语改为白色正文 */
 }
 
 /* 画板 2: EmergentInc 专属主题紫色叠影 (第 4 页：标题与副标题叠影为主题紫色) */

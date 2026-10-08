@@ -2336,6 +2336,14 @@ footer.site-footer, footer {
   font-weight: 800;
   color: var(--ink);
 }
+.giats-hero-tags {
+  margin: 20px 0 0;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink-2);
+}
 .giats-hero-right {
   font-size: clamp(17px, 1.8vw, 21px);
   line-height: 1.65;

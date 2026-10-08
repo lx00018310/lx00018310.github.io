@@ -2342,6 +2342,7 @@ footer.site-footer, footer {
 }
 .giats-hero-tags {
   display: block;
+  text-align: right;
   margin: 0 0 8px;
   white-space: nowrap;
   font-family: var(--mono);

@@ -1,12 +1,4 @@
-# 董达 ｜ 全链路解决方案与交付工程作品集
-### 商业定义 · 工业中控状态机 · AI 自主系统
-
-[![GitHub Pages](https://img.shields.io/badge/Live_Showcase-GitHub_Pages-22c55e?style=for-the-badge&logo=github)](https://lx00018310.github.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://lx00018310.github.io/)
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://lx00018310.github.io/)
-[![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://lx00018310.github.io/)
-[![Fastify](https://img.shields.io/badge/Fastify-4.x-000000?style=for-the-badge&logo=fastify&logoColor=white)](https://lx00018310.github.io/)
-[![Autonomous Agent](https://img.shields.io/badge/Agent_System-EmergentInc-d946ef?style=for-the-badge)](https://lx00018310.github.io/#emergentinc)
+# 董达 ｜ 个人作品集
 
 > 🚀 **在线作品集官网：[https://lx00018310.github.io/](https://lx00018310.github.io/)**  
 > **核心能力：把模糊的想法梳理出来、定位好、策划好，亲手用 AI 做可运行 Demo，最后还能在真实环境落地交付。**

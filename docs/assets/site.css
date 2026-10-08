@@ -2251,12 +2251,12 @@ footer.site-footer, footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px;
+  padding: 12px 28px;
   border-radius: 999px;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-decoration: none;
   cursor: pointer;
   line-height: 1;
@@ -2621,11 +2621,11 @@ footer.site-footer, footer {
   flex: 1;
 }
 
-/* 1. 上部三列栅格网格 */
+/* 1. 上部两列栅格网格 (移除网站导航，社交联系与商务合作顺位补齐) */
 .gf-top-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1.1fr 2.4fr;
-  gap: 48px;
+  grid-template-columns: 1.2fr 2.2fr;
+  gap: 64px;
   align-items: flex-start;
   margin-bottom: 60px;
 }
@@ -2770,6 +2770,10 @@ footer.site-footer, footer {
 @media (max-width: 960px) {
   .giats-nav-bar {
     padding: 18px 24px;
+  }
+  .giats-pill-btn {
+    font-size: 16px;
+    padding: 8px 18px;
   }
   .giats-footer-screen {
     padding: 80px 24px 20px;

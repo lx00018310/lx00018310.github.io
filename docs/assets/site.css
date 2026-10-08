@@ -2330,19 +2330,25 @@ footer.site-footer, footer {
   font-weight: 300;
   color: var(--ink);
 }
+.giats-hero-stack {
+  display: inline-block;
+  vertical-align: baseline;
+}
 .giats-hero-title-bold {
-  display: inline;
+  display: block;
   font-size: clamp(54px, 7vw, 92px);
   font-weight: 800;
   color: var(--ink);
 }
 .giats-hero-tags {
-  margin: 20px 0 0;
+  display: block;
+  margin: 0 0 8px;
+  white-space: nowrap;
   font-family: var(--mono);
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--ink-2);
+  color: #000;
 }
 .giats-hero-right {
   font-size: clamp(17px, 1.8vw, 21px);
@@ -2487,7 +2493,7 @@ footer.site-footer, footer {
   margin: 0 auto;
   padding: 0 48px;
   display: grid;
-  grid-template-columns: minmax(320px, 1fr) minmax(520px, 1.8fr);
+  grid-template-columns: minmax(560px, 1.3fr) minmax(480px, 1.7fr);
   gap: 48px;
   align-items: center;
   box-sizing: border-box;
@@ -2517,11 +2523,12 @@ footer.site-footer, footer {
   text-shadow: 2px 2px 0 #000000 !important;
 }
 .showcase-pinned-tagline {
-  font-size: clamp(20px, 2.2vw, 25px);
+  font-size: clamp(24px, 2.64vw, 30px);
   font-weight: 700;
   line-height: 1.4;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
+  white-space: nowrap;
   color: #fff;
   text-shadow: 1.5px 1.5px 0 #000000 !important;
 }
@@ -2822,6 +2829,72 @@ footer.site-footer, footer {
     width: 52px;
     height: 52px;
   }
+}
+
+/* ===== 微信/电话 弹窗 ===== */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.contact-modal.is-open {
+  display: flex;
+}
+.contact-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 22, 0.62);
+  backdrop-filter: blur(4px);
+}
+.contact-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(400px, calc(100vw - 48px));
+  background: #ffffff;
+  color: #10141c;
+  border-radius: 16px;
+  padding: 30px 30px 26px;
+  box-sizing: border-box;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+}
+.contact-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  color: #a0a6b0;
+  cursor: pointer;
+  padding: 0;
+}
+.contact-modal-close:hover {
+  color: #10141c;
+}
+.contact-modal-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.contact-modal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid #eceef2;
+  font-size: 16px;
+}
+.contact-modal-row span {
+  color: #6b7280;
+}
+.contact-modal-row strong {
+  font-size: 18px;
+  letter-spacing: 0.02em;
 }
 
 

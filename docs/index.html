@@ -93,13 +93,12 @@
         <div class="giats-hero-split">
           <div class="giats-hero-left reveal">
             <h1>
-              <span class="giats-hero-subtitle">升维看 ·</span> <span class="giats-hero-title-bold">多维做</span>
+              <span class="giats-hero-subtitle">升维看 ·</span> <span class="giats-hero-stack"><span class="giats-hero-tags">AI · 策划 · 工程 · 编程</span><span class="giats-hero-title-bold">多维做</span></span>
             </h1>
-            <p class="giats-hero-tags">AI · 策划 · 工程 · 编程</p>
           </div>
           <div class="giats-hero-right reveal" data-delay="1">
             <p>
-              我是董达。<br>很多你以为是死路的地方，其实只是还没看见的那条路。<br><strong>我看问题，拔高一维去找本质；<br>做东西，横跨 AI、策划、工程、编程，亲手把它落地。</strong>
+              我是董达<br>很多你以为是死路，其实只是还没看见的那条路<br><strong>我看问题，拔高一维去找本质<br>我做东西，横跨AI，策划，工程，编程去把它落地</strong>
             </p>
           </div>
         </div>
@@ -107,7 +106,7 @@
         <!-- 下半部分：全幅元胞自动机动画图框（整区域满幅，左上角标注：元胞自动机 · 1970） -->
         <div class="giats-cellular-viewport reveal" data-delay="2">
           <div class="cellular-corner-tag">
-            <span>「元胞自动机 · 1970」</span>
+            <span>「元胞自动机 · 康威生命游戏 · 1970」</span>
           </div>
           <!-- 内部动态元胞机 Canvas -->
           <canvas id="hero-cellular-canvas"></canvas>
@@ -140,9 +139,9 @@
           <div class="showcase-overlay-wrap">
             <div class="showcase-info-col">
               <h2 class="showcase-pinned-title">考亭古街</h2>
-              <p class="showcase-pinned-tagline">别人困在细节里，我换个方向签下 212 万。</p>
+              <p class="showcase-pinned-tagline">别人困在细节里，我换个方向签下 212 万</p>
               <p class="showcase-pinned-lead">
-                这是文旅项目，我做售前策划方案。<br>当时大家卡在细节和扯皮里出不来，我换了个思路，<br>把项目重新定位成“当地文旅的源头”来讲。<br>客户认可这个方向，最后签下 212 万的合同。
+                这是文旅项目，我做售前策划方案<br>当时大家卡在细节和扯皮里出不来，我换了个思路<br>把项目重新定位成“当地文旅的源头”来讲<br>客户认可这个方向，最后签下 212 万的合同
               </p>
             </div>
             <div class="showcase-floating-card-wrap">
@@ -160,9 +159,9 @@
           <div class="showcase-overlay-wrap">
             <div class="showcase-info-col">
               <h2 class="showcase-pinned-title">数字月台</h2>
-              <p class="showcase-pinned-tagline">不写 PPT，直接进场联调，真机上线。</p>
+              <p class="showcase-pinned-tagline">不写 PPT，直接进场联调，真机上线</p>
               <p class="showcase-pinned-lead">
-                这是工业现场项目，没有现成模板。<br>我一个人到车间里，把 PLC 和移动机器人直接接起来。<br>设备一多、一断线就容易乱，<br>我用一套统一的状态逻辑把它们的动作管起来。<br>最后是真机联调，上线通过验收。
+                这是工业现场项目，没有现成模板<br>我一个人到车间里，把 PLC 和移动机器人直接接起来<br>设备一多、一断线就容易乱<br>我用一套统一的状态逻辑把它们的动作管起来<br>最后是真机联调，上线通过验收
               </p>
             </div>
             <div class="showcase-floating-card-wrap">
@@ -180,9 +179,9 @@
           <div class="showcase-overlay-wrap">
             <div class="showcase-info-col">
               <h2 class="showcase-pinned-title">EmergentInc</h2>
-              <p class="showcase-pinned-tagline">让 AI 不再只是聊天，而是自动赚钱。</p>
+              <p class="showcase-pinned-tagline">让 AI 不再只是聊天，而是自动赚钱</p>
               <p class="showcase-pinned-lead">
-                我不满足于 AI 只会聊天。<br>这个开源项目里，<br>AI 能自己跑任务，自己改自己，自动去赚钱。<br>代码全部开源，拿来就能跑。
+                我不满足于 AI 只会聊天<br>这个开源项目里<br>AI 能自己跑任务，自己改自己，自动去赚钱<br>代码全部开源，拿来就能跑
               </p>
             </div>
             <div class="showcase-floating-card-wrap">
@@ -210,9 +209,8 @@
             <h3 class="gf-col-title">社交与联系</h3>
             <ul class="gf-nav-list">
               <li><a href="https://github.com/lx00018310" target="_blank" rel="noopener noreferrer">GitHub 源码</a></li>
-              <li><a href="javascript:void(0);" title="微信号：18761576008">微信咨询</a></li>
               <li><a href="assets/resume.pdf" download>简历下载 (PDF)</a></li>
-              <li><a href="tel:18761576008">电话直连</a></li>
+              <li><a href="javascript:void(0);" id="wechat-phone-link">微信/电话</a></li>
             </ul>
           </div>
 
@@ -249,6 +247,33 @@
         </a>
       </div>
     </footer>
+
+  <!-- 微信/电话 弹窗 -->
+  <div class="contact-modal" id="contact-modal" aria-hidden="true">
+    <div class="contact-modal-backdrop" id="contact-modal-backdrop"></div>
+    <div class="contact-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button type="button" class="contact-modal-close" id="contact-modal-close" aria-label="关闭">×</button>
+      <div class="contact-modal-title" id="contact-modal-title">微信 / 电话</div>
+      <div class="contact-modal-body">
+        <div class="contact-modal-row"><span>微信号</span><strong>18761576008</strong></div>
+        <div class="contact-modal-row"><span>手机号</span><strong>18761576008</strong></div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var link = document.getElementById('wechat-phone-link');
+    var modal = document.getElementById('contact-modal');
+    var close = document.getElementById('contact-modal-close');
+    var backdrop = document.getElementById('contact-modal-backdrop');
+    function open() { modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); }
+    function closeModal() { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); }
+    if (link) { link.addEventListener('click', function (e) { e.preventDefault(); open(); }); }
+    if (close) { close.addEventListener('click', closeModal); }
+    if (backdrop) { backdrop.addEventListener('click', closeModal); }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); } });
+  })();
+  </script>
 
   <script src="assets/signal.js"></script>
   <script src="assets/cellular-automata.js?v=3.1"></script>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>董达｜AI 解决方案顾问</title>
+    <title>董达｜AI 顾问</title>
     <style>
       :root {
         --paper: #f4f2ed;
@@ -343,7 +343,7 @@
   <body>
     <div class="toolbar">
       <div class="toolbar-title">
-        董达 ｜ AI 解决方案顾问
+        董达 ｜ AI 顾问
       </div>
       <div>
         <a class="btn-print" href="#" onclick="window.print(); return false;">打印 / 导出 PDF</a>
@@ -361,7 +361,7 @@
         <header class="header-section">
           <div class="header-row">
             <h1>董达</h1>
-            <div class="target-role">应聘方向：AI 解决方案顾问 ｜ 企业 AI 应用 · 快速 PoC · 业务落地</div>
+            <div class="target-role">应聘方向：AI 顾问 ｜ 企业 AI 应用 · 快速 PoC · 业务落地</div>
           </div>
           <div class="contact-row">
             <span>电话 / 微信：<strong>18761576008</strong></span>
@@ -394,8 +394,7 @@
             </div>
             <ul class="item-desc-list">
               <li>负责工业中控软件与 AI 应用实践，使用 AI Coding 和大模型工具完成需求拆解、原型实现、代码审查、测试与故障排查；参与 TypeScript / Java / Python 应用、数据库、PLC、机器人及现场系统集成。</li>
-              <li>基于真实工业运维场景设计 IRO_agent，将日志、数据库、代码、版本和网页信息接入只读 Agent Harness，探索基于证据的工业故障诊断与 AI 辅助运维流程。</li>
-              <li>推进数字月台、机器人产线等工业软件项目的业务流程梳理、状态机设计、系统联调、异常恢复和生产环境交付。</li>
+              <li>推进数字月台等工业软件项目的业务流程梳理、状态机设计、系统联调、异常恢复和生产环境交付。</li>
             </ul>
           </div>
         </div>
@@ -417,31 +416,18 @@
             <div class="stack-line">技术栈：Node.js · Fastify · React · TypeScript · WebSocket · PostgreSQL · SLMP PLC 接口</div>
           </article>
 
-          <!-- 项目 2: IRO_agent -->
+          <!-- 项目 2: EmergentInc -->
           <article class="project-card">
             <div class="project-head">
-              <span>IRO_agent ｜ 工业故障诊断 AI Agent</span>
-              <span class="project-badge project-badge--proto">应用验证</span>
+              <span>EmergentInc ｜ 开源 AI 智能体商业系统</span>
+              <span class="project-badge project-badge--proto">开源 · 自主运行</span>
             </div>
             <ul class="item-desc-list">
-              <li><strong>场景判断与方案机制：</strong>面向工业现场故障排查中日志噪声、信息不完整和错误归因问题，设计证据驱动的 AI 诊断 Agent；将“一次性回答”改造成“竞争假设 → 逐轮取证 → 动态重规划 → 证据锚定”的调查闭环。</li>
-              <li><strong>产品边界与安全决策：</strong>明确 Agent 严格定位为“证据调查员与诊断辅助”，只负责取证与推断，不直接修改生产系统；设置只读工具白名单与参数校验；证据不足时自动 Fail Closed 闭锁，数字证据充分且无异常后才升级现场物理排查。</li>
-              <li><strong>Harness 架构与评测闭环：</strong>设计 Project Learning、Investigation 与 Evaluation 三层 Harness，驱动 LLM 逐轮重规划与竞争假设流转；建立基于典型工业场景与历史缺陷的 DEV/REGRESSION 基准集与确定性 Grader，实测通过 210 项自动化测试（pytest 全部通过）。</li>
+              <li><strong>业务愿景：</strong>打破 AI 只会聊天的局限，让 AI 自己跑任务、自己改自己、自动去赚钱；人提供想法与最终决策，AI 自主探索机会、构建产品并持续进化。</li>
+              <li><strong>架构与安全：</strong>基于 pure-ast-json 纯 AST 解释沙箱执行代码，严禁 eval；持久 Workspace 状态机保证业务数据在代码热升级时持续存在；Vitest 测试与 Supervisor 校验哈希后由 Owner 批准升级。</li>
+              <li><strong>自动营收闭环：</strong>无需登录的公开商城支持多链 USDT 自动核销（独立 Reference + 唯一尾数匹配），实现零人工介入的自动收款核验。</li>
             </ul>
-            <div class="stack-line">技术栈：Python · Agent Harness · Tool Calling · Evidence Grounding · Evaluation · State Machine · Safety Guardrail</div>
-          </article>
-
-          <!-- 项目 3: 天津机器人产线 -->
-          <article class="project-card">
-            <div class="project-head">
-              <span>天津机器人产线 ｜ 跨系统产品落地与排障协同</span>
-              <span class="project-badge">已交付</span>
-            </div>
-            <ul class="item-desc-list">
-              <li><strong>跨系统业务状态协同：</strong>全程参与天津版本工控主程序，处理刷卡终端、产线机械取餐机构与送餐机器人的状态协同与接口通信。</li>
-              <li><strong>现场排障与产品逻辑反哺：</strong>深入现场参与排查送餐机器人定位偏差与修复，协同恢复产线正常节拍；以现场真实约束反向修正系统异常恢复逻辑。</li>
-            </ul>
-            <div class="stack-line">技术栈：Spring Boot · Vue · MySQL · 机器人通信接口 · 自动化产线协同</div>
+            <div class="stack-line">技术栈：TypeScript · Node.js · pure-ast-json · SQLite · 多链 RPC · Vitest · pnpm Workspace</div>
           </article>
         </div>
       </section>
@@ -511,7 +497,7 @@
             <div><strong>业务诊断与方案设计：</strong>从非标诉求中识别关键问题，提炼价值主张，梳理流程、边界与最小验证范围</div>
             <div><strong>AI PoC 快速实现：</strong>运用 AI 工具链结合 Python / TypeScript / React，亲手把方案做成可运行 PoC</div>
             <div><strong>系统集成与真实验证：</strong>多终端 HMI 状态流转、设备通信接口联调、日志排障、生产验证与版本回滚</div>
-            <div><strong>工程规范与交付边界：</strong>沉淀 SimpleHmi 开源规范，坚持生产链路 No-Mock，以运行结果验收产品</div>
+            <div><strong>工程规范与交付边界：</strong>坚持生产链路 No-Mock，以运行结果验收产品，沉淀可复用的 AI 工程交付规范</div>
           </div>
         </div>
 
@@ -524,7 +510,7 @@
             </div>
             <div style="font-size: 11.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.55;">
               <strong>作品集主页：</strong><a href="https://lx00018310.github.io/" style="color: var(--magenta-ink); text-decoration: none; border-bottom: 1px solid var(--cyan);">lx00018310.github.io</a><br>
-              <strong>个人 GitHub：</strong><a href="https://github.com/lx00018310" style="color: var(--magenta-ink); text-decoration: none; border-bottom: 1px solid var(--cyan);">github.com/lx00018310</a>（IRO_agent 工业故障诊断 Agent 与 SimpleHmi 开源中控规范）
+              <strong>个人 GitHub：</strong><a href="https://github.com/lx00018310" style="color: var(--magenta-ink); text-decoration: none; border-bottom: 1px solid var(--cyan);">github.com/lx00018310</a>（EmergentInc 开源 AI 智能体等）
             </div>
           </div>
         </div>

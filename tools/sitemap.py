@@ -18,16 +18,7 @@ SITE = "https://lx00018310.github.io/"
 # 路径 -> (changefreq, priority)。顺序即 sitemap 里的顺序。
 ENTRIES = [
     ("index.html",            "weekly",  "1.0"),
-    ("digital-dock.html",     "monthly", "0.9"),
-    ("iro-agent.html",        "monthly", "0.9"),
-    ("robot-line.html",       "monthly", "0.8"),
-    ("toywake.html",          "monthly", "0.8"),
-    ("ai-engineering.html",   "monthly", "0.8"),
-    ("simplehmi-weili.html",  "monthly", "0.8"),
-    ("huzhou-food-map.html",  "monthly", "0.6"),
-    ("assets/董达_简历_一页.html", "monthly", "0.9"),
     ("assets/resume.html",    "monthly", "0.8"),
-    ("ai-profile.md",         "monthly", "0.5"),
 ]
 
 # 不许进 sitemap 的东西（内部草稿、验证文件）

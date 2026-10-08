@@ -29,13 +29,13 @@ flowchart LR
 
 ---
 
-### 02. 现场落地 ｜ 数字月台 & 机器人：把复杂的现场流程，交付为高可靠的工业中控
+### 02. 现场落地 ｜ 数字月台：把复杂的现场流程，交付为高可靠的工业中控
 > **状态：真实生产环境已上线已验收 ｜ 100% No-Mock 交付** ｜ [查看在线深度解析 ➔](https://lx00018310.github.io/#industrial)
 
 - **真实痛点**：自动装车涉及车辆排队入场、地磅过磅、现场多工位触屏、自动装车机、PLC 与人脸识别。客户初始诉求仅为单屏看板，根本无法处理多工位冲突与异常断线。
 - **产品重塑**：重新抽象订单状态机、工位操作互斥规则与异常降级策略，将单屏需求升维为**多终端协同工业中控系统**，支持秒级配置热回退与数据归一化校验。
-- **亲手实现与现场验收**：基于 Node.js / Fastify 构建中控核心服务，React / TypeScript 开发多工位触摸屏 HMI，WebSocket 广播实现毫秒级状态同步；深入天津项目一线排查修复机器人定位偏差，无缝联调现场真实 PLC，顺利通过甲方严苛现场验收。
-- **技术栈**：`Node.js (Fastify)` / `React` / `TypeScript` / `WebSocket` / `PostgreSQL` / `Spring Boot` / `PLC 硬件通信`
+- **亲手实现与现场验收**：基于 Node.js / Fastify 构建中控核心服务，React / TypeScript 开发多工位触摸屏 HMI，WebSocket 广播实现毫秒级状态同步；把 PLC 与移动机器人接入统一状态逻辑，无缝联调现场真实 PLC，顺利通过甲方严苛现场验收。
+- **技术栈**：`Node.js (Fastify)` / `React` / `TypeScript` / `WebSocket` / `PostgreSQL` / `PLC 硬件通信`
 
 ---
 
@@ -57,7 +57,7 @@ flowchart LR
 | 维度 | 掌握能力与技术栈 | 落地验证场景 |
 | :--- | :--- | :--- |
 | **01 商业梳理与定义** | 复杂非标需求抽象、差异化变量提炼、商业策划蓝图、高层方案汇报抗辩、商务履约与回款 | 考亭古街 212 万项目主创 |
-| **02 工业中控与物理落地** | 工业状态机设计、多终端 HMI 协同、WebSocket 广播、PLC 协议联调、现场排障、No-Mock 交付 | 数字月台自动装车、天津机器人产线 |
+| **02 工业中控与物理落地** | 工业状态机设计、多终端 HMI 协同、WebSocket 广播、PLC 协议联调、现场排障、No-Mock 交付 | 数字月台自动装车 |
 | **03 AI 原生系统架构** | 自主 Agent 状态机、pure-ast-json 纯 AST 沙箱、区块链加密支付自动核销、持久工作区、自进化机制 | EmergentInc 元胞会社开源系统 |
 
 ---
@@ -82,8 +82,8 @@ npx serve docs
 ## 📬 联系交流与简历 (Get in Touch)
 
 - **姓名**：董达 (Dong Da)
-- **定位**：商业策划 · 工业中控 · AI 自主系统
+- **定位**：AI 顾问
 - **城市**：杭州 / 湖州 / 苏州（吴江）· 支持短期出差
 - **电话 / 微信**：`18761576008`
 - **电子邮箱**：`624290365@qq.com`
-- **在线简历**：[两页完整版简历](https://lx00018310.github.io/assets/resume.html) ｜ [一页精简版简历](https://lx00018310.github.io/assets/董达_简历_一页.html) ｜ [下载简历 PDF](https://lx00018310.github.io/assets/resume.pdf)
+- **在线简历**：[两页完整版简历](https://lx00018310.github.io/assets/resume.html) ｜ [下载简历 PDF](https://lx00018310.github.io/assets/resume.pdf)

@@ -2901,8 +2901,115 @@ footer.site-footer, footer {
   letter-spacing: 0.02em;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   6. 英文版 (html[lang="en"]) 专属国际化响应式排版优化
+   ══════════════════════════════════════════════════════════════════════════ */
+html[lang="en"] .giats-hero-split {
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: flex-end;
+}
 
+html[lang="en"] .giats-hero-left h1 {
+  display: block;
+  line-height: 1.02;
+}
 
+html[lang="en"] .giats-hero-subtitle {
+  display: block;
+  font-size: clamp(42px, 5.2vw, 76px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
 
+html[lang="en"] .giats-hero-stack {
+  display: inline-block;
+  vertical-align: baseline;
+}
 
+html[lang="en"] .giats-hero-tags {
+  display: block;
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: left;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  color: var(--ink);
+}
 
+html[lang="en"] .giats-hero-title-bold {
+  display: block;
+  font-size: clamp(58px, 7.8vw, 112px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+html[lang="en"] .giats-hero-right {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.62;
+  color: var(--ink-2);
+  max-width: 520px;
+}
+
+/* Showcase 展台排版自适应与防穿透 */
+html[lang="en"] .showcase-pinned-title {
+  font-size: clamp(38px, 4.6vw, 68px);
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+html[lang="en"] .showcase-pinned-tagline {
+  font-size: clamp(20px, 2.1vw, 28px);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 16px;
+  white-space: normal; /* 解除 nowrap，允许自然折行 */
+  text-wrap: balance;
+  max-width: 580px; /* 严格限制宽度，绝不穿透遮挡右侧卡片 */
+  letter-spacing: -0.01em;
+}
+
+html[lang="en"] .showcase-pinned-lead {
+  font-size: 16px;
+  line-height: 1.68;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* 英文版移动端与中屏精细适配 */
+@media (max-width: 960px) {
+  html[lang="en"] .giats-hero-split {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  html[lang="en"] .giats-hero-subtitle {
+    font-size: clamp(32px, 7vw, 48px);
+  }
+  html[lang="en"] .giats-hero-title-bold {
+    font-size: clamp(48px, 11vw, 76px);
+  }
+  html[lang="en"] .giats-hero-tags {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  html[lang="en"] .showcase-pinned-tagline {
+    font-size: clamp(18px, 4.8vw, 24px);
+    max-width: 100%;
+  }
+  html[lang="en"] .showcase-pinned-lead {
+    font-size: 15px;
+    max-width: 100%;
+  }
+  html[lang="en"] .cellular-corner-tag {
+    top: 14px;
+    left: 16px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}

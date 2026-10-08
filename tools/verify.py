@@ -105,20 +105,26 @@ def check_content():
     profile = normalize(read(DOCS / "ai-profile.md"))
     for title, tagline, lead in zh + en:
         require(all(normalize(x) in profile for x in (title, tagline, lead)), f"ai-profile.md: {title}")
-    for path in [ROOT / "README.md", DOCS / "assets/resume.html"]:
-        content = normalize(soup(path).get_text(" ") if path.suffix == ".html" else read(path))
-        for title, tagline, lead in zh:
-            require(all(normalize(x) in content for x in (title, tagline, lead)), f"{path.name}: {title}")
+    # README 是定稿摘要：逐字保留首页各项目的标题、slogan 与正文
+    readme = normalize(read(ROOT / "README.md"))
+    for title, tagline, lead in zh:
+        require(all(normalize(x) in readme for x in (title, tagline, lead)), f"README.md: {title}")
+    # 简历面向 HR / 老板，用更直白的语言表达同一批事实：项目顺序一致、关键结果与技能齐备即可
     resume = soup(DOCS / "assets/resume.html")
     require([x.select_one(".project-head span").get_text(strip=True) for x in resume.select(".project-card")] ==
             [x[0] for x in zh], "简历项目顺序与首页不一致")
+    restext = normalize(resume.get_text(" "))
+    for title, facts in [("考亭古街", ["212万"]), ("数字月台", ["真机上线", "验收", "plc"]),
+                         ("EmergentInc", ["开源", "自动赚钱"])]:
+        require(normalize(title) in restext, f"简历缺少项目名：{title}")
+        require(all(normalize(f) in restext for f in facts), f"简历项目 {title} 缺少关键事实")
     for path in [ROOT / "README.md", DOCS / "ai-profile.md", DOCS / "llms.txt"]:
         text = read(path)
         for term in ["升维看", "多维做", "Think Higher", "Build Wider", "dzpdd@163.com", "lx00018310@gmail.com", "18761576008"]:
             require(term in text, f"{path.name}: missing {term}")
         for _, tagline, _ in zh:
             require(tagline in text, f"{path.name}: missing {tagline}")
-    return "README、AI 档案、llms 与简历的定位、项目全文或摘要均与定稿一致"
+    return "README、AI 档案、llms 与首页定稿一致；简历以直白语言保留项目顺序与关键结果"
 
 
 def check_stale_content():

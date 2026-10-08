@@ -2933,9 +2933,9 @@ html[lang="en"] .giats-hero-tags {
   display: block;
   font-size: clamp(12px, 1.1vw, 15px);
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-align: left;
-  margin: 0 0 4px;
+  margin: 10px 0 0;
   white-space: nowrap;
   color: var(--ink);
 }
@@ -2997,6 +2997,7 @@ html[lang="en"] .showcase-pinned-lead {
   html[lang="en"] .giats-hero-tags {
     font-size: 12px;
     letter-spacing: 0.04em;
+    margin: 8px 0 0;
   }
   html[lang="en"] .showcase-pinned-tagline {
     font-size: clamp(18px, 4.8vw, 24px);

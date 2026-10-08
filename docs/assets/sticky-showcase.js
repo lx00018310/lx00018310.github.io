@@ -92,15 +92,44 @@
   // 初始首帧渲染
   render();
 
-  // 实时时钟更新 (复刻模板 Current Time: HH:mm)
+  // 实时时钟更新
   var timeDisplay = document.getElementById('gf-time-display');
   function updateTime() {
     if (!timeDisplay) return;
     var now = new Date();
     var h = String(now.getHours()).padStart(2, '0');
     var m = String(now.getMinutes()).padStart(2, '0');
-    timeDisplay.textContent = 'Current Time: ' + h + ':' + m;
+    timeDisplay.textContent = '当前时间：' + h + ':' + m;
   }
   updateTime();
   setInterval(updateTime, 10000);
+
+  // 顶部「中文 / EN」多语言切换按钮占位交互
+  var langBtn = document.getElementById('lang-switch-btn');
+  if (langBtn) {
+    langBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      showToast('英文版本正在搭建中，敬请期待 / English version coming soon');
+    });
+  }
+
+  function showToast(msg) {
+    var existing = document.getElementById('global-lang-toast');
+    if (existing) existing.remove();
+
+    var toast = document.createElement('div');
+    toast.id = 'global-lang-toast';
+    toast.className = 'global-toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(function() {
+      toast.classList.add('global-toast--show');
+    });
+
+    setTimeout(function() {
+      toast.classList.remove('global-toast--show');
+      setTimeout(function() { if (toast.parentElement) toast.remove(); }, 300);
+    }, 2400);
+  }
 })();

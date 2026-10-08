@@ -1,89 +1,78 @@
-# 董达 ｜ 个人作品集
+# 董达｜作品集｜升维看 · 多维做
 
-> 🚀 **在线作品集官网：[https://lx00018310.github.io/](https://lx00018310.github.io/)**  
-> **核心能力：把模糊的想法梳理出来、定位好、策划好，亲手用 AI 做可运行 Demo，最后还能在真实环境落地交付。**
+[中文作品集](https://lx00018310.github.io/) ｜ [English Portfolio](https://lx00018310.github.io/index-en.html)
 
----
+**Think Higher · Build Wider** ｜ **AI · Strategy · Engineering · Code**
 
-## 🎯 全链路交付能力模型 (End-to-End Capabilities)
+我是董达，擅长破“当局者迷”。我看问题，会拔高一维，直取本质；我做东西，横跨 AI、策划、工程、编程去把它落地。
 
-我不做空洞的 PPT 演说，也不做玩具 Demo。我的能力贯穿从“原始模糊想法”到“真实业务交付”的完整四步：
+本项目以 [中文首页](docs/index.html) 和 [英文首页](docs/index-en.html) 为内容定稿依据。简历、AI 资料与分享图使用对应语言的定位和项目表述。
 
-```mermaid
-flowchart LR
-    A["01 梳理输入<br/>(面对非标混沌，梳理真实痛点)"] --> B["02 定位策划<br/>(提炼核心变量，升维商业命题)"]
-    B --> C["03 AI 原型 Demo<br/>(亲手全栈 AI Coding 跑通可运行原型)"]
-    C --> D["04 真实落地交付<br/>(接入真实硬件/多链网络，生产验收闭环)"]
+## 三个代表项目
+
+### 考亭古街
+
+**别人困在细节里，我换个方向签下 212 万**
+
+这是文旅项目，我做售前策划方案。当时大家卡在细节和扯皮里出不来，我换了个思路，把项目重新定位成“当地文旅的源头”来讲。客户认可这个方向，最后签下 212 万的合同。
+
+[查看项目](https://lx00018310.github.io/#tourism)
+
+### 数字月台
+
+**不写 PPT，直接进场联调，真机上线**
+
+这是工业现场项目，没有现成模板。我一个人到车间里，把 PLC 和移动机器人直接接起来。设备一多、一断线就容易乱，我用一套统一的状态逻辑把它们的动作管起来。最后是真机联调，上线通过验收。
+
+[查看项目](https://lx00018310.github.io/#industrial)
+
+### EmergentInc
+
+**让 AI 不再只是聊天，而是自动赚钱**
+
+我不满足于 AI 只会聊天。这个开源项目里，AI 能自己跑任务，自己改自己，自动去赚钱。代码全部开源，拿来就能跑。
+
+[查看项目](https://lx00018310.github.io/#emergentinc)
+
+## 本地预览与内容生成
+
+在项目根目录执行以下 Windows 命令：
+
+```powershell
+python -m http.server 8080 --directory docs
 ```
 
----
+打开 [中文预览](http://localhost:8080/) 或 [英文预览](http://localhost:8080/index-en.html)。
 
-## 🏆 三大代表性深度作品 (Featured Case Deep-Dive)
+生成脚本与检查：
 
-### 01. 商业定义 ｜ 考亭古街：把模糊的非标诉求，定义成能买单的商业方案
-> **状态：212 万元设计服务合同闭环 ｜ 售前策划主创 ｜ 2019.07–2019.11** ｜ [查看在线深度解析 ➔](https://lx00018310.github.io/#tourism)
+```powershell
+# 生成首页使用的中英文数字月台拓扑图
+python -X utf8 tools/generate_visuals.py
 
-- **混沌输入（模糊的想法）**：地方政府举办文旅大会，文化资源庞大（理学、建盏、山水），客户原始诉求宏大却模糊：“要轰动、要有文化、要拉动消费”，各方诉求割裂，没人说得清项目到底该是什么。
-- **破局提炼（把想法变清晰）**：跳出同质化“古镇小吃街”俗套，从文化源流与消费逻辑中提炼**“文旅溯源地”**核心命题：让每一处空间、业态与场景都成为文脉溯源的载体。
-- **方案抗辩与商业闭环**：分解为空间落位、业态规划与运营蓝图，主持多轮高层汇报抗辩，击退竞品方案并推动立项；协同推进节点履约，所参与的设计服务合同额为 **212 万元**，达成阶段回款闭环。
+# 从分享图模板生成 1200×630 分享图
+python -X utf8 tools/og.py
 
----
+# 从在线简历重新导出 PDF
+python -X utf8 tools/html_to_pdf.py
 
-### 02. 现场落地 ｜ 数字月台：把复杂的现场流程，交付为高可靠的工业中控
-> **状态：真实生产环境已上线已验收 ｜ 100% No-Mock 交付** ｜ [查看在线深度解析 ➔](https://lx00018310.github.io/#industrial)
+# 更新网站地图
+python -X utf8 tools/sitemap.py
 
-- **真实痛点**：自动装车涉及车辆排队入场、地磅过磅、现场多工位触屏、自动装车机、PLC 与人脸识别。客户初始诉求仅为单屏看板，根本无法处理多工位冲突与异常断线。
-- **产品重塑**：重新抽象订单状态机、工位操作互斥规则与异常降级策略，将单屏需求升维为**多终端协同工业中控系统**，支持秒级配置热回退与数据归一化校验。
-- **亲手实现与现场验收**：基于 Node.js / Fastify 构建中控核心服务，React / TypeScript 开发多工位触摸屏 HMI，WebSocket 广播实现毫秒级状态同步；把 PLC 与移动机器人接入统一状态逻辑，无缝联调现场真实 PLC，顺利通过甲方严苛现场验收。
-- **技术栈**：`Node.js (Fastify)` / `React` / `TypeScript` / `WebSocket` / `PostgreSQL` / `PLC 硬件通信`
-
----
-
-### 03. AI 自主系统 ｜ EmergentInc 元胞会社：让 AI 走出对话框，构建自主进化的商业系统
-> **状态：开源自主 Agent 商业系统架构 ｜ 全栈工程代码** ｜ [查看在线深度解析 ➔](https://lx00018310.github.io/#emergentinc)
-
-- **业务愿景（突破对话框）**：打破传统大模型单次 Prompt 的“陪聊玩具”局限。构建一个**人提供想法与最终决策，AI 人物（千机）与元胞自主探索机会、构建产品、对外推广销售并持续进化**的开源系统。
-- **四大闭环架构支柱**：
-  1. **对外商城与 4 链 USDT 自动核销**：无需登录的公开商城前端，支持 Solana、BSC、Polygon、TRON 四大公链 USDT，通过独立 Reference 与唯一尾数匹配，实现零人工介入的自动收款核验。
-  2. **pure-ast-json 纯 AST 解释沙箱**：智能体技能在受控遗传权限内生成，基于纯 AST JSON 解释执行 JavaScript 函数，**严禁 eval，严防未授权主机文件/网络/子进程外泄**。
-  3. **持久 Workspace 状态机**：“代码可以变化，业务数据持续存在”。基于 SQLite 独立维护人物、订单、支付与谱系，代码热升级或回退时，商业事实永存。
-  4. **Supervisor 审批自进化**：候选版本经 Vitest 测试与类型检查后，由 Supervisor 校验哈希并由 Owner 批准升级，确保 Agent 自进化可信受控。
-- **技术栈**：`TypeScript` / `Node.js 24` / `pure-ast-json` / `SQLite` / `多链 RPC` / `Vitest` / `pnpm Workspace`
-
----
-
-## 🛠️ 技术与能力全景 (Capabilities Matrix)
-
-| 维度 | 掌握能力与技术栈 | 落地验证场景 |
-| :--- | :--- | :--- |
-| **01 商业梳理与定义** | 复杂非标需求抽象、差异化变量提炼、商业策划蓝图、高层方案汇报抗辩、商务履约与回款 | 考亭古街 212 万项目主创 |
-| **02 工业中控与物理落地** | 工业状态机设计、多终端 HMI 协同、WebSocket 广播、PLC 协议联调、现场排障、No-Mock 交付 | 数字月台自动装车 |
-| **03 AI 原生系统架构** | 自主 Agent 状态机、pure-ast-json 纯 AST 沙箱、区块链加密支付自动核销、持久工作区、自进化机制 | EmergentInc 元胞会社开源系统 |
-
----
-
-## 💻 本地预览 (Local Development)
-
-无需安装复杂运行时，任意静态服务器即可本地秒开预览：
-
-```bash
-# 方式 1: 使用 Python 快速启动
-cd docs
-python -m http.server 8080
-
-# 方式 2: 使用 Node.js npx serve
-npx serve docs
+# 检查内容、链接、资源、PDF 和浏览器表现
+python -X utf8 tools/verify.py
 ```
 
-启动后在浏览器中打开 `http://localhost:8080` 即可浏览全部内容。
+运行生成与检查脚本需要 `playwright`、`Pillow`、`pypdf` 和 `beautifulsoup4`，并安装 Playwright Chromium。`tools/generate_images.py` 使用同一分享图生成入口。
 
----
+## 联系方式与简历
 
-## 📬 联系交流与简历 (Get in Touch)
-
-- **姓名**：董达 (Dong Da)
-- **定位**：AI 顾问
-- **城市**：杭州 / 湖州 / 苏州（吴江）· 支持短期出差
-- **电话 / 微信**：`18761576008`
-- **电子邮箱**：`624290365@qq.com`
-- **在线简历**：[两页完整版简历](https://lx00018310.github.io/assets/resume.html) ｜ [下载简历 PDF](https://lx00018310.github.io/assets/resume.pdf)
+- 姓名：董达 / Dong Da
+- 中文定位：AI 顾问
+- English role: AI Consultant & Solutions Architect
+- 常驻地点：杭州 · 湖州 · 苏州（吴江）
+- 电话 / 微信：`18761576008`
+- 中文邮箱：`dzpdd@163.com`
+- English email: `lx00018310@gmail.com`
+- [GitHub 源码](https://github.com/lx00018310)
+- [在线简历](https://lx00018310.github.io/assets/resume.html) ｜ [简历 PDF](https://lx00018310.github.io/assets/resume.pdf)

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="100%" height="100%" role="img" aria-label="Digital Loading Dock: PLCs &amp; Mobile Robots">
+<rect width="720" height="400" fill="#FAFCFD" rx="14"/>
+<rect x="12" y="12" width="696" height="376" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<text x="28" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#0F172A" font-weight="700">Digital Loading Dock: PLCs &amp; Mobile Robots</text>
+<text x="28" y="62" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#475569" font-weight="400">Unified state logic orchestrates device actions</text>
+<rect x="36" y="92" width="170" height="96" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+<text x="52" y="120" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#0F172A" font-weight="700">Mobile Robots</text>
+<text x="52" y="144" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Navigation &amp; actions</text>
+<text x="52" y="168" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Unified state logic</text>
+<rect x="36" y="218" width="170" height="96" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+<text x="52" y="246" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#0F172A" font-weight="700">Scale &amp; Dropouts</text>
+<text x="52" y="270" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Device coordination</text>
+<text x="52" y="294" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Disconnect handling</text>
+<rect x="236" y="84" width="268" height="240" rx="8" fill="#FDF4FF" stroke="#D946EF"/>
+<rect x="236" y="84" width="268" height="32" rx="8" fill="#D946EF" stroke="#D946EF"/>
+<text x="252" y="105" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="700">Control Software</text>
+<rect x="252" y="128" width="236" height="88" rx="8" fill="#FFFFFF" stroke="#F5D0FE"/>
+<text x="264" y="152" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#D946EF" font-weight="700">Core Service (Fastify)</text>
+<text x="264" y="173" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Unified state machine</text>
+<text x="264" y="191" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Device &amp; connection states</text>
+<text x="264" y="207" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Passed final acceptance</text>
+<path d="M 370 220 L 370 237" stroke="#D946EF" stroke-width="2"/>
+<text x="382" y="233" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#D946EF" font-weight="400">WebSocket</text>
+<rect x="252" y="240" width="236" height="72" rx="8" fill="#FFFFFF" stroke="#F5D0FE"/>
+<text x="264" y="262" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#0F172A" font-weight="700">HMI (React + TS)</text>
+<text x="264" y="282" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Device states / operations</text>
+<text x="264" y="300" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Control state updates</text>
+<rect x="534" y="150" width="156" height="110" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+<text x="548" y="178" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#0F172A" font-weight="700">On-site PLCs</text>
+<text x="548" y="204" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Device control signals</text>
+<text x="548" y="230" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#475569" font-weight="400">Unified state logic</text>
+<path d="M 206 140 L 236 140" stroke="#D946EF" stroke-width="2"/>
+<polygon points="236,140 228,136 228,144" fill="#D946EF"/>
+<polygon points="206,140 214,136 214,144" fill="#D946EF"/>
+<path d="M 206 266 L 236 266" stroke="#D946EF" stroke-width="2"/>
+<polygon points="236,266 228,262 228,270" fill="#D946EF"/>
+<polygon points="206,266 214,262 214,270" fill="#D946EF"/>
+<path d="M 504 205 L 534 205" stroke="#D946EF" stroke-width="2"/>
+<polygon points="534,205 526,201 526,209" fill="#D946EF"/>
+<polygon points="504,205 512,201 512,209" fill="#D946EF"/>
+<rect x="28" y="344" width="664" height="30" rx="8" fill="#FAF5FF" stroke="#CBD5E1"/>
+<text x="40" y="363" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#475569" font-weight="400">Topology overview | PLCs &amp; mobile robots connected, commissioned on live hardware, accepted</text>
+</svg>

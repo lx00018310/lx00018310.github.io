@@ -68,12 +68,12 @@
     reticles = [];
   }
   window.addEventListener('resize', resize, { passive: true });
-  resize();
 
   // ── 数据结构：前沿、准星、总线脉冲 ─────────────────────────
   let frontier = [];      // 待扩散前沿：[x, y, colorIdx, dist]
   let busPulses = [];     // 走线脉冲：{ sx, sy, cx, cy, dx, dy, steps, maxSteps, colorIdx, stepTimer }
   let reticles = [];      // 爆发准星：{ x, y, colorIdx, birth, life }
+  resize();
   let lastSpawn = performance.now();
   let nextSpawn = 1200 + Math.random() * 1400; // 1.2–2.6s 自动爆发一次
   let outbreakCount = 0;

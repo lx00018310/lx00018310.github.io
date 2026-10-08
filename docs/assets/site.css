@@ -2611,6 +2611,13 @@ footer.site-footer, footer {
   object-fit: cover;
   display: block;
 }
+/* 拓扑图完整显示，避免裁掉 PLC 与移动机器人节点。 */
+.showcase-layer--1 .card-media-viewport {
+  background: #fff;
+}
+.showcase-layer--1 .card-media-viewport img {
+  object-fit: contain;
+}
 
 @media (max-width: 960px) {
   .showcase-overlay-wrap {

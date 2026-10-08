@@ -6,7 +6,7 @@ def html_to_pdf(html_path, pdf_path, margin=None):
     abs_html = os.path.abspath(html_path)
     file_url = f'file:///{abs_html.replace(os.sep, "/")}'
     
-    # 默认边距匹配计划书第 4.1 / 8 节；若调用方传入则覆盖
+    # 默认使用简历 HTML 的 A4 打印样式；若调用方传入边距则覆盖
     pdf_kwargs = {
         'format': 'A4',
         'print_background': True,
@@ -19,6 +19,7 @@ def html_to_pdf(html_path, pdf_path, margin=None):
         browser = p.chromium.launch()
         page = browser.new_page()
         page.goto(file_url, wait_until='networkidle')
+        page.evaluate("document.fonts.ready")
         page.pdf(path=pdf_path, **pdf_kwargs)
         browser.close()
     print(f"PDF生成成功: {pdf_path}")

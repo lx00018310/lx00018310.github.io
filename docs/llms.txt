@@ -1,32 +1,26 @@
-# 董达 / Dong Da — AI 顾问
+# 董达 / Dong Da — 升维看 · 多维做 / Think Higher · Build Wider
 
-> 董达（Dong Da），作品集定位「升维看 · 多维做」：看问题拔高一维，直取本质；做东西横跨 AI、策划、工程、编程，亲手落地。求职方向：AI 顾问（企业 AI 应用 · 快速 PoC · 业务落地）(AI Consultant | Enterprise AI & PoC Delivery)。
-
-## 核心概述 / Summary
-
-董达经历横跨机械工程、商业策划、创新项目与工业软件。擅长从复杂业务和现场约束中识别关键问题、形成解决方案，并利用 AI Coding 工具链（Python / TypeScript / FastAPI / Fastify / React / Node.js / WebSocket / PostgreSQL）快速完成可运行原型，进入真实工业中控、状态机、设备接口联调与生产环境交付验证。
+> 中文定位：AI 顾问。看问题拔高一维，直取本质；做东西横跨 AI、策划、工程、编程，亲手落地。
+> English role: AI Consultant & Solutions Architect. Think in higher dimensions, build across disciplines: Elevating perspective to uncover root essence; spanning AI, strategy, engineering, and code to deliver hands-on.
 
 ## 权威页面 / Authoritative Pages
 
-- https://lx00018310.github.io/ — 作品集首页（单页）。个人概述 + 三大代表项目（考亭古街 / 数字月台 / EmergentInc）+ 联系方式。
-- https://lx00018310.github.io/assets/resume.html — 在线简历（A4 两页完整版）。
-- https://lx00018310.github.io/ai-profile.md — 供大模型与机器检索读取的结构化档案。
+- [中文作品集](https://lx00018310.github.io/): 中文定位、考亭古街、数字月台、EmergentInc 与联系方式的定稿依据。
+- [English Portfolio](https://lx00018310.github.io/index-en.html): Authoritative English positioning, project descriptions, and contact details.
+- [AI-Readable Profile](https://lx00018310.github.io/ai-profile.md): 中英文项目全文与履历补充。
+- [在线简历](https://lx00018310.github.io/assets/resume.html): A4 两页中文简历。
+- [简历 PDF](https://lx00018310.github.io/assets/resume.pdf): 与在线简历同步的下载版本。
+- [GitHub](https://github.com/lx00018310): 源码入口。
 
-## 核心实体与经历 / Core Entities
+## 三个代表项目 / Featured Projects
 
-### 1. 董达 (Dong Da)
-- **求职方向**：AI 顾问（企业 AI 应用 · 快速 PoC · 业务落地）
-- **教育背景**：华北电力大学（211），机械设计制造及其自动化，本科（2006–2010）。
-- **目标城市**：杭州 / 湖州 / 苏州（吴江）
-- **到岗约束**：约一个月到岗；可接受短期出差。
-- **联系方式**：18761576008（微信同号） ｜ 624290365@qq.com ｜ https://github.com/lx00018310
-- **工作经历**：
-  - 2026–至今：浙江维力智能装备有限公司 ｜ AI 应用工程师｜工业软件 / 工控方向（负责工业中控软件与 AI 应用实践，推进多终端工业中控系统联调与生产环境交付）
-  - 2020–2025：浙江先秦科技有限公司 ｜ 创新事业负责人（立项推动、需求梳理、方案策划与实施协调）
-  - 2017–2020：浙江拾方旅游发展有限公司 ｜ 项目负责人 / 售前策划主创（文旅项目策划实施推进；考亭古街项目中担任售前策划主创）
-  - 2010–2017：机械制造企业 ｜ 机械工程师（从事机械设计与现场问题处理）
+- **考亭古街 / Kaoting Ancient Street**：别人困在细节里，我换个方向签下 212 万。负责文旅售前策划，把项目重新定位成“当地文旅的源头”；客户认可，最后签下 212 万合同。 / Led pre-sales strategic planning, repositioned the destination as the cultural fountainhead of the region, and secured a ¥2.12M contract.
+- **数字月台 / Digital Loading Dock**：不写 PPT，直接进场联调，真机上线。在车间把 PLC 和移动机器人接起来，用统一状态逻辑管理设备动作；真机联调，上线通过验收。 / Bridged PLCs with mobile robots on the factory floor, orchestrated actions with a unified state machine, and passed final acceptance on live hardware.
+- **EmergentInc**：让 AI 不再只是聊天，而是自动赚钱。AI 自己跑任务、自己改自己、自动去赚钱；代码全部开源，拿来就能跑。 / Autonomous agents execute workflows, evolve their own code, and generate economic value. 100% open-source and ready to deploy out of the box.
 
-### 2. 代表项目与事实边界
-- **考亭古街**：面对政府文旅大会诉求，从复杂信息中提炼“文旅溯源地”核心命题并获认同。作为售前策划主创参与设计服务从方案到实施回款全过程；所参与的设计服务合同金额为 212 万元。
-- **数字月台**：将单屏展示需求扩展为多终端工业中控系统，梳理订单状态流转与设备联控；基于 Fastify + React + WebSocket + PostgreSQL 构建，对接 SLMP PLC 接口，把 PLC 与移动机器人接入统一状态逻辑。已上线运行并通过现场验收。
-- **EmergentInc**：开源 AI 智能体商业系统，让 AI 自己跑任务、自己改自己、自动赚钱。基于 pure-ast-json 纯 AST 解释沙箱（严禁 eval）+ 持久 Workspace 状态机 + Supervisor 审批自进化，支持多链 USDT 自动核销。代码全部开源，拿来就能跑。
+## 联系方式 / Contact
+
+- 常驻地点：杭州 · 湖州 · 苏州（吴江） / Base: Hangzhou · Huzhou · Suzhou (Wujiang)
+- 微信 / 电话 / WeChat / Mobile: 18761576008
+- 中文邮箱：dzpdd@163.com
+- English email: lx00018310@gmail.com

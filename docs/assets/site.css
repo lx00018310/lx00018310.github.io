@@ -2352,11 +2352,14 @@ footer.site-footer, footer {
   color: #000;
 }
 .giats-hero-right {
-  font-size: clamp(17px, 1.8vw, 21px);
+  font-size: clamp(18px, 1.9vw, 23px);
   line-height: 1.65;
   color: var(--ink-2);
   margin: 0;
   max-width: 520px;
+}
+.giats-hero-right p {
+  margin-bottom: 0;
 }
 @media (max-width: 900px) {
   .giats-hero-split {
@@ -2524,7 +2527,7 @@ footer.site-footer, footer {
   text-shadow: 2px 2px 0 #000000 !important;
 }
 .showcase-pinned-tagline {
-  font-size: clamp(24px, 2.64vw, 30px);
+  font-size: clamp(28.8px, 3.168vw, 36px);
   font-weight: 700;
   line-height: 1.4;
   margin: 0 0 16px;

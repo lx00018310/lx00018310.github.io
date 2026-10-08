@@ -2502,11 +2502,20 @@ footer.site-footer, footer {
 .showcase-pinned-title {
   font-size: clamp(44px, 5.5vw, 76px);
   font-weight: 800;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: #fff;
   text-shadow: 2px 2px 0 #000000 !important;
+}
+.showcase-pinned-tagline {
+  font-size: clamp(20px, 2.2vw, 25px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 1.5px 1.5px 0 #000000 !important;
 }
 .showcase-pinned-lead {
   font-size: 17px;
@@ -2529,17 +2538,24 @@ footer.site-footer, footer {
   color: var(--magenta);
   text-shadow: 2px 2px 0 #ffffff, 3px 3px 0 rgba(0, 0, 0, 0.45) !important;
 }
+.showcase-layer--1 .showcase-pinned-tagline {
+  color: var(--magenta);
+  text-shadow: 1.5px 1.5px 0 #ffffff, 2px 2px 0 rgba(0, 0, 0, 0.45) !important;
+}
 .showcase-layer--1 .showcase-pinned-lead {
   color: #701a75;
   text-shadow: none !important; /* 按照用户要求，该段导语不再加叠影 */
 }
 
-/* 画板 2: EmergentInc 专属主题紫色叠影 (第 4 页：2025 与 EmergentInc 叠影为主题紫色) */
+/* 画板 2: EmergentInc 专属主题紫色叠影 (第 4 页：标题与副标题叠影为主题紫色) */
 .showcase-layer--2 .showcase-year-badge {
   text-shadow: 1.5px 1.5px 0 var(--magenta) !important;
 }
 .showcase-layer--2 .showcase-pinned-title {
   text-shadow: 2px 2px 0 var(--magenta) !important;
+}
+.showcase-layer--2 .showcase-pinned-tagline {
+  text-shadow: 1.5px 1.5px 0 var(--magenta) !important;
 }
 
 /* 右侧悬浮画中画卡片 (宽高放大 140%，实体硬边缘叠影，通过 !important 彻底击穿全局通配符抹杀) */
